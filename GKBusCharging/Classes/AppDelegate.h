@@ -2,7 +2,7 @@
 //  AppDelegate.h
 //  GKBusCharging
 //
-//  Created by L on 2018/9/26.
+//  Created by mrwang90hou on 2018/9/26.
 //  Copyright © 2018年 goockr. All rights reserved.
 //
 

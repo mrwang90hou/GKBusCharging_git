@@ -17,5 +17,8 @@ pod 'CDDPagerController'
 pod 'SVProgressHUD'
 pod 'HMSegmentedControl'
 pod 'GQGesVCTransition'
+pod 'UMCCommon'
+pod 'UMCAnalytics'
+pod 'UMCSecurityPlugins'
 target 'GKBusCharging' do
 end
