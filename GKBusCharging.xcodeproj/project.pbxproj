@@ -16,6 +16,17 @@
 		0B7C81EE215CDB3800A06345 /* UIButton+GKUpDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C81ED215CDB3800A06345 /* UIButton+GKUpDownButton.m */; };
 		0B7C81F6215CE27200A06345 /* DCGMScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C81F2215CE27200A06345 /* DCGMScanViewController.m */; };
 		0B7C81F7215CE27200A06345 /* DCCameraTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C81F5215CE27200A06345 /* DCCameraTopView.m */; };
+		0B809B09215E2B46001186CA /* GKWatchPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B809B08215E2B46001186CA /* GKWatchPhotoCollectionViewCell.m */; };
+		0B8D0DF3215DB97F00030966 /* JFAreaDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8D0DDF215DB97E00030966 /* JFAreaDataManager.m */; };
+		0B8D0DF4215DB97F00030966 /* shop_area.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0B8D0DE1215DB97E00030966 /* shop_area.sqlite */; };
+		0B8D0DF5215DB97F00030966 /* JFButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8D0DE3215DB97E00030966 /* JFButton.m */; };
+		0B8D0DF6215DB97F00030966 /* JFCityCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8D0DE5215DB97E00030966 /* JFCityCollectionFlowLayout.m */; };
+		0B8D0DF7215DB97F00030966 /* JFCityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8D0DE7215DB97E00030966 /* JFCityCollectionViewCell.m */; };
+		0B8D0DF8215DB97F00030966 /* JFCityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8D0DE9215DB97E00030966 /* JFCityHeaderView.m */; };
+		0B8D0DF9215DB97F00030966 /* JFCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8D0DEB215DB97E00030966 /* JFCityTableViewCell.m */; };
+		0B8D0DFA215DB97F00030966 /* JFCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8D0DED215DB97E00030966 /* JFCityViewController.m */; };
+		0B8D0DFB215DB97F00030966 /* JFSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8D0DEF215DB97E00030966 /* JFSearchView.m */; };
+		0B8D0DFC215DB97F00030966 /* JFLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8D0DF2215DB97E00030966 /* JFLocation.m */; };
 		0B9CF2C2215B7BFC00F76671 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF2C1215B7BFC00F76671 /* AppDelegate.m */; };
 		0B9CF2C5215B7BFC00F76671 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF2C4215B7BFC00F76671 /* ViewController.m */; };
 		0B9CF2CA215B7BFD00F76671 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B9CF2C9215B7BFD00F76671 /* Assets.xcassets */; };
@@ -127,6 +138,11 @@
 		0B9CF498215B917F00F76671 /* DCVerificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B9CF491215B917F00F76671 /* DCVerificationView.xib */; };
 		0B9CF49E215B91C600F76671 /* DCConsts.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF49B215B91C600F76671 /* DCConsts.m */; };
 		0B9CF49F215B91C600F76671 /* DCNotificationCenterName.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF49D215B91C600F76671 /* DCNotificationCenterName.m */; };
+		0BABC039215DCA650085CAC3 /* AFNetPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC038215DCA650085CAC3 /* AFNetPackage.m */; };
+		0BABC03D215DFDA10085CAC3 /* GKPersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC03C215DFDA10085CAC3 /* GKPersonalCenterViewController.m */; };
+		0BABC042215E00C00085CAC3 /* GKPersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC041215E00C00085CAC3 /* GKPersonalCell.m */; };
+		0BABC045215E01010085CAC3 /* GKPersonalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC044215E01010085CAC3 /* GKPersonalHeaderView.m */; };
+		0BABC048215E14FE0085CAC3 /* GKCustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC047215E14FE0085CAC3 /* GKCustomFlowLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -148,6 +164,27 @@
 		0B7C81F2215CE27200A06345 /* DCGMScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCGMScanViewController.m; sourceTree = "<group>"; };
 		0B7C81F4215CE27200A06345 /* DCCameraTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCCameraTopView.h; sourceTree = "<group>"; };
 		0B7C81F5215CE27200A06345 /* DCCameraTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCCameraTopView.m; sourceTree = "<group>"; };
+		0B809B07215E2B46001186CA /* GKWatchPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKWatchPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		0B809B08215E2B46001186CA /* GKWatchPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKWatchPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		0B8D0DDE215DB97E00030966 /* JFAreaDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAreaDataManager.h; sourceTree = "<group>"; };
+		0B8D0DDF215DB97E00030966 /* JFAreaDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAreaDataManager.m; sourceTree = "<group>"; };
+		0B8D0DE1215DB97E00030966 /* shop_area.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = shop_area.sqlite; sourceTree = "<group>"; };
+		0B8D0DE2215DB97E00030966 /* JFButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFButton.h; sourceTree = "<group>"; };
+		0B8D0DE3215DB97E00030966 /* JFButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFButton.m; sourceTree = "<group>"; };
+		0B8D0DE4215DB97E00030966 /* JFCityCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityCollectionFlowLayout.h; sourceTree = "<group>"; };
+		0B8D0DE5215DB97E00030966 /* JFCityCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityCollectionFlowLayout.m; sourceTree = "<group>"; };
+		0B8D0DE6215DB97E00030966 /* JFCityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityCollectionViewCell.h; sourceTree = "<group>"; };
+		0B8D0DE7215DB97E00030966 /* JFCityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityCollectionViewCell.m; sourceTree = "<group>"; };
+		0B8D0DE8215DB97E00030966 /* JFCityHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityHeaderView.h; sourceTree = "<group>"; };
+		0B8D0DE9215DB97E00030966 /* JFCityHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityHeaderView.m; sourceTree = "<group>"; };
+		0B8D0DEA215DB97E00030966 /* JFCityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityTableViewCell.h; sourceTree = "<group>"; };
+		0B8D0DEB215DB97E00030966 /* JFCityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityTableViewCell.m; sourceTree = "<group>"; };
+		0B8D0DEC215DB97E00030966 /* JFCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityViewController.h; sourceTree = "<group>"; };
+		0B8D0DED215DB97E00030966 /* JFCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityViewController.m; sourceTree = "<group>"; };
+		0B8D0DEE215DB97E00030966 /* JFSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSearchView.h; sourceTree = "<group>"; };
+		0B8D0DEF215DB97E00030966 /* JFSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSearchView.m; sourceTree = "<group>"; };
+		0B8D0DF1215DB97E00030966 /* JFLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLocation.h; sourceTree = "<group>"; };
+		0B8D0DF2215DB97E00030966 /* JFLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLocation.m; sourceTree = "<group>"; };
 		0B9CF2BD215B7BFC00F76671 /* GKBusCharging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GKBusCharging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9CF2C0215B7BFC00F76671 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0B9CF2C1215B7BFC00F76671 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -374,6 +411,16 @@
 		0B9CF49B215B91C600F76671 /* DCConsts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCConsts.m; sourceTree = "<group>"; };
 		0B9CF49C215B91C600F76671 /* DCNotificationCenterName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCNotificationCenterName.h; sourceTree = "<group>"; };
 		0B9CF49D215B91C600F76671 /* DCNotificationCenterName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCNotificationCenterName.m; sourceTree = "<group>"; };
+		0BABC037215DCA650085CAC3 /* AFNetPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetPackage.h; sourceTree = "<group>"; };
+		0BABC038215DCA650085CAC3 /* AFNetPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetPackage.m; sourceTree = "<group>"; };
+		0BABC03B215DFD970085CAC3 /* GKPersonalCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKPersonalCenterViewController.h; sourceTree = "<group>"; };
+		0BABC03C215DFDA10085CAC3 /* GKPersonalCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKPersonalCenterViewController.m; sourceTree = "<group>"; };
+		0BABC040215E00B50085CAC3 /* GKPersonalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKPersonalCell.h; sourceTree = "<group>"; };
+		0BABC041215E00C00085CAC3 /* GKPersonalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKPersonalCell.m; sourceTree = "<group>"; };
+		0BABC043215E00F70085CAC3 /* GKPersonalHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKPersonalHeaderView.h; sourceTree = "<group>"; };
+		0BABC044215E01010085CAC3 /* GKPersonalHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKPersonalHeaderView.m; sourceTree = "<group>"; };
+		0BABC046215E14FE0085CAC3 /* GKCustomFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCustomFlowLayout.h; sourceTree = "<group>"; };
+		0BABC047215E14FE0085CAC3 /* GKCustomFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCustomFlowLayout.m; sourceTree = "<group>"; };
 		5275659C3EC91469680A0B9C /* Pods-GKBusCharging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKBusCharging.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKBusCharging/Pods-GKBusCharging.debug.xcconfig"; sourceTree = "<group>"; };
 		541A3F9A7892F07907BB40A1 /* Pods-GKBusCharging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKBusCharging.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKBusCharging/Pods-GKBusCharging.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -452,6 +499,56 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		0B8D0DDC215DB97E00030966 /* JFCityViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0B8D0DDD215DB97E00030966 /* AreaDataManager */,
+				0B8D0DE0215DB97E00030966 /* AreaDB */,
+				0B8D0DE2215DB97E00030966 /* JFButton.h */,
+				0B8D0DE3215DB97E00030966 /* JFButton.m */,
+				0B8D0DE4215DB97E00030966 /* JFCityCollectionFlowLayout.h */,
+				0B8D0DE5215DB97E00030966 /* JFCityCollectionFlowLayout.m */,
+				0B8D0DE6215DB97E00030966 /* JFCityCollectionViewCell.h */,
+				0B8D0DE7215DB97E00030966 /* JFCityCollectionViewCell.m */,
+				0B8D0DE8215DB97E00030966 /* JFCityHeaderView.h */,
+				0B8D0DE9215DB97E00030966 /* JFCityHeaderView.m */,
+				0B8D0DEA215DB97E00030966 /* JFCityTableViewCell.h */,
+				0B8D0DEB215DB97E00030966 /* JFCityTableViewCell.m */,
+				0B8D0DEC215DB97E00030966 /* JFCityViewController.h */,
+				0B8D0DED215DB97E00030966 /* JFCityViewController.m */,
+				0B8D0DEE215DB97E00030966 /* JFSearchView.h */,
+				0B8D0DEF215DB97E00030966 /* JFSearchView.m */,
+				0B8D0DF0215DB97E00030966 /* Location */,
+			);
+			path = JFCityViewController;
+			sourceTree = "<group>";
+		};
+		0B8D0DDD215DB97E00030966 /* AreaDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				0B8D0DDE215DB97E00030966 /* JFAreaDataManager.h */,
+				0B8D0DDF215DB97E00030966 /* JFAreaDataManager.m */,
+			);
+			path = AreaDataManager;
+			sourceTree = "<group>";
+		};
+		0B8D0DE0215DB97E00030966 /* AreaDB */ = {
+			isa = PBXGroup;
+			children = (
+				0B8D0DE1215DB97E00030966 /* shop_area.sqlite */,
+			);
+			path = AreaDB;
+			sourceTree = "<group>";
+		};
+		0B8D0DF0215DB97E00030966 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				0B8D0DF1215DB97E00030966 /* JFLocation.h */,
+				0B8D0DF2215DB97E00030966 /* JFLocation.m */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		0B9CF2B4215B7BFC00F76671 = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +572,7 @@
 			children = (
 				0B9CF2FD215B82FE00F76671 /* GKBusCharging.entitlements */,
 				0B9CF2EE215B812D00F76671 /* Classes */,
+				0BABC036215DCA650085CAC3 /* HTTP */,
 				0B9CF2C3215B7BFC00F76671 /* ViewController.h */,
 				0B9CF2C4215B7BFC00F76671 /* ViewController.m */,
 				0B9CF2D6215B7E2E00F76671 /* Supporting Files */,
@@ -500,8 +598,10 @@
 			children = (
 				0B9CF2C0215B7BFC00F76671 /* AppDelegate.h */,
 				0B9CF2C1215B7BFC00F76671 /* AppDelegate.m */,
+				0B8D0DDC215DB97E00030966 /* JFCityViewController */,
 				0B9CF2EF215B812D00F76671 /* Main */,
 				0B9CF2F4215B81B400F76671 /* Home */,
+				0BABC03A215DFD320085CAC3 /* PersonalCenter */,
 				0B9CF484215B917F00F76671 /* LoginMe(登录) */,
 				0B9CF33A215B8A0B00F76671 /* Expand */,
 				0B9CF354215B8ACE00F76671 /* config */,
@@ -1097,6 +1197,49 @@
 			path = "Const(常量)";
 			sourceTree = "<group>";
 		};
+		0BABC036215DCA650085CAC3 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				0BABC037215DCA650085CAC3 /* AFNetPackage.h */,
+				0BABC038215DCA650085CAC3 /* AFNetPackage.m */,
+			);
+			name = HTTP;
+			path = Classes/HTTP;
+			sourceTree = "<group>";
+		};
+		0BABC03A215DFD320085CAC3 /* PersonalCenter */ = {
+			isa = PBXGroup;
+			children = (
+				0BABC03F215DFE740085CAC3 /* Controller */,
+				0BABC03E215DFE6E0085CAC3 /* View */,
+			);
+			path = PersonalCenter;
+			sourceTree = "<group>";
+		};
+		0BABC03E215DFE6E0085CAC3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0B809B07215E2B46001186CA /* GKWatchPhotoCollectionViewCell.h */,
+				0B809B08215E2B46001186CA /* GKWatchPhotoCollectionViewCell.m */,
+				0BABC043215E00F70085CAC3 /* GKPersonalHeaderView.h */,
+				0BABC044215E01010085CAC3 /* GKPersonalHeaderView.m */,
+				0BABC040215E00B50085CAC3 /* GKPersonalCell.h */,
+				0BABC041215E00C00085CAC3 /* GKPersonalCell.m */,
+				0BABC046215E14FE0085CAC3 /* GKCustomFlowLayout.h */,
+				0BABC047215E14FE0085CAC3 /* GKCustomFlowLayout.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0BABC03F215DFE740085CAC3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0BABC03B215DFD970085CAC3 /* GKPersonalCenterViewController.h */,
+				0BABC03C215DFDA10085CAC3 /* GKPersonalCenterViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		34432A0679DEF282FD669FCF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1184,6 +1327,7 @@
 				0B9CF493215B917F00F76671 /* DCLoginViewController.xib in Resources */,
 				0B9CF2CA215B7BFD00F76671 /* Assets.xcassets in Resources */,
 				0B9CF423215B8D7F00F76671 /* addressData.plist in Resources */,
+				0B8D0DF4215DB97F00030966 /* shop_area.sqlite in Resources */,
 				0B9CF42D215B8D7F00F76671 /* navigationbarScanBg.png in Resources */,
 				0B9CF42C215B8D7F00F76671 /* flsah_normal@2x.png in Resources */,
 				0B9CF441215B8D7F00F76671 /* PYSearch.bundle in Resources */,
@@ -1248,6 +1392,7 @@
 				0B9CF481215B8F4B00F76671 /* GKAppVersionTool.m in Sources */,
 				0B9CF36F215B8C4C00F76671 /* DCCheckRegular.m in Sources */,
 				0B7C81E1215CCEE800A06345 /* DCLIRLButton.m in Sources */,
+				0B8D0DFA215DB97F00030966 /* JFCityViewController.m in Sources */,
 				0B9CF44B215B8D7F00F76671 /* XWInteractiveTransition.m in Sources */,
 				0B7C81F6215CE27200A06345 /* DCGMScanViewController.m in Sources */,
 				0B9CF49F215B91C600F76671 /* DCNotificationCenterName.m in Sources */,
@@ -1262,9 +1407,11 @@
 				0B7C81F7215CE27200A06345 /* DCCameraTopView.m in Sources */,
 				0B9CF46B215B8D7F00F76671 /* YBRectConst.m in Sources */,
 				0B9CF449215B8D7F00F76671 /* UIView+Snapshot.m in Sources */,
+				0B8D0DFC215DB97F00030966 /* JFLocation.m in Sources */,
 				0B9CF464215B8D7F00F76671 /* XWFilterAnimator+XWRipple.m in Sources */,
 				0B9CF482215B8F4B00F76671 /* GKUserInfo.m in Sources */,
 				0B9CF45B215B8D7F00F76671 /* XWCoolAnimator.m in Sources */,
+				0B8D0DF7215DB97F00030966 /* JFCityCollectionViewCell.m in Sources */,
 				0B9CF35D215B8ACE00F76671 /* GKButton.m in Sources */,
 				0B9CF2C5215B7BFC00F76671 /* ViewController.m in Sources */,
 				0B9CF429215B8D7F00F76671 /* DCScanningViewController.m in Sources */,
@@ -1274,16 +1421,19 @@
 				0B9CF468215B8D7F00F76671 /* XWMagicMoveAnimator.m in Sources */,
 				0B9CF43C215B8D7F00F76671 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				0B9CF432215B8D7F00F76671 /* UIView+Frame.m in Sources */,
+				0BABC03D215DFDA10085CAC3 /* GKPersonalCenterViewController.m in Sources */,
 				0B9CF424215B8D7F00F76671 /* AddressPickerView.m in Sources */,
 				0B9CF352215B8A6D00F76671 /* UILabel+DCLabel.m in Sources */,
 				0B9CF451215B8D7F00F76671 /* SDPhotoBrowser.m in Sources */,
 				0B9CF454215B8D7F00F76671 /* XWCoolAnimator+XWExplode.m in Sources */,
 				0B9CF43E215B8D7F00F76671 /* JPFPSStatus.m in Sources */,
 				0B9CF460215B8D7F00F76671 /* XWFilterAnimator+XWFlash.m in Sources */,
+				0BABC039215DCA650085CAC3 /* AFNetPackage.m in Sources */,
 				0B9CF465215B8D7F00F76671 /* XWFilterAnimator+XWSwipe.m in Sources */,
 				0B9CF34F215B8A6D00F76671 /* UIColor+DCColorChange.m in Sources */,
 				0B9CF469215B8D7F00F76671 /* YBPopupMenu.m in Sources */,
 				0B9CF463215B8D7F00F76671 /* XWFilterAnimator+XWPageCurl.m in Sources */,
+				0B809B09215E2B46001186CA /* GKWatchPhotoCollectionViewCell.m in Sources */,
 				0B7C81E0215CCEE800A06345 /* DCCustionButton.m in Sources */,
 				0B9CF458215B8D7F00F76671 /* XWCoolAnimator+XWPageFlip.m in Sources */,
 				0B9CF452215B8D7F00F76671 /* SDWaitingView.m in Sources */,
@@ -1301,34 +1451,43 @@
 				0B7C81EB215CDAFD00A06345 /* UIButton+GKButton.m in Sources */,
 				0B9CF45D215B8D7F00F76671 /* XWFilterAnimator+XWBarSwipe.m in Sources */,
 				0B9CF353215B8A6D00F76671 /* UIView+DCExtension.m in Sources */,
+				0B8D0DF3215DB97F00030966 /* JFAreaDataManager.m in Sources */,
 				0B9CF462215B8D7F00F76671 /* XWFilterAnimator+XWMod.m in Sources */,
 				0B9CF430215B8D7F00F76671 /* UIView+DCRolling.m in Sources */,
 				0B9CF428215B8D7F00F76671 /* DCScanIdentifyAreaView.m in Sources */,
 				0B9CF439215B8D7F00F76671 /* CitiesDataTool.m in Sources */,
 				0B9CF448215B8D7F00F76671 /* UINavigationController+XWTransition.m in Sources */,
+				0BABC042215E00C00085CAC3 /* GKPersonalCell.m in Sources */,
 				0B9CF467215B8D7F00F76671 /* XWFilterTransitionView.m in Sources */,
 				0B9CF426215B8D7F00F76671 /* WJYAlertView.m in Sources */,
 				0B9CF45E215B8D7F00F76671 /* XWFilterAnimator+XWBoxBlur.m in Sources */,
 				0B9CF47F215B8F4B00F76671 /* GKNavigationController.m in Sources */,
 				0B9CF316215B859500F76671 /* main.m in Sources */,
+				0B8D0DFB215DB97F00030966 /* JFSearchView.m in Sources */,
 				0B9CF457215B8D7F00F76671 /* XWCoolAnimator+XWMiddlePageFlip.m in Sources */,
 				0B9CF466215B8D7F00F76671 /* XWFilterAnimator.m in Sources */,
+				0BABC048215E14FE0085CAC3 /* GKCustomFlowLayout.m in Sources */,
 				0B9CF350215B8A6D00F76671 /* UIImage+DCCircle.m in Sources */,
 				0B9CF453215B8D7F00F76671 /* XWCircleSpreadAnimator.m in Sources */,
 				0B9CF435215B8D7F00F76671 /* AddressTableViewCell.m in Sources */,
+				0B8D0DF6215DB97F00030966 /* JFCityCollectionFlowLayout.m in Sources */,
 				0B9CF44C215B8D7F00F76671 /* XWTransitionAnimator.m in Sources */,
 				0B9CF42F215B8D7F00F76671 /* DCTitleRolling.m in Sources */,
+				0B8D0DF8215DB97F00030966 /* JFCityHeaderView.m in Sources */,
 				0B4B1121215B974500056DD6 /* GKHomeViewController.m in Sources */,
 				0B9CF372215B8C4C00F76671 /* DCPlaceholderTextView.m in Sources */,
 				0B9CF442215B8D7F00F76671 /* PYSearchConst.m in Sources */,
 				0B7C81E2215CCEE800A06345 /* GKUpDownButton.m in Sources */,
 				0B9CF483215B8F4B00F76671 /* GKTabBadgeView.m in Sources */,
 				0B9CF2C2215B7BFC00F76671 /* AppDelegate.m in Sources */,
+				0BABC045215E01010085CAC3 /* GKPersonalHeaderView.m in Sources */,
+				0B8D0DF5215DB97F00030966 /* JFButton.m in Sources */,
 				0B9CF47E215B8F4B00F76671 /* GKBaseSetViewController.m in Sources */,
 				0B9CF35E215B8ACE00F76671 /* GKTextField.m in Sources */,
 				0B9CF374215B8C4C00F76671 /* DCSpeedy.m in Sources */,
 				0B9CF433215B8D7F00F76671 /* AddressItem.m in Sources */,
 				0B9CF43F215B8D7F00F76671 /* PPNumberButton.m in Sources */,
+				0B8D0DF9215DB97F00030966 /* JFCityTableViewCell.m in Sources */,
 				0B9CF461215B8D7F00F76671 /* XWFilterAnimator+XWMask.m in Sources */,
 				0B9CF351215B8A6D00F76671 /* UIImageView+DCExtension.m in Sources */,
 				0B9CF437215B8D7F00F76671 /* AddressView.m in Sources */,

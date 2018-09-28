@@ -49,7 +49,7 @@
 
 #define TITLES @[@"发起聊天", @"添加好友", @"扫一扫"]
 #define ICONS  @[@"mshop_message_gray",@"mshop_message_gray",@"mshop_message_gray"]
-
+#define TelePhoneNumber @"0757-86678686"
 
 #define PFR20Font [UIFont fontWithName:PFR size:20];
 #define PFR18Font [UIFont fontWithName:PFR size:18];

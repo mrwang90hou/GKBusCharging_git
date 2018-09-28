@@ -8,6 +8,17 @@
 
 #ifndef HttpApi_h
 #define HttpApi_h
+
+
+#define Base_Url @"http://www.mrwang90hou.top/Hotels_Server_new"
+/************************************App key******************************************/
+#define AppKey @"TheHotelReversationApplication"
+
+
+
+
+
+
 /****************************  URL  ******************************/
 #define GKDOMAIN @"http://192.72.1.1"
 
