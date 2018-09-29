@@ -13,6 +13,9 @@
 #import "DCGMScanViewController.h"
 #import "JFCityViewController.h"
 #import "SDCycleScrollView.h"
+#import "GKFeedBackViewController.h"
+
+
 
 //#import "DCTabBarController.h"
 #import "DCRegisteredViewController.h"
@@ -40,17 +43,20 @@
 #define kLineSpacing DCMargin/2
 
 @interface GKPersonalCenterViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-{
-    UICollectionView *collectionView;
-}
+//{
+//    UICollectionView *collectionView;
+//}
 
 
-/* collectionView */
-//@property (strong , nonatomic)UICollectionView *collectionView;
+@property (nonatomic,strong) NSMutableArray *titleListArray;
 
-@property (nonatomic, strong) NSMutableArray *images;
+@property (nonatomic,strong) NSMutableArray *imagesListArray;
+
+
 
 //@property (strong, nonatomic) GKCustomFlowLayout *flowLayout;
+
+@property(nonatomic,strong) UICollectionView *collectionView;
 @end
 
 @implementation GKPersonalCenterViewController
@@ -109,7 +115,7 @@
     //该方法也可以设置itemSize
     layout.itemSize =CGSizeMake(110, 150);
     //2.初始化collectionView
-    collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
     [self.view addSubview:collectionView];
     collectionView.backgroundColor = [UIColor redColor];
     //3.注册collectionViewCell
@@ -125,6 +131,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人中心";
+    [self getUI];
+    [self getData];
+//    self.view.backgroundColor = [UIColor redColor];
+//    self.collectionView.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)getUI{
     GKPersonalHeaderView * headerView = [[GKPersonalHeaderView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:headerView];
     [headerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -139,29 +152,56 @@
     //设置collectionView滚动方向
     [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
     //设置headerView的尺寸大小
-//    layout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 100);
+    //    layout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 100);
     //该方法也可以设置itemSize
-//    layout.itemSize =CGSizeMake(110, 150);
+    //    layout.itemSize =CGSizeMake(110, 150);
     //2.初始化collectionView
-//    collectionView.backgroundColor = RGB(248, 248, 248);
-//    collectionView.backgroundColor = [UIColor lightGrayColor];
-//    [collectionView setBackgroundColor:TABLEVIEW_BG];
-//    [collectionView setBackgroundColor:[UIColor whiteColor]];
-    
-    collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, K_HEIGHT_NAVBAR+(ScreenH-K_HEIGHT_NAVBAR)/4+DCMargin, ScreenW, ScreenH-(K_HEIGHT_NAVBAR+(ScreenH-K_HEIGHT_NAVBAR)/4+DCMargin)) collectionViewLayout:layout];
-
+    //    collectionView.backgroundColor = [UIColor lightGrayColor];
+    //    [collectionView setBackgroundColor:TABLEVIEW_BG];
+    //    [collectionView setBackgroundColor:[UIColor whiteColor]];
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, K_HEIGHT_NAVBAR+(ScreenH-K_HEIGHT_NAVBAR)/4+DCMargin, ScreenW, ScreenH-(K_HEIGHT_NAVBAR+(ScreenH-K_HEIGHT_NAVBAR)/4+DCMargin)) collectionViewLayout:layout];
     [self.view addSubview:collectionView];
+    collectionView.backgroundColor = RGB(248, 248, 248);
     //3.注册collectionViewCell
     //注意，此处的ReuseIdentifier 必须和 cellForItemAtIndexPath 方法中 一致 均为 cellId
     [collectionView registerClass:[GKPersonalCell class] forCellWithReuseIdentifier:@"cellId"];
     //4.设置代理
     collectionView.delegate = self;
     collectionView.dataSource = self;
-    
-    
-    
-    
+    self.collectionView = collectionView;
 }
+
+- (void)getData{
+    
+//    self.titleListArray = @[@"余额:",@"订单管理",@"使用帮助",@"关于我们",@"紧急报警",@"意见反馈"];
+    [self getDataFromPlist];
+}
+
+- (void)getDataFromPlist{
+    NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"PersonalCenterMenu" ofType:@"plist"];
+    
+    // [NSBundle mainBundle] 关联的就是项目的主资源包
+//    NSBundle *bundle = [NSBundle mainBundle];
+    // 利用mainBundle 获得plist文件在主资源包中的全路径
+//    NSString *file = [bundle pathForResource:@"shops" ofType:@"plist"];
+    // 凡是参数名为File，传递的都是文件的全路径
+    NSArray *datasArray = [NSArray arrayWithContentsOfFile:plistPath];
+    
+    NSMutableArray *titleListMuArray = [NSMutableArray new];
+    NSMutableArray *imagesListMuArray = [NSMutableArray new];
+    
+    
+    for (NSMutableDictionary *dic in datasArray) {
+        [titleListMuArray addObject:dic[@"titleName"]];
+        [imagesListMuArray addObject:dic[@"imageName"]];
+//        NSLog(@"dic[@'titleName'] = %@,dic[@'imageName‘] = %@",dic[@"titleName"],dic[@"imageName"]);
+    }
+    self.titleListArray = [titleListMuArray copy];
+    self.imagesListArray = [imagesListMuArray copy];
+    
+//    [self.collectionView reloadData];
+}
+
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 #pragma mark collectionView代理方法
 //返回section个数
@@ -173,17 +213,26 @@
 //每个section的item个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 6;
+    return 7;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
     GKPersonalCell *cell = (GKPersonalCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
-    
-//    cell.titleLabel.text = [NSString stringWithFormat:@"{%ld,%ld}",(long)indexPath.section,(long)indexPath.row];
-    cell.titleLabel.text = @"下载 APP";
+    cell.titleLabel.text = [self.titleListArray objectAtIndex:indexPath.row];
+//    NSLog(@"cell.titleLabel.text = %@",[self.titleListArray objectAtIndex:indexPath.row]);
+    [cell.gridImageView setImage:[UIImage imageNamed:[self.imagesListArray objectAtIndex:indexPath.row]]];
     cell.backgroundColor = [UIColor whiteColor];
+    
+    if (indexPath.row == 0) {
+//        cell.infoLabel = [NSUserDefaults ];
+        cell.infoLabel.text = @"120元";
+        [cell.infoLabel setHidden:false];
+    }else{
+        cell.infoLabel.text = @"";
+        [cell.infoLabel setHidden:true];
+    }
     
     return cell;
 }
@@ -206,7 +255,6 @@
     return 1;
 }
 
-
 //设置每个item垂直间距
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
@@ -216,10 +264,45 @@
 //点击item方法
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    GKPersonalCell *cell = (GKPersonalCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    
-    NSString *msg = cell.titleLabel.text;
-    NSLog(@"%@",msg);
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+//    GKBaseSetViewController *vc = [[GKBaseSetViewController alloc]init];
+    GKBaseSetViewController *nextVC;
+    switch (indexPath.row) {
+        case 0:
+            nextVC = [[GKBaseSetViewController alloc] init];
+            break;
+        case 1:
+            nextVC = [[GKBaseSetViewController alloc] init];
+            break;
+        case 2:
+            nextVC = [[GKBaseSetViewController alloc] init];
+            break;
+        case 3:
+            nextVC = [[GKBaseSetViewController alloc] init];
+            break;
+            //        case 4:
+            //            nextVC = [[GFMyTradeViewController alloc] init];
+            //            break;
+        case 4:
+            nextVC = [[GKBaseSetViewController alloc] init];
+            break;
+        case 5:
+            nextVC = [[GKBaseSetViewController alloc] init];
+            break;
+        case 6:
+            nextVC = [[GKFeedBackViewController alloc] init];
+            break;
+//        case 8:
+//            //弹出框
+//            [self initAlertView];
+//            break;
+        default:
+            break;
+    }
+    if (indexPath.row != 8) {
+//        [nextVC setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:nextVC animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

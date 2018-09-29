@@ -41,7 +41,7 @@
 {
     self.gridImageView = [[UIImageView alloc] init];
     self.gridImageView.contentMode = UIViewContentModeScaleAspectFill;
-    [self.gridImageView setImage:[UIImage imageNamed:@"icon_personal_center_app_down"]];
+//    [self.gridImageView setImage:[UIImage imageNamed:@"icon_personal_center_app_down"]];
     [self addSubview:self.gridImageView];
     
     self.titleLabel = [[UILabel alloc] init];
@@ -54,7 +54,7 @@
     self.infoLabel.backgroundColor = [UIColor whiteColor];
 //    self.infoLabel.textAlignment = NSTextAlignmentCenter;
     self.infoLabel.textColor = RGB(31, 206, 155);
-    self.infoLabel.text = @"13000元";
+    self.infoLabel.text = @"";
     [self addSubview:self.infoLabel];
 }
 

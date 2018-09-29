@@ -13,6 +13,18 @@
 //#import "GKWatchPhotoViewController.h"
 #import <UMCommon/UMCommon.h>
 #import <UMAnalytics/MobClick.h>
+
+
+#import "GKLoginViewController.h"
+#import "GKHomeViewController.h"
+
+
+
+
+
+
+
+
 @interface AppDelegate ()
 
 @end
@@ -23,34 +35,56 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor whiteColor];
-    
-//    CYLTabBarControllerConfig *tabBarControllerConfig = [[CYLTabBarControllerConfig alloc] init];
-//    CYLTabBarController *tabBarController = tabBarControllerConfig.tabBarController;
-//    [self.window setRootViewController:tabBarController];
-//    [self customizeInterfaceWithTabBarController:tabBarController];
-    
-    GKHomeViewController *homeVC = [[GKHomeViewController alloc]init];
-    
-    GKNavigationController *uiNavC = [[GKNavigationController alloc] initWithRootViewController:homeVC];
-    
-    [self.window setRootViewController:uiNavC];
     
     
-    [self.window makeKeyAndVisible];
-    
+    [self autoLogin];
     [GKUserDefault removeObjectForKey:@"Connected"];
     [GKUserDefault synchronize];
     [self setIQKeybordManager];
     [self setSVprogressHUD];
     [self KVONetworkChange];
-    
     [self setNotificationPush];
     [self setUMeng];
-    
+    [self addObserver];
     return YES;
 }
+
+
+- (void) addObserver
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:LOGINSELECTCENTERINDEX object:nil];
+}
+
+
+#pragma mark -登录成功通知
+- (void) loginSuccess:(NSNotification *)noti
+{
+    [self autoLogin];
+}
+- (void) autoLogin{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    //隐藏状态栏
+    //[[UIApplication sharedApplication] setStatusBarHidden:YES];
+    // 判断是打钩，自动登录
+    //    GFUserVo *mUserVo = [GFUserDao readUserInfo];
+    GKNavigationController *navigationController = [[GKNavigationController alloc]init];
+        NSLog(@"[[DCObjManager dc_readUserDataForKey:@'isLogin'] = %@",[DCObjManager dc_readUserDataForKey:@"isLogin"]);
+    //     [SVProgressHUD showSuccessWithStatus:@"缓存登录成功！"];
+    if (![[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
+        //    if (mUserVo.isLogin) {
+        // 跳转至登录界面
+        [SVProgressHUD showErrorWithStatus:@"登录失败，请重新登录！"];
+        navigationController = [[GKNavigationController alloc]initWithRootViewController:[[GKLoginViewController alloc]init]];
+    } else {
+        [SVProgressHUD showSuccessWithStatus:@"缓存登录成功！"];
+        navigationController = [[GKNavigationController alloc]initWithRootViewController:[[GKHomeViewController alloc]init]];
+    }
+    self.window.rootViewController = navigationController;
+    [self.window makeKeyAndVisible];
+}
+
+
 
 //设置友盟统计
 - (void)setUMeng{
@@ -90,6 +124,7 @@
     //隐藏tabBar顶部黑线
     //    [tabBarController hideTabBadgeBackgroundSeparator];
 //}
+
 
 /**
  *  设置navigationBar样式
@@ -137,6 +172,11 @@
     [item setTitleTextAttributes:itemAttrbutes forState:UIControlStateNormal];
 }
  */
+
+
+
+
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
