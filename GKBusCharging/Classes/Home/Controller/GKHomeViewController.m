@@ -14,7 +14,7 @@
 #import "JFCityViewController.h"
 #import "SDCycleScrollView.h"
 #import "GKPersonalCenterViewController.h"
-
+#import "GKBusInfoListViewController.h"
 
 //#import "DCTabBarController.h"
 #import "DCRegisteredViewController.h"
@@ -145,7 +145,7 @@
         make.width.equalTo(@30);
     }];
     self.busListBtn = busListBtn;
-    [self.busListBtn addTarget:self action:@selector(turnToBusList) forControlEvents:UIControlEventTouchUpInside];
+    [self.busListBtn addTarget:self action:@selector(turnToBusInfoList) forControlEvents:UIControlEventTouchUpInside];
     
     //搜索栏
     UIView *topSearchView = [[UIView alloc] init];
@@ -178,7 +178,7 @@
         make.height.mas_equalTo(topSearchView);
         [make.right.mas_equalTo(topSearchView)setOffset:-2*DCMargin];
     }];
-    [searchButton addTarget:self action:@selector(turnToBusList) forControlEvents:UIControlEventTouchUpInside];
+    [searchButton addTarget:self action:@selector(turnToBusInfoList) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -351,7 +351,7 @@
 //    orderInfoBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -orderInfoBtn.currentImage.size.width, 0, orderInfoBtn.currentImage.size.width);
 //    // 重点位置结束
 //    orderInfoBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [orderInfoBtn addTarget:self action:@selector(turnToBusList) forControlEvents:UIControlEventTouchUpInside];
+    [orderInfoBtn addTarget:self action:@selector(turnToBusInfoList) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:orderInfoBtn];
     [orderInfoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(topView.mas_right).offset(-5);
@@ -427,8 +427,6 @@
     }
 }
 
-
-
 #pragma mark - private method
 - (void)pushToPersonalCenter{
     GKPersonalCenterViewController *personalVC = [GKPersonalCenterViewController new];
@@ -437,6 +435,7 @@
 
 - (void)scanQRCode{
     DCGMScanViewController *dcGMvC = [DCGMScanViewController new];
+//    UINavigationController *newNaVC = [[UINavigationController alloc]initWithRootViewController:dcGMvC];
     [self.navigationController pushViewController:dcGMvC animated:YES];
 }
 
@@ -461,9 +460,9 @@
     //    }];
 }
 
-- (void)turnToBusList{
-    GKBaseSetViewController *vc = [GKBaseSetViewController new];
-    vc.title = @"new";
+- (void)turnToBusInfoList{
+    GKBusInfoListViewController *vc = [GKBusInfoListViewController new];
+    vc.title = @"车辆信息";
     [self.navigationController pushViewController:vc animated:YES];
 }
 
