@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>titleName</key>
+		<string>充电线坏了</string>
+		<key>imageName</key>
+		<string>icon_fault_1</string>
+	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>借出后无法充电</string>
+		<key>imageName</key>
+		<string>icon_fault_2</string>
+	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>APP无法停止充电</string>
+		<key>imageName</key>
+		<string>icon_fault_3</string>
+	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>手机显示不支持此配件</string>
+		<key>imageName</key>
+		<string>icon_fault_4</string>
+	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>物理按钮无法停止充电</string>
+		<key>imageName</key>
+		<string>icon_fault_5</string>
+	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>其他</string>
+		<key>imageName</key>
+		<string>icon_fault_6</string>
+	</dict>
+</array>
+</plist>
