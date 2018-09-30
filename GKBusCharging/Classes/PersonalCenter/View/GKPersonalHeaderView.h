@@ -9,6 +9,6 @@
 
 @interface GKPersonalHeaderView : UIView
 @property (nonatomic,strong) UIButton *phoneBtn;
-@property (nonatomic,strong) UIImageView * iconImageView;
+@property (nonatomic,strong) UIButton * iconImageViewBtn;
 @property (nonatomic,strong) UILabel * headTitleLabel;
 @end

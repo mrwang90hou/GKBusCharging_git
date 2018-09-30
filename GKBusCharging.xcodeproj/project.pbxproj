@@ -14,6 +14,27 @@
 		0B462E1D215F4DFA00AE451F /* GKSignInCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B462E1C215F4DFA00AE451F /* GKSignInCodeView.m */; };
 		0B462E38215F8AC100AE451F /* GKBusInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B462E37215F8AC100AE451F /* GKBusInfoListViewController.m */; };
 		0B4B1121215B974500056DD6 /* GKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B1120215B974500056DD6 /* GKHomeViewController.m */; };
+		0B4BE58E2160C1290043CB30 /* GKBusMoreInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE58C2160C1280043CB30 /* GKBusMoreInfoViewController.m */; };
+		0B4BE5AA2160C99E0043CB30 /* GKCheckCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5952160C9990043CB30 /* GKCheckCodeCell.m */; };
+		0B4BE5AB2160C99E0043CB30 /* GKDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5962160C9990043CB30 /* GKDetailCell.m */; };
+		0B4BE5AC2160C99E0043CB30 /* GKIconCellCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5982160C9990043CB30 /* GKIconCellCell.m */; };
+		0B4BE5AD2160C99E0043CB30 /* GKMeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5992160C99A0043CB30 /* GKMeCell.m */; };
+		0B4BE5AE2160C99E0043CB30 /* GKTFCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE59D2160C99B0043CB30 /* GKTFCell.m */; };
+		0B4BE5AF2160C99E0043CB30 /* GKSignUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE59F2160C99B0043CB30 /* GKSignUpView.m */; };
+		0B4BE5B12160C99E0043CB30 /* GKForgotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5A42160C99C0043CB30 /* GKForgotView.m */; };
+		0B4BE5B22160C99E0043CB30 /* GKMeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5A52160C99D0043CB30 /* GKMeHeaderView.m */; };
+		0B4BE5B32160C99E0043CB30 /* GKCountrySelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5A62160C99D0043CB30 /* GKCountrySelectCell.m */; };
+		0B4BE5B42160C99E0043CB30 /* GKSetPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5A82160C99D0043CB30 /* GKSetPasswordView.m */; };
+		0B4BE5CB2160C9AC0043CB30 /* GKChangeNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5B72160C9A70043CB30 /* GKChangeNameController.m */; };
+		0B4BE5CC2160C9AC0043CB30 /* GKLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5B92160C9A80043CB30 /* GKLoginController.m */; };
+		0B4BE5CD2160C9AC0043CB30 /* GKForgotController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5BA2160C9A80043CB30 /* GKForgotController.m */; };
+		0B4BE5CE2160C9AC0043CB30 /* GKCheckOldPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5BB2160C9A80043CB30 /* GKCheckOldPhoneController.m */; };
+		0B4BE5CF2160C9AC0043CB30 /* GKChangePhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5BC2160C9A90043CB30 /* GKChangePhoneController.m */; };
+		0B4BE5D12160C9AC0043CB30 /* GKChangePassWordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5C22160C9AA0043CB30 /* GKChangePassWordController.m */; };
+		0B4BE5D22160C9AC0043CB30 /* GKBindingPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5C52160C9AB0043CB30 /* GKBindingPhoneController.m */; };
+		0B4BE5D32160C9AC0043CB30 /* GKMeDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5C62160C9AB0043CB30 /* GKMeDetailController.m */; };
+		0B4BE5D42160C9AC0043CB30 /* GKSetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5C72160C9AB0043CB30 /* GKSetPasswordController.m */; };
+		0B4BE5D52160C9AC0043CB30 /* GKMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5C82160C9AB0043CB30 /* GKMeViewController.m */; };
 		0B70D29321605F8C00C77DFE /* GKBusInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B70D29121605F8B00C77DFE /* GKBusInfoCell.m */; };
 		0B70D29421605F8C00C77DFE /* GKBusInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B70D29221605F8C00C77DFE /* GKBusInfoCell.xib */; };
 		0B70D2A421607CDA00C77DFE /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B70D29F21607CDA00C77DFE /* SIAlertView.bundle */; };
@@ -171,6 +192,48 @@
 		0B462E37215F8AC100AE451F /* GKBusInfoListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKBusInfoListViewController.m; sourceTree = "<group>"; };
 		0B4B111F215B973B00056DD6 /* GKHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKHomeViewController.h; sourceTree = "<group>"; };
 		0B4B1120215B974500056DD6 /* GKHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKHomeViewController.m; sourceTree = "<group>"; };
+		0B4BE58C2160C1280043CB30 /* GKBusMoreInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKBusMoreInfoViewController.m; sourceTree = "<group>"; };
+		0B4BE58D2160C1290043CB30 /* GKBusMoreInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKBusMoreInfoViewController.h; sourceTree = "<group>"; };
+		0B4BE5942160C9980043CB30 /* GKCountrySelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCountrySelectCell.h; sourceTree = "<group>"; };
+		0B4BE5952160C9990043CB30 /* GKCheckCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCheckCodeCell.m; sourceTree = "<group>"; };
+		0B4BE5962160C9990043CB30 /* GKDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKDetailCell.m; sourceTree = "<group>"; };
+		0B4BE5972160C9990043CB30 /* GKSignUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSignUpView.h; sourceTree = "<group>"; };
+		0B4BE5982160C9990043CB30 /* GKIconCellCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKIconCellCell.m; sourceTree = "<group>"; };
+		0B4BE5992160C99A0043CB30 /* GKMeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMeCell.m; sourceTree = "<group>"; };
+		0B4BE59A2160C99A0043CB30 /* GKDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKDetailCell.h; sourceTree = "<group>"; };
+		0B4BE59B2160C99A0043CB30 /* GKCheckCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCheckCodeCell.h; sourceTree = "<group>"; };
+		0B4BE59C2160C99A0043CB30 /* GKMeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMeCell.h; sourceTree = "<group>"; };
+		0B4BE59D2160C99B0043CB30 /* GKTFCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKTFCell.m; sourceTree = "<group>"; };
+		0B4BE59E2160C99B0043CB30 /* GKForgotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKForgotView.h; sourceTree = "<group>"; };
+		0B4BE59F2160C99B0043CB30 /* GKSignUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSignUpView.m; sourceTree = "<group>"; };
+		0B4BE5A02160C99B0043CB30 /* GKMeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMeHeaderView.h; sourceTree = "<group>"; };
+		0B4BE5A12160C99B0043CB30 /* GKSetPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSetPasswordView.h; sourceTree = "<group>"; };
+		0B4BE5A42160C99C0043CB30 /* GKForgotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKForgotView.m; sourceTree = "<group>"; };
+		0B4BE5A52160C99D0043CB30 /* GKMeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMeHeaderView.m; sourceTree = "<group>"; };
+		0B4BE5A62160C99D0043CB30 /* GKCountrySelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCountrySelectCell.m; sourceTree = "<group>"; };
+		0B4BE5A72160C99D0043CB30 /* GKIconCellCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKIconCellCell.h; sourceTree = "<group>"; };
+		0B4BE5A82160C99D0043CB30 /* GKSetPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSetPasswordView.m; sourceTree = "<group>"; };
+		0B4BE5A92160C99E0043CB30 /* GKTFCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKTFCell.h; sourceTree = "<group>"; };
+		0B4BE5B52160C9A70043CB30 /* GKSetPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSetPasswordController.h; sourceTree = "<group>"; };
+		0B4BE5B72160C9A70043CB30 /* GKChangeNameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKChangeNameController.m; sourceTree = "<group>"; };
+		0B4BE5B82160C9A80043CB30 /* GKCheckOldPhoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCheckOldPhoneController.h; sourceTree = "<group>"; };
+		0B4BE5B92160C9A80043CB30 /* GKLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKLoginController.m; sourceTree = "<group>"; };
+		0B4BE5BA2160C9A80043CB30 /* GKForgotController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKForgotController.m; sourceTree = "<group>"; };
+		0B4BE5BB2160C9A80043CB30 /* GKCheckOldPhoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCheckOldPhoneController.m; sourceTree = "<group>"; };
+		0B4BE5BC2160C9A90043CB30 /* GKChangePhoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKChangePhoneController.m; sourceTree = "<group>"; };
+		0B4BE5BE2160C9A90043CB30 /* GKForgotController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKForgotController.h; sourceTree = "<group>"; };
+		0B4BE5BF2160C9A90043CB30 /* GKBindingPhoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBindingPhoneController.h; sourceTree = "<group>"; };
+		0B4BE5C02160C9AA0043CB30 /* GKChangeNameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKChangeNameController.h; sourceTree = "<group>"; };
+		0B4BE5C12160C9AA0043CB30 /* GKLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKLoginController.h; sourceTree = "<group>"; };
+		0B4BE5C22160C9AA0043CB30 /* GKChangePassWordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKChangePassWordController.m; sourceTree = "<group>"; };
+		0B4BE5C32160C9AA0043CB30 /* GKChangePhoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKChangePhoneController.h; sourceTree = "<group>"; };
+		0B4BE5C42160C9AB0043CB30 /* GKMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMeViewController.h; sourceTree = "<group>"; };
+		0B4BE5C52160C9AB0043CB30 /* GKBindingPhoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBindingPhoneController.m; sourceTree = "<group>"; };
+		0B4BE5C62160C9AB0043CB30 /* GKMeDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMeDetailController.m; sourceTree = "<group>"; };
+		0B4BE5C72160C9AB0043CB30 /* GKSetPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSetPasswordController.m; sourceTree = "<group>"; };
+		0B4BE5C82160C9AB0043CB30 /* GKMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMeViewController.m; sourceTree = "<group>"; };
+		0B4BE5C92160C9AC0043CB30 /* GKChangePassWordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKChangePassWordController.h; sourceTree = "<group>"; };
+		0B4BE5CA2160C9AC0043CB30 /* GKMeDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMeDetailController.h; sourceTree = "<group>"; };
 		0B70D29021605F8B00C77DFE /* GKBusInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBusInfoCell.h; sourceTree = "<group>"; };
 		0B70D29121605F8B00C77DFE /* GKBusInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBusInfoCell.m; sourceTree = "<group>"; };
 		0B70D29221605F8C00C77DFE /* GKBusInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKBusInfoCell.xib; sourceTree = "<group>"; };
@@ -510,8 +573,64 @@
 				0B4B1120215B974500056DD6 /* GKHomeViewController.m */,
 				0B462E36215F8AC100AE451F /* GKBusInfoListViewController.h */,
 				0B462E37215F8AC100AE451F /* GKBusInfoListViewController.m */,
+				0B4BE58D2160C1290043CB30 /* GKBusMoreInfoViewController.h */,
+				0B4BE58C2160C1280043CB30 /* GKBusMoreInfoViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		0B4BE58F2160C82A0043CB30 /* PersonalInfoController */ = {
+			isa = PBXGroup;
+			children = (
+				0B4BE5C42160C9AB0043CB30 /* GKMeViewController.h */,
+				0B4BE5C82160C9AB0043CB30 /* GKMeViewController.m */,
+				0B4BE5BF2160C9A90043CB30 /* GKBindingPhoneController.h */,
+				0B4BE5C52160C9AB0043CB30 /* GKBindingPhoneController.m */,
+				0B4BE5C02160C9AA0043CB30 /* GKChangeNameController.h */,
+				0B4BE5B72160C9A70043CB30 /* GKChangeNameController.m */,
+				0B4BE5C92160C9AC0043CB30 /* GKChangePassWordController.h */,
+				0B4BE5C22160C9AA0043CB30 /* GKChangePassWordController.m */,
+				0B4BE5C32160C9AA0043CB30 /* GKChangePhoneController.h */,
+				0B4BE5BC2160C9A90043CB30 /* GKChangePhoneController.m */,
+				0B4BE5B82160C9A80043CB30 /* GKCheckOldPhoneController.h */,
+				0B4BE5BB2160C9A80043CB30 /* GKCheckOldPhoneController.m */,
+				0B4BE5BE2160C9A90043CB30 /* GKForgotController.h */,
+				0B4BE5BA2160C9A80043CB30 /* GKForgotController.m */,
+				0B4BE5C12160C9AA0043CB30 /* GKLoginController.h */,
+				0B4BE5B92160C9A80043CB30 /* GKLoginController.m */,
+				0B4BE5CA2160C9AC0043CB30 /* GKMeDetailController.h */,
+				0B4BE5C62160C9AB0043CB30 /* GKMeDetailController.m */,
+				0B4BE5B52160C9A70043CB30 /* GKSetPasswordController.h */,
+				0B4BE5C72160C9AB0043CB30 /* GKSetPasswordController.m */,
+			);
+			path = PersonalInfoController;
+			sourceTree = "<group>";
+		};
+		0B4BE5902160C9230043CB30 /* PersonalInfoController */ = {
+			isa = PBXGroup;
+			children = (
+				0B4BE59B2160C99A0043CB30 /* GKCheckCodeCell.h */,
+				0B4BE5952160C9990043CB30 /* GKCheckCodeCell.m */,
+				0B4BE5942160C9980043CB30 /* GKCountrySelectCell.h */,
+				0B4BE5A62160C99D0043CB30 /* GKCountrySelectCell.m */,
+				0B4BE59A2160C99A0043CB30 /* GKDetailCell.h */,
+				0B4BE5962160C9990043CB30 /* GKDetailCell.m */,
+				0B4BE59E2160C99B0043CB30 /* GKForgotView.h */,
+				0B4BE5A42160C99C0043CB30 /* GKForgotView.m */,
+				0B4BE5A72160C99D0043CB30 /* GKIconCellCell.h */,
+				0B4BE5982160C9990043CB30 /* GKIconCellCell.m */,
+				0B4BE59C2160C99A0043CB30 /* GKMeCell.h */,
+				0B4BE5992160C99A0043CB30 /* GKMeCell.m */,
+				0B4BE5A02160C99B0043CB30 /* GKMeHeaderView.h */,
+				0B4BE5A52160C99D0043CB30 /* GKMeHeaderView.m */,
+				0B4BE5A12160C99B0043CB30 /* GKSetPasswordView.h */,
+				0B4BE5A82160C99D0043CB30 /* GKSetPasswordView.m */,
+				0B4BE5972160C9990043CB30 /* GKSignUpView.h */,
+				0B4BE59F2160C99B0043CB30 /* GKSignUpView.m */,
+				0B4BE5A92160C99E0043CB30 /* GKTFCell.h */,
+				0B4BE59D2160C99B0043CB30 /* GKTFCell.m */,
+			);
+			path = PersonalInfoController;
 			sourceTree = "<group>";
 		};
 		0B70D29E21607CDA00C77DFE /* SIAlertView */ = {
@@ -1325,6 +1444,7 @@
 				0BABC047215E14FE0085CAC3 /* GKCustomFlowLayout.m */,
 				0BABC040215E00B50085CAC3 /* GKPersonalCell.h */,
 				0BABC041215E00C00085CAC3 /* GKPersonalCell.m */,
+				0B4BE5902160C9230043CB30 /* PersonalInfoController */,
 				9271FBCB215E81E0000DA567 /* moreSevenView */,
 			);
 			path = View;
@@ -1335,6 +1455,7 @@
 			children = (
 				0BABC03B215DFD970085CAC3 /* GKPersonalCenterViewController.h */,
 				0BABC03C215DFDA10085CAC3 /* GKPersonalCenterViewController.m */,
+				0B4BE58F2160C82A0043CB30 /* PersonalInfoController */,
 				9271FBCA215E81A8000DA567 /* moreSevenController */,
 			);
 			path = Controller;
@@ -1510,19 +1631,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B9CF447215B8D7F00F76671 /* UIView+Toast.m in Sources */,
+				0B4BE5B22160C99E0043CB30 /* GKMeHeaderView.m in Sources */,
 				0B9CF373215B8C4C00F76671 /* DCSelPhotos.m in Sources */,
 				0B9CF481215B8F4B00F76671 /* GKAppVersionTool.m in Sources */,
 				0B9CF36F215B8C4C00F76671 /* DCCheckRegular.m in Sources */,
 				0B7C81E1215CCEE800A06345 /* DCLIRLButton.m in Sources */,
 				0B8D0DFA215DB97F00030966 /* JFCityViewController.m in Sources */,
 				0B9CF44B215B8D7F00F76671 /* XWInteractiveTransition.m in Sources */,
+				0B4BE5CD2160C9AC0043CB30 /* GKForgotController.m in Sources */,
 				0B462E17215F4C8B00AE451F /* DCAccountPsdView.m in Sources */,
+				0B4BE5D52160C9AC0043CB30 /* GKMeViewController.m in Sources */,
 				0B7C81F6215CE27200A06345 /* DCGMScanViewController.m in Sources */,
 				0B9CF49F215B91C600F76671 /* DCNotificationCenterName.m in Sources */,
 				0B9CF495215B917F00F76671 /* GKAccountPsdByPhoneView.m in Sources */,
 				0B9CF459215B8D7F00F76671 /* XWCoolAnimator+XWPortal.m in Sources */,
 				0B462E38215F8AC100AE451F /* GKBusInfoListViewController.m in Sources */,
 				0B9CF371215B8C4C00F76671 /* DCObjManager.m in Sources */,
+				0B4BE5AB2160C99E0043CB30 /* GKDetailCell.m in Sources */,
 				0B9CF438215B8D7F00F76671 /* ChooseLocationView.m in Sources */,
 				0B70D2A521607CDA00C77DFE /* SIAlertView.m in Sources */,
 				0B9CF455215B8D7F00F76671 /* XWCoolAnimator+XWFold.m in Sources */,
@@ -1531,6 +1656,7 @@
 				0B9CF494215B917F00F76671 /* DCRegisteredViewController.m in Sources */,
 				0B7C81F7215CE27200A06345 /* DCCameraTopView.m in Sources */,
 				0B9CF46B215B8D7F00F76671 /* YBRectConst.m in Sources */,
+				0B4BE5CC2160C9AC0043CB30 /* GKLoginController.m in Sources */,
 				0B9CF449215B8D7F00F76671 /* UIView+Snapshot.m in Sources */,
 				0B8D0DFC215DB97F00030966 /* JFLocation.m in Sources */,
 				0B9CF464215B8D7F00F76671 /* XWFilterAnimator+XWRipple.m in Sources */,
@@ -1549,11 +1675,14 @@
 				0BABC03D215DFDA10085CAC3 /* GKPersonalCenterViewController.m in Sources */,
 				923AC63A215E8EA40016CD1C /* GKFeedBackViewController.m in Sources */,
 				0B9CF424215B8D7F00F76671 /* AddressPickerView.m in Sources */,
+				0B4BE5AD2160C99E0043CB30 /* GKMeCell.m in Sources */,
 				0B9CF352215B8A6D00F76671 /* UILabel+DCLabel.m in Sources */,
+				0B4BE5AE2160C99E0043CB30 /* GKTFCell.m in Sources */,
 				0B9CF451215B8D7F00F76671 /* SDPhotoBrowser.m in Sources */,
 				0B9CF454215B8D7F00F76671 /* XWCoolAnimator+XWExplode.m in Sources */,
 				0B9CF43E215B8D7F00F76671 /* JPFPSStatus.m in Sources */,
 				0B9CF460215B8D7F00F76671 /* XWFilterAnimator+XWFlash.m in Sources */,
+				0B4BE5D22160C9AC0043CB30 /* GKBindingPhoneController.m in Sources */,
 				0BABC039215DCA650085CAC3 /* AFNetPackage.m in Sources */,
 				0B9CF465215B8D7F00F76671 /* XWFilterAnimator+XWSwipe.m in Sources */,
 				0B9CF34F215B8A6D00F76671 /* UIColor+DCColorChange.m in Sources */,
@@ -1568,26 +1697,34 @@
 				0B9CF446215B8D7F00F76671 /* UIView+PYSearchExtension.m in Sources */,
 				0B9CF431215B8D7F00F76671 /* CDDTopTip.m in Sources */,
 				0B9CF427215B8D7F00F76671 /* DCFlashButton.m in Sources */,
+				0B4BE5D42160C9AC0043CB30 /* GKSetPasswordController.m in Sources */,
 				0B9CF43A215B8D7F00F76671 /* JKDBHelper.m in Sources */,
 				0B9CF440215B8D7F00F76671 /* NSBundle+PYSearchExtension.m in Sources */,
+				0B4BE5D12160C9AC0043CB30 /* GKChangePassWordController.m in Sources */,
 				0B462E0E215F18B700AE451F /* GKLoginViewController.m in Sources */,
 				0B9CF42A215B8D7F00F76671 /* DCScanTool.m in Sources */,
 				0B9CF425215B8D7F00F76671 /* UIPlaceHolderTextView.m in Sources */,
 				0B9CF445215B8D7F00F76671 /* UIColor+PYSearchExtension.m in Sources */,
 				0B7C81EB215CDAFD00A06345 /* UIButton+GKButton.m in Sources */,
 				0B9CF45D215B8D7F00F76671 /* XWFilterAnimator+XWBarSwipe.m in Sources */,
+				0B4BE58E2160C1290043CB30 /* GKBusMoreInfoViewController.m in Sources */,
 				0B9CF353215B8A6D00F76671 /* UIView+DCExtension.m in Sources */,
+				0B4BE5AC2160C99E0043CB30 /* GKIconCellCell.m in Sources */,
 				0B8D0DF3215DB97F00030966 /* JFAreaDataManager.m in Sources */,
 				0B9CF462215B8D7F00F76671 /* XWFilterAnimator+XWMod.m in Sources */,
+				0B4BE5AA2160C99E0043CB30 /* GKCheckCodeCell.m in Sources */,
 				0B9CF430215B8D7F00F76671 /* UIView+DCRolling.m in Sources */,
 				0B9CF428215B8D7F00F76671 /* DCScanIdentifyAreaView.m in Sources */,
 				0B9CF439215B8D7F00F76671 /* CitiesDataTool.m in Sources */,
 				0B9CF448215B8D7F00F76671 /* UINavigationController+XWTransition.m in Sources */,
 				0BABC042215E00C00085CAC3 /* GKPersonalCell.m in Sources */,
+				0B4BE5B32160C99E0043CB30 /* GKCountrySelectCell.m in Sources */,
 				0B9CF467215B8D7F00F76671 /* XWFilterTransitionView.m in Sources */,
 				0B9CF426215B8D7F00F76671 /* WJYAlertView.m in Sources */,
 				0B9CF45E215B8D7F00F76671 /* XWFilterAnimator+XWBoxBlur.m in Sources */,
 				0B9CF47F215B8F4B00F76671 /* GKNavigationController.m in Sources */,
+				0B4BE5D32160C9AC0043CB30 /* GKMeDetailController.m in Sources */,
+				0B4BE5CB2160C9AC0043CB30 /* GKChangeNameController.m in Sources */,
 				0B9CF316215B859500F76671 /* main.m in Sources */,
 				0B8D0DFB215DB97F00030966 /* JFSearchView.m in Sources */,
 				0B70D29321605F8C00C77DFE /* GKBusInfoCell.m in Sources */,
@@ -1603,10 +1740,13 @@
 				0B9CF42F215B8D7F00F76671 /* DCTitleRolling.m in Sources */,
 				0B8D0DF8215DB97F00030966 /* JFCityHeaderView.m in Sources */,
 				0B4B1121215B974500056DD6 /* GKHomeViewController.m in Sources */,
+				0B4BE5CF2160C9AC0043CB30 /* GKChangePhoneController.m in Sources */,
 				0B9CF372215B8C4C00F76671 /* DCPlaceholderTextView.m in Sources */,
 				0B9CF442215B8D7F00F76671 /* PYSearchConst.m in Sources */,
+				0B4BE5B12160C99E0043CB30 /* GKForgotView.m in Sources */,
 				0B7C81E2215CCEE800A06345 /* GKUpDownButton.m in Sources */,
 				0B9CF483215B8F4B00F76671 /* GKTabBadgeView.m in Sources */,
+				0B4BE5CE2160C9AC0043CB30 /* GKCheckOldPhoneController.m in Sources */,
 				0B9CF2C2215B7BFC00F76671 /* AppDelegate.m in Sources */,
 				0BABC045215E01010085CAC3 /* GKPersonalHeaderView.m in Sources */,
 				0B8D0DF5215DB97F00030966 /* JFButton.m in Sources */,
@@ -1614,11 +1754,13 @@
 				0B9CF35E215B8ACE00F76671 /* GKTextField.m in Sources */,
 				0B9CF374215B8C4C00F76671 /* DCSpeedy.m in Sources */,
 				0B9CF433215B8D7F00F76671 /* AddressItem.m in Sources */,
+				0B4BE5AF2160C99E0043CB30 /* GKSignUpView.m in Sources */,
 				0B9CF43F215B8D7F00F76671 /* PPNumberButton.m in Sources */,
 				0B8D0DF9215DB97F00030966 /* JFCityTableViewCell.m in Sources */,
 				0B9CF461215B8D7F00F76671 /* XWFilterAnimator+XWMask.m in Sources */,
 				0B9CF351215B8A6D00F76671 /* UIImageView+DCExtension.m in Sources */,
 				0B9CF437215B8D7F00F76671 /* AddressView.m in Sources */,
+				0B4BE5B42160C99E0043CB30 /* GKSetPasswordView.m in Sources */,
 				0B9CF456215B8D7F00F76671 /* XWCoolAnimator+XWLines.m in Sources */,
 				0B9CF492215B917F00F76671 /* DCLoginViewController.m in Sources */,
 				0B7C81EE215CDB3800A06345 /* UIButton+GKUpDownButton.m in Sources */,

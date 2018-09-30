@@ -2,18 +2,22 @@
 //  GKPersonalCenterViewController.m
 //  GKBusCharging
 //
-//  Created by L on 2018/9/28.
+//  Created by 王宁 on 2018/9/28.
 //  Copyright © 2018年 goockr. All rights reserved.
 //
 
 #import "GKPersonalCenterViewController.h"
 
+//#import "AppDelegate.h"
 // Controllers
 #import "GKNavigationController.h"
 #import "DCGMScanViewController.h"
 #import "JFCityViewController.h"
 #import "SDCycleScrollView.h"
 #import "GKFeedBackViewController.h"
+#import "GKMeViewController.h"
+#import "GKBindingPhoneController.h"
+
 
 
 
@@ -146,6 +150,8 @@
         make.height.mas_equalTo((ScreenH-K_HEIGHT_NAVBAR)/4);
         make.width.mas_equalTo(SCREEN_WIDTH);
     }];
+    [headerView.iconImageViewBtn addTarget:self action:@selector(turnToGKMeViewController) forControlEvents:UIControlEventTouchUpInside];
+    [headerView.phoneBtn addTarget:self action:@selector(turnToGKMeViewController) forControlEvents:UIControlEventTouchUpInside];
     //1.初始化layout
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.collectionView.backgroundColor = TABLEVIEW_BG;
@@ -310,8 +316,31 @@
 }
 
 
+#pragma mark -自定义方法
 
-
-
+-(void)turnToGKMeViewController{
+    
+    GKMeViewController * vc = [[GKMeViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+    
+    
+    
+//    [SVProgressHUD showWithStatus:@"正在注销，请稍后。。。"];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [SVProgressHUD dismiss];
+//        [DCObjManager dc_saveUserData:@"0" forKey:@"isLogin"];
+//        [SVProgressHUD showSuccessWithStatus:@"注销成功！"];
+//
+//        AppDelegate *app=(AppDelegate *)[UIApplication sharedApplication].delegate;
+//        [app autoLogin];
+//    });
+    
+}
+-(void)turnToGKBindingPhoneController{
+    GKBindingPhoneController * vc = [[GKBindingPhoneController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 @end

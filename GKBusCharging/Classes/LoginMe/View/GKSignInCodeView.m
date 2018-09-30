@@ -2,8 +2,8 @@
 //  GKSignInCodeView.m
 //  Record
 //
-//  Created by L on 2018/7/5.
-//  Copyright © 2018年 L. All rights reserved.
+//  Created by 王宁 on 2018/9/30.
+//  Copyright © 2018年 goockr. All rights reserved.
 //
 
 #import "GKSignInCodeView.h"
@@ -356,7 +356,6 @@
     
     WEAKSELF
     if (![self.phoneTF.text isEqualToString:@""] && ![self.codeTF.text isEqualToString:@""]) {
-        
         [DCObjManager dc_saveUserData:@"1" forKey:@"isLogin"]; //1代表登录
         [DCObjManager dc_saveUserData:self.phoneTF.text forKey:@"UserPhone"]; //记录手机号
         
@@ -374,8 +373,6 @@
             [weakSelf makeToast:@"账号密码错误请重新登录" duration:0.5 position:CSToastPositionCenter];
         });
     }
-    
-    
 }
 
 #pragma mark - <UITextFieldDelegate>

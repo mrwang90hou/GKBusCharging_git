@@ -89,9 +89,6 @@
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
 }
-
-
-
 //设置友盟统计
 - (void)setUMeng{
     [UMConfigure setLogEnabled:YES];

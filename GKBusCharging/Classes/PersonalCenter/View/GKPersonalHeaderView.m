@@ -7,7 +7,6 @@
 //
 #import "GKPersonalHeaderView.h"
 #import "DCZuoWenRightButton.h"
-#import "AppDelegate.h"
 
 @implementation GKPersonalHeaderView
 - (id)initWithFrame:(CGRect)frame{
@@ -76,9 +75,9 @@
 //        [(UIControl *)iconImageViewBGView addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
         
         
-        UIButton * iconImageView = [UIButton new];
-        [self addSubview:iconImageView];
-        [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        UIButton * iconImageViewBtn = [UIButton new];
+        [self addSubview:iconImageViewBtn];
+        [iconImageViewBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(headTitleLabel);
 //            make.bottom.mas_equalTo(phoneBtn.mas_top).with.offset(-15);
 //            make.centerX.equalTo(weakSelf);
@@ -87,31 +86,19 @@
             make.center.equalTo(iconImageViewBGView);
             make.size.equalTo(iconImageViewBGView);
         }];
-        iconImageView.layer.cornerRadius = 35;
-        iconImageView.layer.masksToBounds = YES;
-        iconImageView.layer.shouldRasterize = YES;
-        iconImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-        iconImageView.layer.borderWidth = 2;
-        iconImageView.layer.borderColor = UIColorFromHex(0xFFFFFF).CGColor;
-        [iconImageView addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
-        [iconImageView setBackgroundImage:[UIImage imageNamed:@"icon_head_portrait"] forState:UIControlStateNormal];
+        iconImageViewBtn.layer.cornerRadius = 35;
+        iconImageViewBtn.layer.masksToBounds = YES;
+        iconImageViewBtn.layer.shouldRasterize = YES;
+        iconImageViewBtn.layer.rasterizationScale = [UIScreen mainScreen].scale;
+        iconImageViewBtn.layer.borderWidth = 2;
+        iconImageViewBtn.layer.borderColor = UIColorFromHex(0xFFFFFF).CGColor;
+//        [iconImageViewBtn addTarget:self action:@selector(turnToGKMeViewController) forControlEvents:UIControlEventTouchUpInside];
+        [iconImageViewBtn setBackgroundImage:[UIImage imageNamed:@"icon_head_portrait"] forState:UIControlStateNormal];
 //        iconImageView.image = [UIImage imageNamed:@"icon_head_portrait"];
     }
     return self;
 }
 
--(void)logout{
-    [SVProgressHUD showWithStatus:@"正在注销，请稍后。。。"];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [SVProgressHUD dismiss];
-        [DCObjManager dc_saveUserData:@"0" forKey:@"isLogin"];
-        [SVProgressHUD showSuccessWithStatus:@"注销成功！"];
-        
-        AppDelegate *app=(AppDelegate *)[UIApplication sharedApplication].delegate;
-        [app autoLogin];
-    });
-    
-}
 
 
 @end
