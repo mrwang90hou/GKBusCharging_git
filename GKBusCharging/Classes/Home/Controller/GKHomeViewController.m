@@ -15,6 +15,7 @@
 #import "SDCycleScrollView.h"
 #import "GKPersonalCenterViewController.h"
 #import "GKBusInfoListViewController.h"
+#import "GKBusInfoCell.h"
 
 //#import "DCTabBarController.h"
 #import "DCRegisteredViewController.h"
@@ -462,6 +463,7 @@
 
 - (void)turnToBusInfoList{
     GKBusInfoListViewController *vc = [GKBusInfoListViewController new];
+//    HotelEvaluateVC *vc = [HotelEvaluateVC new];
     vc.title = @"车辆信息";
     [self.navigationController pushViewController:vc animated:YES];
 }

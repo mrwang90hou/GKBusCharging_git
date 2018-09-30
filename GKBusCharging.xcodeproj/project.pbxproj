@@ -12,10 +12,10 @@
 		0B462E16215F4C8B00AE451F /* DCAccountPsdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B462E13215F4C8B00AE451F /* DCAccountPsdView.xib */; };
 		0B462E17215F4C8B00AE451F /* DCAccountPsdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B462E15215F4C8B00AE451F /* DCAccountPsdView.m */; };
 		0B462E1D215F4DFA00AE451F /* GKSignInCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B462E1C215F4DFA00AE451F /* GKSignInCodeView.m */; };
-		0B462E34215F7BED00AE451F /* GKBusInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B462E32215F7BED00AE451F /* GKBusInfoCell.m */; };
-		0B462E35215F7BED00AE451F /* GKBusInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B462E33215F7BED00AE451F /* GKBusInfoCell.xib */; };
 		0B462E38215F8AC100AE451F /* GKBusInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B462E37215F8AC100AE451F /* GKBusInfoListViewController.m */; };
 		0B4B1121215B974500056DD6 /* GKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B1120215B974500056DD6 /* GKHomeViewController.m */; };
+		0B70D29321605F8C00C77DFE /* GKBusInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B70D29121605F8B00C77DFE /* GKBusInfoCell.m */; };
+		0B70D29421605F8C00C77DFE /* GKBusInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B70D29221605F8C00C77DFE /* GKBusInfoCell.xib */; };
 		0B7C81E0215CCEE800A06345 /* DCCustionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C81D9215CCEE700A06345 /* DCCustionButton.m */; };
 		0B7C81E1215CCEE800A06345 /* DCLIRLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C81DB215CCEE700A06345 /* DCLIRLButton.m */; };
 		0B7C81E2215CCEE800A06345 /* GKUpDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C81DD215CCEE700A06345 /* GKUpDownButton.m */; };
@@ -164,13 +164,13 @@
 		0B462E15215F4C8B00AE451F /* DCAccountPsdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAccountPsdView.m; sourceTree = "<group>"; };
 		0B462E1B215F4DF900AE451F /* GKSignInCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSignInCodeView.h; sourceTree = "<group>"; };
 		0B462E1C215F4DFA00AE451F /* GKSignInCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSignInCodeView.m; sourceTree = "<group>"; };
-		0B462E31215F7BEC00AE451F /* GKBusInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBusInfoCell.h; sourceTree = "<group>"; };
-		0B462E32215F7BED00AE451F /* GKBusInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBusInfoCell.m; sourceTree = "<group>"; };
-		0B462E33215F7BED00AE451F /* GKBusInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKBusInfoCell.xib; sourceTree = "<group>"; };
 		0B462E36215F8AC100AE451F /* GKBusInfoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKBusInfoListViewController.h; sourceTree = "<group>"; };
 		0B462E37215F8AC100AE451F /* GKBusInfoListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKBusInfoListViewController.m; sourceTree = "<group>"; };
 		0B4B111F215B973B00056DD6 /* GKHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKHomeViewController.h; sourceTree = "<group>"; };
 		0B4B1120215B974500056DD6 /* GKHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKHomeViewController.m; sourceTree = "<group>"; };
+		0B70D29021605F8B00C77DFE /* GKBusInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBusInfoCell.h; sourceTree = "<group>"; };
+		0B70D29121605F8B00C77DFE /* GKBusInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBusInfoCell.m; sourceTree = "<group>"; };
+		0B70D29221605F8C00C77DFE /* GKBusInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKBusInfoCell.xib; sourceTree = "<group>"; };
 		0B7C81D8215CCEE700A06345 /* DCCustionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCCustionButton.h; sourceTree = "<group>"; };
 		0B7C81D9215CCEE700A06345 /* DCCustionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCCustionButton.m; sourceTree = "<group>"; };
 		0B7C81DA215CCEE700A06345 /* DCLIRLButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCLIRLButton.h; sourceTree = "<group>"; };
@@ -488,9 +488,9 @@
 		0B4B111D215B971500056DD6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0B462E31215F7BEC00AE451F /* GKBusInfoCell.h */,
-				0B462E32215F7BED00AE451F /* GKBusInfoCell.m */,
-				0B462E33215F7BED00AE451F /* GKBusInfoCell.xib */,
+				0B70D29021605F8B00C77DFE /* GKBusInfoCell.h */,
+				0B70D29121605F8B00C77DFE /* GKBusInfoCell.m */,
+				0B70D29221605F8C00C77DFE /* GKBusInfoCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1411,6 +1411,7 @@
 				0B462E10215F280700AE451F /* GKLoginViewController.xib in Resources */,
 				0B462E16215F4C8B00AE451F /* DCAccountPsdView.xib in Resources */,
 				923AC63C215E93680016CD1C /* FeedBackMenu.plist in Resources */,
+				0B70D29421605F8C00C77DFE /* GKBusInfoCell.xib in Resources */,
 				0B9CF319215B863600F76671 /* LaunchScreen.storyboard in Resources */,
 				0B9CF31A215B863600F76671 /* Main.storyboard in Resources */,
 				0B9CF436215B8D7F00F76671 /* AddressTableViewCell.xib in Resources */,
@@ -1425,7 +1426,6 @@
 				0B9CF493215B917F00F76671 /* DCLoginViewController.xib in Resources */,
 				0B9CF2CA215B7BFD00F76671 /* Assets.xcassets in Resources */,
 				0B9CF423215B8D7F00F76671 /* addressData.plist in Resources */,
-				0B462E35215F7BED00AE451F /* GKBusInfoCell.xib in Resources */,
 				0B8D0DF4215DB97F00030966 /* shop_area.sqlite in Resources */,
 				0B9CF42D215B8D7F00F76671 /* navigationbarScanBg.png in Resources */,
 				0B809B18215E3BBC001186CA /* PersonalCenterMenu.plist in Resources */,
@@ -1513,7 +1513,6 @@
 				0B9CF464215B8D7F00F76671 /* XWFilterAnimator+XWRipple.m in Sources */,
 				0B9CF482215B8F4B00F76671 /* GKUserInfo.m in Sources */,
 				0B9CF45B215B8D7F00F76671 /* XWCoolAnimator.m in Sources */,
-				0B462E34215F7BED00AE451F /* GKBusInfoCell.m in Sources */,
 				0B8D0DF7215DB97F00030966 /* JFCityCollectionViewCell.m in Sources */,
 				0B9CF35D215B8ACE00F76671 /* GKButton.m in Sources */,
 				0B9CF2C5215B7BFC00F76671 /* ViewController.m in Sources */,
@@ -1568,6 +1567,7 @@
 				0B9CF47F215B8F4B00F76671 /* GKNavigationController.m in Sources */,
 				0B9CF316215B859500F76671 /* main.m in Sources */,
 				0B8D0DFB215DB97F00030966 /* JFSearchView.m in Sources */,
+				0B70D29321605F8C00C77DFE /* GKBusInfoCell.m in Sources */,
 				0B9CF457215B8D7F00F76671 /* XWCoolAnimator+XWMiddlePageFlip.m in Sources */,
 				0B9CF466215B8D7F00F76671 /* XWFilterAnimator.m in Sources */,
 				0BABC048215E14FE0085CAC3 /* GKCustomFlowLayout.m in Sources */,

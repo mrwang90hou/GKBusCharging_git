@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GKBusInfoCell : UICollectionViewCell
--(void)createCellWithDictionary:(NSDictionary *)dict withNoCommentFlag:(BOOL)flag;
-@property (nonatomic, assign) BOOL hidden;
+@interface GKBusInfoCell : UITableViewCell
+//-(void)createCellWithDictionary:(NSDictionary *)dict withNoCommentFlag:(BOOL)flag;
+//@property (nonatomic, assign) BOOL hidden;
 @end
