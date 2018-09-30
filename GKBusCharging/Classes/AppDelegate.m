@@ -27,10 +27,16 @@
 
 @interface AppDelegate ()
 
+@property (nonatomic,strong) SIAlertView *alertView;
+
 @end
 
 @implementation AppDelegate
 
++ (AppDelegate *)sharedAppDelegate
+{
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.

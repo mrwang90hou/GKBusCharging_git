@@ -16,6 +16,9 @@
 		0B4B1121215B974500056DD6 /* GKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B1120215B974500056DD6 /* GKHomeViewController.m */; };
 		0B70D29321605F8C00C77DFE /* GKBusInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B70D29121605F8B00C77DFE /* GKBusInfoCell.m */; };
 		0B70D29421605F8C00C77DFE /* GKBusInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B70D29221605F8C00C77DFE /* GKBusInfoCell.xib */; };
+		0B70D2A421607CDA00C77DFE /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B70D29F21607CDA00C77DFE /* SIAlertView.bundle */; };
+		0B70D2A521607CDA00C77DFE /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B70D2A121607CDA00C77DFE /* SIAlertView.m */; };
+		0B70D2A621607CDA00C77DFE /* UIWindow+SIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B70D2A321607CDA00C77DFE /* UIWindow+SIUtils.m */; };
 		0B7C81E0215CCEE800A06345 /* DCCustionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C81D9215CCEE700A06345 /* DCCustionButton.m */; };
 		0B7C81E1215CCEE800A06345 /* DCLIRLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C81DB215CCEE700A06345 /* DCLIRLButton.m */; };
 		0B7C81E2215CCEE800A06345 /* GKUpDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C81DD215CCEE700A06345 /* GKUpDownButton.m */; };
@@ -171,6 +174,11 @@
 		0B70D29021605F8B00C77DFE /* GKBusInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBusInfoCell.h; sourceTree = "<group>"; };
 		0B70D29121605F8B00C77DFE /* GKBusInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBusInfoCell.m; sourceTree = "<group>"; };
 		0B70D29221605F8C00C77DFE /* GKBusInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKBusInfoCell.xib; sourceTree = "<group>"; };
+		0B70D29F21607CDA00C77DFE /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SIAlertView.bundle; sourceTree = "<group>"; };
+		0B70D2A021607CDA00C77DFE /* SIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAlertView.h; sourceTree = "<group>"; };
+		0B70D2A121607CDA00C77DFE /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
+		0B70D2A221607CDA00C77DFE /* UIWindow+SIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SIUtils.h"; sourceTree = "<group>"; };
+		0B70D2A321607CDA00C77DFE /* UIWindow+SIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+SIUtils.m"; sourceTree = "<group>"; };
 		0B7C81D8215CCEE700A06345 /* DCCustionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCCustionButton.h; sourceTree = "<group>"; };
 		0B7C81D9215CCEE700A06345 /* DCCustionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCCustionButton.m; sourceTree = "<group>"; };
 		0B7C81DA215CCEE700A06345 /* DCLIRLButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCLIRLButton.h; sourceTree = "<group>"; };
@@ -506,6 +514,18 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		0B70D29E21607CDA00C77DFE /* SIAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				0B70D29F21607CDA00C77DFE /* SIAlertView.bundle */,
+				0B70D2A021607CDA00C77DFE /* SIAlertView.h */,
+				0B70D2A121607CDA00C77DFE /* SIAlertView.m */,
+				0B70D2A221607CDA00C77DFE /* UIWindow+SIUtils.h */,
+				0B70D2A321607CDA00C77DFE /* UIWindow+SIUtils.m */,
+			);
+			path = SIAlertView;
+			sourceTree = "<group>";
+		};
 		0B7C81D7215CCEE700A06345 /* CustionButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -822,6 +842,7 @@
 		0B9CF37B215B8D7F00F76671 /* Vendors(第三方) */ = {
 			isa = PBXGroup;
 			children = (
+				0B70D29E21607CDA00C77DFE /* SIAlertView */,
 				0B7C81EF215CE27200A06345 /* Scan(扫描) */,
 				0B9CF37C215B8D7F00F76671 /* AddressManager */,
 				0B9CF380215B8D7F00F76671 /* AlertViewManager */,
@@ -1414,6 +1435,7 @@
 				0B70D29421605F8C00C77DFE /* GKBusInfoCell.xib in Resources */,
 				0B9CF319215B863600F76671 /* LaunchScreen.storyboard in Resources */,
 				0B9CF31A215B863600F76671 /* Main.storyboard in Resources */,
+				0B70D2A421607CDA00C77DFE /* SIAlertView.bundle in Resources */,
 				0B9CF436215B8D7F00F76671 /* AddressTableViewCell.xib in Resources */,
 				0B9CF434215B8D7F00F76671 /* Cities.json in Resources */,
 				0B9CF496215B917F00F76671 /* GKAccountPsdByPhoneView.xib in Resources */,
@@ -1502,6 +1524,7 @@
 				0B462E38215F8AC100AE451F /* GKBusInfoListViewController.m in Sources */,
 				0B9CF371215B8C4C00F76671 /* DCObjManager.m in Sources */,
 				0B9CF438215B8D7F00F76671 /* ChooseLocationView.m in Sources */,
+				0B70D2A521607CDA00C77DFE /* SIAlertView.m in Sources */,
 				0B9CF455215B8D7F00F76671 /* XWCoolAnimator+XWFold.m in Sources */,
 				0B9CF34C215B8A6D00F76671 /* NSObject+DCNull.m in Sources */,
 				0B9CF34E215B8A6D00F76671 /* UIBarButtonItem+DCBarButtonItem.m in Sources */,
@@ -1608,6 +1631,7 @@
 				0B9CF375215B8C4C00F76671 /* Foundation+Log.m in Sources */,
 				0B9CF44A215B8D7F00F76671 /* UIViewController+XWTransition.m in Sources */,
 				0B9CF46A215B8D7F00F76671 /* YBPopupMenuPath.m in Sources */,
+				0B70D2A621607CDA00C77DFE /* UIWindow+SIUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

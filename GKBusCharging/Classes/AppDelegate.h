@@ -12,7 +12,13 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (assign, nonatomic) BOOL hadShowAlert;
+
 - (void) autoLogin;
+
+//- (void) getDeviceListWithShowTip:(BOOL)show;
+
++ (AppDelegate *)sharedAppDelegate;
 
 @end
 

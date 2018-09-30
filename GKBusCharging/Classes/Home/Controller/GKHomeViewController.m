@@ -284,7 +284,7 @@
     }];
     //信息视图
     UIView *infoView = [[UIView alloc]init];
-    [infoView setBackgroundColor:[UIColor yellowColor]];
+    [infoView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:infoView];
     [infoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
@@ -325,7 +325,6 @@
     [orderInfoBtn setTitleColor:RGB(88, 79, 96) forState:UIControlStateNormal];
     orderInfoBtn.titleLabel.font = PFR15Font;
     
-    
 //    [orderInfoBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, orderInfoBtn.imageView.dc_width, 0, orderInfoBtn.imageView.dc_width)];
 //    [orderInfoBtn setImageEdgeInsets:UIEdgeInsetsMake(0, orderInfoBtn.titleLabel.bounds.size.width, 0, -orderInfoBtn.titleLabel.bounds.size.width)];
 
@@ -339,8 +338,6 @@
 //    orderInfoBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -orderInfoBtn.imageView.bounds.size.width+2, 0, orderInfoBtn.imageView.bounds.size.width);
     // button图片的偏移量
 //    orderInfoBtn.imageEdgeInsets = UIEdgeInsetsMake(0, orderInfoBtn.titleLabel.bounds.size.width, 0, -orderInfoBtn.titleLabel.bounds.size.width);
-    
-    
     
 //    orderInfoBtn.imageEdgeInsets = UIEdgeInsetsMake(0, labelWidth, 0, -labelWidth);
 //    orderInfoBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -imageWidth, 0, imageWidth);
@@ -364,11 +361,6 @@
         make.width.equalTo(@90);
     }];
     
-    
-    
-    
-    
-    
     //背景花纹图
     UIImageView *bgImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"home_page_Charging_bg"]];
     [infoView addSubview:bgImageView];
@@ -377,6 +369,20 @@
         make.centerY.mas_equalTo(infoView.dc_centerY+DCNaviH/2);
         make.top.mas_equalTo(infoView).offset(DCNaviH);
     }];
+    
+    
+    UIButton *testBtn = [[UIButton alloc]init];
+    [infoView addSubview:testBtn];
+    [testBtn setBackgroundColor:GFPinkCokor];
+    [testBtn setTitle:@"Test" forState:UIControlStateNormal];
+    [testBtn addTarget:self action:@selector(endOfTheCharging) forControlEvents:UIControlEventTouchUpInside];
+    [testBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(bgImageView);
+        make.centerY.equalTo(bgImageView);
+        make.size.mas_equalTo(CGSizeMake(66, 66));
+    }];
+    
+    
     
 }
 
@@ -507,6 +513,32 @@
 }
 
 
+
+- (void)endOfTheCharging{
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"提示" andMessage:@"无绑定设备\n是否跳转绑定设备页?"];
+    [alertView addButtonWithTitle:@"取消"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alertView) {
+                              [alertView dismissAnimated:NO];
+                          }];
+    
+    [alertView addButtonWithTitle:@"确定"
+                             type:SIAlertViewButtonTypeDestructive
+                          handler:^(SIAlertView *alertView) {
+                              
+                              [alertView dismissAnimated:NO];
+                              
+                              //                              [MQSaveLoadTool preferenceRemoveValueForKey:KPreferenceUserInfo];
+                              
+                              //                              [[RHSocketConnection getInstance] disconnect];
+                              
+                              //跳转到绑定设备页面
+//                              [self turnToQRCodeReader];
+                              
+                          }];
+    
+    [alertView show];
+}
 
 
 
