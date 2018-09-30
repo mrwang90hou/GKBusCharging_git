@@ -151,7 +151,7 @@
         make.width.mas_equalTo(SCREEN_WIDTH);
     }];
     [headerView.iconImageViewBtn addTarget:self action:@selector(turnToGKMeViewController) forControlEvents:UIControlEventTouchUpInside];
-    [headerView.phoneBtn addTarget:self action:@selector(turnToGKMeViewController) forControlEvents:UIControlEventTouchUpInside];
+    [headerView.phoneBtn addTarget:self action:@selector(turnToGKBindingPhoneController) forControlEvents:UIControlEventTouchUpInside];
     //1.初始化layout
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.collectionView.backgroundColor = TABLEVIEW_BG;
@@ -322,12 +322,7 @@
     
     GKMeViewController * vc = [[GKMeViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
-    
-    
-    
-    
-    
-//    [SVProgressHUD showWithStatus:@"正在注销，请稍后。。。"];
+//    [SVProgressHUD showWithStatus:@"点击了 headerView.iconImageViewBtn"];
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        [SVProgressHUD dismiss];
 //        [DCObjManager dc_saveUserData:@"0" forKey:@"isLogin"];
@@ -338,6 +333,7 @@
 //    });
     
 }
+
 -(void)turnToGKBindingPhoneController{
     GKBindingPhoneController * vc = [[GKBindingPhoneController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GKBindingPhoneController : UIViewController
+@interface GKBindingPhoneController : GKBaseSetViewController
 
 @end

@@ -11,6 +11,7 @@
 
 #import "GKSignUpView.h"
 
+//@interface GKBindingPhoneController ()<UINavigationControllerDelegate>
 @interface GKBindingPhoneController ()<UINavigationControllerDelegate>
 @property(nonatomic,weak)UINavigationController*navController;
 @property (nonatomic,strong)UITextField * phoneTF;

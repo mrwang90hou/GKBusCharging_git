@@ -95,6 +95,7 @@
 //        [iconImageViewBtn addTarget:self action:@selector(turnToGKMeViewController) forControlEvents:UIControlEventTouchUpInside];
         [iconImageViewBtn setBackgroundImage:[UIImage imageNamed:@"icon_head_portrait"] forState:UIControlStateNormal];
 //        iconImageView.image = [UIImage imageNamed:@"icon_head_portrait"];
+        self.iconImageViewBtn = iconImageViewBtn;
     }
     return self;
 }
