@@ -67,9 +67,23 @@
 
 @property (nonatomic, strong) NSMutableArray *images;
 
+
+
+@property (nonatomic,strong) UIView *infoView;
+
+
+
+
 @end
 
 @implementation GKHomeViewController
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self updataUI];
+    
+}
 
 - (void)viewDidLoad {
     self.cityName = @"佛山市";
@@ -274,7 +288,8 @@
     
     //分割 view
     UIView *uiView = [[UIView alloc]init];
-    [uiView setBackgroundColor:RGB(244, 244, 244)];
+//    [uiView setBackgroundColor:RGB(244, 244, 244)];
+    [uiView setBackgroundColor:RGB(255, 255, 255)];
     [self.view addSubview:uiView];
     [uiView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
@@ -282,11 +297,12 @@
         make.height.mas_equalTo(DCNaviH/3);
         make.width.equalTo(self.view);
     }];
+    
     //信息视图
-    UIView *infoView = [[UIView alloc]init];
-    [infoView setBackgroundColor:[UIColor whiteColor]];
-    [self.view addSubview:infoView];
-    [infoView mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIView *infoBgView = [[UIView alloc]init];
+    [infoBgView setBackgroundColor:RGBall(248)];
+    [self.view addSubview:infoBgView];
+    [infoBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
 //        make.top.mas_equalTo(self.view).with.offset(K_HEIGHT_NAVBAR+DCNaviH+ScreenW/2+DCNaviH/2);
 //        make.top.mas_equalTo(adView).offset(DCNaviH/3);
@@ -294,6 +310,26 @@
         make.height.mas_equalTo(ScreenH - (K_HEIGHT_NAVBAR+DCNaviH+ScreenW/2+DCNaviH/2) - K_HEIGHT_TABBAR);
         make.width.equalTo(self.view);
     }];
+    /**
+        *隐藏加载是视图内容
+        */
+    UIView *infoView = [[UIView alloc]init];
+    [infoView setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:infoView];
+    [infoView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view);
+        //        make.top.mas_equalTo(self.view).with.offset(K_HEIGHT_NAVBAR+DCNaviH+ScreenW/2+DCNaviH/2);
+        //        make.top.mas_equalTo(adView).offset(DCNaviH/3);
+        make.top.mas_equalTo(uiView.mas_bottom).offset(0);
+        make.height.mas_equalTo(ScreenH - (K_HEIGHT_NAVBAR+DCNaviH+ScreenW/2+DCNaviH/2) - K_HEIGHT_TABBAR);
+        make.width.equalTo(self.view);
+    }];
+    self.infoView = infoView;
+    if ([[DCObjManager dc_readUserDataForKey:@"isWorking"] intValue] == 1) {
+        self.infoView.hidden = false;
+    }else{
+        self.infoView.hidden = true;
+    }
     //顶部 TopView
     UIView *topView = [[UIView alloc]init];
     [topView setBackgroundColor:[UIColor whiteColor]];
@@ -325,6 +361,7 @@
     [orderInfoBtn setTitleColor:RGB(88, 79, 96) forState:UIControlStateNormal];
     orderInfoBtn.titleLabel.font = PFR15Font;
     
+    /* button 的左字右图 设计方案
 //    [orderInfoBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, orderInfoBtn.imageView.dc_width, 0, orderInfoBtn.imageView.dc_width)];
 //    [orderInfoBtn setImageEdgeInsets:UIEdgeInsetsMake(0, orderInfoBtn.titleLabel.bounds.size.width, 0, -orderInfoBtn.titleLabel.bounds.size.width)];
 
@@ -349,6 +386,8 @@
 //    orderInfoBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -orderInfoBtn.currentImage.size.width, 0, orderInfoBtn.currentImage.size.width);
 //    // 重点位置结束
 //    orderInfoBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+     */
+    
     [orderInfoBtn addTarget:self action:@selector(turnToBusInfoList) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:orderInfoBtn];
     [orderInfoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -360,31 +399,65 @@
         make.height.equalTo(@22);
         make.width.equalTo(@90);
     }];
-    
     //背景花纹图
     UIImageView *bgImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"home_page_Charging_bg"]];
     [infoView addSubview:bgImageView];
     [bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(infoView);
-        make.centerY.mas_equalTo(infoView.dc_centerY+DCNaviH/2);
+        make.centerY.mas_equalTo(infoView.dc_centerY + DCNaviH/2);
         make.top.mas_equalTo(infoView).offset(DCNaviH);
     }];
     
     
-    UIButton *testBtn = [[UIButton alloc]init];
-    [infoView addSubview:testBtn];
-    [testBtn setBackgroundColor:GFPinkCokor];
-    [testBtn setTitle:@"Test" forState:UIControlStateNormal];
-    [testBtn addTarget:self action:@selector(endOfTheCharging) forControlEvents:UIControlEventTouchUpInside];
-    [testBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    UILabel *countDTownTimeLabel = [[UILabel alloc]init];
+    [countDTownTimeLabel setText:@"00:56:01"];
+    countDTownTimeLabel.textAlignment = NSTextAlignmentCenter;
+    countDTownTimeLabel.font = [UIFont systemFontOfSize:44.0];
+    [infoView addSubview:countDTownTimeLabel];
+    [countDTownTimeLabel setTextColor:RGB(88,79,96)];
+    [countDTownTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(bgImageView);
-        make.centerY.equalTo(bgImageView);
-        make.size.mas_equalTo(CGSizeMake(66, 66));
+        make.centerY.mas_equalTo(bgImageView).offset(-K_HEIGHT_TABBAR/3*2);
+        make.size.mas_equalTo(CGSizeMake(250, 55));
+    }];
+    
+    
+    
+    UILabel *hintLabel = [[UILabel alloc]init];
+    [hintLabel setText:@"充电中"];
+    hintLabel.font = PFR20Font;
+    [hintLabel setTextColor:RGB(88,79,96)];
+    [infoView addSubview:hintLabel];
+    hintLabel.textAlignment = NSTextAlignmentCenter;
+    [hintLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(countDTownTimeLabel.mas_top).offset(-15);
+        make.centerX.equalTo(countDTownTimeLabel);
+        make.size.mas_equalTo(CGSizeMake(90, 25));
+    }];
+    
+    UIButton *endChargingBtn = [[UIButton alloc]init];
+    [infoView addSubview:endChargingBtn];
+    [endChargingBtn setBackgroundImage:[UIImage imageNamed:@"btn_1"] forState:UIControlStateNormal];
+    [endChargingBtn setTitle:@"结束充电" forState:UIControlStateNormal];
+    [endChargingBtn addTarget:self action:@selector(initAlertView) forControlEvents:UIControlEventTouchUpInside];
+    [endChargingBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(countDTownTimeLabel.mas_bottom).offset(15);
+        make.centerX.equalTo(bgImageView);
+        make.size.mas_equalTo(CGSizeMake(190, 47));
     }];
     
     
     
 }
+
+- (void)updataUI{
+    if ([[DCObjManager dc_readUserDataForKey:@"isWorking"] intValue] == 1) {
+        self.infoView.hidden = false;
+    }else{
+        self.infoView.hidden = true;
+    }
+}
+
 
 - (void)getData{
     
@@ -444,8 +517,8 @@
     DCGMScanViewController *dcGMvC = [DCGMScanViewController new];
 //    UINavigationController *newNaVC = [[UINavigationController alloc]initWithRootViewController:dcGMvC];
     [self.navigationController pushViewController:dcGMvC animated:YES];
+    [DCObjManager dc_saveUserData:@"1" forKey:@"isWorking"];
 }
-
 
 -(void)pickCity{
     WEAKSELF
@@ -513,32 +586,85 @@
 }
 
 
-
-- (void)endOfTheCharging{
-    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"提示" andMessage:@"无绑定设备\n是否跳转绑定设备页?"];
-    [alertView addButtonWithTitle:@"取消"
+- (void)initAlertView{
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"     " andMessage:@"是否归还充电宝?"];
+    [alertView addButtonWithTitle:@"结束充电"
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alertView) {
                               [alertView dismissAnimated:NO];
+                              [self endOfTheCharging];
+                              
                           }];
     
-    [alertView addButtonWithTitle:@"确定"
+    [alertView addButtonWithTitle:@"继续充电"
                              type:SIAlertViewButtonTypeDestructive
                           handler:^(SIAlertView *alertView) {
                               
                               [alertView dismissAnimated:NO];
                               
-                              //                              [MQSaveLoadTool preferenceRemoveValueForKey:KPreferenceUserInfo];
+                          }];
+    
+    [alertView show];
+}
+- (void)endOfTheCharging{
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"     " andMessage:@"检测到您还有正在充电的设备，\n是否立即结束充电?"];
+    [alertView addButtonWithTitle:@"结束充电"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alertView) {
+                              [alertView dismissAnimated:NO];
+                              [self endOfTheChargingSure];
                               
-                              //                              [[RHSocketConnection getInstance] disconnect];
+                          }];
+    
+    [alertView addButtonWithTitle:@"继续充电"
+                             type:SIAlertViewButtonTypeDestructive
+                          handler:^(SIAlertView *alertView) {
                               
-                              //跳转到绑定设备页面
-//                              [self turnToQRCodeReader];
+                              [alertView dismissAnimated:NO];
                               
                           }];
     
     [alertView show];
 }
+
+
+
+-(void)endOfTheChargingSure{
+    
+    [SVProgressHUD showWithStatus:@"正在结束充电中，请稍后...\n请勿退出或关闭"];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"     " andMessage:@"网络出问题\n结束充电失败"];
+        [alertView addButtonWithTitle:@"返回"
+                                 type:SIAlertViewButtonTypeDefault
+                              handler:^(SIAlertView *alertView) {
+                                  [alertView dismissAnimated:NO];
+                                  
+                              }];
+        
+        [alertView addButtonWithTitle:@"再次停止"
+                                 type:SIAlertViewButtonTypeDestructive
+                              handler:^(SIAlertView *alertView) {
+                                  [alertView dismissAnimated:NO];
+                                  [self againAndOfTheCharging];
+                              }];
+        [alertView show];
+    });
+    
+}
+
+-(void)againAndOfTheCharging{
+    [SVProgressHUD showWithStatus:@"正在结束充电中，请稍后...\n请勿退出或关闭"];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+        [DCObjManager dc_saveUserData:@"0" forKey:@"isWorking"];
+        [self updataUI];
+        [SVProgressHUD showSuccessWithStatus:@"结束成功！"];
+        //弹窗评价窗口
+    });
+}
+
+
 
 
 

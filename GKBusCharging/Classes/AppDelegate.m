@@ -80,10 +80,10 @@
     if (![[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
         //    if (mUserVo.isLogin) {
         // 跳转至登录界面
-        [SVProgressHUD showErrorWithStatus:@"登录失败，请重新登录！"];
+//        [SVProgressHUD showErrorWithStatus:@"登录失败，请重新登录！"];
         navigationController = [[GKNavigationController alloc]initWithRootViewController:[[GKLoginViewController alloc]init]];
     } else {
-        [SVProgressHUD showSuccessWithStatus:@"缓存登录成功！"];
+//        [SVProgressHUD showSuccessWithStatus:@"缓存登录成功！"];
         navigationController = [[GKNavigationController alloc]initWithRootViewController:[[GKHomeViewController alloc]init]];
     }
     self.window.rootViewController = navigationController;

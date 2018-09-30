@@ -28,7 +28,6 @@
         
         MJWeakSelf;
         
-        
         // 取消按钮
         UIButton *cancelButton = [[UIButton alloc] init];
         [self addSubview:cancelButton];
@@ -319,7 +318,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"telephone"] = self.phoneTF.text;
     params[@"password"] = self.pwdTF.text;
-    [SVProgressHUD showInfoWithStatus:@"正在登录"];
+    [SVProgressHUD showWithStatus:@"正在登录"];
 //    [LY_NetworkManager ly_GETRequestWithUrlString2:url parameters:params progress:nil success:^(id responseObject) {
 //
 ////    [LY_NetworkManager ly_GETRequestWithUrlString2:url parameters:params progress:nil success:^(id *responseDict, NSDictionary *dataDict, BOOL result, NSString *errorMessage) {
@@ -365,7 +364,6 @@
             [SVProgressHUD dismiss];
             [weakSelf makeToast:@"登录成功" duration:0.5 position:CSToastPositionCenter];
             [weakSelf setUpUserBaseData];
-            
             AppDelegate *app=(AppDelegate *)[UIApplication sharedApplication].delegate;
             [app autoLogin];
         });

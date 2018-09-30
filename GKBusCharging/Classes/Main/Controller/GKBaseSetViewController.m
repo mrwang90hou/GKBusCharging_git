@@ -43,7 +43,7 @@
 {
     [[NSNotificationCenter defaultCenter]addObserverForName:LOGINSELECTCENTERINDEX object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         // 正常登录成功，跳转至主界面
-        [SVProgressHUD showSuccessWithStatus:@"跳转至主页面！"];
+//        [SVProgressHUD showSuccessWithStatus:@"跳转至主页面！"];
         GKNavigationController *navigationController = [[GKNavigationController alloc]initWithRootViewController:[[GKHomeViewController alloc]init]];
         [UIApplication sharedApplication].keyWindow.rootViewController = navigationController;
     }];

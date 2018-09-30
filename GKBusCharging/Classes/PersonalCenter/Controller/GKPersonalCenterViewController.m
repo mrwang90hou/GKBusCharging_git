@@ -172,7 +172,6 @@
 }
 
 - (void)getData{
-    
 //    self.titleListArray = @[@"余额:",@"订单管理",@"使用帮助",@"关于我们",@"紧急报警",@"意见反馈"];
     [self getDataFromPlist];
 }
@@ -309,6 +308,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+
 
 
 @end

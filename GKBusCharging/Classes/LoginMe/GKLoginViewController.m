@@ -172,6 +172,7 @@
     
     
 }
+
 -(void)setUILoginByPhoneView{
     
     
@@ -201,9 +202,11 @@
     self.signInCodeView = totalView;
     
 }
+
 -(void)close{
     [self.bgView removeFromSuperview];
 }
+
 
 
 
