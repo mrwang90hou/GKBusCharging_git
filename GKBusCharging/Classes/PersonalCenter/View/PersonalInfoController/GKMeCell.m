@@ -20,9 +20,12 @@
         [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(weakSelf).with.offset(15);
             make.centerY.equalTo(weakSelf);
-            make.size.mas_equalTo(CGSizeMake(FixWidthNumber(24), FixWidthNumber(24)));
+//            make.size.mas_equalTo(CGSizeMake(FixWidthNumber(24), FixWidthNumber(24)));
+            make.size.mas_equalTo(CGSizeMake(FixWidthNumber(0), FixWidthNumber(24)));
         }];
+        [iconImageView  setHidden:true];
         self.iconImageView = iconImageView;
+        
         
         UILabel * desLabel = [UILabel new];
         [self addSubview:desLabel];
@@ -48,7 +51,14 @@
         endLabel.textColor = UIColorFromHex(0x999999);
         endLabel.font = GKFont(14);
         endLabel.textAlignment = NSTextAlignmentRight;
+//        endLabel.hidden = true;
         self.endLabel = endLabel;
+        
+        desLabel.hidden = true;
+        endLabel.hidden = true;
+        
+        
+        
         
     }
     return self;

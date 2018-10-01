@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GKMeViewController : UIViewController
+@interface GKMeViewController : GKBaseSetViewController
 
 @end

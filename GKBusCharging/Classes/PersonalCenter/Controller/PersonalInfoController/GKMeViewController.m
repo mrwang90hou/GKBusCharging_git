@@ -10,13 +10,17 @@
 #import "GKMeDetailController.h"
 #import "GKLoginController.h"
 
+#import "AppDelegate.h"
+
 #import "GKMeCell.h"
 #import "GKMeHeaderView.h"
 #import "GKDetailCell.h"
 
-@interface GKMeViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic,assign) BOOL isNeedNav;
-@property (nonatomic,strong) UILabel *dataLabel;
+//@interface GKMeViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface GKMeViewController ()<UITableViewDataSource>
+//@property (nonatomic,assign) BOOL isNeedNav;
+//@property (nonatomic,strong) UILabel *dataLabel;
+@property (nonatomic,strong) NSMutableArray *statusArray;
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,assign) NSInteger indexPath;
 @property (nonatomic,strong) NSIndexPath *nsIndexPath;
@@ -26,22 +30,23 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.isNeedNav = YES;
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
-    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
+//    self.isNeedNav = YES;
+//    [self.navigationController setNavigationBarHidden:YES animated:animated];
+//    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
     
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    if (self.isNeedNav == NO) {
-        [self.navigationController setNavigationBarHidden:YES animated:animated];
-        [SVProgressHUD showInfoWithStatus:@"setNavigationBarHidden:YES"];
-    }else{
-        [self.navigationController setNavigationBarHidden:NO animated:animated];
-    }
+//    if (self.isNeedNav == NO) {
+//        [self.navigationController setNavigationBarHidden:YES animated:animated];
+//        [SVProgressHUD showInfoWithStatus:@"setNavigationBarHidden:YES"];
+//    }else{
+//        [self.navigationController setNavigationBarHidden:NO animated:animated];
+//    }
+    
 //    self.hidesBottomBarWhenPushed = YES;
-    [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
+//    [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
@@ -50,14 +55,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的";
+    self.title = @"个人中心";
     self.view.backgroundColor = TABLEVIEW_BG;
     GKMeHeaderView * headerView = [[GKMeHeaderView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:headerView];
     MJWeakSelf;
     [headerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.equalTo(weakSelf.view);
-        make.height.mas_equalTo(212);
+        make.height.mas_equalTo(ScreenH/5*2);
         make.width.mas_equalTo(SCREEN_WIDTH);
     }];
     [headerView.nameBtn addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -71,59 +76,93 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.scrollEnabled = NO;
+    [self getData];
 }
 #pragma mark -立即登录按钮
 - (void)loginBtnClick{
 //    self.isNeedNav = NO;
-    self.isNeedNav = YES;
-    [self.navigationController pushViewController:[GKLoginController new] animated:YES]; 
+//    self.isNeedNav = YES;
+    [self.navigationController pushViewController:[GKLoginController new] animated:YES];
 }
 - (void)getData{
-    _dataLabel = [UILabel new];
-    _dataLabel.text = @"2M";
+    _statusArray = [[NSMutableArray alloc]init];
+    NSArray *arr = @[@0,@1,@0];
+//    _statusArray = [NSMutableArray arrayWithCapacity:arr];
+    
+//    _statusArray = [arr mutableCopy];
+
+    for (int i = 0; i<arr.count; i++) {
+        if ([arr[i] intValue] == 1) {
+            [_statusArray addObject:@"已绑定"];
+        }else{
+            [_statusArray addObject:@"立即绑定"];
+        }
+//        NSLog(@"_statusArray = %@",[_statusArray objectAtIndex:i]);
+    }
 }
 #pragma mark -实现UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *reuseIdentity = @"GKMeCell";
     GKMeCell * cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentity];
-    if (cell == nil) {
-        cell = [[GKMeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentity];
+    if (cell == nil) {//UITableViewCellStyleSubtitle     UITableViewCellStyleValue2
+        cell = [[GKMeCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentity];
     }
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    cell.endLabel.text = [_statusArray objectAtIndex:indexPath.row];
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            cell.desLabel.text = @"个人资料";
-            cell.iconImageView.image = [UIImage imageNamed:@"icon_personal_data"];
+            cell.desLabel.text = @"手机";
+            cell.endLabel.text = [_statusArray objectAtIndex:0];
+            cell.accessoryType = [[_statusArray objectAtIndex:0] length]==4 ? UITableViewCellAccessoryDisclosureIndicator:UITableViewCellAccessoryNone;
         }else if (indexPath.row == 1){
-            cell.desLabel.text = @"使用帮助";
-            cell.iconImageView.image = [UIImage imageNamed:@"icon_use_help"];
+            cell.desLabel.text = @"微信";
+            cell.endLabel.text =  [_statusArray objectAtIndex:1];
+            cell.accessoryType = [[_statusArray objectAtIndex:0] length]==4 ? UITableViewCellAccessoryDisclosureIndicator:UITableViewCellAccessoryNone;
         }else if (indexPath.row == 2){
-            cell.desLabel.text = @"清理缓存";
-            cell.iconImageView.image = [UIImage imageNamed:@"icon_delete"];
-            //动态加载 UIlabel
-            //加载缓存空间【获取当前缓存空间大小】
-            [self getData];
-            cell.endLabel.text = _dataLabel.text;
-            
-//            cell.endLabel.text = @"0M";
+            cell.desLabel.text = @"支付宝";
+            cell.endLabel.text =  [_statusArray objectAtIndex:2];
+            cell.accessoryType = [[_statusArray objectAtIndex:0] length]==4 ? UITableViewCellAccessoryDisclosureIndicator:UITableViewCellAccessoryNone;
         }
-    }else if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
-            cell.desLabel.text = @"意见反馈";
-            cell.iconImageView.image = [UIImage imageNamed:@"icon_feedback"];
-        }else if (indexPath.row == 1){
-            cell.desLabel.text = @"关于我们";
-            cell.iconImageView.image = [UIImage imageNamed:@"icon_about_us"];
-        }
+        
+        cell.textLabel.text = cell.desLabel.text;
+        cell.detailTextLabel.text = [_statusArray objectAtIndex: indexPath.row];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.accessoryType = [[_statusArray objectAtIndex:indexPath.row] length]==4 ? UITableViewCellAccessoryDisclosureIndicator:UITableViewCellAccessoryNone;
+        cell.userInteractionEnabled = [[_statusArray objectAtIndex:indexPath.row] length]==4 ? YES:NO;
+//        cell.accessoryType = UITableViewCellAccessoryNone;
+//        cell.detailTextLabel.text = @"wangning";
+//        cell.textLabel.text = @"textLabel";
+//        cell.l
+//        NSLog(@"[_statusArray objectAtIndex:0] containsObject:@‘已’] = %d\n[_statusArray objectAtIndex:0] count]= %lu",[[_statusArray objectAtIndex:0] containsObject:@"已"],(unsigned long)[[_statusArray objectAtIndex:0] count]);
+    }else{
+        UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"LYChatGroupSettingDefault"];
+        cell.backgroundColor = [UIColor clearColor];
+        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        GKButton * logoutBtn = [GKButton new];
+        [cell.contentView addSubview:logoutBtn];
+        [logoutBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.equalTo(cell.contentView);
+            make.centerX.equalTo(cell.contentView.mas_centerX);
+            make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 40, 44));
+        }];
+        [logoutBtn setupCircleButton];
+        logoutBtn.titleLabel.font = GKMediumFont(16);
+        [logoutBtn setTitle:@"退出登录" forState:UIControlStateNormal];
+        [logoutBtn addTarget:self action:@selector(logoutBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        return cell;
     }
+    
     return cell;
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
         return 3;
     }else{
-        return 2;
+        return 1;
     }
 }
 
@@ -148,8 +187,7 @@
                 
                 break;
             case 2://弹窗
-                self.indexPath = indexPath.row;
-                _nsIndexPath = indexPath;
+//                self.indexPath = indexPath.row;
                 [self initAlertView];
             case 3:
                 break;
@@ -158,19 +196,7 @@
             default:
                 break;
         }
-    }//第二栏
-    else if (indexPath.section == 1){
-        switch (indexPath.row) {
-            case 0:
-//                [self initAlertView];
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            default:
-                break;
-        }
+        _nsIndexPath = indexPath;
     }
 }
 //索引路径的行高度
@@ -195,32 +221,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 15;
 }
-#pragma mark -清除缓存操作
-/**
- *执行清除缓存操作
- */
--(void)clearCacheAction{
-    //退出登录操作
-//    [GKUserDao requestLogoutOn:self block:^(GFUserVo *mUserVo) {
-//        // 清空缓存数据
-//        mUserVo.isLogin = NO;
-//        [GFUserDao saveUserInfo:mUserVo];
-//        // 跳转回登录界面
-//        GFLoginViewController *mLoginVC = [[GFLoginViewController alloc]init];
-//        UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:[[GFLoginViewController alloc]init]];
-//        [mLoginVC showNoticeHudWithTitle:NSNewLocalizedString(@"my_logout_success", nil) subtitle:NSNewLocalizedString(@"my_logout_success", nil) onView:navigationController.view inDuration:2];
-//        [UIApplication sharedApplication].keyWindow.rootViewController = navigationController;
-//    }];
-    [SVProgressHUD showSuccessWithStatus:@"清除成功"];
-    _dataLabel.text = @"0M";
-    GKMeCell *cell = [self.tableView cellForRowAtIndexPath:self.nsIndexPath];
-//    cell.desLabel.text = _dataLabel.text;
-    cell.endLabel.text = _dataLabel.text;
-    //刷新 dataLabel 中的数据
-}
+
 #pragma mark -弹出窗
 -(void)initAlertView{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否有清除缓存?" preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否跳转进行绑定?" preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *logoutAction     = [UIAlertAction actionWithTitle:@"确认" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         //清除缓存操作
         [self clearCacheAction];
@@ -230,6 +234,52 @@
     [alert addAction:cancelAction];
     [self presentViewController:alert animated:YES completion:nil];
 }
+#pragma mark -绑定操作
+/**
+ *执行清除缓存操作
+ */
+-(void)clearCacheAction{
+    [SVProgressHUD showSuccessWithStatus:@"正在绑定。。。"];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showSuccessWithStatus:@"绑定成功"];
+        GKMeCell *cell = [self.tableView cellForRowAtIndexPath:self.nsIndexPath];
+//        cell.textLabel.text = @"绑定成功";
+        [self.statusArray replaceObjectAtIndex:self.nsIndexPath.row withObject:@"已绑定"];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.userInteractionEnabled = NO;
+    });
+}
+#pragma mark -(注销)退出登录操作
+- (void)logoutBtnClick{
+    UIAlertController *alert    = [UIAlertController alertControllerWithTitle:@"确认退出?" message:@"退出登录将无法查看个人信息,重新登录后即可查看" preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *logoutAction     = [UIAlertAction actionWithTitle:@"确认" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        //执行注销
+        [self logoutSure];
+        //返回根视图
+//        [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
+    [alert addAction:logoutAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void) logoutSure{
+    
+        [SVProgressHUD showWithStatus:@"正在注销..."];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+            [DCObjManager dc_saveUserData:@"0" forKey:@"isLogin"];
+            [SVProgressHUD showSuccessWithStatus:@"注销成功！"];
+            AppDelegate *app=(AppDelegate *)[UIApplication sharedApplication].delegate;
+            [app autoLogin];
+        });
+}
+
+
+
+
 
 
 @end

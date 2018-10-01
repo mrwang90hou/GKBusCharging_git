@@ -18,9 +18,6 @@
 #import "GKMeViewController.h"
 #import "GKBindingPhoneController.h"
 
-
-
-
 //#import "DCTabBarController.h"
 #import "DCRegisteredViewController.h"
 // Models
@@ -322,16 +319,6 @@
     
     GKMeViewController * vc = [[GKMeViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
-//    [SVProgressHUD showWithStatus:@"点击了 headerView.iconImageViewBtn"];
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [SVProgressHUD dismiss];
-//        [DCObjManager dc_saveUserData:@"0" forKey:@"isLogin"];
-//        [SVProgressHUD showSuccessWithStatus:@"注销成功！"];
-//
-//        AppDelegate *app=(AppDelegate *)[UIApplication sharedApplication].delegate;
-//        [app autoLogin];
-//    });
-    
 }
 
 -(void)turnToGKBindingPhoneController{
