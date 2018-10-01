@@ -12,7 +12,7 @@
 #import "GKSignUpView.h"
 
 //@interface GKBindingPhoneController ()<UINavigationControllerDelegate>
-@interface GKBindingPhoneController ()<UINavigationControllerDelegate>
+@interface GKBindingPhoneController ()
 @property(nonatomic,weak)UINavigationController*navController;
 @property (nonatomic,strong)UITextField * phoneTF;
 @property (nonatomic,strong)UITextField * codeTF;
@@ -24,15 +24,15 @@ needNavBarShow;
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
-    self.navigationController.delegate = self;
-    self.navController = self.navigationController;
+//    [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
+//    self.navigationController.delegate = self;
+//    self.navController = self.navigationController;
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
-    self.navigationController.delegate = nil;
+//    [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
+//    self.navigationController.delegate = nil;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
@@ -44,15 +44,21 @@ needNavBarShow;
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"绑定手机";
     
-    GKSignUpView * signUpView = [[GKSignUpView alloc] initWithFrame:self.view.bounds];
+    UIView *headerBGView = [[UIView alloc]initWithFrame:CGRectMake(0, K_HEIGHT_NAVBAR, ScreenW, ScreenH/4)];
+    [headerBGView setBackgroundColor:RGBall(247)];
+    [self.view addSubview:headerBGView];
+//    [headerBGView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        headerBGView.
+//    }];
+    GKSignUpView * signUpView = [[GKSignUpView alloc] initWithFrame:CGRectMake(0, K_HEIGHT_NAVBAR+ScreenH/4, ScreenW, ScreenH/2)];
     [self.view addSubview:signUpView];
     [signUpView.nextBtn addTarget:self action:@selector(nextBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.phoneTF = signUpView.phoneTF;
     self.codeTF = signUpView.codeTF;
     
-#warning 测试数据
-    self.phoneTF.text = @"18575857329";
-    self.codeTF.text = @"1";
+//#warning 测试数据
+//    self.phoneTF.text = @"18575857329";
+//    self.codeTF.text = @"1";
 }
 
 - (void)nextBtnClick{
@@ -65,7 +71,7 @@ needNavBarShow;
             }else{
                 [SVProgressHUD showSuccessWithStatus:@"Success"];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [self.navigationController pushViewController:[GKSetPasswordController new] animated:YES];
+//                    [self.navigationController pushViewController:[GKSetPasswordController new] animated:YES];
                 });
             }
         }else{

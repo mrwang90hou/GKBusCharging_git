@@ -53,7 +53,8 @@
         [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.bottom.mas_equalTo(weakSelf).with.offset(-30);
             //            make.top.mas_equalTo(weakSelf)
-            make.bottom.mas_equalTo(iconImageView.mas_bottom).offset(halfLastHeight/2+12);
+//            make.bottom.mas_equalTo(iconImageView.mas_bottom).offset(halfLastHeight/2+12);
+            make.top.mas_equalTo(iconImageView.mas_bottom).offset(halfLastHeight/2+12);
             make.centerX.equalTo(weakSelf);
             make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH/2, 24));
         }];
@@ -67,16 +68,18 @@
         [self addSubview:changeNameBtn];
         [changeNameBtn mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.bottom.mas_equalTo(weakSelf).with.offset(-10);
-            make.top.mas_equalTo(ScreenH/5*2 - halfLastHeight + 12);
+//            make.top.mas_equalTo(ScreenH/5*2 - halfLastHeight + 12);
+            make.top.mas_equalTo(ScreenH/5*2 - halfLastHeight);
+            
             make.centerX.equalTo(weakSelf);
-            make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 24));
+            make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 18));
         }];
 //        [changeNameBtn setBackgroundColor:[UIColor redColor]];
         changeNameBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
 //        changeNameBtn.titleLabel.textColor = RGBall(104);
         [changeNameBtn setTitleColor:RGBall(221) forState:UIControlStateNormal];
         [changeNameBtn setTitle:@"更改昵称" forState:UIControlStateNormal] ;
-        changeNameBtn.titleLabel.font = GKBlodFont(16);
+        changeNameBtn.titleLabel.font = GKBlodFont(14);
         self.nameBtn = changeNameBtn;
         
 //        UILabel * vcTitleLabel = [UILabel new];
