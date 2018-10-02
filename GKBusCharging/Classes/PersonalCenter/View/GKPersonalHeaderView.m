@@ -42,8 +42,15 @@
 //            make.centerX.equalTo(weakSelf);
             make.size.mas_equalTo(CGSizeMake(240, 24));
         }];
-        headTitleLabel.text = @"租电客18577986175";
-        headTitleLabel.font = GKBlodFont(18);
+        headTitleLabel.text = @"";
+        if ([DCObjManager dc_readUserDataForKey:@"UserName"] != nil) {
+            [headTitleLabel setText:[DCObjManager dc_readUserDataForKey:@"UserName"]];
+        }else{
+            [headTitleLabel setText:@"昵称"];
+        }
+//        [SVProgressHUD showInfoWithStatus:[DCObjManager dc_readUserDataForKey:@"UserName"]];
+        headTitleLabel.font = GKBlodFont(24);
+        headTitleLabel.textColor = RGB(88, 79, 96);
 
         UIButton * phoneBtn = [[UIButton alloc]init];
         [self addSubview:phoneBtn];
@@ -55,10 +62,14 @@
 //        phoneBtn.titleLabel.textColor = [UIColor redColor];
         phoneBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
         
-        [phoneBtn setTitle:@"绑定手机号码" forState:UIControlStateNormal] ;
+        if ([[DCObjManager dc_readUserDataForKey:@"myPhone"] length] == 11) {
+            [phoneBtn setTitle:[DCObjManager dc_readUserDataForKey:@"myPhone"] forState:UIControlStateNormal];
+        }else{
+            [phoneBtn setTitle:@"绑定手机号码>" forState:UIControlStateNormal];
+        }
         [phoneBtn setTitleColor:RGB(31, 206, 155) forState:UIControlStateNormal];
 //        [phoneBtn setImage:[UIImage imageNamed:@"icon_namber_more"] forState:UIControlStateNormal];
-        phoneBtn.titleLabel.font = GKBlodFont(14);
+        phoneBtn.titleLabel.font = GKBlodFont(16);
         self.phoneBtn = phoneBtn;
 
         

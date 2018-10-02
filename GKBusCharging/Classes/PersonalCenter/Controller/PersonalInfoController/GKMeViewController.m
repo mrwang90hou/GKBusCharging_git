@@ -1,6 +1,6 @@
 //
 //  GKMeViewController.m
-//  Record
+//  GKBusCharging
 //
 //  Created by 王宁 on 2018/9/30.
 //  Copyright © 2018年 goockr. All rights reserved.
@@ -9,6 +9,7 @@
 #import "GKMeViewController.h"
 #import "GKMeDetailController.h"
 #import "GKLoginController.h"
+#import "GKChangeNameController.h"
 
 #import "AppDelegate.h"
 
@@ -24,12 +25,15 @@
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,assign) NSInteger indexPath;
 @property (nonatomic,strong) NSIndexPath *nsIndexPath;
+@property (nonatomic,strong) GKMeHeaderView *headerView;
+
 @end
 
 @implementation GKMeViewController
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+//    [self getUI];
 //    self.isNeedNav = YES;
 //    [self.navigationController setNavigationBarHidden:YES animated:animated];
 //    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
@@ -47,6 +51,7 @@
     
 //    self.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNotiUserNameChange object:nil];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
@@ -57,6 +62,39 @@
     [super viewDidLoad];
     self.title = @"个人中心";
     self.view.backgroundColor = TABLEVIEW_BG;
+    [self getData];
+    [self getUI];
+    [self addObserver];
+}
+
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark -页面逻辑方法
+- (void) addObserver
+{
+    //
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUIReload2) name:KNotiUserNameChange object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUIReload2) name:KNotiPhoneNumberChange object:nil];
+    //
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotiDeivceDisconnect) name:KNotiDeviceDisconnectFormServe object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trunToQRCode) name:@"trunToQRCode" object:nil];
+}
+-(void)updateUIReload2{
+//    [SVProgressHUD showInfoWithStatus:@"updateUIReload2"];
+    if ([DCObjManager dc_readUserDataForKey:@"UserName"] != nil) {
+        [self.headerView.nameLabel setText:[DCObjManager dc_readUserDataForKey:@"UserName"]];
+    }else{
+        [self.headerView.nameLabel setText:@"昵称"];
+    }
+    [SVProgressHUD showInfoWithStatus:[DCObjManager dc_readUserDataForKey:@"UserName"]];
+}
+
+
+-(void)getUI{
     GKMeHeaderView * headerView = [[GKMeHeaderView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:headerView];
     MJWeakSelf;
@@ -65,8 +103,10 @@
         make.height.mas_equalTo(ScreenH/5*2);
         make.width.mas_equalTo(SCREEN_WIDTH);
     }];
-    [headerView.nameBtn addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
-//    UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    [headerView.changeNameBtn addTarget:self action:@selector(changeUserName) forControlEvents:UIControlEventTouchUpInside];
+    self.headerView = headerView;
+    
+    //    UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     [self.view addSubview:_tableView];
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -76,8 +116,8 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.scrollEnabled = NO;
-    [self getData];
 }
+
 #pragma mark -立即登录按钮
 - (void)loginBtnClick{
 //    self.isNeedNav = NO;
@@ -276,10 +316,8 @@
             [app autoLogin];
         });
 }
-
-
-
-
-
+-(void)changeUserName{
+    [self.navigationController pushViewController:[GKChangeNameController new] animated:YES];
+}
 
 @end

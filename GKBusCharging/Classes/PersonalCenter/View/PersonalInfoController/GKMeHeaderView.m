@@ -1,6 +1,6 @@
 //
 //  GKMeHeaderView.m
-//  Record
+//  GKBusCharging
 //
 //  Created by L on 2018/7/2.
 //  Copyright © 2018年 L. All rights reserved.
@@ -49,7 +49,7 @@
 //        CGFloat halfLastHeight = (ScreenH/5*2 - K_HEIGHT_NAVBAR - 70)/2;
         CGFloat halfLastHeight = (ScreenH/5*2 - iconImageViewGetY)/2;
 //        CGFloat halfLastHeight = (ScreenH/5*2 - CGRectGetMaxX(iconImageView.frame))/2;
-        NSLog(@"CGRectGetMaxX(iconImageView.frame) = %lf",CGRectGetMaxX(iconImageView.frame));
+//        NSLog(@"CGRectGetMaxX(iconImageView.frame) = %lf",CGRectGetMaxX(iconImageView.frame));
         [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.bottom.mas_equalTo(weakSelf).with.offset(-30);
             //            make.top.mas_equalTo(weakSelf)
@@ -58,11 +58,17 @@
             make.centerX.equalTo(weakSelf);
             make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH/2, 24));
         }];
-        [nameLabel setText:@"租电客118"];
+//        [nameLabel setText:@"租电客118"];
         [nameLabel setFont:GKBlodFont(22)];
         nameLabel.textAlignment = NSTextAlignmentCenter;
         [nameLabel setTextColor:RGBA(88, 79, 96, 0.9)];
-        
+        [nameLabel setText:@""];
+        if ([DCObjManager dc_readUserDataForKey:@"UserName"] != nil) {
+            [nameLabel setText:[DCObjManager dc_readUserDataForKey:@"UserName"]];
+        }else{
+            [nameLabel setText:@"昵称"];
+        }
+        self.nameLabel = nameLabel;
         
         UIButton * changeNameBtn = [UIButton new];
         [self addSubview:changeNameBtn];
@@ -80,7 +86,7 @@
         [changeNameBtn setTitleColor:RGBall(221) forState:UIControlStateNormal];
         [changeNameBtn setTitle:@"更改昵称" forState:UIControlStateNormal] ;
         changeNameBtn.titleLabel.font = GKBlodFont(14);
-        self.nameBtn = changeNameBtn;
+        self.changeNameBtn = changeNameBtn;
         
 //        UILabel * vcTitleLabel = [UILabel new];
 //        [self addSubview:vcTitleLabel];

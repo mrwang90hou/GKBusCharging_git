@@ -1,6 +1,6 @@
 //
 //  GKBindingPhoneController.m
-//  Record
+//  GKBusCharging
 //
 //  Created by 王宁 on 2018/9/30.
 //  Copyright © 2018年 goockr. All rights reserved.
@@ -9,7 +9,7 @@
 #import "GKBindingPhoneController.h"
 #import "GKSetPasswordController.h"
 
-#import "GKSignUpView.h"
+#import "GKBindingPhoneView.h"
 
 //@interface GKBindingPhoneController ()<UINavigationControllerDelegate>
 @interface GKBindingPhoneController ()
@@ -20,7 +20,7 @@
 
 @implementation GKBindingPhoneController
 
-needNavBarShow;
+//needNavBarShow;
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -50,7 +50,7 @@ needNavBarShow;
 //    [headerBGView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        headerBGView.
 //    }];
-    GKSignUpView * signUpView = [[GKSignUpView alloc] initWithFrame:CGRectMake(0, K_HEIGHT_NAVBAR+ScreenH/4, ScreenW, ScreenH/2)];
+    GKBindingPhoneView * signUpView = [[GKBindingPhoneView alloc] initWithFrame:CGRectMake(0, K_HEIGHT_NAVBAR+ScreenH/4, ScreenW, ScreenH/4*3)];
     [self.view addSubview:signUpView];
     [signUpView.nextBtn addTarget:self action:@selector(nextBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.phoneTF = signUpView.phoneTF;
@@ -69,8 +69,17 @@ needNavBarShow;
             if(self.codeTF.text.length == 0){
                 [SVProgressHUD showErrorWithStatus:@"请输入验证码"];
             }else{
-                [SVProgressHUD showSuccessWithStatus:@"Success"];
+                [SVProgressHUD showWithStatus:@"正在绑定..."];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [SVProgressHUD dismiss];
+                    [DCObjManager dc_saveUserData:self.phoneTF.text forKey:@"myPhone"];
+                    [SVProgressHUD showSuccessWithStatus:@"绑定成功！"];
+//                    [self dismissViewControllerAnimated:YES completion:nil];
+                    [self.navigationController popViewControllerAnimated:YES];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:KNotiPhoneNumberChange object:nil];
+//                    [self dismissViewControllerAnimated:YES completion:^{
+//                         [SVProgressHUD showSuccessWithStatus:@"绑定成功！"];
+//                    }];
 //                    [self.navigationController pushViewController:[GKSetPasswordController new] animated:YES];
                 });
             }

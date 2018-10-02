@@ -1,6 +1,6 @@
 //
 //  GKSignInCodeView.m
-//  Record
+//  GKBusCharging
 //
 //  Created by 王宁 on 2018/9/30.
 //  Copyright © 2018年 goockr. All rights reserved.
@@ -275,7 +275,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.clickLayer removeFromSuperlayer];
                 [btn setTitle:@"获取验证码" forState:UIControlStateNormal];
-                [btn setTitleColor:UIColorFromHex(0xFCE9B) forState:UIControlStateNormal];
+                [btn setTitleColor:UIColorFromHex(0x1FCE9B) forState:UIControlStateNormal];
                 btn.userInteractionEnabled = YES;
                 btn.enabled = YES;
             });

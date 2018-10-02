@@ -49,15 +49,16 @@
 //}
 
 
+
 @property (nonatomic,strong) NSMutableArray *titleListArray;
 
 @property (nonatomic,strong) NSMutableArray *imagesListArray;
 
+@property (retain, strong) GKPersonalHeaderView *headerView;
 
+@property (retain, strong) UILabel *headTitleLabel;
 
-//@property (strong, nonatomic) GKCustomFlowLayout *flowLayout;
-
-@property(nonatomic,strong) UICollectionView *collectionView;
+@property (nonatomic,strong) UICollectionView *collectionView;
 @end
 
 @implementation GKPersonalCenterViewController
@@ -129,16 +130,48 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+//    [self getUI];
+//    [self updateUI];
+    [self updatas];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人中心";
     [self getUI];
     [self getData];
+    [self addObserver];
 //    self.view.backgroundColor = [UIColor redColor];
 //    self.collectionView.backgroundColor = [UIColor whiteColor];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark -页面逻辑方法
+- (void) addObserver
+{
+    //
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUIReload) name:KNotiUserNameChange object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUIReload) name:KNotiPhoneNumberChange object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotiDeivceDisconnect) name:KNotiDeviceDisconnectFormServe object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trunToQRCode) name:@"trunToQRCode" object:nil];
+}
+
+-(void)updatas{
+//    [SVProgressHUD showInfoWithStatus:@"updatas"];
+    NSLog(@"viewWillAppear");
+}
+
+
 - (void)getUI{
+    
+    [SVProgressHUD showInfoWithStatus:@"getUI"];
+    NSLog(@"viewDidLoad");
     GKPersonalHeaderView * headerView = [[GKPersonalHeaderView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:headerView];
     [headerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -147,8 +180,12 @@
         make.height.mas_equalTo((ScreenH-K_HEIGHT_NAVBAR)/4);
         make.width.mas_equalTo(SCREEN_WIDTH);
     }];
+//    [headerView.phoneBtn setTitle:[DCObjManager dc_getObjectByFileName:@"手机号"] forState:UIControlStateNormal];
     [headerView.iconImageViewBtn addTarget:self action:@selector(turnToGKMeViewController) forControlEvents:UIControlEventTouchUpInside];
     [headerView.phoneBtn addTarget:self action:@selector(turnToGKBindingPhoneController) forControlEvents:UIControlEventTouchUpInside];
+    self.headerView = headerView;
+    self.headTitleLabel = headerView.headTitleLabel;
+    
     //1.初始化layout
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.collectionView.backgroundColor = TABLEVIEW_BG;
@@ -173,6 +210,27 @@
     collectionView.dataSource = self;
     self.collectionView = collectionView;
 }
+
+-(void)updateUIReload{
+//    [SVProgressHUD showInfoWithStatus:@"updateUIReload"];
+//    [self.headTitleLabel setText:[DCObjManager dc_readUserDataForKey:@"UserName"]];
+    
+    NSLog(@"updateUIReload");
+    if ([DCObjManager dc_readUserDataForKey:@"UserName"] != nil) {
+        [self.headerView.headTitleLabel setText:[DCObjManager dc_readUserDataForKey:@"UserName"]];
+//        [SVProgressHUD showInfoWithStatus:[DCObjManager dc_readUserDataForKey:@"UserName"]];
+    }else{
+        [self.headerView.headTitleLabel setText:@"昵称"];
+    }
+    if ([[DCObjManager dc_readUserDataForKey:@"myPhone"] length] == 11) {
+        [self.headerView.phoneBtn setTitle:[DCObjManager dc_readUserDataForKey:@"myPhone"] forState:UIControlStateNormal];
+    }else{
+        [self.headerView.phoneBtn setTitle:@"绑定手机号码>" forState:UIControlStateNormal];
+    }
+    NSLog(@"updateUIReload222");
+    [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"self.headerView.headTitleLabel.text = %@",self.self.headTitleLabel.text]];
+}
+
 
 - (void)getData{
 //    self.titleListArray = @[@"余额:",@"订单管理",@"使用帮助",@"关于我们",@"紧急报警",@"意见反馈"];

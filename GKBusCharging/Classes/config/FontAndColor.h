@@ -1,6 +1,6 @@
 //
 //  FontAndColor.h
-//  Record
+//  GKBusCharging
 //
 //  Created by mrwang90hou on 2018/6/15.
 //  Copyright © 2018年 L. All rights reserved.
@@ -23,9 +23,10 @@
 
 
 //导航栏右侧按钮色调
-#define SAVE_COLOR UIColorFromHex(0x085DF7)
+#define SAVE_COLOR UIColorFromHex(0x1FCE9B)
 
-#define TABLEVIEW_BG UIColorFromHex(0xF6F7FA)
+//#define TABLEVIEW_BG UIColorFromHex(0xF6F7FA)
+#define TABLEVIEW_BG UIColorFromHex(0xF7F7F7)
 // 设置字体大小
 #define GKFont(size) [UIFont systemFontOfSize:size]
 #define GKBlodFont(size) [UIFont boldSystemFontOfSize:size]

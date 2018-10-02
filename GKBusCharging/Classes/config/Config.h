@@ -1,6 +1,6 @@
 //
 //  Config.h
-//  Record
+//  GKBusCharging
 //
 //  Created by mrwang90hou on 2018/6/15.
 //  Copyright © 2018年 L. All rights reserved.
