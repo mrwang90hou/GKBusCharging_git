@@ -20,8 +20,6 @@
 #define Main_Color [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1/1.0]
 
 
-
-
 //导航栏右侧按钮色调
 #define SAVE_COLOR UIColorFromHex(0x1FCE9B)
 

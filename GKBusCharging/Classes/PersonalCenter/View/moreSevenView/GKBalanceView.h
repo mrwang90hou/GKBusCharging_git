@@ -1,16 +1,20 @@
 //
-//  GKBindingPhoneView.h
+//  GKBalanceView.h
 //  GKBusCharging
 //
-//  Created by 王宁 on 2018/10/1.
+//  Created by 王宁 on 2018/10/4.
 //  Copyright © 2018年 L. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface GKBindingPhoneView : UIView
-@property (nonatomic,strong)UIButton * codeBtn;
-@property (nonatomic,strong)GKButton * nextBtn;
+@interface GKBalanceView : UIView
+@property (nonatomic,strong)UIButton * qrCodeBtn;
+@property (nonatomic,strong)UIButton * rechargeBtn;
+@property (nonatomic,strong)GKButton * getCashBtn;
+
+
+
 @property (nonatomic,strong)CAGradientLayer * clickLayer;
 @property (nonatomic,strong)UITextField * phoneTF;
 @property (nonatomic,strong)UITextField * codeTF;

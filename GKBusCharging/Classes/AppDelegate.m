@@ -215,6 +215,7 @@
 - (void)setSVprogressHUD{
     [SVProgressHUD setMinimumDismissTimeInterval:1.5];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+//    [SVProgressHUD setInfoImage:[UIImage imageNamed:@""]];
     [SVProgressHUD setSuccessImage:[UIImage imageNamed:@"pop_toast_success"]];
     [SVProgressHUD setErrorImage:[UIImage imageNamed:@"pop_toast_error"]];
     [SVProgressHUD setFont:GKFont(14)];

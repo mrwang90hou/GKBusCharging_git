@@ -1,14 +1,14 @@
 //
-//  GKBindingPhoneView.m
+//  GKBalanceView.m
 //  GKBusCharging
 //
-//  Created by 王宁 on 2018/10/1.
+//  Created by 王宁 on 2018/10/4.
 //  Copyright © 2018年 L. All rights reserved.
 //
 
-#import "GKBindingPhoneView.h"
+#import "GKBalanceView.h"
 
-@implementation GKBindingPhoneView
+@implementation GKBalanceView
 - (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self){
@@ -117,43 +117,43 @@
         codeTF.font = GKMediumFont(16);
         self.codeTF = codeTF;
         
-        UIButton * codeBtn = [UIButton new];
-        [codeView addSubview:codeBtn];
-        [codeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        UIButton * rechargeBtn = [UIButton new];
+        [codeView addSubview:rechargeBtn];
+        [rechargeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(codeTF.mas_right).with.offset(10);
             make.centerY.equalTo(codeView);
             make.height.mas_equalTo(30);
             make.right.mas_equalTo(codeView).with.offset(-20);
         }];
-        codeBtn.backgroundColor = [UIColor whiteColor];
-        [codeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-        [codeBtn setTitleColor:UIColorFromHex(0x1FCE9B) forState:UIControlStateNormal];
-        codeBtn.titleLabel.font = GKMediumFont(12);
-        //        codeBtn.layer.borderColor = UIColorFromHex(0xFCE9B).CGColor;
-        //        codeBtn.layer.borderWidth = 1;
-        //        codeBtn.layer.cornerRadius = 5;
-        //        codeBtn.layer.masksToBounds = YES;
-        [codeBtn addTarget:self action:@selector(codeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [codeBtn setBackgroundImage:[UIImage imageNamed:@"btn_6_selected"] forState:UIControlStateDisabled];
-        [codeBtn setBackgroundImage:[UIImage imageNamed:@"btn_6_normal"] forState:UIControlStateNormal];
-        self.codeBtn = codeBtn;
+        rechargeBtn.backgroundColor = [UIColor whiteColor];
+        [rechargeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [rechargeBtn setTitleColor:UIColorFromHex(0x1FCE9B) forState:UIControlStateNormal];
+        rechargeBtn.titleLabel.font = GKMediumFont(12);
+        //        rechargeBtn.layer.borderColor = UIColorFromHex(0xFCE9B).CGColor;
+        //        rechargeBtn.layer.borderWidth = 1;
+        //        rechargeBtn.layer.cornerRadius = 5;
+        //        rechargeBtn.layer.masksToBounds = YES;
+        [rechargeBtn addTarget:self action:@selector(codeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [rechargeBtn setBackgroundImage:[UIImage imageNamed:@"btn_6_selected"] forState:UIControlStateDisabled];
+        [rechargeBtn setBackgroundImage:[UIImage imageNamed:@"btn_6_normal"] forState:UIControlStateNormal];
+        self.rechargeBtn = rechargeBtn;
         
-        GKButton * nextBtn = [GKButton new];
-        [self addSubview:nextBtn];
-        [nextBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        GKButton * getCashBtn = [GKButton new];
+        [self addSubview:getCashBtn];
+        [getCashBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(codeView.mas_bottom).with.offset(44);
             make.left.mas_equalTo(weakSelf).with.offset(20);
             make.right.mas_equalTo(weakSelf).with.offset(-20);
             make.height.mas_equalTo(44);
         }];
-        [nextBtn setupCircleButton];
-        [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [nextBtn setTitle:@"绑定手机" forState:UIControlStateNormal];
-//        [nextBtn addTarget:self action:@selector(nextBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        nextBtn.titleLabel.font = GKMediumFont(16);[nextBtn setBackgroundImage:[UIImage imageNamed:@"login_btn_1_disabled"] forState:UIControlStateDisabled];
-        [nextBtn setBackgroundImage:[UIImage imageNamed:@"login_btn_1_normal"] forState:UIControlStateNormal];
-        self.nextBtn = nextBtn;
-        self.nextBtn.enabled = false;
+        [getCashBtn setupCircleButton];
+        [getCashBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [getCashBtn setTitle:@"绑定手机" forState:UIControlStateNormal];
+//        [getCashBtn addTarget:self action:@selector(nextBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        getCashBtn.titleLabel.font = GKMediumFont(16);[getCashBtn setBackgroundImage:[UIImage imageNamed:@"login_btn_1_disabled"] forState:UIControlStateDisabled];
+        [getCashBtn setBackgroundImage:[UIImage imageNamed:@"login_btn_1_normal"] forState:UIControlStateNormal];
+        self.getCashBtn = getCashBtn;
+        self.getCashBtn.enabled = false;
         [self.phoneTF addTarget:self action:@selector(textFieldDidBeginEditing:) forControlEvents:UIControlEventEditingChanged];
         [self.codeTF addTarget:self action:@selector(textFieldDidBeginEditing:) forControlEvents:UIControlEventEditingChanged];
     }
@@ -204,10 +204,10 @@
 {
     if (_phoneTF.text.length != 0 && _codeTF.text.length != 0) {
         //        _loginButton.backgroundColor = RGB(252, 159, 149);
-        self.nextBtn.enabled = YES;
+        self.getCashBtn.enabled = YES;
     }else{
         //        _loginButton.backgroundColor = [UIColor lightGrayColor];
-        self.nextBtn.enabled = NO;
+        self.getCashBtn.enabled = NO;
     }
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

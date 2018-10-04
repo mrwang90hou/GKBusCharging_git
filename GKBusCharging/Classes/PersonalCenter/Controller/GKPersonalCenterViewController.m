@@ -18,6 +18,11 @@
 #import "GKMeViewController.h"
 #import "GKBindingPhoneController.h"
 
+#import "GKBalanceViewController.h"
+
+
+
+
 //#import "DCTabBarController.h"
 #import "DCRegisteredViewController.h"
 // Models
@@ -215,7 +220,7 @@
 //    [SVProgressHUD showInfoWithStatus:@"updateUIReload"];
 //    [self.headTitleLabel setText:[DCObjManager dc_readUserDataForKey:@"UserName"]];
     
-    NSLog(@"updateUIReload");
+//    NSLog(@"updateUIReload");
     if ([DCObjManager dc_readUserDataForKey:@"UserName"] != nil) {
         [self.headerView.headTitleLabel setText:[DCObjManager dc_readUserDataForKey:@"UserName"]];
 //        [SVProgressHUD showInfoWithStatus:[DCObjManager dc_readUserDataForKey:@"UserName"]];
@@ -227,8 +232,8 @@
     }else{
         [self.headerView.phoneBtn setTitle:@"绑定手机号码>" forState:UIControlStateNormal];
     }
-    NSLog(@"updateUIReload222");
-    [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"self.headerView.headTitleLabel.text = %@",self.self.headTitleLabel.text]];
+//    NSLog(@"updateUIReload222");
+//    [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"self.headerView.headTitleLabel.text = %@",self.self.headTitleLabel.text]];
 }
 
 
@@ -329,7 +334,7 @@
     GKBaseSetViewController *nextVC;
     switch (indexPath.row) {
         case 0:
-            nextVC = [[GKBaseSetViewController alloc] init];
+            nextVC = [[GKBalanceViewController alloc] init];
             break;
         case 1:
             nextVC = [[GKBaseSetViewController alloc] init];

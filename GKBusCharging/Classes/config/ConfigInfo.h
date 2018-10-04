@@ -14,8 +14,8 @@
 //项目缓存信息值
 #define TOKEN  @"token"
 //获取屏幕宽高
-#define SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+//#define SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
+//#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 #define Weak(wself) __weak typeof(self)(wself) = self
 //屏幕适配
@@ -30,6 +30,7 @@
 #define BASECOLOR   DDRGBColor(31, 206, 155, 1)
 //字体色
 #define TEXTCOLOR   DDRGBColor(57, 57, 57, 1)
+#define TEXTMAINCOLOR   DDRGBColor(88, 79, 96, 1)
 //浅色字体
 #define TEXTCOLOR_LIGHT   DDRGBColor(124, 124, 124, 1)
 //灰色背景

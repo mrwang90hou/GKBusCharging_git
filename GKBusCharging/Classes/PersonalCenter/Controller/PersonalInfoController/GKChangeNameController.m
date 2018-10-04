@@ -2,7 +2,7 @@
 //  GKChangeNameController.m
 //  GKBusCharging
 //
-//  Created by L on 2018/7/3.
+//  Created by 王宁 on 2018/10/2.
 //  Copyright © 2018年 L. All rights reserved.
 //
 
