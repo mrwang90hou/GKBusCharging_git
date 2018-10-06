@@ -67,6 +67,9 @@
                                             <state key="normal" title="《服务协议》">
                                                 <color key="titleColor" red="0.12156862745098039" green="0.80784313725490198" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="serviceContractAction:" destination="-1" eventType="touchUpInside" id="vt9-Z5-k5F"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>

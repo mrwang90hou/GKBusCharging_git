@@ -244,14 +244,11 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
 //    GKBaseSetViewController *vc = [[GKBaseSetViewController alloc] init];
 //    vc.title = @"信息详情";
 //    [self.navigationController pushViewController:vc animated:YES];
-    GKRechargeStyleCell *cell = [tableView dequeueReusableCellWithIdentifier:GKRechargeStyleCellID forIndexPath:indexPath];
+//    GKRechargeStyleCell *cell = [tableView dequeueReusableCellWithIdentifier:GKRechargeStyleCellID forIndexPath:indexPath];
 //    [cell.selectedOrNotImage setImage:@""];
 //    cell.selectedOrNotImage.highlighted = true;
-    [cell.selectedOrNotImage setImage:[UIImage imageNamed:@"btn_payment_selected"]];
+//    [cell.selectedOrNotImage setImage:[UIImage imageNamed:@"btn_payment_selected"]];
 }
-
-
-
 //扫码充电
 - (void)qrCodeBtnClick{
     [SVProgressHUD showSuccessWithStatus:@"扫码充电！"];

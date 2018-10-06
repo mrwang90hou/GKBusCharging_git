@@ -2,7 +2,7 @@
 //  GKLoginViewController.m
 //  GKBusCharging
 //
-//  Created by L on 2018/9/29.
+//  Created by 王宁 on 2018/9/29.
 //  Copyright © 2018年 goockr. All rights reserved.
 //
 
@@ -13,6 +13,8 @@
 #import "GKNavigationController.h"
 #import "GKHomeViewController.h"
 #import "DCRegisteredViewController.h"
+
+#import "GKServiceTermsViewController.h"
 // Models
 
 // Views
@@ -67,11 +69,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self sertUpBase];
+//    [self sertUpBase];
     
-    [self setUpTiTleView];
+//    [self setUpTiTleView];
     
-    [self setUpAcceptNote];
+//    [self setUpAcceptNote];
 }
 
 #pragma mark - 接受跟换控制
@@ -89,7 +91,6 @@
 - (void)sertUpBase {
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = false;
-    
 }
 
 #pragma mark - 标题登录
@@ -120,10 +121,7 @@
     
     _indicatorView = [UIView new];
     _indicatorView.backgroundColor = [firstButton titleColorForState:UIControlStateSelected];
-    
-    
     [firstButton.titleLabel sizeToFit];
-    
     _indicatorView.dc_height = 2;
     _indicatorView.dc_width = firstButton.titleLabel.dc_width;
     _indicatorView.dc_centerX = firstButton.dc_centerX;
@@ -207,6 +205,10 @@
     [self.bgView removeFromSuperview];
 }
 
+- (IBAction)serviceContractAction:(id)sender {
+//    [SVProgressHUD showInfoWithStatus:@"服务协议！"];
+    [self.navigationController pushViewController:[GKServiceTermsViewController new] animated:YES];
+}
 
 
 
