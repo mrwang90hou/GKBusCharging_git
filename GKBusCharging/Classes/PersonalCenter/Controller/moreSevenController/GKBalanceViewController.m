@@ -8,6 +8,7 @@
 
 #import "GKBalanceViewController.h"
 #import "DCGMScanViewController.h"
+#import "GKRechargeViewController.h"
 
 @interface GKBalanceViewController ()
 @property (nonatomic,strong)UIButton * qrCodeBtn;
@@ -239,6 +240,7 @@
 //充值
 - (void)rechargeBtnClick{
     [SVProgressHUD showSuccessWithStatus:@"充值！"];
+    [self.navigationController pushViewController:[GKRechargeViewController new] animated:YES];
 }
 //提现
 - (void)getCashBtnClick{

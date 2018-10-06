@@ -175,7 +175,7 @@
 
 - (void)getUI{
     
-    [SVProgressHUD showInfoWithStatus:@"getUI"];
+//    [SVProgressHUD showInfoWithStatus:@"getUI"];
     NSLog(@"viewDidLoad");
     GKPersonalHeaderView * headerView = [[GKPersonalHeaderView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:headerView];

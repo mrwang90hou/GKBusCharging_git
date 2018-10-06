@@ -606,6 +606,7 @@
     
     [alertView show];
 }
+
 - (void)endOfTheCharging{
     SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"     " andMessage:@"检测到您还有正在充电的设备，\n是否立即结束充电?"];
     [alertView addButtonWithTitle:@"结束充电"
