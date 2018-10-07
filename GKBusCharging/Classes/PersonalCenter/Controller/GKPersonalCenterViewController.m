@@ -19,8 +19,8 @@
 #import "GKBindingPhoneController.h"
 
 #import "GKBalanceViewController.h"
-
-
+#import "GKAboutUsViewController.h"
+#import "GKOrderManagementViewController.h"
 
 
 //#import "DCTabBarController.h"
@@ -169,14 +169,14 @@
 
 -(void)updatas{
 //    [SVProgressHUD showInfoWithStatus:@"updatas"];
-    NSLog(@"viewWillAppear");
+//    NSLog(@"viewWillAppear");
 }
 
 
 - (void)getUI{
     
 //    [SVProgressHUD showInfoWithStatus:@"getUI"];
-    NSLog(@"viewDidLoad");
+//    NSLog(@"viewDidLoad");
     GKPersonalHeaderView * headerView = [[GKPersonalHeaderView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:headerView];
     [headerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -333,28 +333,28 @@
 //    GKBaseSetViewController *vc = [[GKBaseSetViewController alloc]init];
     GKBaseSetViewController *nextVC;
     switch (indexPath.row) {
-        case 0:
+        case 0://余额
             nextVC = [[GKBalanceViewController alloc] init];
             break;
-        case 1:
+        case 1://订单管理
+            nextVC = [[GKOrderManagementViewController alloc] init];
+            break;
+        case 2://使用帮助
             nextVC = [[GKBaseSetViewController alloc] init];
             break;
-        case 2:
-            nextVC = [[GKBaseSetViewController alloc] init];
-            break;
-        case 3:
-            nextVC = [[GKBaseSetViewController alloc] init];
+        case 3://关于我们
+            nextVC = [[GKAboutUsViewController alloc] init];
             break;
             //        case 4:
             //            nextVC = [[GFMyTradeViewController alloc] init];
             //            break;
-        case 4:
+        case 4://更新APP
             nextVC = [[GKBaseSetViewController alloc] init];
             break;
-        case 5:
+        case 5://紧急报警
             nextVC = [[GKBaseSetViewController alloc] init];
             break;
-        case 6:
+        case 6://意见反馈
             nextVC = [[GKFeedBackViewController alloc] init];
             break;
 //        case 8:

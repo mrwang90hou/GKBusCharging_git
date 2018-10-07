@@ -35,5 +35,8 @@
 //    _hidden = hidden;
 //    self.noCommentLabel.hidden = hidden;
 }
+//- (IBAction)btnAction:(id)sender {
+//    [SVProgressHUD showInfoWithStatus:@"点击button！"];
+//}
 
 @end
