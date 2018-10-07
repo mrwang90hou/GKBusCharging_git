@@ -39,6 +39,9 @@
 
 - (void)setUpUI
 {
+//    self.backgroundColor = Main_Color;
+    
+    
     self.gridImageView = [[UIImageView alloc] init];
     self.gridImageView.contentMode = UIViewContentModeScaleAspectFill;
 //    [self.gridImageView setImage:[UIImage imageNamed:@"icon_personal_center_app_down"]];
@@ -46,6 +49,12 @@
     
     self.titleLabel = [[UILabel alloc] init];
     self.titleLabel.font = PFR15Font;
+    self.titleLabel.numberOfLines = 0;//表示label可以多行显示
+//    self.titleLabel.lineBreakMode = NSLineBreakByCharWrapping;//换行模式，与上面的计算保持一致。
+    // 换行的模式我们选择文本自适应
+    self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    
+    self.titleLabel.preferredMaxLayoutWidth = ScreenW/4;
 //    self.titleLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.titleLabel];
     
@@ -74,7 +83,7 @@
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self);
         [make.left.mas_equalTo(self.mas_left)setOffset:DCMargin];
-        make.size.mas_equalTo(CGSizeMake(ScreenW/3, 15));
+        make.size.mas_equalTo(CGSizeMake(ScreenW/4, 15));
     }];
 
     [self.infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {

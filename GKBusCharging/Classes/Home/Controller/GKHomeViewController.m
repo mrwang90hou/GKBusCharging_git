@@ -15,7 +15,8 @@
 #import "SDCycleScrollView.h"
 #import "GKPersonalCenterViewController.h"
 #import "GKBusInfoListViewController.h"
-#import "GKBusInfoCell.h"
+
+#import "GKOrderManagementViewController.h"
 
 //#import "DCTabBarController.h"
 #import "DCRegisteredViewController.h"
@@ -27,6 +28,7 @@
 #import "GKUpDownButton.h"
 #import "DCZuoWenRightButton.h"
 #import "DCLIRLButton.h"
+#import "GKBusInfoCell.h"
 // Vendors
 
 // Categories
@@ -388,7 +390,7 @@
 //    orderInfoBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
      */
     
-    [orderInfoBtn addTarget:self action:@selector(turnToBusInfoList) forControlEvents:UIControlEventTouchUpInside];
+    [orderInfoBtn addTarget:self action:@selector(orderInfoBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:orderInfoBtn];
     [orderInfoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(topView.mas_right).offset(-5);
@@ -546,6 +548,11 @@
     vc.title = @"车辆信息";
     [self.navigationController pushViewController:vc animated:YES];
 }
+- (void)orderInfoBtnAction{
+    [self.navigationController pushViewController:[GKOrderManagementViewController new] animated:YES];
+}
+
+
 
 -(void)clickContactPhone{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"拨打客服电话" message:nil preferredStyle:UIAlertControllerStyleActionSheet];

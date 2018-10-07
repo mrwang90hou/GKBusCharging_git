@@ -56,6 +56,7 @@ static NSString *GKOrderCellID = @"GKOrderCell";
     self.title = @"订单管理";
     [self setupUI];
 }
+
 -(void)setupUI{
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -130,7 +131,7 @@ static NSString *GKOrderCellID = @"GKOrderCell";
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableView registerNib:[UINib nibWithNibName:@"GKOrderCell" bundle:nil] forCellReuseIdentifier:GKOrderCellID];
         _tableView.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1];
-        _tableView.allowsSelection = YES;
+        _tableView.allowsSelection = NO;
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }

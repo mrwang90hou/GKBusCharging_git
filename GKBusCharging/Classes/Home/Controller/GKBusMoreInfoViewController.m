@@ -52,7 +52,7 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"意见反馈";
+    self.title = @"列车详细信息";
     [self setupUI];
 }
 -(void)setupUI{

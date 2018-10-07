@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -83,7 +84,7 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234-5678-9101-1112312" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yh5-M5-DEl" userLabel="contentLabel01">
-                                        <rect key="frame" x="135" y="5" width="220" height="20"/>
+                                        <rect key="frame" x="125" y="5" width="220" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="220" id="3it-nC-e3O"/>
                                             <constraint firstAttribute="height" constant="20" id="Dmg-kN-XIL"/>
@@ -99,7 +100,7 @@
                                     <constraint firstItem="Yh5-M5-DEl" firstAttribute="centerY" secondItem="bFw-ql-KKO" secondAttribute="centerY" id="Bta-mD-yuY"/>
                                     <constraint firstItem="BWs-bc-GuS" firstAttribute="centerY" secondItem="bFw-ql-KKO" secondAttribute="centerY" id="Xfk-GV-NAI"/>
                                     <constraint firstAttribute="height" constant="30" id="enc-Ed-1Bz"/>
-                                    <constraint firstItem="Yh5-M5-DEl" firstAttribute="trailing" secondItem="bFw-ql-KKO" secondAttribute="trailing" id="qDQ-GJ-BnU"/>
+                                    <constraint firstItem="Yh5-M5-DEl" firstAttribute="trailing" secondItem="bFw-ql-KKO" secondAttribute="trailing" constant="-10" id="qDQ-GJ-BnU"/>
                                     <constraint firstAttribute="width" constant="355" id="xQF-Jm-MVA"/>
                                 </constraints>
                             </view>
@@ -118,7 +119,7 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="佛山公交G13路" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeJ-iv-Dlw" userLabel="contentLabel02">
-                                        <rect key="frame" x="135" y="5" width="220" height="20"/>
+                                        <rect key="frame" x="125" y="5" width="220" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="220" id="PrA-vr-NuO"/>
                                             <constraint firstAttribute="height" constant="20" id="QWC-3s-r8U"/>
@@ -131,7 +132,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="PeJ-iv-Dlw" firstAttribute="centerY" secondItem="mwB-V5-Nsl" secondAttribute="centerY" id="4AO-BT-suA"/>
-                                    <constraint firstItem="PeJ-iv-Dlw" firstAttribute="trailing" secondItem="mwB-V5-Nsl" secondAttribute="trailing" id="K49-7f-L8v"/>
+                                    <constraint firstItem="PeJ-iv-Dlw" firstAttribute="trailing" secondItem="mwB-V5-Nsl" secondAttribute="trailing" constant="-10" id="K49-7f-L8v"/>
                                     <constraint firstItem="y2t-VW-ZM0" firstAttribute="centerY" secondItem="mwB-V5-Nsl" secondAttribute="centerY" id="gb0-TB-jVG"/>
                                     <constraint firstAttribute="height" constant="30" id="hVy-Bp-lci"/>
                                     <constraint firstItem="y2t-VW-ZM0" firstAttribute="leading" secondItem="mwB-V5-Nsl" secondAttribute="leading" constant="10" id="kLD-kv-Dxt"/>
@@ -153,7 +154,7 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60分钟" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Kg-qJ-lc5" userLabel="contentLabel03">
-                                        <rect key="frame" x="135" y="5" width="220" height="20"/>
+                                        <rect key="frame" x="125" y="5" width="220" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="AY8-L5-Nq7"/>
                                             <constraint firstAttribute="width" constant="220" id="z49-dr-yUi"/>
@@ -166,7 +167,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ELN-hl-qrA"/>
-                                    <constraint firstItem="9Kg-qJ-lc5" firstAttribute="trailing" secondItem="Gfd-VW-3U7" secondAttribute="trailing" id="LRJ-w7-DKO"/>
+                                    <constraint firstItem="9Kg-qJ-lc5" firstAttribute="trailing" secondItem="Gfd-VW-3U7" secondAttribute="trailing" constant="-10" id="LRJ-w7-DKO"/>
                                     <constraint firstItem="xki-3p-o1Y" firstAttribute="centerY" secondItem="Gfd-VW-3U7" secondAttribute="centerY" id="WdW-tw-CgE"/>
                                     <constraint firstAttribute="width" constant="355" id="nEb-ac-I5s"/>
                                     <constraint firstItem="9Kg-qJ-lc5" firstAttribute="centerY" secondItem="Gfd-VW-3U7" secondAttribute="centerY" id="nd2-zZ-AbL"/>
@@ -188,7 +189,7 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.00 元" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ho-ss-BwA" userLabel="contentLabel04">
-                                        <rect key="frame" x="135" y="5" width="220" height="20"/>
+                                        <rect key="frame" x="125" y="5" width="220" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="3DK-Iy-EPI"/>
                                             <constraint firstAttribute="width" constant="220" id="GJn-tZ-8eX"/>
@@ -203,7 +204,7 @@
                                     <constraint firstItem="vcZ-2E-gq7" firstAttribute="leading" secondItem="fiO-Ib-CSj" secondAttribute="leading" constant="10" id="GyB-GK-0VX"/>
                                     <constraint firstItem="vcZ-2E-gq7" firstAttribute="centerY" secondItem="fiO-Ib-CSj" secondAttribute="centerY" id="YaE-xz-432"/>
                                     <constraint firstItem="0Ho-ss-BwA" firstAttribute="centerY" secondItem="fiO-Ib-CSj" secondAttribute="centerY" id="eof-dD-2WK"/>
-                                    <constraint firstItem="0Ho-ss-BwA" firstAttribute="trailing" secondItem="fiO-Ib-CSj" secondAttribute="trailing" id="fDE-J5-AzD"/>
+                                    <constraint firstItem="0Ho-ss-BwA" firstAttribute="trailing" secondItem="fiO-Ib-CSj" secondAttribute="trailing" constant="-10" id="fDE-J5-AzD"/>
                                     <constraint firstAttribute="height" constant="30" id="hut-Dn-ZuO"/>
                                     <constraint firstAttribute="width" constant="355" id="q29-kU-6c7"/>
                                 </constraints>
@@ -212,12 +213,16 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bFw-ql-KKO" firstAttribute="top" secondItem="pbg-c6-wY2" secondAttribute="top" id="8ZN-CC-Eur"/>
+                            <constraint firstItem="fiO-Ib-CSj" firstAttribute="trailing" secondItem="pbg-c6-wY2" secondAttribute="trailing" id="BFE-qU-qGM"/>
+                            <constraint firstItem="Gfd-VW-3U7" firstAttribute="trailing" secondItem="pbg-c6-wY2" secondAttribute="trailing" id="EsP-oR-IOk"/>
                             <constraint firstItem="Gfd-VW-3U7" firstAttribute="leading" secondItem="pbg-c6-wY2" secondAttribute="leading" id="JnU-gW-pdV"/>
                             <constraint firstItem="bFw-ql-KKO" firstAttribute="leading" secondItem="pbg-c6-wY2" secondAttribute="leading" id="M9V-17-zWe"/>
                             <constraint firstItem="Gfd-VW-3U7" firstAttribute="top" secondItem="mwB-V5-Nsl" secondAttribute="bottom" id="R1K-wP-8Za"/>
                             <constraint firstItem="mwB-V5-Nsl" firstAttribute="leading" secondItem="pbg-c6-wY2" secondAttribute="leading" id="WWV-zq-6nN"/>
                             <constraint firstItem="fiO-Ib-CSj" firstAttribute="leading" secondItem="pbg-c6-wY2" secondAttribute="leading" id="ab9-eB-jVo"/>
+                            <constraint firstItem="bFw-ql-KKO" firstAttribute="trailing" secondItem="pbg-c6-wY2" secondAttribute="trailing" id="fuF-e8-XwT"/>
                             <constraint firstItem="mwB-V5-Nsl" firstAttribute="top" secondItem="bFw-ql-KKO" secondAttribute="bottom" id="lK4-Ur-dbp"/>
+                            <constraint firstItem="mwB-V5-Nsl" firstAttribute="trailing" secondItem="pbg-c6-wY2" secondAttribute="trailing" id="v9f-kT-IVc"/>
                             <constraint firstItem="fiO-Ib-CSj" firstAttribute="top" secondItem="Gfd-VW-3U7" secondAttribute="bottom" id="wsb-bt-LMp"/>
                         </constraints>
                     </view>

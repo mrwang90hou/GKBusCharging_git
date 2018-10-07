@@ -14,7 +14,7 @@
 #import "DCGMScanViewController.h"
 #import "JFCityViewController.h"
 #import "SDCycleScrollView.h"
-
+#import "GKFeedBackRecordViewController.h"
 
 //#import "DCTabBarController.h"
 #import "DCRegisteredViewController.h"
@@ -44,8 +44,8 @@
 @interface GKFeedBackViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
     UILabel *titleHeaderLabel;
-//    DCZuoWenRightButton *OrderingInfoBtn;
-    UIButton *OrderingInfoBtn;
+//    DCZuoWenRightButton *feedbackRecordBtn;
+    UIButton *feedbackRecordBtn;
 }
 
 @property (nonatomic,strong) NSMutableArray *titleListArray;
@@ -57,6 +57,15 @@
 //@property (strong, nonatomic) GKCustomFlowLayout *flowLayout;
 
 @property(nonatomic,strong) UICollectionView *collectionView;
+
+@property (nonatomic ,strong) UIButton *endingBtn;
+
+@property (nonatomic,strong) UITextView *opinionContentTF;
+@property (nonatomic,strong) UITextField * phoneTF;
+@property (nonatomic,strong) UITextField * nameTF;
+
+
+
 @end
 
 @implementation GKFeedBackViewController
@@ -137,11 +146,8 @@
 
 - (void)getUI{
     
-    
-    
     titleHeaderLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, 100, 20)];
-    OrderingInfoBtn = [[UIButton alloc]initWithFrame:CGRectMake(ScreenW - 100, 5, 100, 20)];
-    
+    feedbackRecordBtn = [[UIButton alloc]initWithFrame:CGRectMake(ScreenW - 80, 5, 100, 20)];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.collectionView.backgroundColor = TABLEVIEW_BG;
@@ -171,10 +177,147 @@
     // 注册头视图
     [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     
+    collectionView.scrollEnabled = NO;
+    collectionView.allowsSelection = YES;
     //4.设置代理
     collectionView.delegate = self;
     collectionView.dataSource = self;
     self.collectionView = collectionView;
+    
+    UIView *writeToInfoview = [[UIView alloc]init];
+    [self.view addSubview:writeToInfoview];
+    [writeToInfoview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(K_HEIGHT_NAVBAR+40+(ScreenH-K_HEIGHT_NAVBAR - DCMargin)/4*9/5);
+        make.left.right.equalTo(self.view);
+//        make.bottom.equalTo(self.view).offset(-80);
+        make.bottom.equalTo(self.view);
+    }];
+    [writeToInfoview setBackgroundColor:[UIColor whiteColor]];
+    
+    //先布局evaluationContentTF评价内容
+    UITextView *opinionContentTF = [[UITextView alloc]init];
+    [writeToInfoview addSubview:opinionContentTF];
+    [opinionContentTF mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(writeToInfoview);
+        make.centerY.equalTo(writeToInfoview).offset(0);
+        make.width.mas_equalTo(ScreenW-30);
+        //        make.height.mas_equalTo(evaluateFooterView.bounds.size.height/2);
+        make.height.mas_equalTo(120);
+    }];
+    opinionContentTF.dataDetectorTypes = UIDataDetectorTypePhoneNumber | UIDataDetectorTypeLink;
+    opinionContentTF.backgroundColor = TABLEVIEW_BG;
+    opinionContentTF.textColor = [UIColor darkGrayColor];
+    opinionContentTF.text = @"请输入您宝贵的意见.....";
+    opinionContentTF.font = [UIFont systemFontOfSize:15.0];
+    opinionContentTF.layer.cornerRadius = 6.0;
+    opinionContentTF.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    opinionContentTF.layer.borderWidth = 1 / ([UIScreen mainScreen].scale);
+    self.opinionContentTF = opinionContentTF;
+    
+    //////
+    
+    UIView * nameView = [UIView new];
+    [writeToInfoview addSubview:nameView];
+    [nameView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(writeToInfoview).with.offset(2);
+        make.left.right.equalTo(writeToInfoview);
+        make.height.mas_equalTo(24);
+    }];
+    nameView.backgroundColor = [UIColor redColor];
+    
+    UIImageView * nameIconImageView = [UIImageView new];
+    [nameView addSubview:nameIconImageView];
+    [nameIconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(nameView).with.offset(FixWidthNumber(17.5));
+        make.centerY.equalTo(nameView);
+        make.size.mas_equalTo(CGSizeMake(22, 22));
+    }];
+    nameIconImageView.contentMode = UIViewContentModeScaleAspectFit;
+    nameIconImageView.image = [UIImage imageNamed:@"icon_phone"];
+    
+    UIView * lineView = [UIView new];
+    [nameView addSubview:lineView];
+    [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(nameView).with.offset(15);
+        make.right.equalTo(nameView).with.offset(-15);
+        make.bottom.mas_equalTo(nameView).with.offset(-1);
+        make.height.mas_equalTo(1);
+    }];
+    lineView.backgroundColor = UIColorFromHex(0xF0F0F0);
+    
+    UITextField * nameTF = [UITextField new];
+    [nameView addSubview:nameTF];
+    [nameTF mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(lineView.mas_right).with.offset(2);
+        make.right.mas_equalTo(nameView).with.offset(-15);
+        make.height.centerY.equalTo(nameView);
+    }];
+    nameTF.placeholder = @"姓名";
+    nameTF.clearButtonMode = UITextFieldViewModeWhileEditing;
+    nameTF.font = GKMediumFont(13);
+    self.nameTF = nameTF;
+    
+    
+    
+    
+    UIView * phoneView = [UIView new];
+    [writeToInfoview addSubview:phoneView];
+    [phoneView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.height.equalTo(nameView);
+        make.top.mas_equalTo(nameView.mas_bottom);
+    }];
+//    self.phoneView = phoneView;
+    
+    UIView * phoneLineView = [UIView new];
+    [phoneView addSubview:phoneLineView];
+    [phoneLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(phoneView).with.offset(15);
+        make.right.equalTo(phoneView).with.offset(-15);
+        make.bottom.mas_equalTo(phoneView).with.offset(-1);
+        make.height.mas_equalTo(1);
+    }];
+    phoneLineView.backgroundColor = UIColorFromHex(0xF0F0F0);
+    
+    UIImageView * phoneIconImageView = [UIImageView new];
+    [phoneView addSubview:phoneIconImageView];
+    [phoneIconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(phoneView).with.offset(FixWidthNumber(17.5));
+        make.centerY.equalTo(phoneView);
+        make.size.mas_equalTo(CGSizeMake(22, 22));
+    }];
+    phoneIconImageView.contentMode = UIViewContentModeScaleAspectFit;
+    phoneIconImageView.image = [UIImage imageNamed:@"icon_password"];
+    
+    UITextField * phoneTF = [UITextField new];
+    [phoneView addSubview:phoneTF];
+    [phoneTF mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(phoneIconImageView.mas_right).with.offset(12);
+        make.right.mas_equalTo(phoneView).with.offset(-15);
+        make.height.centerY.equalTo(phoneView);
+    }];
+    phoneTF.placeholder = @"手机/QQ/邮箱";
+    phoneTF.clearButtonMode = UITextFieldViewModeWhileEditing;
+    phoneTF.font = GKMediumFont(13);
+    phoneTF.secureTextEntry = YES;
+    self.phoneTF = phoneTF;
+    
+    
+    ////////////
+    
+    
+    UIButton *endingBtn = [[UIButton alloc]init];
+    [self.view addSubview:endingBtn];
+    [endingBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset(-8);
+        make.centerX.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(307, 44));
+    }];
+    [endingBtn addTarget:self action:@selector(endingBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [endingBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];//0xFCE9B
+    [endingBtn setTitle:@"提交" forState:UIControlStateNormal];
+    [endingBtn setBackgroundImage:SETIMAGE(@"btn_5_disabled") forState:UIControlStateDisabled];
+    [endingBtn setBackgroundImage:SETIMAGE(@"btn_5_normal") forState:UIControlStateNormal];
+    self.endingBtn = endingBtn;
 }
 
 - (void)getData{
@@ -224,9 +367,9 @@
     cell.titleLabel.text = [self.titleListArray objectAtIndex:indexPath.row];
     
     //自动折行设置
-    cell.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
-    cell.titleLabel.numberOfLines = 0;
-    
+//    cell.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
+//    cell.titleLabel.numberOfLines = 0;
+    [cell.infoLabel setHidden:true];
     
 //    NSLog(@"cell.titleLabel.text = %@",[self.titleListArray objectAtIndex:indexPath.row]);
     [cell.gridImageView setImage:[UIImage imageNamed:[self.imagesListArray objectAtIndex:indexPath.row]]];
@@ -270,17 +413,18 @@
     
     header.backgroundColor = RGB(236, 237, 241);
     if (indexPath.section == 0) {
-        titleHeaderLabel.text = @"异常反馈";
+        titleHeaderLabel.text = @"故障描述";
         titleHeaderLabel.font = [UIFont systemFontOfSize:17.0f];
         titleHeaderLabel.textColor = RGB(88, 79, 96);
         [header addSubview:titleHeaderLabel];
-        
-        OrderingInfoBtn.titleLabel.text = @"订单详情";
-        OrderingInfoBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
-        OrderingInfoBtn.titleLabel.textColor = RGB(88, 79, 96);
-        [OrderingInfoBtn setImage:[UIImage imageNamed:@"home_icon_page_more"] forState:UIControlStateNormal];
-        [OrderingInfoBtn addTarget:self action:@selector(touch) forControlEvents:UIControlEventTouchUpInside];
-        [header addSubview:OrderingInfoBtn];
+//        feedbackRecordBtn.titleLabel.text = @"反馈记录>";
+        [feedbackRecordBtn setTitle:@"反馈记录>" forState:UIControlStateNormal];
+        feedbackRecordBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+        [feedbackRecordBtn setTitleColor:RGB(88, 79, 96) forState:UIControlStateNormal];
+//        feedbackRecordBtn.titleLabel.textColor = RGB(88, 79, 96);
+//        [feedbackRecordBtn setImage:[UIImage imageNamed:@"home_icon_page_more"] forState:UIControlStateNormal];
+        [feedbackRecordBtn addTarget:self action:@selector(feedbackRecordBtnAction) forControlEvents:UIControlEventTouchUpInside];
+        [header addSubview:feedbackRecordBtn];
         
         [titleHeaderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.top.mas_equalTo(self.navigationController.navigationBar.mas_bottom);
@@ -289,7 +433,7 @@
             make.width.equalTo(@100);
             make.height.equalTo(@20);
         }];
-        [OrderingInfoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        [feedbackRecordBtn mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.top.equalTo(self->titleHeaderLabel);
             make.centerY.equalTo(header);
             make.right.mas_equalTo(self.view.mas_right).offset(-4);;
@@ -303,6 +447,7 @@
 //        labelTwo.font = [UIFont systemFontOfSize:14.0f];
 //        labelTwo.textColor = MainRGB;
 //        [header addSubview:labelTwo];
+        
     }
     return header;
 }
@@ -310,15 +455,44 @@
 //点击item方法
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    //    GKBaseSetViewController *vc = [[GKBaseSetViewController alloc]init];
+    [self reloadDatasAndTable:indexPath];
 }
 
-
-- (void)touch{
-    NSLog(@"touch!!!");
+//刷新 tabView 的选择状态
+-(void)reloadDatasAndTable:(NSIndexPath *)indexPath{
+    for (int i = 0; i<6; i++) {
+        NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:i inSection:0];
+//        GKRechargeStyleCell *cell = [self.tableView cellForRowAtIndexPath:indexPath2];
+        GKPersonalCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath2];
+//        (GKPersonalCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
+//        [cell setBackgroundColor:Main_Color];
+        if (i == indexPath.row) {
+            cell.selected = true;
+            //            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//            [cell.backgroundView setBackgroundColor:TABLEVIEW_BG];
+            cell.backgroundColor = RGB(212, 245, 234);
+        }else{
+            cell.selected = false;
+            //            cell.accessoryType = UITableViewCellAccessoryNone;
+//            [cell.backgroundView setBackgroundColor:[UIColor whiteColor]];
+            
+            cell.backgroundColor = Main_Color;
+        }
+    }
 }
 
+- (void)feedbackRecordBtnAction{
+//    NSLog(@"feedbackRecordBtnAction!!!");
+    GKFeedBackRecordViewController *vc = [GKFeedBackRecordViewController new];
+    vc.title = @"反馈记录";
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
+-(void)endingBtnAction{
+    [SVProgressHUD showInfoWithStatus:@"提交"];
+}
 
 
 - (void)didReceiveMemoryWarning {

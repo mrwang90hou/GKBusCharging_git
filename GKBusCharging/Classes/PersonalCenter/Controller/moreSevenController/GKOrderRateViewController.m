@@ -15,7 +15,7 @@
 #import "JFCityViewController.h"
 #import "SDCycleScrollView.h"
 #import "GKBusMoreInfoViewController.h"
-
+#import "GKOrderDetailsViewController.h"
 //#import "DCTabBarController.h"
 #import "DCRegisteredViewController.h"
 // Models
@@ -260,15 +260,20 @@ static NSString *GKOrderCellID = @"GKOrderCell";
     [arr addObject:labellingBtn02];
     [arr addObject:labellingBtn03];
     self.btnArray = arr;
+    int i = 1;
     for (UIButton *btn in arr) {
         btn.titleLabel.textColor = TEXTGRAYCOLOR;
         btn.backgroundColor = [UIColor clearColor];
         btn.titleLabel.font = GKMediumFont(12);
         [btn setTitleColor:UIColorFromHex(0x999999) forState:UIControlStateNormal];//0xFCE9B
+        [btn setTitleColor:UIColorFromHex(0xFCE9B) forState:UIControlStateSelected];//0xFCE9B
         btn.layer.borderColor = UIColorFromHex(0x999999).CGColor;
         btn.layer.borderWidth = 1;
         btn.layer.cornerRadius = 5;
         btn.layer.masksToBounds = YES;
+        btn.tag = i;
+        [btn addTarget:self action:@selector(labellingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        i++;
     }
 //    labellingBtn01.titleLabel.textColor = TEXTGRAYCOLOR;
 //    labellingBtn02.titleLabel.textColor = TEXTGRAYCOLOR;
@@ -282,10 +287,6 @@ static NSString *GKOrderCellID = @"GKOrderCell";
 //    labellingBtn02.layer.cornerRadius = 5;
 //    labellingBtn02.layer.masksToBounds = YES;
     
-    
-    
-    
-    
     UIButton *endingBtn = [[UIButton alloc]init];
     [evaluateFooterView addSubview:endingBtn];
     [endingBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -294,9 +295,9 @@ static NSString *GKOrderCellID = @"GKOrderCell";
         make.size.mas_equalTo(CGSizeMake(307, 44));
     }];
     [endingBtn addTarget:self action:@selector(endingBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [endingBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];//0xFCE9B
     [endingBtn setTitle:@"匿名提交" forState:UIControlStateNormal];
-//    [endingBtn setTintColor:[UIColor whiteColor]];
-    [endingBtn setImage:SETIMAGE(@"btn_5_normal") forState:UIControlStateNormal];
+    [endingBtn setBackgroundImage:SETIMAGE(@"btn_5_normal") forState:UIControlStateNormal];
     self.endingBtn = endingBtn;
     
     
@@ -461,10 +462,24 @@ static NSString *GKOrderCellID = @"GKOrderCell";
 #pragma mark -private method
 -(void)detailsCheckBtnAction{
     [SVProgressHUD showInfoWithStatus:@"查看明细"];
+    [self.navigationController pushViewController:[GKOrderDetailsViewController new] animated:YES];
 }
 -(void)endingBtnAction{
-    [SVProgressHUD showInfoWithStatus:@"点击Btn"];
+    [SVProgressHUD showInfoWithStatus:@"提交"];
 }
 
+- (void)labellingBtnAction:(UIButton *)btn{
+    //    [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"点击成功！%ld",btn.tag+1]];
+//    GKOrderRateViewController *vc = [[GKOrderRateViewController alloc] init];
+//    vc.title = [NSString stringWithFormat:@"订单评价[第%ld个]",btn.tag+1];
+//    [self.navigationController pushViewController:vc animated:YES];
+//    [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"%d,%d",btn.tag,btn.selected]];
+    if (!btn.selected) {
+        btn.layer.borderColor = UIColorFromHex(0xFCE9B).CGColor;
+    }else{
+        btn.layer.borderColor = UIColorFromHex(0x999999).CGColor;
+    }
+    btn.selected = !btn.selected;
+}
 
 @end
