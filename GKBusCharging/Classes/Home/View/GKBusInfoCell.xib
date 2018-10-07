@@ -140,6 +140,7 @@
                 <outlet property="busCardNumberLabel" destination="sCE-aq-6KC" id="Ok3-RI-I98"/>
                 <outlet property="busImageLogo" destination="KGX-BH-43V" id="dEZ-OG-d1m"/>
                 <outlet property="busLinesNumberLabel" destination="taP-wt-Vbr" id="Tn5-oG-yza"/>
+                <outlet property="scoreLabel" destination="gXM-ke-yhH" id="FcC-5q-Qdv"/>
                 <outlet property="star" destination="XsR-U5-Tep" id="0Fo-QO-CaO"/>
                 <outlet property="zonghe" destination="wGb-0Q-9Jf" id="qA7-re-F7E"/>
             </connections>

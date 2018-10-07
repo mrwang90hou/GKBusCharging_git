@@ -10,18 +10,6 @@
 #import "GKBusInfoCell.h"
 
 @interface GKBusInfoCell()
-@property (weak, nonatomic) IBOutlet UIImageView *busImageLogo;
-@property (strong, nonatomic) IBOutlet UILabel *busLinesNumberLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *busCardNumberLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *OfferBatteryLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-
-@property (strong, nonatomic) IBOutlet UILabel *zonghe;
-
-@property (strong, nonatomic) IBOutlet UIImageView *star;
 
 @end
 @implementation GKBusInfoCell

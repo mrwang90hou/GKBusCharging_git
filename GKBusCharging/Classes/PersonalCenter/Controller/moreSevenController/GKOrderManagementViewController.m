@@ -109,9 +109,9 @@ static NSString *GKOrderCellID = @"GKOrderCell";
 }
 
 - (void)detailsAction:(UIButton *)btn{
-    [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"点击成功！%ld",btn.tag+1]];
+//    [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"点击成功！%ld",btn.tag+1]];
     GKOrderRateViewController *vc = [[GKOrderRateViewController alloc] init];
-    vc.title = [NSString stringWithFormat:@"信息详情[第%ld个]",btn.tag+1];
+    vc.title = [NSString stringWithFormat:@"订单评价[第%ld个]",btn.tag+1];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
