@@ -119,6 +119,8 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
     [rechargeMoneyBtn01 setBackgroundImage:[UIImage imageNamed:@"recharge_amount_bg_normal"] forState:UIControlStateNormal];
     [rechargeMoneyBtn01 setBackgroundImage:[UIImage imageNamed:@"recharge_amount_bg_selected"] forState:UIControlStateSelected];
     [rechargeMoneyBtn01 setBackgroundImage:[UIImage imageNamed:@"recharge_amount_bg_selected"] forState:UIControlStateHighlighted];
+    [rechargeMoneyBtn01 addTarget:self action:@selector(rechargeMoneyBtnSelected:) forControlEvents:UIControlEventTouchUpInside];
+    rechargeMoneyBtn01.tag = 1;
     self.rechargeMoneyBtn01 = rechargeMoneyBtn01;
     
     //5元
@@ -138,6 +140,8 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
     [rechargeMoneyBtn02 setBackgroundImage:[UIImage imageNamed:@"recharge_amount_bg_normal"] forState:UIControlStateNormal];
     [rechargeMoneyBtn02 setBackgroundImage:[UIImage imageNamed:@"recharge_amount_bg_selected"] forState:UIControlStateSelected];
     [rechargeMoneyBtn02 setBackgroundImage:[UIImage imageNamed:@"recharge_amount_bg_selected"] forState:UIControlStateHighlighted];
+    [rechargeMoneyBtn02 addTarget:self action:@selector(rechargeMoneyBtnSelected:) forControlEvents:UIControlEventTouchUpInside];
+    rechargeMoneyBtn02.tag = 2;
     self.rechargeMoneyBtn02 = rechargeMoneyBtn02;
     /*支付方式*/
     UILabel *payStyleLabel = [[UILabel alloc]init];
@@ -206,8 +210,10 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
     [rechargeNowBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [rechargeNowBtn setTitle:@"立即充值" forState:UIControlStateNormal];
     rechargeNowBtn.titleLabel.font = GKMediumFont(16);
-    [rechargeNowBtn setBackgroundImage:[UIImage imageNamed:@"btn_5_disabled"] forState:UIControlStateNormal];
+//    [rechargeNowBtn setBackgroundImage:[UIImage imageNamed:@"btn_5_disabled"] forState:UIControlStateDisabled];
+    [rechargeNowBtn setBackgroundImage:[UIImage imageNamed:@"btn_5_normal"] forState:UIControlStateNormal];
     [rechargeNowBtn addTarget:self action:@selector(rechargeNowBtnClick) forControlEvents:UIControlEventTouchUpInside];
+//    [rechargeNowBtn setEnabled:false];
     self.rechargeNowBtn = rechargeNowBtn;
 }
 
@@ -228,11 +234,11 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     GKRechargeStyleCell *cell = [tableView dequeueReusableCellWithIdentifier:GKRechargeStyleCellID forIndexPath:indexPath];
 //    NSString *str = [NSString stringWithFormat:@"%@",[self.imagesListArray objectAtIndex:indexPath.row]];
-//    [cell.styleImageLogo setImage:[UIImage imageNamed:[self.imagesListArray objectAtIndex:indexPath.row]]];
-//    cell.styleLabel.text = [self.titleListArray objectAtIndex:indexPath.row];
-//    cell.detailsLabel.text = [self.detailsListArray objectAtIndex:indexPath.row];
-    cell.detailsLabel.text = @"wangning";
-    [cell.selectedOrNotImage setImage:[UIImage imageNamed:@"btn_payment_normal"]];
+    [cell.styleImageLogo setImage:[UIImage imageNamed:[self.imagesListArray objectAtIndex:indexPath.row]]];
+    cell.styleLabel.text = [self.titleListArray objectAtIndex:indexPath.row];
+    cell.detailsLabel.text = [self.detailsListArray objectAtIndex:indexPath.row];
+//    cell.detailsLabel.text = @"wangning";
+//    [cell.selectedOrNotImage setImage:[UIImage imageNamed:@"btn_payment_normal"]];
 
     return cell;
 }
@@ -241,14 +247,42 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
 {
 //    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    GKBaseSetViewController *vc = [[GKBaseSetViewController alloc] init];
-//    vc.title = @"信息详情";
-//    [self.navigationController pushViewController:vc animated:YES];
 //    GKRechargeStyleCell *cell = [tableView dequeueReusableCellWithIdentifier:GKRechargeStyleCellID forIndexPath:indexPath];
 //    [cell.selectedOrNotImage setImage:@""];
 //    cell.selectedOrNotImage.highlighted = true;
 //    [cell.selectedOrNotImage setImage:[UIImage imageNamed:@"btn_payment_selected"]];
+//    if (indexPath.row == 0) {
+//
+//    }else{
+//
+//    }
+    [self reloadDatasAndTable:indexPath];
+    
+    
 }
+
+//刷新 tabView 的选择状态
+-(void)reloadDatasAndTable:(NSIndexPath *)indexPath{
+    for (int i = 0; i<2; i++) {
+        NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:i inSection:0];
+        GKRechargeStyleCell *cell = [self.tableView cellForRowAtIndexPath:indexPath2];
+        if (i == indexPath.row) {
+            //请求设置分辨率
+            cell.selectedOrNotImage.highlighted = true;
+//            [SVProgressHUD showInfoWithStatus:@"选择"];
+            [cell.selectedOrNotImage setImage:[UIImage imageNamed:@"btn_payment_selected"]];
+            cell.selected = true;
+//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }else{
+//            [SVProgressHUD showInfoWithStatus:@"不选择"];
+            cell.selectedOrNotImage.highlighted = false;
+            [cell.selectedOrNotImage setImage:[UIImage imageNamed:@"btn_payment_normal"]];
+            cell.selected = false;
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+}
+
 //扫码充电
 - (void)qrCodeBtnClick{
     [SVProgressHUD showSuccessWithStatus:@"扫码充电！"];
@@ -261,12 +295,31 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
 }
 //立即充值
 - (void)rechargeNowBtnClick{
-    [SVProgressHUD showWithStatus:@"正在充值..."];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [SVProgressHUD dismiss];
-        [SVProgressHUD showSuccessWithStatus:@"充值成功！"];
-    });
+    
+    for (int i = 0; i<2; i++) {
+        NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:i inSection:0];
+        GKRechargeStyleCell *cell = [self.tableView cellForRowAtIndexPath:indexPath2];
+        //判断只要选择
+        if (cell.selected) {
+            [SVProgressHUD showWithStatus:@"正在充值..."];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+                [SVProgressHUD showSuccessWithStatus:@"充值成功！"];
+            });
+        }
+    }
 }
-
+-(void)rechargeMoneyBtnSelected:(UIButton *)bt{
+    if (bt.selected) {
+        return;
+    }else{
+        if (bt.tag == 1) {
+            self.rechargeMoneyBtn02.selected = false;
+        }else{
+            self.rechargeMoneyBtn01.selected = false;
+        }
+        bt.selected=!bt.selected;
+    }
+}
 
 @end

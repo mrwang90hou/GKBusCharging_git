@@ -3,7 +3,7 @@
 //  GKBusCharging
 //
 //  Created by 王宁 on 2018/10/4.
-//  Copyright © 2018年 L. All rights reserved.
+//  Copyright © 2018年 goockr. All rights reserved.
 //
 
 #import "GKBalanceView.h"
