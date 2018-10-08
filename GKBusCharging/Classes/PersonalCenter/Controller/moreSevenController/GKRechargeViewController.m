@@ -7,7 +7,7 @@
 //
 
 #import "GKRechargeViewController.h"
-//#import "DCGMScanViewController.h"
+#import "DCGMScanViewController.h"
 #import "GKRechargeStyleCell.h"
 
 static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
@@ -286,8 +286,8 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
 //扫码充电
 - (void)qrCodeBtnClick{
     [SVProgressHUD showSuccessWithStatus:@"扫码充电！"];
-//    DCGMScanViewController * popVC = [[DCGMScanViewController alloc]init];
-//    [self.navigationController popToViewController:popVC animated:YES];
+    DCGMScanViewController * popVC = [[DCGMScanViewController alloc]init];
+    [self.navigationController popToViewController:popVC animated:YES];
 }
 //充值协议
 - (void)getprotocolBtnClick{

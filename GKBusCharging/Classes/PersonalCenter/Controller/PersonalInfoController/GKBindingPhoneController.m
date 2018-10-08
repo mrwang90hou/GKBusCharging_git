@@ -7,7 +7,7 @@
 //
 
 #import "GKBindingPhoneController.h"
-#import "GKSetPasswordController.h"
+//#import "GKSetPasswordController.h"
 
 #import "GKBindingPhoneView.h"
 
