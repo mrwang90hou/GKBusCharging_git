@@ -17,6 +17,7 @@
 #import "GKBusInfoListViewController.h"
 
 #import "GKOrderManagementViewController.h"
+#import "GKOrderDetailsViewController.h"
 
 //#import "DCTabBarController.h"
 #import "DCRegisteredViewController.h"
@@ -29,6 +30,8 @@
 #import "DCZuoWenRightButton.h"
 #import "DCLIRLButton.h"
 #import "GKBusInfoCell.h"
+#import "GKPriceEvaluationView.h"
+#import "GKStarAndLabellingEvaluationView.h"
 // Vendors
 
 // Categories
@@ -68,12 +71,15 @@
 @property (nonatomic,strong) UIButton *busListBtn;
 
 @property (nonatomic, strong) NSMutableArray *images;
+/* 弹窗评价窗口1 , 2 */
+@property (strong , nonatomic)GKPriceEvaluationView *priceEvaluationView;
 
-
+@property (strong , nonatomic)GKStarAndLabellingEvaluationView *starAndLabellingEvaluationView;
 
 @property (nonatomic,strong) UIView *infoView;
 
 
+@property (nonatomic,strong) UIView *bgView;
 
 
 @end
@@ -274,7 +280,7 @@
 }
 
 - (void)setUI{
-    self.title = @"冲哈哈😆";
+    self.title = @"充哈哈";
 //    self.view.backgroundColor = [UIColor lightGrayColor];
     //广告视图
     UIView *adView = [[UIView alloc]init];
@@ -467,29 +473,35 @@
 
 //获取轮播图
 -(void)loadSubjectImage{
-    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,@"/controller/api/WeclomeImage.php"];
-    NSMutableDictionary *para = [NSMutableDictionary dictionary];
-    para[@"key"] = AppKey;
-    para[@"size"] = @"5";
-    [SVProgressHUD showWithStatus:@"正在获取图片"];
-    [AFNetPackage getJSONWithUrl:url parameters:para success:^(id responseObject) {
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
-        if ([dic[@"code"] integerValue] == 200) {
-            [SVProgressHUD dismiss];
-            NSArray *array = dic[@"data"];
-            for (NSDictionary *dic in array) {
-                [self.images addObject:[NSString stringWithFormat:@"%@%@%@",Base_Url,@"/",dic[@"image"]]];
-            }
-            self.advertiseView.imageURLStringsGroup = self.images;
-        }
-    } fail:^{
-        [SVProgressHUD dismiss];
-        for (NSInteger i = 1; i <= 3; ++i) {
-            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"adView%ld",(long)i]];
-            [self.images addObject:image];
-        }
-        self.advertiseView.localizationImageNamesGroup = self.images;
-    }];
+//    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,@"/controller/api/WeclomeImage.php"];
+//    NSMutableDictionary *para = [NSMutableDictionary dictionary];
+//    para[@"key"] = AppKey;
+//    para[@"size"] = @"5";
+//    [SVProgressHUD showWithStatus:@"正在获取图片"];
+//    [AFNetPackage getJSONWithUrl:url parameters:para success:^(id responseObject) {
+//        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+//        if ([dic[@"code"] integerValue] == 200) {
+//            [SVProgressHUD dismiss];
+//            NSArray *array = dic[@"data"];
+//            for (NSDictionary *dic in array) {
+//                [self.images addObject:[NSString stringWithFormat:@"%@%@%@",Base_Url,@"/",dic[@"image"]]];
+//            }
+//            self.advertiseView.imageURLStringsGroup = self.images;
+//        }
+//    } fail:^{
+//        [SVProgressHUD dismiss];
+//        for (NSInteger i = 1; i <= 3; ++i) {
+//            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"adView%ld",(long)i]];
+//            [self.images addObject:image];
+//        }
+//        self.advertiseView.localizationImageNamesGroup = self.images;
+//    }];
+    
+    for (NSInteger i = 1; i <= 1; ++i) {
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"chonhaha_banner%ld",(long)i]];
+        [self.images addObject:image];
+    }
+    self.advertiseView.localizationImageNamesGroup = self.images;
     
 }
 
@@ -548,6 +560,7 @@
     vc.title = @"车辆信息";
     [self.navigationController pushViewController:vc animated:YES];
 }
+
 - (void)orderInfoBtnAction{
     [self.navigationController pushViewController:[GKOrderManagementViewController new] animated:YES];
 }
@@ -669,11 +682,87 @@
         [self updataUI];
         [SVProgressHUD showSuccessWithStatus:@"结束成功！"];
         //弹窗评价窗口
+        [self setUpContentView];
     });
 }
 
 
 
+#pragma mark - 内容
+- (void)setUpContentView
+{
+    // 大背景
+    UIView *bgView = [[UIView alloc] init];
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:bgView];
+    bgView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+    [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+    self.bgView = bgView;
+    //整体的布局view
+//    GKSignInCodeView *totalView = [GKSignInCodeView new];
+//    [bgView addSubview:totalView];
+//    [totalView setBackgroundColor:[UIColor whiteColor]];
+//    [totalView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.mas_equalTo(bgView);
+//        make.centerY.mas_equalTo(bgView).mas_offset(0);
+//        make.left.mas_equalTo(bgView.mas_left).with.offset(ScreenW/10);
+//        make.right.mas_equalTo(bgView.mas_right).with.offset(-ScreenW/10);
+//        make.height.mas_equalTo(totalView.mas_width);
+//        //make.width.mas_equalTo(200);
+//    }];
+//    [totalView.cancelButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+//    totalView.layer.masksToBounds = YES;
+//    totalView.layer.cornerRadius = 8;
+//    self.signInCodeView = totalView;
+//
+    _priceEvaluationView = [GKPriceEvaluationView dc_viewFromXib];
+    [self.bgView addSubview:_priceEvaluationView];
+    _priceEvaluationView.frame = CGRectMake(0, (ScreenH-K_HEIGHT_NAVBAR)/2+K_HEIGHT_NAVBAR, ScreenW, (ScreenH-K_HEIGHT_NAVBAR)/2);
+//    _priceEvaluationView.starIsChanged
+    [self addObserver];
+    
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark -页面逻辑方法
+- (void) addObserver
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(starIsChangedAction) name:@"starIsChanged" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(close) name:@"close" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cheackDetailsAction) name:@"cheackDetails" object:nil];
+}
+
+- (void)starIsChangedAction{
+//    [_priceEvaluationView setHidden:true];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [SVProgressHUD dismiss];
+        CGFloat actualScore = self.priceEvaluationView.actualScore;
+        [self.priceEvaluationView removeFromSuperview];
+        self.starAndLabellingEvaluationView = [GKStarAndLabellingEvaluationView dc_viewFromXib];
+        self.starAndLabellingEvaluationView.actualScore = actualScore;
+//        [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"%f",actualScore]];
+        [self.bgView addSubview:self.starAndLabellingEvaluationView];
+        self.starAndLabellingEvaluationView.frame = CGRectMake(0, (ScreenH-K_HEIGHT_NAVBAR)/2+K_HEIGHT_NAVBAR+40, ScreenW, (ScreenH-K_HEIGHT_NAVBAR)/2-40);
+        self.starAndLabellingEvaluationView.starView.actualScore = actualScore;
+    });
+}
+
+-(void)cheackDetailsAction{
+    [self close];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.navigationController pushViewController:[GKOrderDetailsViewController new] animated:YES];
+    });
+    
+}
+
+-(void)close{
+    [self.bgView removeFromSuperview];
+}
 
 
 -(NSMutableArray *)images{
@@ -682,7 +771,17 @@
     }
     return _images;
 }
-
+//-(UIView *)bgView{
+//    if (!_bgView) {
+//        _bgView = [[UIView alloc]init];
+//        [[[[UIApplication sharedApplication] delegate] window] addSubview:_bgView];
+//        _bgView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+//        [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
+//        }];
+//    }
+//    return _bgView;
+//}
 -(SDCycleScrollView *)advertiseView{
     if (!_advertiseView) {
         SDCycleScrollView *adview = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, ScreenW, HeaderImageHeight) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
