@@ -59,7 +59,7 @@ return _settingUpViewModel;\
 
 #define GKMenuTotalDatasListProperty  @property(strong, nonatomic) NSDictionary *menuTotalDatasList;
 //#define BUNDLE NSBundle *bundle = [NSBundle mainBundle];
-#define GKMenuTotalDatasList  NSBundle *bundle = [NSBundle mainBundle];self.menuTotalDatasList = [NSDictionary dictionaryWithContentsOfFile:[bundle pathForResource:@"MenuDatasList" ofType:@"plist"]];
+//#define GKMenuTotalDatasList  NSBundle *bundle = [NSBundle mainBundle];self.menuTotalDatasList = [NSDictionary dictionaryWithContentsOfFile:[bundle pathForResource:@"MenuDatasList" ofType:@"plist"]];
 
 
 

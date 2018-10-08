@@ -11,18 +11,10 @@
 #import "GKNavigationController.h"
 //#import "CYLTabBarControllerConfig.h"
 //#import "GKWatchPhotoViewController.h"
-#import <UMCommon/UMCommon.h>
-#import <UMAnalytics/MobClick.h>
-
-
+//#import <UMCommon/UMCommon.h>
+//#import <UMAnalytics/MobClick.h>
 #import "GKLoginViewController.h"
 #import "GKHomeViewController.h"
-
-
-
-
-
-
 
 
 @interface AppDelegate ()
@@ -40,17 +32,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    
-    
     [self autoLogin];
     [GKUserDefault removeObjectForKey:@"Connected"];
     [GKUserDefault synchronize];
     [self setIQKeybordManager];
     [self setSVprogressHUD];
-    [self KVONetworkChange];
-    [self setNotificationPush];
-    [self setUMeng];
+//    [self KVONetworkChange];
+//    [self setNotificationPush];
+//    [self setUMeng];
     [self addObserver];
     return YES;
 }
@@ -91,33 +80,32 @@
 }
 //设置友盟统计
 - (void)setUMeng{
-    [UMConfigure setLogEnabled:YES];
-    //    [UMConfigure initWithAppkey:@"5b4320e2b27b0a50d000001e" channel:@"TEST"];
-    [UMConfigure initWithAppkey:@"5bab5efdf1f5565349000131" channel:@"TEST"];
-    [MobClick setScenarioType:E_UM_DPLUS];
+//    [UMConfigure setLogEnabled:YES];
+//    [UMConfigure initWithAppkey:@"5bab5efdf1f5565349000131" channel:@"TEST"];
+//    [MobClick setScenarioType:E_UM_DPLUS];
 }
 //设置通知模式
 - (void)setNotificationPush{
-    UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-    //多次注册UIUserNotificationSettings会导致以前的设置被覆盖。
-    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+//    UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+//    //多次注册UIUserNotificationSettings会导致以前的设置被覆盖。
+//    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
 }
 //实时监控网络状态
 - (void)KVONetworkChange {
-    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        if (status == AFNetworkReachabilityStatusNotReachable) {
-            NSLog(@"没网");
-            [GKUserDefault setObject:@"0" forKey:@"NetworkStatus"];
-            [GKUserDefault synchronize];
-        }else{
-            [GKUserDefault setObject:@"1" forKey:@"NetworkStatus"];
-            [GKUserDefault synchronize];
-            NSLog(@"有网");
-        }
-    }];
-    
-    //监控网络状态，开启监听
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+//    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+//        if (status == AFNetworkReachabilityStatusNotReachable) {
+//            NSLog(@"没网");
+//            [GKUserDefault setObject:@"0" forKey:@"NetworkStatus"];
+//            [GKUserDefault synchronize];
+//        }else{
+//            [GKUserDefault setObject:@"1" forKey:@"NetworkStatus"];
+//            [GKUserDefault synchronize];
+//            NSLog(@"有网");
+//        }
+//    }];
+//
+//    //监控网络状态，开启监听
+//    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 }
 
 //- (void)customizeInterfaceWithTabBarController:(CYLTabBarController *)tabBarController {

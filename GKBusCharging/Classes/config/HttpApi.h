@@ -10,9 +10,9 @@
 #define HttpApi_h
 
 
-#define Base_Url @"http://www.mrwang90hou.top/Hotels_Server_new"
+//#define Base_Url @"http://www.mrwang90hou.top/Hotels_Server_new"
 /************************************App key******************************************/
-#define AppKey @"TheHotelReversationApplication"
+//#define AppKey @"TheHotelReversationApplication"
 
 
 
@@ -20,6 +20,7 @@
 
 
 /****************************  URL  ******************************/
+/*
 #define GKDOMAIN @"http://192.72.1.1"
 
 #define DEBUG_URL @"http://192.72.1.1/cgi-bin/Config.cgi"
@@ -87,9 +88,9 @@
 
 #define CHANGEPHPTORES GK_URL @"?action=set&property=Imageres&value="
 
+*/
 
 #endif
-
 
 /*
  总菜单
