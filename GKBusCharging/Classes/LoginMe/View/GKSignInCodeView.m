@@ -50,7 +50,7 @@
         phoneLabel.text = @"手机号登录";
         [phoneLabel setFont:[UIFont fontWithName:PFR size:24]];
         [phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(cancelButton.mas_bottom).with.offset(25);
+            make.top.mas_equalTo(cancelButton.mas_bottom).with.offset(15);
             make.left.equalTo(@15);
             make.height.mas_equalTo(20);
             make.width.mas_equalTo(150);
@@ -182,66 +182,11 @@
         [codeBtn setBackgroundImage:[UIImage imageNamed:@"btn_6_selected"] forState:UIControlStateDisabled];
         [codeBtn setBackgroundImage:[UIImage imageNamed:@"btn_6_normal"] forState:UIControlStateNormal];
         self.codeBtn = codeBtn;
-        
-//        UIView * pwdView = [UIView new];
-//        [self addSubview:pwdView];
-//        [pwdView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.right.top.bottom.equalTo(codeView);
-//        }];
-//        self.pwdView = pwdView;
-//        pwdView.hidden = YES;
-//
-//        UIView * pwdLineView = [UIView new];
-//        [pwdView addSubview:pwdLineView];
-//        [pwdLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.equalTo(pwdView).with.offset(15);
-//            make.right.equalTo(pwdView).with.offset(-15);
-//            make.bottom.mas_equalTo(pwdView).with.offset(-1);
-//            make.height.mas_equalTo(1);
-//        }];
-//        pwdLineView.backgroundColor = UIColorFromHex(0xF0F0F0);
-//
-//        UIImageView * pwdIconImageView = [UIImageView new];
-//        [pwdView addSubview:pwdIconImageView];
-//        [pwdIconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.mas_equalTo(pwdView).with.offset(FixWidthNumber(17.5));
-//            make.centerY.equalTo(pwdView);
-//            make.size.mas_equalTo(CGSizeMake(22, 22));
-//        }];
-//        pwdIconImageView.contentMode = UIViewContentModeScaleAspectFit;
-//        pwdIconImageView.image = [UIImage imageNamed:@"icon_password"];
-//
-//        UITextField * pwdTF = [UITextField new];
-//        [pwdView addSubview:pwdTF];
-//        [pwdTF mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.mas_equalTo(pwdIconImageView.mas_right).with.offset(12);
-//            make.right.mas_equalTo(pwdView).with.offset(-15);
-//            make.height.centerY.equalTo(pwdView);
-//        }];
-//        pwdTF.placeholder = @"请输入密码";
-//        pwdTF.clearButtonMode = UITextFieldViewModeWhileEditing;
-//        pwdTF.font = GKMediumFont(16);
-//        pwdTF.secureTextEntry = YES;
-//        self.pwdTF = pwdTF;
-//
-//        UIButton * forgotBtn = [UIButton new];
-//        [self addSubview:forgotBtn];
-//        [forgotBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.mas_equalTo(codeView.mas_bottom).with.offset(10);
-//            make.right.mas_equalTo(weakSelf).with.offset(-20);
-//            make.size.mas_equalTo(CGSizeMake(200, 20));
-//        }];
-//        forgotBtn.titleLabel.font = GKMediumFont(14);
-//        [forgotBtn setTitle:@"忘记密码" forState:UIControlStateNormal];
-//        [forgotBtn setTitleColor:UIColorFromHex(0x999999) forState:UIControlStateNormal];
-//        [forgotBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
-//        forgotBtn.hidden = YES;
-//        self.forgotBtn = forgotBtn;
-//
+       
         GKButton * nextBtn = [GKButton new];
         [self addSubview:nextBtn];
         [nextBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(codeView.mas_bottom).with.offset(44);
+            make.top.mas_equalTo(codeView.mas_bottom).with.offset(48);
             make.left.mas_equalTo(weakSelf).with.offset(20);
             make.right.mas_equalTo(weakSelf).with.offset(-20);
             make.height.mas_equalTo(44);
