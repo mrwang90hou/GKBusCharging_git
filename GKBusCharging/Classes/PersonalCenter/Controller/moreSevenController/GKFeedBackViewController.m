@@ -17,12 +17,12 @@
 #import "GKFeedBackRecordViewController.h"
 
 //#import "DCTabBarController.h"
-#import "DCRegisteredViewController.h"
+////#import "DCRegisteredViewController.h"
 // Models
 
 // Views
-#import "DCAccountPsdView.h" //账号密码登录
-#import "DCVerificationView.h" //验证码登录
+//#import "DCAccountPsdView.h" //账号密码登录
+////#import "DCVerificationView.h" //验证码登录
 #import "GKPersonalHeaderView.h"
 #import "GKCustomFlowLayout.h"
 #import "GKPersonalCell.h"
@@ -35,7 +35,7 @@
 #import "DCZuoWenRightButton.h"
 #import "DCLIRLButton.h"
 // Others
-#import "AFNetPackage.h"
+//#import "AFNetPackage.h"
 
 #define HeaderImageHeight ScreenW/2
 

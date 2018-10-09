@@ -12,14 +12,14 @@
 // Controllers
 #import "GKNavigationController.h"
 #import "GKHomeViewController.h"
-#import "DCRegisteredViewController.h"
+////#import "DCRegisteredViewController.h"
 
 #import "GKServiceTermsViewController.h"
 // Models
 
 // Views
-#import "GKAccountPsdByPhoneView.h" //账号密码登录
-#import "DCVerificationView.h" //验证码登录
+//#import "GKAccountPsdByPhoneView.h" //账号密码登录
+////#import "DCVerificationView.h" //验证码登录
 #import "GKSignInCodeView.h"
 // Vendors
 
@@ -38,10 +38,10 @@
 /* contentView */
 @property (strong , nonatomic)UIScrollView *contentView;
 
-/* 验证码 */
-@property (strong , nonatomic)DCVerificationView *verificationView;
-/* 账号密码登录 */
-@property (strong , nonatomic)GKAccountPsdByPhoneView *accountPsdView;
+///* 验证码 */
+//@property (strong , nonatomic)DCVerificationView *verificationView;
+///* 账号密码登录 */
+//@property (strong , nonatomic)GKAccountPsdByPhoneView *accountPsdView;
 
 
 @property (nonatomic,strong) UIView *loginByPhoneView;
@@ -163,6 +163,17 @@
 }
 
 
+- (IBAction)weChatLoginAction:(id)sender {
+    
+    [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
+}
+
+- (IBAction)aliPayLoginAction:(id)sender {
+    
+    [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
+}
+
+
 - (IBAction)loginByPhone:(UIButton *)sender {
     
 //    self.loginByPhoneView.hidden = true;
@@ -209,13 +220,6 @@
 //    [SVProgressHUD showInfoWithStatus:@"服务协议！"];
     [self.navigationController pushViewController:[GKServiceTermsViewController new] animated:YES];
 }
-
-
-
-
-
-
-
 
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

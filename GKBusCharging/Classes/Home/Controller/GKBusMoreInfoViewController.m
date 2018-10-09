@@ -17,7 +17,7 @@
 
 
 //#import "DCTabBarController.h"
-#import "DCRegisteredViewController.h"
+////#import "DCRegisteredViewController.h"
 // Models
 
 // Views
@@ -33,7 +33,7 @@
 #import "DCZuoWenRightButton.h"
 #import "DCLIRLButton.h"
 // Others
-#import "AFNetPackage.h"
+//#import "AFNetPackage.h"
 
 #define HeaderImageHeight ScreenW/2
 

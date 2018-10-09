@@ -21,15 +21,15 @@
 #import "GKBalanceViewController.h"
 #import "GKAboutUsViewController.h"
 #import "GKOrderManagementViewController.h"
-
+#import "GKUseingHelpViewController.h"
 
 //#import "DCTabBarController.h"
-#import "DCRegisteredViewController.h"
+////#import "DCRegisteredViewController.h"
 // Models
 
 // Views
-#import "DCAccountPsdView.h" //账号密码登录
-#import "DCVerificationView.h" //验证码登录
+ //#import "DCAccountPsdView.h" //账号密码登录
+//#import "DCVerificationView.h" //验证码登录
 #import "GKPersonalHeaderView.h"
 #import "GKCustomFlowLayout.h"
 #import "GKPersonalCell.h"
@@ -42,7 +42,7 @@
 #import "DCZuoWenRightButton.h"
 #import "DCLIRLButton.h"
 // Others
-#import "AFNetPackage.h"
+//#import "AFNetPackage.h"
 
 #define HeaderImageHeight ScreenW/2
 
@@ -340,7 +340,7 @@
             nextVC = [[GKOrderManagementViewController alloc] init];
             break;
         case 2://使用帮助
-            nextVC = [[GKBaseSetViewController alloc] init];
+            nextVC = [[GKUseingHelpViewController alloc] init];
             break;
         case 3://关于我们
             nextVC = [[GKAboutUsViewController alloc] init];
@@ -350,9 +350,13 @@
             //            break;
         case 4://更新APP
             nextVC = [[GKBaseSetViewController alloc] init];
+            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
+            return;
             break;
         case 5://紧急报警
             nextVC = [[GKBaseSetViewController alloc] init];
+            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
+            return;
             break;
         case 6://意见反馈
             nextVC = [[GKFeedBackViewController alloc] init];

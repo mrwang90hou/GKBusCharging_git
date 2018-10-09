@@ -1,9 +1,9 @@
 //
 //  GKBusInfoCell.h
-//  住哪儿
+//  GKBusCharging
 //
-//  Created by 杭城小刘 on 2016/12/27.
-//  Copyright © 2016年 geek. All rights reserved.
+//  Created by 王宁 on 2018/9/29.
+//  Copyright © 2018年 goockr. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

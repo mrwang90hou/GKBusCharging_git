@@ -11,7 +11,7 @@
 
 
 //#import "DCTabBarController.h"
-#import "DCRegisteredViewController.h"
+////#import "DCRegisteredViewController.h"
 // Models
 
 // Views
@@ -21,7 +21,7 @@
 // Categories
 
 // Others
-#import "AFNetPackage.h"
+//#import "AFNetPackage.h"
 
 #define HeaderImageHeight ScreenW/2
 

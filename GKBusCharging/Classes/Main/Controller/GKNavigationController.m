@@ -51,7 +51,7 @@
     [bar setTintColor:[UIColor darkGrayColor]];
     bar.translucent = YES; 
     [bar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    
+    [bar setBackgroundColor:[UIColor whiteColor]];
     NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
     // 设置导航栏字体颜色
     UIColor * naiColor = [UIColor blackColor];
@@ -59,6 +59,12 @@
     attributes[NSFontAttributeName] = PFR18Font;
     bar.titleTextAttributes = attributes;
     
+    //创建一个高20的假状态栏
+    UIView *statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, -K_HEIGHT_NAVBAR, ScreenW, K_HEIGHT_NAVBAR)];
+    //设置成绿色
+    statusBarView.backgroundColor=[UIColor whiteColor];
+    // 添加到 navigationBar 上
+    [bar addSubview:statusBarView];
 }
 
 - (void)setUp{

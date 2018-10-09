@@ -103,6 +103,9 @@
                         <constraint firstAttribute="width" constant="300" id="qxl-e9-Sii"/>
                     </constraints>
                     <state key="normal" title="微信登录" image="icon_wechat" backgroundImage="login_btn_wechat"/>
+                    <connections>
+                        <action selector="weChatLoginAction:" destination="-1" eventType="touchUpInside" id="4v0-7g-kI8"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DvC-Hi-uCg">
                     <rect key="frame" x="28" y="364" width="300" height="64"/>
@@ -111,6 +114,9 @@
                         <constraint firstAttribute="height" constant="64" id="gIB-1N-N61"/>
                     </constraints>
                     <state key="normal" title="支付宝登录" image="icon_alipay" backgroundImage="btn_btn_alipay"/>
+                    <connections>
+                        <action selector="aliPayLoginAction:" destination="-1" eventType="touchUpInside" id="0Sy-wQ-M0x"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="3" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZb-yl-bdm">
                     <rect key="frame" x="28" y="443" width="300" height="64"/>

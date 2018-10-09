@@ -368,7 +368,7 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [SVProgressHUD dismiss];
             [weakSelf makeToast:@"登录成功" duration:0.5 position:CSToastPositionCenter];
-            [weakSelf setUpUserBaseData];
+//            [weakSelf setUpUserBaseData];
             AppDelegate *app=(AppDelegate *)[UIApplication sharedApplication].delegate;
             [app autoLogin];
         });
@@ -401,22 +401,22 @@
 //    [SVProgressHUD showInfoWithStatus:@"关闭成功！"];
 //}
 #pragma mark - 设置初始数据
-- (void)setUpUserBaseData
-{
-    GKUserInfo *userInfo = UserInfoData;
-    if (userInfo.username.length == 0) { //userName为指定id不可改动用来判断是否有用户数据
-        GKUserInfo *userInfo = [[GKUserInfo alloc] init];
-        userInfo.nickname = @"RocketsChen";
-        userInfo.sex = @"男";
-        userInfo.birthDay = @"1996-02-10";
-        userInfo.userimage = @"icon";
-        userInfo.username = @"qq-w923740293";
-        userInfo.defaultAddress = @"中国 上海";
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{//异步保存
-            [userInfo saveOrUpdate];
-        });
-    }
-}
+//- (void)setUpUserBaseData
+//{
+//    GKUserInfo *userInfo = UserInfoData;
+//    if (userInfo.username.length == 0) { //userName为指定id不可改动用来判断是否有用户数据
+//        GKUserInfo *userInfo = [[GKUserInfo alloc] init];
+//        userInfo.nickname = @"RocketsChen";
+//        userInfo.sex = @"男";
+//        userInfo.birthDay = @"1996-02-10";
+//        userInfo.userimage = @"icon";
+//        userInfo.username = @"qq-w923740293";
+//        userInfo.defaultAddress = @"中国 上海";
+//        dispatch_async(dispatch_get_global_queue(0, 0), ^{//异步保存
+//            [userInfo saveOrUpdate];
+//        });
+//    }
+//}
 
 
 @end
