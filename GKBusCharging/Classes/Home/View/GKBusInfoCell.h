@@ -12,6 +12,7 @@
 //-(void)createCellWithDictionary:(NSDictionary *)dict withNoCommentFlag:(BOOL)flag;
 //@property (nonatomic, assign) BOOL hidden;
 
+@property (strong, nonatomic) IBOutlet UIView *myView;
 @property (weak, nonatomic) IBOutlet UIImageView *busImageLogo;
 @property (strong, nonatomic) IBOutlet UILabel *busLinesNumberLabel;
 

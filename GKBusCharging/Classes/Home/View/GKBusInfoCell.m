@@ -18,6 +18,10 @@
     [super setNeedsLayout];
 //    self.userImageV.layer.cornerRadius=self.userImageV.image.size.width/2;
 //    self.userImageV.image=[UIImage imageNamed:@"consult_doctor_icon"];
+    
+    UIColor *bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bus_information_bg"]];
+    [self.myView setBackgroundColor:bgColor];
+    
 }
 -(void)setHidden:(BOOL)hidden{
 //    _hidden = hidden;

@@ -74,8 +74,7 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 73;
-//    return 80;
+    return 100;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -85,10 +84,10 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
 }
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    GKBusMoreInfoViewController *vc = [[GKBusMoreInfoViewController alloc] init];
-    vc.title = @"信息详情";
-    [self.navigationController pushViewController:vc animated:YES];
+//    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    GKBusMoreInfoViewController *vc = [[GKBusMoreInfoViewController alloc] init];
+//    vc.title = @"信息详情";
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
