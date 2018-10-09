@@ -8,7 +8,7 @@
 
 
 #import "GKFeedBackRecordViewController.h"
-
+#import "GKFeedBackInfoViewController.h"
 
 //#import "DCTabBarController.h"
 ////#import "DCRegisteredViewController.h"
@@ -117,9 +117,11 @@
     // 3.设置数据
 //    cell.textLabel.text = [NSString stringWithFormat:@"%zd行的数据", indexPath.row];
     cell.textLabel.text = @"充电的时候出现了故障~";
+    [cell.textLabel setFont:GKFontAndFontName(@"Regular",14)];
 //    UITableViewCell *cell = [[UITableViewCell alloc]init];
     cell.detailTextLabel.text = @"2018/08/23 10:32:00";
     [cell.detailTextLabel setTextColor:TEXTGRAYCOLOR];
+    [cell.detailTextLabel setFont:GKFont(12)];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 //    cell.
     return cell;
@@ -128,8 +130,8 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    GKBaseSetViewController *vc = [GKBaseSetViewController new];
-    vc.title = @"反馈详情";
+    GKFeedBackInfoViewController *vc = [GKFeedBackInfoViewController new];
+//    vc.title = @"反馈详情";
     [self.navigationController pushViewController:vc animated:YES];
     
 }

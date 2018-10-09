@@ -301,12 +301,6 @@ static NSString *GKOrderCellID = @"GKOrderCell";
     self.endingBtn = endingBtn;
     
     
-    
-    
-    
-    
-    
-    
 //    self.textView = [[UITextView alloc]initWithFrame:CGRectMake(5,50,300,170)];
 //    self.textView = evaluationContentTF;
 //    self.textView.delegate = self;
