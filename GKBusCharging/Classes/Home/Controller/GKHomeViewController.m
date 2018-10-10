@@ -19,6 +19,7 @@
 #import "GKOrderManagementViewController.h"
 #import "GKOrderDetailsViewController.h"
 
+#import "GKStartChargingViewController.h"
 //#import "DCTabBarController.h"
 //#import "DCRegisteredViewController.h"
 // Models
@@ -90,7 +91,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self updataUI];
+//    [self addObserver];
     
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(qrCodeSuccessAction) name:@"QRCodeSuccess" object:nil];
 }
 
 - (void)viewDidLoad {
@@ -106,6 +109,7 @@
     [self getData];
     
     [self loadSubjectImage];
+    [self addObserver];
 }
 
 #pragma mark - 按钮点击
@@ -720,7 +724,6 @@
     [self.bgView addSubview:_priceEvaluationView];
     _priceEvaluationView.frame = CGRectMake(0, (ScreenH-K_HEIGHT_NAVBAR)/2+K_HEIGHT_NAVBAR, ScreenW, (ScreenH-K_HEIGHT_NAVBAR)/2);
 //    _priceEvaluationView.starIsChanged
-    [self addObserver];
     
 }
 
@@ -735,6 +738,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(starIsChangedAction) name:@"starIsChanged" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(close) name:@"close" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cheackDetailsAction) name:@"cheackDetails" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(qrCodeSuccessAction) name:@"QRCodeSuccess" object:nil];
 }
 
 - (void)starIsChangedAction{
@@ -763,6 +767,16 @@
 -(void)close{
     [self.bgView removeFromSuperview];
 }
+
+- (void)qrCodeSuccessAction{
+    [SVProgressHUD showWithStatus:@"正在跳转\n请稍后。。。"];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+        [self.navigationController pushViewController:[GKStartChargingViewController new] animated:YES];
+    });
+}
+
+
 
 
 -(NSMutableArray *)images{

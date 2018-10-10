@@ -116,9 +116,6 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
-    
-    
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{

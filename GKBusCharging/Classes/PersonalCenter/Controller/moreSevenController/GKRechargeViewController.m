@@ -9,6 +9,7 @@
 #import "GKRechargeViewController.h"
 #import "DCGMScanViewController.h"
 #import "GKRechargeStyleCell.h"
+#import "GKTopUpTermsViewController.h"
 
 static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
 
@@ -285,13 +286,14 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
 
 //扫码充电
 - (void)qrCodeBtnClick{
-    [SVProgressHUD showSuccessWithStatus:@"扫码充电！"];
-    DCGMScanViewController * popVC = [[DCGMScanViewController alloc]init];
+//    [SVProgressHUD showSuccessWithStatus:@"扫码充电！"];
+    DCGMScanViewController * popVC = [DCGMScanViewController new];
     [self.navigationController popToViewController:popVC animated:YES];
 }
 //充值协议
 - (void)getprotocolBtnClick{
-    [SVProgressHUD showSuccessWithStatus:@"《充值协议》"];
+//    [SVProgressHUD showSuccessWithStatus:@"《充值协议》"];
+    [self.navigationController pushViewController:[GKTopUpTermsViewController new] animated:YES];
 }
 //立即充值
 - (void)rechargeNowBtnClick{

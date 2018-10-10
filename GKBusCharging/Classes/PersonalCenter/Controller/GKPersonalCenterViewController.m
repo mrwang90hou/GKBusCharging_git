@@ -23,6 +23,7 @@
 #import "GKOrderManagementViewController.h"
 #import "GKUseingHelpViewController.h"
 
+#import "GKStartChargingViewController.h"
 //#import "DCTabBarController.h"
 ////#import "DCRegisteredViewController.h"
 // Models
@@ -354,9 +355,10 @@
             return;
             break;
         case 5://紧急报警
-            nextVC = [[GKBaseSetViewController alloc] init];
-            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
-            return;
+            nextVC = [[GKStartChargingViewController alloc] init];
+//            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
+            [SVProgressHUD showErrorWithStatus:@"暂用于GKStartChargingViewController测试页面！"];
+//            return;
             break;
         case 6://意见反馈
             nextVC = [[GKFeedBackViewController alloc] init];
