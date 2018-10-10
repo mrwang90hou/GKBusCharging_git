@@ -10,170 +10,113 @@
 #define HttpApi_h
 
 
-//#define Base_Url @"http://www.mrwang90hou.top/Hotels_Server_new"
-/************************************App key******************************************/
-//#define AppKey @"TheHotelReversationApplication"
+#define GKMAIN_URL @"https://www.zgzzwl.com.cn"
+#define GKMAIN_URL_TEST @"http://allenryosuke.nat300.top"
 
+//正式发布时需要改成1
+#define RELEASEtoAPPSTORE 0
 
-
-
-
-
-/****************************  URL  ******************************/
-/*
-#define GKDOMAIN @"http://192.72.1.1"
-
-#define DEBUG_URL @"http://192.72.1.1/cgi-bin/Config.cgi"
-#define APPSTORE_URL @"http://192.72.1.1/cgi-bin/Config.cgi"
-
-#warning ----生成iPA时需要改成1
-#define DEBUG_MODE 1
-
-#if DEBUG_MODE
+#if RELEASEtoAPPSTORE
 // 1 = YES
-#define GK_URL DEBUG_URL
+#define GK_URL GKMAIN_URL
 #else
 // 0 = NO
-#define GK_URL APPSTORE_URL
+#define GK_URL GKMAIN_URL_TEST
 #endif
 
-//模糊视频
-#define NOTHIGHDEFINITION @"rtsp://192.72.1.1/liveRTSP/av1"
 
-//高清视频
-#define HIGHDEFINITION @"rtsp://192.72.1.1/liveRTSP/av2"
+//private static String phone; //手机号码
+//private static String code; //验证码
+//private static String type = "3"; //类型码 暂时固定值
+//#define key = "";
+//private static String cookid;
+//public static String cabid;
 
-//向上翻转-
-#define UPWARD GK_URL @"?action=set&property=UpsideDown&value=Normal"
-//向下翻转-
-#define DOWNWARD GK_URL @"?action=set&property=UpsideDown&value=Upsidedown"
-//开始录像-
-#define STARTTHEVIDEO GK_URL @"?action=set&property=Video&value=record_start"
-//停止录像-
-#define STOPTHEVIDEO GK_URL @"?action=set&property=Video&value=record_stop"
-//列出照片-
-#define LISTPHOTOS GK_URL @"?action=dir&property=Photo&format=all&count=88&from=0"
-//列出录像文件-
-#define LISTVIDEOFILES GK_URL @"?action=dir&property=Normal&format=all&count=16&from=0"
-//获取录像分辨率-
-#define GETVIDEORESOLUTION GK_URL @"?action=get&property=Camera.Menu.VideoRes"
-//获取照相分辨率-
-#define GETPHOTORESOLUTION GK_URL @"?action=get&property=Camera.Menu.ImageRes"
-//获取当前录像时长-
-#define GETSTHECURRENTVIDEODURATION GK_URL @"?action=get&property=Camera.Record.Total"
-//获取WiFi ssid和密码-
-#define GETWIFI GK_URL @"?action=get&property=Net.WIFI_AP.SSID&property=Net.WIFI_AP.CryptoKey"
-//设置WiFi ssid和密码-
-#define SETWIFI GK_URL @"?action=set&property=Net.WIFI_AP.SSID&value=Neekin8830&property=Net.WIFI_AP.CryptoKey&value=1234567890
-//查看菜单-
-#define SEETHEMENU GK_URL @"?action=get&property=Camera.Menu.*"
-//设定拍照模式-
-#define SETPHOTOMODE GK_URL @"?action=set&property=UIMode&value=CAMERA"
-//拍照
-#define TAKEPHOTO GK_URL @"?action=set&property=Video&value=capture"
-//设定录像模式-
-#define SETVIDEOMODE GK_URL @"?action=set&property=UIMode&value=VIDEO"
-//格式化SD卡1
-#define DELETESDONE GK_URL @"?action=set&property=SD0&value=preformat"
-//格式化SD卡2
-#define DELETESDTWO GK_URL @"?action=set&property=SD0&value=format"
+#define PhoneTypeID @"4"  //类型码 暂时固定值
 
-//删除照片/视频
+//短信发送
+#define SENDMessageURL GK_URL @"/charge/smallrount/sendcode";
+//账号登录
+#define LOGINAccountURL GK_URL @"/charge/app/register";
+//#define qrCodeURL GKMAIN_URL @"/charge/app/register";
 
-//#define DELETEPHOTOS GK_URL @"?action=del&property=SD/Photo/NK_P20180820_173212_0_8.JPG"
-#define DELETEPHOTOS GK_URL @"?action=del&property="
-#define DELETEVIDEO GK_URL @"?action=del&property=SD/Normal/NK_D20180820_173338_1440.MP4"
+//扫码进入充电页
+#define SMCDURL GK_URL @"/charge/smallrount/scan";
+//#define saomachongdianURL GKMAIN_URL @"/charge/smallrount/scan";
+//#define userId = "";
+//#define socketId = "";
+//用于做扫码判定,没有这个请求头认为不是充电宝
+#define SMPDURL GKMAIN_URL @"/";
 
-////////////////////////////////////////
+//客户端数据推送
+#define WebSocketURL = "ws://allenryosuke.nat300.top/charge/wsk";
+//#define webSocketURL = "ws://www.zgzzwl.com.cn/charge/wsk";
 
-#define CHANGEPHPTORES GK_URL @"?action=set&property=Imageres&value="
+//租借充电线
+#define RENTChargingLineURL GK_URL @"/charge/smallrount/lend";
+//#define zjcdxURL GKMAIN_URL @"/charge/smallrount/lend";
 
-*/
+//归还充电线
+#define RETURNChargingLineURL GK_URL @"/charge/smallrount/back2";
+//#define ghcdxURL GKMAIN_URL @"/charge/smallrount/back2";
+
+//续租充电线
+#define RENTChargingLineAgainURL GK_URL @"/charge/smallrount/rent";
+//#define xzcdxURL GKMAIN_URL @"/charge/smallrount/rent";
+
+//查询充电状态
+#define CXChargingLineStatusURL GK_URL @"/charge/smallrount/havenlend";
+//#define cxcdURL GKMAIN_URL @"/charge/smallrount/havenlend";
+
+//查询用户账单列表
+#define CXUserBillListURL GK_URL @"/charge/smallrount/not_order_list";
+//#define yhzdListURL GKMAIN_URL @"/charge/smallrount/not_order_list";
+
+//查询用户账单详细
+#define CXUserBillDetailURL GK_URL @"/charge/smallrount/getdetail";
+//#define yhzdqxURL GKMAIN_URL @"/charge/smallrount/getdetail";
+
+//获取个人信息
+#define GETPersonalInfoURL GK_URL @"/charge/smallrount/info";
+//#define grxxURL GKMAIN_URL @"/charge/smallrount/info";
+
+//上传故障信息
+#define UPLOADFaultInfoURL GK_URL @"/charge/smallrount/newspaper";
+//#define schzURL GKMAIN_URL @"/charge/smallrount/newspaper";
+
+//获取故障列表
+#define GETFaultListURL GK_URL @"/charge/smallrount/getworrylist";
+//#define gzListURL GKMAIN_URL @"/charge/smallrount/getworrylist";
+
+//获取故障详细信息
+#define GETFaultDetailInfo GK_URL @"/charge/smallrount/getworryinfo";
+//#define gzqxURL GKMAIN_URL @"/charge/smallrount/getworryinfo";
+
+//获取公交车列表
+#define GetBusListURL GK_URL @"/charge/smallrount/bus/bus_list";
+//#define busListURL GKMAIN_URL @"/charge/bus/bus_list";
+
+//获取评价订单
+#define GETEvaluateOrderURL GK_URL @"/charge/smallrount/bus/detail";
+//#define pjddUrl1 GKMAIN_URL @"/charge/bus/bus_detail";
+
+//获取评价订单2
+#define GETEvaluateOrderURL2 GK_URL @"/charge/smallrount/bus/detail2";
+//#define pjddUrl2 GKMAIN_URL @"/charge/bus/bus_detail2";
+
+//订单评价
+#define OrderEvaluateURL GK_URL @"/charge/smallrount/bus/comments";
+//#define ddpjURL GKMAIN_URL @"/charge/bus/comments";
+
+//获取城市列表
+//#define cityListURL GKMAIN_URL @"/charge/bus/location_list";
+#define CityListURL GK_URL @"/charge/smallrount/bus/location _list";
+
+//获取支付下单信息
+//#define wxpayURL GKMAIN_URL @"/charge/pay_order";
+#define GETPayInfoURL GK_URL @"/charge/smallrount/pay_order";
+
+//上传个人头像名字
+#define UPLOADPersonalHeaderImageURL GK_URL @"/charge/app/updateinfo";
 
 #endif
-
-/*
- 总菜单
- action=get&property=Camera.Menu.*
- 【录像】
-         录音与不录音
-         action=set&property=SoundIndicator&value=OFF
-         action=set&property=SoundIndicator&value=ON
- 
-         开机自动录像
-         action=set&property=Q-SHOT&value=ON
-         action=set&property=Q-SHOT&value=OFF
- 
-         碰撞触发灵敏度
-         action=set&property=Camera.Menu.GsensorLockLevel&value=0
-         action=set&property=Camera.Menu.GsensorLockLevel&value=1
-         action=set&property=Camera.Menu.GsensorLockLevel&value=2
-         action=set&property=Camera.Menu.GsensorLockLevel&value=3
- 
-         循环录像
-         action=set&property=VideoClipTime&value=1MIN
-         action=set&property=VideoClipTime&value=3MIN
-         action=set&property=VideoClipTime&value=5MIN
- 
- 【拍照】
-         拍照分辨率
-         action=set&property=Imageres&value=8MP
-         action=set&property=Imageres&value=5MP
-         action=set&property=Imageres&value=3MP
- 
-         连拍
-         action=set&property=PhotoBurst&value=3_1SEC
-         action=set&property=PhotoBurst&value=5_1SEC
- 
-         时间水印
-         action=set&property=Camera.Menu.LogoTimeStamp&value=1
-         action=set&property=Camera.Menu.LogoTimeStamp&value=0
- 
- 【通用设置】
-         关机延时录像
-         action=set&property=PowerOffDelay&value=5SEC
-         action=set&property=PowerOffDelay&value=30SEC
-         action=set&property=PowerOffDelay&value=60SEC
- 
-         停车监控
-         action=set&property=Camera.Menu.ParkGsensorLevel&value=0
-         action=set&property=Camera.Menu.ParkGsensorLevel&value=1
-         action=set&property=Camera.Menu.ParkGsensorLevel&value=2
-         action=set&property=Camera.Menu.ParkGsensorLevel&value=3
- 
-         闪烁频率
-         action=set&property=Flicker&value=50Hz
-         action=set&property=Flicker&value=60Hz
- 
-         高动态
-         action=set&property=HDR&value=ON
-         action=set&property=HDR&value=OFF
- 
- 【设备】
-         SD格式化
-         action=set&property=SD0&value=preformat
-         上条指令得到回复后等2秒，再发
-         action=set&property=SD0&value=format
- 
-         同步记录仪时间
-         action=set&property=TimeSettings&value=2018$08$20$10$21$30
- 
-         恢复出厂设置
-         action=set&property=FactoryReset&value=Camera
- 
- 
- 
- 【主页面操作按钮】
-         启停录像
-         action=set&property=Video&value=record_stop
-         action=set&property=Video&value=record_start
- 
-         拍照
-         action=set&property=Video&value=capture
- 
-         拍照模式
-         action=set&property=UIMode&value=CAMERA
- 
-         录像模式
-         action=set&property=UIMode&value=VIDEO
- */
