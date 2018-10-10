@@ -7,15 +7,15 @@
 //
 
 #import "GKMeViewController.h"
-#import "GKMeDetailController.h"
-#import "GKLoginController.h"
+//#import "GKMeDetailController.h"
 #import "GKChangeNameController.h"
+#import "GKBindingPhoneController.h"
+#import "GKChangeIPhoneController.h"
 
 #import "AppDelegate.h"
 
 #import "GKMeCell.h"
 #import "GKMeHeaderView.h"
-#import "GKDetailCell.h"
 
 //@interface GKMeViewController ()<UITableViewDelegate,UITableViewDataSource>
 @interface GKMeViewController ()<UITableViewDataSource>
@@ -61,6 +61,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人中心";
+//    [SVProgressHUD showInfoWithStatus:@"验证码发送成功"];
     self.view.backgroundColor = TABLEVIEW_BG;
     [self getData];
     [self getUI];
@@ -90,7 +91,7 @@
     }else{
         [self.headerView.nameLabel setText:@"昵称"];
     }
-    [SVProgressHUD showInfoWithStatus:[DCObjManager dc_readUserDataForKey:@"UserName"]];
+//    [SVProgressHUD showInfoWithStatus:[DCObjManager dc_readUserDataForKey:@"UserName"]];
 }
 
 
@@ -122,11 +123,11 @@
 - (void)loginBtnClick{
 //    self.isNeedNav = NO;
 //    self.isNeedNav = YES;
-    [self.navigationController pushViewController:[GKLoginController new] animated:YES];
+//    [self.navigationController pushViewController:[GKLoginController new] animated:YES];
 }
 - (void)getData{
     _statusArray = [[NSMutableArray alloc]init];
-    NSArray *arr = @[@0,@1,@0];
+    NSArray *arr = @[@1,@1,@0];
 //    _statusArray = [NSMutableArray arrayWithCapacity:arr];
     
 //    _statusArray = [arr mutableCopy];
@@ -166,9 +167,9 @@
         
         cell.textLabel.text = cell.desLabel.text;
         cell.detailTextLabel.text = [_statusArray objectAtIndex: indexPath.row];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.accessoryType = [[_statusArray objectAtIndex:indexPath.row] length]==4 ? UITableViewCellAccessoryDisclosureIndicator:UITableViewCellAccessoryNone;
-        cell.userInteractionEnabled = [[_statusArray objectAtIndex:indexPath.row] length]==4 ? YES:NO;
+//        cell.userInteractionEnabled = [[_statusArray objectAtIndex:indexPath.row] length]==4 ? YES:NO;
 //        cell.accessoryType = UITableViewCellAccessoryNone;
 //        cell.detailTextLabel.text = @"wangning";
 //        cell.textLabel.text = @"textLabel";
@@ -221,14 +222,30 @@
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
-                [self.navigationController pushViewController:[GKMeDetailController new] animated:YES];
+                if ([[_statusArray objectAtIndex:indexPath.row] length] == 4) {
+                    //立即绑定
+                     [self.navigationController pushViewController:[GKBindingPhoneController new] animated:YES];
+                }else{
+                    //更换手机号
+                     [self.navigationController pushViewController:[GKChangeIPhoneController new] animated:YES];
+                }
+                
+                [[_statusArray objectAtIndex:indexPath.row] length]==4 ? UITableViewCellAccessoryDisclosureIndicator:UITableViewCellAccessoryNone;
                 break;
             case 1:
                 
                 break;
             case 2://弹窗
 //                self.indexPath = indexPath.row;
-                [self initAlertView];
+                if ([[_statusArray objectAtIndex:indexPath.row] length] == 4) {
+                    //立即绑定
+                    [self initAlertView];
+//                    [self.navigationController pushViewController:[GKBindingPhoneController new] animated:YES];
+                }else{
+                    //解除绑定
+                    [self initAlertView2];
+//                    [self.navigationController pushViewController:[GKChangeIPhoneController new] animated:YES];
+                }
             case 3:
                 break;
             case 4:
@@ -266,8 +283,19 @@
 -(void)initAlertView{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否跳转进行绑定?" preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *logoutAction     = [UIAlertAction actionWithTitle:@"确认" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
-        //清除缓存操作
-        [self clearCacheAction];
+        //绑定操作
+        [self bindingAction];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
+    [alert addAction:logoutAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+-(void)initAlertView2{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否确认解除绑定?" preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *logoutAction     = [UIAlertAction actionWithTitle:@"确认" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        //解除绑定操作
+        [self clearBindingAction];
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
     [alert addAction:logoutAction];
@@ -276,9 +304,9 @@
 }
 #pragma mark -绑定操作
 /**
- *执行清除缓存操作
+ *绑定操作
  */
--(void)clearCacheAction{
+-(void)bindingAction{
     [SVProgressHUD showSuccessWithStatus:@"正在绑定。。。"];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [SVProgressHUD dismiss];
@@ -290,6 +318,26 @@
         cell.userInteractionEnabled = NO;
     });
 }
+/**
+ *解除绑定操作
+ */
+-(void)clearBindingAction{
+    [SVProgressHUD showSuccessWithStatus:@"正在解除绑定。。。"];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showSuccessWithStatus:@"解绑成功"];
+        GKMeCell *cell = [self.tableView cellForRowAtIndexPath:self.nsIndexPath];
+        //        cell.textLabel.text = @"绑定成功";
+        [self.statusArray replaceObjectAtIndex:self.nsIndexPath.row withObject:@"立即绑定"];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.userInteractionEnabled = NO;
+    });
+}
+
+
+
+
+
 #pragma mark -(注销)退出登录操作
 - (void)logoutBtnClick{
     UIAlertController *alert    = [UIAlertController alertControllerWithTitle:@"确认退出?" message:@"退出登录将无法查看个人信息,重新登录后即可查看" preferredStyle:(UIAlertControllerStyleAlert)];
