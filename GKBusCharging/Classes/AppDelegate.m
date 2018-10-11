@@ -59,12 +59,14 @@
 - (void) autoLogin{
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+    
     //隐藏状态栏
     //[[UIApplication sharedApplication] setStatusBarHidden:YES];
     // 判断是打钩，自动登录
     //    GFUserVo *mUserVo = [GFUserDao readUserInfo];
     GKNavigationController *navigationController = [[GKNavigationController alloc]init];
-        NSLog(@"[[DCObjManager dc_readUserDataForKey:@'isLogin'] = %@",[DCObjManager dc_readUserDataForKey:@"isLogin"]);
+     /*
+//        NSLog(@"[[DCObjManager dc_readUserDataForKey:@'isLogin'] = %@",[DCObjManager dc_readUserDataForKey:@"isLogin"]);
     //     [SVProgressHUD showSuccessWithStatus:@"缓存登录成功！"];
     if (![[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
         //    if (mUserVo.isLogin) {
@@ -75,9 +77,17 @@
 //        [SVProgressHUD showSuccessWithStatus:@"缓存登录成功！"];
         navigationController = [[GKNavigationController alloc]initWithRootViewController:[[GKHomeViewController alloc]init]];
     }
+    
+    
+    *///取消初始登录判断，改为功能点击时再行判断
+    navigationController = [[GKNavigationController alloc]initWithRootViewController:[[GKHomeViewController alloc]init]];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
 }
+
+
+
+
 //设置友盟统计
 - (void)setUMeng{
 //    [UMConfigure setLogEnabled:YES];

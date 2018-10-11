@@ -7,33 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B2BF7D0216B5FF900A8FE20 /* UIScrollView+STAutoHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2BF7CD216B5FF900A8FE20 /* UIScrollView+STAutoHeight.m */; };
+		0B2BF7D1216B5FF900A8FE20 /* UITextView+STAutoHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2BF7CF216B5FF900A8FE20 /* UITextView+STAutoHeight.m */; };
+		0B2BF7D4216B605C00A8FE20 /* GKUseingHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2BF7D3216B605B00A8FE20 /* GKUseingHelpViewController.m */; };
+		0B2BF7DC216B60A500A8FE20 /* DDCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2BF7D9216B60A500A8FE20 /* DDCellModel.m */; };
+		0B2BF7DD216B60A500A8FE20 /* DDSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2BF7DB216B60A500A8FE20 /* DDSectionModel.m */; };
+		0B2BF7E0216B60AC00A8FE20 /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2BF7DE216B60AC00A8FE20 /* UIColor+Extension.m */; };
+		0B2BF7E5216B60C100A8FE20 /* DDTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2BF7E2216B60C100A8FE20 /* DDTableViewHeader.m */; };
+		0B2BF7E6216B60C100A8FE20 /* MoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2BF7E3216B60C100A8FE20 /* MoreTableViewCell.m */; };
+		0B2BF7E8216B62E500A8FE20 /* GKUseingHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BF7E7216B61A300A8FE20 /* GKUseingHelpViewController.xib */; };
+		0B2BF7EA216B637100A8FE20 /* UseingHelperList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BF7E9216B637100A8FE20 /* UseingHelperList.plist */; };
 		0B462E0E215F18B700AE451F /* GKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B462E0D215F18B700AE451F /* GKLoginViewController.m */; };
 		0B462E10215F280700AE451F /* GKLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B462E0F215F18F100AE451F /* GKLoginViewController.xib */; };
-		0B462E16215F4C8B00AE451F /* DCAccountPsdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B462E13215F4C8B00AE451F /* DCAccountPsdView.xib */; };
-		0B462E17215F4C8B00AE451F /* DCAccountPsdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B462E15215F4C8B00AE451F /* DCAccountPsdView.m */; };
 		0B462E1D215F4DFA00AE451F /* GKSignInCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B462E1C215F4DFA00AE451F /* GKSignInCodeView.m */; };
 		0B462E38215F8AC100AE451F /* GKBusInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B462E37215F8AC100AE451F /* GKBusInfoListViewController.m */; };
 		0B4B1121215B974500056DD6 /* GKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B1120215B974500056DD6 /* GKHomeViewController.m */; };
 		0B4BE58E2160C1290043CB30 /* GKBusMoreInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE58C2160C1280043CB30 /* GKBusMoreInfoViewController.m */; };
-		0B4BE5AA2160C99E0043CB30 /* GKCheckCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5952160C9990043CB30 /* GKCheckCodeCell.m */; };
-		0B4BE5AB2160C99E0043CB30 /* GKDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5962160C9990043CB30 /* GKDetailCell.m */; };
-		0B4BE5AC2160C99E0043CB30 /* GKIconCellCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5982160C9990043CB30 /* GKIconCellCell.m */; };
 		0B4BE5AD2160C99E0043CB30 /* GKMeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5992160C99A0043CB30 /* GKMeCell.m */; };
-		0B4BE5AE2160C99E0043CB30 /* GKTFCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE59D2160C99B0043CB30 /* GKTFCell.m */; };
-		0B4BE5AF2160C99E0043CB30 /* GKSignUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE59F2160C99B0043CB30 /* GKSignUpView.m */; };
-		0B4BE5B12160C99E0043CB30 /* GKForgotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5A42160C99C0043CB30 /* GKForgotView.m */; };
+		0B4BE5AF2160C99E0043CB30 /* GKBindingPhoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE59F2160C99B0043CB30 /* GKBindingPhoneView.m */; };
 		0B4BE5B22160C99E0043CB30 /* GKMeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5A52160C99D0043CB30 /* GKMeHeaderView.m */; };
-		0B4BE5B32160C99E0043CB30 /* GKCountrySelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5A62160C99D0043CB30 /* GKCountrySelectCell.m */; };
-		0B4BE5B42160C99E0043CB30 /* GKSetPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5A82160C99D0043CB30 /* GKSetPasswordView.m */; };
 		0B4BE5CB2160C9AC0043CB30 /* GKChangeNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5B72160C9A70043CB30 /* GKChangeNameController.m */; };
-		0B4BE5CC2160C9AC0043CB30 /* GKLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5B92160C9A80043CB30 /* GKLoginController.m */; };
-		0B4BE5CD2160C9AC0043CB30 /* GKForgotController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5BA2160C9A80043CB30 /* GKForgotController.m */; };
-		0B4BE5CE2160C9AC0043CB30 /* GKCheckOldPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5BB2160C9A80043CB30 /* GKCheckOldPhoneController.m */; };
-		0B4BE5CF2160C9AC0043CB30 /* GKChangePhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5BC2160C9A90043CB30 /* GKChangePhoneController.m */; };
-		0B4BE5D12160C9AC0043CB30 /* GKChangePassWordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5C22160C9AA0043CB30 /* GKChangePassWordController.m */; };
 		0B4BE5D22160C9AC0043CB30 /* GKBindingPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5C52160C9AB0043CB30 /* GKBindingPhoneController.m */; };
-		0B4BE5D32160C9AC0043CB30 /* GKMeDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5C62160C9AB0043CB30 /* GKMeDetailController.m */; };
-		0B4BE5D42160C9AC0043CB30 /* GKSetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5C72160C9AB0043CB30 /* GKSetPasswordController.m */; };
 		0B4BE5D52160C9AC0043CB30 /* GKMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BE5C82160C9AB0043CB30 /* GKMeViewController.m */; };
 		0B70D29321605F8C00C77DFE /* GKBusInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B70D29121605F8B00C77DFE /* GKBusInfoCell.m */; };
 		0B70D29421605F8C00C77DFE /* GKBusInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B70D29221605F8C00C77DFE /* GKBusInfoCell.xib */; };
@@ -160,32 +154,76 @@
 		0B9CF47F215B8F4B00F76671 /* GKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF472215B8F4B00F76671 /* GKNavigationController.m */; };
 		0B9CF481215B8F4B00F76671 /* GKAppVersionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF477215B8F4B00F76671 /* GKAppVersionTool.m */; };
 		0B9CF482215B8F4B00F76671 /* GKUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF47A215B8F4B00F76671 /* GKUserInfo.m */; };
-		0B9CF483215B8F4B00F76671 /* GKTabBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF47D215B8F4B00F76671 /* GKTabBadgeView.m */; };
-		0B9CF492215B917F00F76671 /* DCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF487215B917F00F76671 /* DCLoginViewController.m */; };
-		0B9CF493215B917F00F76671 /* DCLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B9CF488215B917F00F76671 /* DCLoginViewController.xib */; };
-		0B9CF494215B917F00F76671 /* DCRegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF48A215B917F00F76671 /* DCRegisteredViewController.m */; };
-		0B9CF495215B917F00F76671 /* GKAccountPsdByPhoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF48D215B917F00F76671 /* GKAccountPsdByPhoneView.m */; };
-		0B9CF496215B917F00F76671 /* GKAccountPsdByPhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B9CF48E215B917F00F76671 /* GKAccountPsdByPhoneView.xib */; };
-		0B9CF497215B917F00F76671 /* DCVerificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF490215B917F00F76671 /* DCVerificationView.m */; };
-		0B9CF498215B917F00F76671 /* DCVerificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B9CF491215B917F00F76671 /* DCVerificationView.xib */; };
 		0B9CF49E215B91C600F76671 /* DCConsts.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF49B215B91C600F76671 /* DCConsts.m */; };
 		0B9CF49F215B91C600F76671 /* DCNotificationCenterName.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF49D215B91C600F76671 /* DCNotificationCenterName.m */; };
-		0BABC039215DCA650085CAC3 /* AFNetPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC038215DCA650085CAC3 /* AFNetPackage.m */; };
 		0BABC03D215DFDA10085CAC3 /* GKPersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC03C215DFDA10085CAC3 /* GKPersonalCenterViewController.m */; };
 		0BABC042215E00C00085CAC3 /* GKPersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC041215E00C00085CAC3 /* GKPersonalCell.m */; };
 		0BABC045215E01010085CAC3 /* GKPersonalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC044215E01010085CAC3 /* GKPersonalHeaderView.m */; };
 		0BABC048215E14FE0085CAC3 /* GKCustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC047215E14FE0085CAC3 /* GKCustomFlowLayout.m */; };
+		0BBD83F8216EF19400B47EC3 /* GKFeedBackInfo2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD83F7216EF19400B47EC3 /* GKFeedBackInfo2ViewController.m */; };
+		0BBD83FB216EFAB900B47EC3 /* AFNetPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD83F9216EFAB800B47EC3 /* AFNetPackage.m */; };
+		0BBD8404216EFB2100B47EC3 /* GCHttpDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD83FE216EFB2100B47EC3 /* GCHttpDataTool.m */; };
+		0BBD8405216EFB2100B47EC3 /* GCHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD8400216EFB2100B47EC3 /* GCHttpTool.m */; };
+		0BBD8406216EFB2100B47EC3 /* MQError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD8403216EFB2100B47EC3 /* MQError.m */; };
+		0BC4047C216DA1D200EFC9AC /* GKStartChargingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4047B216DA1D200EFC9AC /* GKStartChargingViewController.m */; };
+		0BC4047D216DCB6900EFC9AC /* GKStartChargingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BC40479216DA1D200EFC9AC /* GKStartChargingViewController.xib */; };
+		0BC40480216DF61800EFC9AC /* GKTopUpTermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4047F216DF61800EFC9AC /* GKTopUpTermsViewController.m */; };
+		0BFCB2F6216B24F400B0EFD3 /* GKRechargeStyleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFCB2F3216B24F400B0EFD3 /* GKRechargeStyleCell.m */; };
+		0BFCB2F7216B24F400B0EFD3 /* GKRechargeStyleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BFCB2F5216B24F400B0EFD3 /* GKRechargeStyleCell.xib */; };
+		0BFCB2FB216B251400B0EFD3 /* GKPriceEvaluationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BFCB2F8216B251300B0EFD3 /* GKPriceEvaluationView.xib */; };
+		0BFCB2FC216B251400B0EFD3 /* GKPriceEvaluationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFCB2F9216B251300B0EFD3 /* GKPriceEvaluationView.m */; };
+		0BFCB300216B309500B0EFD3 /* GKStarAndLabellingEvaluationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFCB2FF216B309500B0EFD3 /* GKStarAndLabellingEvaluationView.m */; };
+		0BFCB301216B3CC700B0EFD3 /* GKStarAndLabellingEvaluationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BFCB2FE216B309500B0EFD3 /* GKStarAndLabellingEvaluationView.xib */; };
+		0BFE23DF216C868300C9F915 /* GKFeedBackInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFE23DC216C868300C9F915 /* GKFeedBackInfoViewController.m */; };
+		0BFE23E0216C8EE300C9F915 /* GKFeedBackInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BFE23DD216C868300C9F915 /* GKFeedBackInfoViewController.xib */; };
+		0BFE23E7216C9CC600C9F915 /* GKFeedBackInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFE23E5216C9CC600C9F915 /* GKFeedBackInfoCell.m */; };
+		0BFE23E8216C9F4F00C9F915 /* GKFeedBackInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BFE23E6216C9CC600C9F915 /* GKFeedBackInfoCell.xib */; };
+		9211939B2168C25B001DEC72 /* GKServiceTermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9211939A2168C25B001DEC72 /* GKServiceTermsViewController.m */; };
+		9211939F2168CABF001DEC72 /* GKAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9211939C2168CABE001DEC72 /* GKAboutUsViewController.m */; };
+		9211AA182168F28F00502624 /* GKAboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9211939D2168CABF001DEC72 /* GKAboutUsViewController.xib */; };
+		9239A748216A91F20060A389 /* GKFeedBackRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9239A747216A91F10060A389 /* GKFeedBackRecordViewController.m */; };
+		9239A74A216A93810060A389 /* GKFeedBackRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9239A749216A93810060A389 /* GKFeedBackRecordViewController.xib */; };
 		923AC63A215E8EA40016CD1C /* GKFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 923AC639215E8EA40016CD1C /* GKFeedBackViewController.m */; };
 		923AC63C215E93680016CD1C /* FeedBackMenu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 923AC63B215E924E0016CD1C /* FeedBackMenu.plist */; };
+		926664722168B16900CEC548 /* RechargeStyle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92FB06D2216722510001D38B /* RechargeStyle.plist */; };
+		9275D2482169D9CF0004DBFE /* GKOrderManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9275D2462169D9CE0004DBFE /* GKOrderManagementViewController.m */; };
+		9275D24C2169DAC40004DBFE /* GKOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9275D2492169DAC30004DBFE /* GKOrderCell.m */; };
+		9275D24D2169DB960004DBFE /* GKOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9275D24A2169DAC30004DBFE /* GKOrderCell.xib */; };
+		9275D250216A11630004DBFE /* GKOrderRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9275D24F216A11630004DBFE /* GKOrderRateViewController.m */; };
+		92AAF4ED216A7E0D003559BD /* GKOrderDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AAF4EA216A7E0C003559BD /* GKOrderDetailsViewController.m */; };
+		92AAF4EE216A7E64003559BD /* GKOrderDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92AAF4EB216A7E0C003559BD /* GKOrderDetailsViewController.xib */; };
+		92DE867E216A4019003B23F4 /* star_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 92DE867A216A4018003B23F4 /* star_gray.png */; };
+		92DE867F216A4019003B23F4 /* star_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 92DE867C216A4018003B23F4 /* star_yellow.png */; };
+		92DE8680216A4019003B23F4 /* HYBStarEvaluationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DE867D216A4019003B23F4 /* HYBStarEvaluationView.m */; };
+		92FB06B0216351DC0001D38B /* GKChangeIPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FB06AE216351DC0001D38B /* GKChangeIPhoneController.m */; };
+		92FB06BE2165F1760001D38B /* GKBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FB06BD2165F1760001D38B /* GKBalanceViewController.m */; };
+		92FB06C4216681910001D38B /* GKRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FB06C3216681910001D38B /* GKRechargeViewController.m */; };
+		92FB06C6216682710001D38B /* GKBalanceViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92FB06C5216682710001D38B /* GKBalanceViewController.storyboard */; };
+		92FB06CB21669DD20001D38B /* GKBalanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FB06B52165ED830001D38B /* GKBalanceView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B2BF7CC216B5FF900A8FE20 /* UIScrollView+STAutoHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+STAutoHeight.h"; sourceTree = "<group>"; };
+		0B2BF7CD216B5FF900A8FE20 /* UIScrollView+STAutoHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+STAutoHeight.m"; sourceTree = "<group>"; };
+		0B2BF7CE216B5FF900A8FE20 /* UITextView+STAutoHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+STAutoHeight.h"; sourceTree = "<group>"; };
+		0B2BF7CF216B5FF900A8FE20 /* UITextView+STAutoHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+STAutoHeight.m"; sourceTree = "<group>"; };
+		0B2BF7D2216B605B00A8FE20 /* GKUseingHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKUseingHelpViewController.h; sourceTree = "<group>"; };
+		0B2BF7D3216B605B00A8FE20 /* GKUseingHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKUseingHelpViewController.m; sourceTree = "<group>"; };
+		0B2BF7D8216B60A500A8FE20 /* DDCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCellModel.h; sourceTree = "<group>"; };
+		0B2BF7D9216B60A500A8FE20 /* DDCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCellModel.m; sourceTree = "<group>"; };
+		0B2BF7DA216B60A500A8FE20 /* DDSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSectionModel.h; sourceTree = "<group>"; };
+		0B2BF7DB216B60A500A8FE20 /* DDSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSectionModel.m; sourceTree = "<group>"; };
+		0B2BF7DE216B60AC00A8FE20 /* UIColor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
+		0B2BF7DF216B60AC00A8FE20 /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
+		0B2BF7E1216B60C000A8FE20 /* DDTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTableViewHeader.h; sourceTree = "<group>"; };
+		0B2BF7E2216B60C100A8FE20 /* DDTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTableViewHeader.m; sourceTree = "<group>"; };
+		0B2BF7E3216B60C100A8FE20 /* MoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewCell.m; sourceTree = "<group>"; };
+		0B2BF7E4216B60C100A8FE20 /* MoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewCell.h; sourceTree = "<group>"; };
+		0B2BF7E7216B61A300A8FE20 /* GKUseingHelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GKUseingHelpViewController.xib; sourceTree = "<group>"; };
+		0B2BF7E9216B637100A8FE20 /* UseingHelperList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UseingHelperList.plist; sourceTree = "<group>"; };
 		0B462E0C215F18AE00AE451F /* GKLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKLoginViewController.h; sourceTree = "<group>"; };
 		0B462E0D215F18B700AE451F /* GKLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKLoginViewController.m; sourceTree = "<group>"; };
 		0B462E0F215F18F100AE451F /* GKLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GKLoginViewController.xib; sourceTree = "<group>"; };
-		0B462E13215F4C8B00AE451F /* DCAccountPsdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCAccountPsdView.xib; sourceTree = "<group>"; };
-		0B462E14215F4C8B00AE451F /* DCAccountPsdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAccountPsdView.h; sourceTree = "<group>"; };
-		0B462E15215F4C8B00AE451F /* DCAccountPsdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAccountPsdView.m; sourceTree = "<group>"; };
 		0B462E1B215F4DF900AE451F /* GKSignInCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSignInCodeView.h; sourceTree = "<group>"; };
 		0B462E1C215F4DFA00AE451F /* GKSignInCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSignInCodeView.m; sourceTree = "<group>"; };
 		0B462E36215F8AC100AE451F /* GKBusInfoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKBusInfoListViewController.h; sourceTree = "<group>"; };
@@ -194,46 +232,18 @@
 		0B4B1120215B974500056DD6 /* GKHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKHomeViewController.m; sourceTree = "<group>"; };
 		0B4BE58C2160C1280043CB30 /* GKBusMoreInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKBusMoreInfoViewController.m; sourceTree = "<group>"; };
 		0B4BE58D2160C1290043CB30 /* GKBusMoreInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKBusMoreInfoViewController.h; sourceTree = "<group>"; };
-		0B4BE5942160C9980043CB30 /* GKCountrySelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCountrySelectCell.h; sourceTree = "<group>"; };
-		0B4BE5952160C9990043CB30 /* GKCheckCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCheckCodeCell.m; sourceTree = "<group>"; };
-		0B4BE5962160C9990043CB30 /* GKDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKDetailCell.m; sourceTree = "<group>"; };
-		0B4BE5972160C9990043CB30 /* GKSignUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSignUpView.h; sourceTree = "<group>"; };
-		0B4BE5982160C9990043CB30 /* GKIconCellCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKIconCellCell.m; sourceTree = "<group>"; };
+		0B4BE5972160C9990043CB30 /* GKBindingPhoneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBindingPhoneView.h; sourceTree = "<group>"; };
 		0B4BE5992160C99A0043CB30 /* GKMeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMeCell.m; sourceTree = "<group>"; };
-		0B4BE59A2160C99A0043CB30 /* GKDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKDetailCell.h; sourceTree = "<group>"; };
-		0B4BE59B2160C99A0043CB30 /* GKCheckCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCheckCodeCell.h; sourceTree = "<group>"; };
 		0B4BE59C2160C99A0043CB30 /* GKMeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMeCell.h; sourceTree = "<group>"; };
-		0B4BE59D2160C99B0043CB30 /* GKTFCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKTFCell.m; sourceTree = "<group>"; };
-		0B4BE59E2160C99B0043CB30 /* GKForgotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKForgotView.h; sourceTree = "<group>"; };
-		0B4BE59F2160C99B0043CB30 /* GKSignUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSignUpView.m; sourceTree = "<group>"; };
+		0B4BE59F2160C99B0043CB30 /* GKBindingPhoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBindingPhoneView.m; sourceTree = "<group>"; };
 		0B4BE5A02160C99B0043CB30 /* GKMeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMeHeaderView.h; sourceTree = "<group>"; };
-		0B4BE5A12160C99B0043CB30 /* GKSetPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSetPasswordView.h; sourceTree = "<group>"; };
-		0B4BE5A42160C99C0043CB30 /* GKForgotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKForgotView.m; sourceTree = "<group>"; };
 		0B4BE5A52160C99D0043CB30 /* GKMeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMeHeaderView.m; sourceTree = "<group>"; };
-		0B4BE5A62160C99D0043CB30 /* GKCountrySelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCountrySelectCell.m; sourceTree = "<group>"; };
-		0B4BE5A72160C99D0043CB30 /* GKIconCellCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKIconCellCell.h; sourceTree = "<group>"; };
-		0B4BE5A82160C99D0043CB30 /* GKSetPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSetPasswordView.m; sourceTree = "<group>"; };
-		0B4BE5A92160C99E0043CB30 /* GKTFCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKTFCell.h; sourceTree = "<group>"; };
-		0B4BE5B52160C9A70043CB30 /* GKSetPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSetPasswordController.h; sourceTree = "<group>"; };
 		0B4BE5B72160C9A70043CB30 /* GKChangeNameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKChangeNameController.m; sourceTree = "<group>"; };
-		0B4BE5B82160C9A80043CB30 /* GKCheckOldPhoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCheckOldPhoneController.h; sourceTree = "<group>"; };
-		0B4BE5B92160C9A80043CB30 /* GKLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKLoginController.m; sourceTree = "<group>"; };
-		0B4BE5BA2160C9A80043CB30 /* GKForgotController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKForgotController.m; sourceTree = "<group>"; };
-		0B4BE5BB2160C9A80043CB30 /* GKCheckOldPhoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCheckOldPhoneController.m; sourceTree = "<group>"; };
-		0B4BE5BC2160C9A90043CB30 /* GKChangePhoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKChangePhoneController.m; sourceTree = "<group>"; };
-		0B4BE5BE2160C9A90043CB30 /* GKForgotController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKForgotController.h; sourceTree = "<group>"; };
 		0B4BE5BF2160C9A90043CB30 /* GKBindingPhoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBindingPhoneController.h; sourceTree = "<group>"; };
 		0B4BE5C02160C9AA0043CB30 /* GKChangeNameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKChangeNameController.h; sourceTree = "<group>"; };
-		0B4BE5C12160C9AA0043CB30 /* GKLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKLoginController.h; sourceTree = "<group>"; };
-		0B4BE5C22160C9AA0043CB30 /* GKChangePassWordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKChangePassWordController.m; sourceTree = "<group>"; };
-		0B4BE5C32160C9AA0043CB30 /* GKChangePhoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKChangePhoneController.h; sourceTree = "<group>"; };
 		0B4BE5C42160C9AB0043CB30 /* GKMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMeViewController.h; sourceTree = "<group>"; };
 		0B4BE5C52160C9AB0043CB30 /* GKBindingPhoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBindingPhoneController.m; sourceTree = "<group>"; };
-		0B4BE5C62160C9AB0043CB30 /* GKMeDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMeDetailController.m; sourceTree = "<group>"; };
-		0B4BE5C72160C9AB0043CB30 /* GKSetPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSetPasswordController.m; sourceTree = "<group>"; };
 		0B4BE5C82160C9AB0043CB30 /* GKMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMeViewController.m; sourceTree = "<group>"; };
-		0B4BE5C92160C9AC0043CB30 /* GKChangePassWordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKChangePassWordController.h; sourceTree = "<group>"; };
-		0B4BE5CA2160C9AC0043CB30 /* GKMeDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMeDetailController.h; sourceTree = "<group>"; };
 		0B70D29021605F8B00C77DFE /* GKBusInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBusInfoCell.h; sourceTree = "<group>"; };
 		0B70D29121605F8B00C77DFE /* GKBusInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBusInfoCell.m; sourceTree = "<group>"; };
 		0B70D29221605F8C00C77DFE /* GKBusInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKBusInfoCell.xib; sourceTree = "<group>"; };
@@ -487,25 +497,10 @@
 		0B9CF477215B8F4B00F76671 /* GKAppVersionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAppVersionTool.m; sourceTree = "<group>"; };
 		0B9CF479215B8F4B00F76671 /* GKUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKUserInfo.h; sourceTree = "<group>"; };
 		0B9CF47A215B8F4B00F76671 /* GKUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKUserInfo.m; sourceTree = "<group>"; };
-		0B9CF47C215B8F4B00F76671 /* GKTabBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKTabBadgeView.h; sourceTree = "<group>"; };
-		0B9CF47D215B8F4B00F76671 /* GKTabBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKTabBadgeView.m; sourceTree = "<group>"; };
-		0B9CF486215B917F00F76671 /* DCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCLoginViewController.h; sourceTree = "<group>"; };
-		0B9CF487215B917F00F76671 /* DCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCLoginViewController.m; sourceTree = "<group>"; };
-		0B9CF488215B917F00F76671 /* DCLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCLoginViewController.xib; sourceTree = "<group>"; };
-		0B9CF489215B917F00F76671 /* DCRegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRegisteredViewController.h; sourceTree = "<group>"; };
-		0B9CF48A215B917F00F76671 /* DCRegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRegisteredViewController.m; sourceTree = "<group>"; };
-		0B9CF48C215B917F00F76671 /* GKAccountPsdByPhoneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAccountPsdByPhoneView.h; sourceTree = "<group>"; };
-		0B9CF48D215B917F00F76671 /* GKAccountPsdByPhoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAccountPsdByPhoneView.m; sourceTree = "<group>"; };
-		0B9CF48E215B917F00F76671 /* GKAccountPsdByPhoneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKAccountPsdByPhoneView.xib; sourceTree = "<group>"; };
-		0B9CF48F215B917F00F76671 /* DCVerificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCVerificationView.h; sourceTree = "<group>"; };
-		0B9CF490215B917F00F76671 /* DCVerificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCVerificationView.m; sourceTree = "<group>"; };
-		0B9CF491215B917F00F76671 /* DCVerificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCVerificationView.xib; sourceTree = "<group>"; };
 		0B9CF49A215B91C600F76671 /* DCConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCConsts.h; sourceTree = "<group>"; };
 		0B9CF49B215B91C600F76671 /* DCConsts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCConsts.m; sourceTree = "<group>"; };
 		0B9CF49C215B91C600F76671 /* DCNotificationCenterName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCNotificationCenterName.h; sourceTree = "<group>"; };
 		0B9CF49D215B91C600F76671 /* DCNotificationCenterName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCNotificationCenterName.m; sourceTree = "<group>"; };
-		0BABC037215DCA650085CAC3 /* AFNetPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetPackage.h; sourceTree = "<group>"; };
-		0BABC038215DCA650085CAC3 /* AFNetPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetPackage.m; sourceTree = "<group>"; };
 		0BABC03B215DFD970085CAC3 /* GKPersonalCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKPersonalCenterViewController.h; sourceTree = "<group>"; };
 		0BABC03C215DFDA10085CAC3 /* GKPersonalCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKPersonalCenterViewController.m; sourceTree = "<group>"; };
 		0BABC040215E00B50085CAC3 /* GKPersonalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKPersonalCell.h; sourceTree = "<group>"; };
@@ -514,11 +509,75 @@
 		0BABC044215E01010085CAC3 /* GKPersonalHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKPersonalHeaderView.m; sourceTree = "<group>"; };
 		0BABC046215E14FE0085CAC3 /* GKCustomFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCustomFlowLayout.h; sourceTree = "<group>"; };
 		0BABC047215E14FE0085CAC3 /* GKCustomFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCustomFlowLayout.m; sourceTree = "<group>"; };
+		0BBD83F6216EF19300B47EC3 /* GKFeedBackInfo2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKFeedBackInfo2ViewController.h; sourceTree = "<group>"; };
+		0BBD83F7216EF19400B47EC3 /* GKFeedBackInfo2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKFeedBackInfo2ViewController.m; sourceTree = "<group>"; };
+		0BBD83F9216EFAB800B47EC3 /* AFNetPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetPackage.m; sourceTree = "<group>"; };
+		0BBD83FA216EFAB800B47EC3 /* AFNetPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetPackage.h; sourceTree = "<group>"; };
+		0BBD83FD216EFB2100B47EC3 /* GCHttpDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCHttpDataTool.h; sourceTree = "<group>"; };
+		0BBD83FE216EFB2100B47EC3 /* GCHttpDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCHttpDataTool.m; sourceTree = "<group>"; };
+		0BBD83FF216EFB2100B47EC3 /* GCHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCHttpTool.h; sourceTree = "<group>"; };
+		0BBD8400216EFB2100B47EC3 /* GCHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCHttpTool.m; sourceTree = "<group>"; };
+		0BBD8401216EFB2100B47EC3 /* HttpCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpCommon.h; sourceTree = "<group>"; };
+		0BBD8402216EFB2100B47EC3 /* MQError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQError.h; sourceTree = "<group>"; };
+		0BBD8403216EFB2100B47EC3 /* MQError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQError.m; sourceTree = "<group>"; };
+		0BC40479216DA1D200EFC9AC /* GKStartChargingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GKStartChargingViewController.xib; sourceTree = "<group>"; };
+		0BC4047A216DA1D200EFC9AC /* GKStartChargingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKStartChargingViewController.h; sourceTree = "<group>"; };
+		0BC4047B216DA1D200EFC9AC /* GKStartChargingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKStartChargingViewController.m; sourceTree = "<group>"; };
+		0BC4047E216DF61700EFC9AC /* GKTopUpTermsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKTopUpTermsViewController.h; sourceTree = "<group>"; };
+		0BC4047F216DF61800EFC9AC /* GKTopUpTermsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKTopUpTermsViewController.m; sourceTree = "<group>"; };
+		0BFCB2F3216B24F400B0EFD3 /* GKRechargeStyleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKRechargeStyleCell.m; sourceTree = "<group>"; };
+		0BFCB2F4216B24F400B0EFD3 /* GKRechargeStyleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKRechargeStyleCell.h; sourceTree = "<group>"; };
+		0BFCB2F5216B24F400B0EFD3 /* GKRechargeStyleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKRechargeStyleCell.xib; sourceTree = "<group>"; };
+		0BFCB2F8216B251300B0EFD3 /* GKPriceEvaluationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKPriceEvaluationView.xib; sourceTree = "<group>"; };
+		0BFCB2F9216B251300B0EFD3 /* GKPriceEvaluationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKPriceEvaluationView.m; sourceTree = "<group>"; };
+		0BFCB2FA216B251400B0EFD3 /* GKPriceEvaluationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKPriceEvaluationView.h; sourceTree = "<group>"; };
+		0BFCB2FD216B309500B0EFD3 /* GKStarAndLabellingEvaluationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKStarAndLabellingEvaluationView.h; sourceTree = "<group>"; };
+		0BFCB2FE216B309500B0EFD3 /* GKStarAndLabellingEvaluationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GKStarAndLabellingEvaluationView.xib; sourceTree = "<group>"; };
+		0BFCB2FF216B309500B0EFD3 /* GKStarAndLabellingEvaluationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKStarAndLabellingEvaluationView.m; sourceTree = "<group>"; };
+		0BFE23DC216C868300C9F915 /* GKFeedBackInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKFeedBackInfoViewController.m; sourceTree = "<group>"; };
+		0BFE23DD216C868300C9F915 /* GKFeedBackInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GKFeedBackInfoViewController.xib; sourceTree = "<group>"; };
+		0BFE23DE216C868300C9F915 /* GKFeedBackInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKFeedBackInfoViewController.h; sourceTree = "<group>"; };
+		0BFE23E4216C9CC600C9F915 /* GKFeedBackInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKFeedBackInfoCell.h; sourceTree = "<group>"; };
+		0BFE23E5216C9CC600C9F915 /* GKFeedBackInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKFeedBackInfoCell.m; sourceTree = "<group>"; };
+		0BFE23E6216C9CC600C9F915 /* GKFeedBackInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GKFeedBackInfoCell.xib; sourceTree = "<group>"; };
 		5275659C3EC91469680A0B9C /* Pods-GKBusCharging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKBusCharging.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKBusCharging/Pods-GKBusCharging.debug.xcconfig"; sourceTree = "<group>"; };
 		541A3F9A7892F07907BB40A1 /* Pods-GKBusCharging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKBusCharging.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKBusCharging/Pods-GKBusCharging.release.xcconfig"; sourceTree = "<group>"; };
+		921193992168C25A001DEC72 /* GKServiceTermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKServiceTermsViewController.h; sourceTree = "<group>"; };
+		9211939A2168C25B001DEC72 /* GKServiceTermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKServiceTermsViewController.m; sourceTree = "<group>"; };
+		9211939C2168CABE001DEC72 /* GKAboutUsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKAboutUsViewController.m; sourceTree = "<group>"; };
+		9211939D2168CABF001DEC72 /* GKAboutUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GKAboutUsViewController.xib; sourceTree = "<group>"; };
+		9211939E2168CABF001DEC72 /* GKAboutUsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKAboutUsViewController.h; sourceTree = "<group>"; };
+		92333E1621632BC4004B7553 /* GKGlobalStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKGlobalStyle.h; sourceTree = "<group>"; };
+		9239A746216A91F10060A389 /* GKFeedBackRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKFeedBackRecordViewController.h; sourceTree = "<group>"; };
+		9239A747216A91F10060A389 /* GKFeedBackRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKFeedBackRecordViewController.m; sourceTree = "<group>"; };
+		9239A749216A93810060A389 /* GKFeedBackRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKFeedBackRecordViewController.xib; sourceTree = "<group>"; };
 		923AC638215E8E990016CD1C /* GKFeedBackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKFeedBackViewController.h; sourceTree = "<group>"; };
 		923AC639215E8EA40016CD1C /* GKFeedBackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKFeedBackViewController.m; sourceTree = "<group>"; };
 		923AC63B215E924E0016CD1C /* FeedBackMenu.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FeedBackMenu.plist; sourceTree = "<group>"; };
+		9275D2462169D9CE0004DBFE /* GKOrderManagementViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKOrderManagementViewController.m; sourceTree = "<group>"; };
+		9275D2472169D9CF0004DBFE /* GKOrderManagementViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKOrderManagementViewController.h; sourceTree = "<group>"; };
+		9275D2492169DAC30004DBFE /* GKOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKOrderCell.m; sourceTree = "<group>"; };
+		9275D24A2169DAC30004DBFE /* GKOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GKOrderCell.xib; sourceTree = "<group>"; };
+		9275D24B2169DAC40004DBFE /* GKOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKOrderCell.h; sourceTree = "<group>"; };
+		9275D24E216A11620004DBFE /* GKOrderRateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKOrderRateViewController.h; sourceTree = "<group>"; };
+		9275D24F216A11630004DBFE /* GKOrderRateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKOrderRateViewController.m; sourceTree = "<group>"; };
+		92AAF4EA216A7E0C003559BD /* GKOrderDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKOrderDetailsViewController.m; sourceTree = "<group>"; };
+		92AAF4EB216A7E0C003559BD /* GKOrderDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GKOrderDetailsViewController.xib; sourceTree = "<group>"; };
+		92AAF4EC216A7E0D003559BD /* GKOrderDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKOrderDetailsViewController.h; sourceTree = "<group>"; };
+		92DE867A216A4018003B23F4 /* star_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_gray.png; sourceTree = "<group>"; };
+		92DE867B216A4018003B23F4 /* HYBStarEvaluationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBStarEvaluationView.h; sourceTree = "<group>"; };
+		92DE867C216A4018003B23F4 /* star_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_yellow.png; sourceTree = "<group>"; };
+		92DE867D216A4019003B23F4 /* HYBStarEvaluationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBStarEvaluationView.m; sourceTree = "<group>"; };
+		92FB06AE216351DC0001D38B /* GKChangeIPhoneController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKChangeIPhoneController.m; sourceTree = "<group>"; };
+		92FB06AF216351DC0001D38B /* GKChangeIPhoneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKChangeIPhoneController.h; sourceTree = "<group>"; };
+		92FB06B42165ED820001D38B /* GKBalanceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKBalanceView.h; sourceTree = "<group>"; };
+		92FB06B52165ED830001D38B /* GKBalanceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKBalanceView.m; sourceTree = "<group>"; };
+		92FB06BC2165F1670001D38B /* GKBalanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKBalanceViewController.h; sourceTree = "<group>"; };
+		92FB06BD2165F1760001D38B /* GKBalanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKBalanceViewController.m; sourceTree = "<group>"; };
+		92FB06C2216681910001D38B /* GKRechargeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKRechargeViewController.h; sourceTree = "<group>"; };
+		92FB06C3216681910001D38B /* GKRechargeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKRechargeViewController.m; sourceTree = "<group>"; };
+		92FB06C5216682710001D38B /* GKBalanceViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GKBalanceViewController.storyboard; sourceTree = "<group>"; };
+		92FB06D2216722510001D38B /* RechargeStyle.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RechargeStyle.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -533,12 +592,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B2BF7CB216B5FF900A8FE20 /* STAutoHeightTextView */ = {
+			isa = PBXGroup;
+			children = (
+				0B2BF7CC216B5FF900A8FE20 /* UIScrollView+STAutoHeight.h */,
+				0B2BF7CD216B5FF900A8FE20 /* UIScrollView+STAutoHeight.m */,
+				0B2BF7CE216B5FF900A8FE20 /* UITextView+STAutoHeight.h */,
+				0B2BF7CF216B5FF900A8FE20 /* UITextView+STAutoHeight.m */,
+			);
+			path = STAutoHeightTextView;
+			sourceTree = "<group>";
+		};
+		0B2BF7D7216B60A500A8FE20 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0B2BF7DF216B60AC00A8FE20 /* UIColor+Extension.h */,
+				0B2BF7DE216B60AC00A8FE20 /* UIColor+Extension.m */,
+				0B2BF7D8216B60A500A8FE20 /* DDCellModel.h */,
+				0B2BF7D9216B60A500A8FE20 /* DDCellModel.m */,
+				0B2BF7DA216B60A500A8FE20 /* DDSectionModel.h */,
+				0B2BF7DB216B60A500A8FE20 /* DDSectionModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0B462E0B215F189400AE451F /* LoginMe */ = {
 			isa = PBXGroup;
 			children = (
 				0B462E0C215F18AE00AE451F /* GKLoginViewController.h */,
 				0B462E0D215F18B700AE451F /* GKLoginViewController.m */,
 				0B462E0F215F18F100AE451F /* GKLoginViewController.xib */,
+				921193992168C25A001DEC72 /* GKServiceTermsViewController.h */,
+				9211939A2168C25B001DEC72 /* GKServiceTermsViewController.m */,
 				0B462E12215F4BB700AE451F /* View */,
 			);
 			path = LoginMe;
@@ -549,9 +634,6 @@
 			children = (
 				0B462E1B215F4DF900AE451F /* GKSignInCodeView.h */,
 				0B462E1C215F4DFA00AE451F /* GKSignInCodeView.m */,
-				0B9CF48C215B917F00F76671 /* GKAccountPsdByPhoneView.h */,
-				0B9CF48D215B917F00F76671 /* GKAccountPsdByPhoneView.m */,
-				0B9CF48E215B917F00F76671 /* GKAccountPsdByPhoneView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -562,6 +644,12 @@
 				0B70D29021605F8B00C77DFE /* GKBusInfoCell.h */,
 				0B70D29121605F8B00C77DFE /* GKBusInfoCell.m */,
 				0B70D29221605F8C00C77DFE /* GKBusInfoCell.xib */,
+				0BFCB2FA216B251400B0EFD3 /* GKPriceEvaluationView.h */,
+				0BFCB2F9216B251300B0EFD3 /* GKPriceEvaluationView.m */,
+				0BFCB2F8216B251300B0EFD3 /* GKPriceEvaluationView.xib */,
+				0BFCB2FD216B309500B0EFD3 /* GKStarAndLabellingEvaluationView.h */,
+				0BFCB2FF216B309500B0EFD3 /* GKStarAndLabellingEvaluationView.m */,
+				0BFCB2FE216B309500B0EFD3 /* GKStarAndLabellingEvaluationView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -575,6 +663,10 @@
 				0B462E37215F8AC100AE451F /* GKBusInfoListViewController.m */,
 				0B4BE58D2160C1290043CB30 /* GKBusMoreInfoViewController.h */,
 				0B4BE58C2160C1280043CB30 /* GKBusMoreInfoViewController.m */,
+				0BC4047A216DA1D200EFC9AC /* GKStartChargingViewController.h */,
+				0BC4047B216DA1D200EFC9AC /* GKStartChargingViewController.m */,
+				0BC40479216DA1D200EFC9AC /* GKStartChargingViewController.xib */,
+				0B7C81EF215CE27200A06345 /* QRCodeScan */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -586,22 +678,10 @@
 				0B4BE5C82160C9AB0043CB30 /* GKMeViewController.m */,
 				0B4BE5BF2160C9A90043CB30 /* GKBindingPhoneController.h */,
 				0B4BE5C52160C9AB0043CB30 /* GKBindingPhoneController.m */,
+				92FB06AF216351DC0001D38B /* GKChangeIPhoneController.h */,
+				92FB06AE216351DC0001D38B /* GKChangeIPhoneController.m */,
 				0B4BE5C02160C9AA0043CB30 /* GKChangeNameController.h */,
 				0B4BE5B72160C9A70043CB30 /* GKChangeNameController.m */,
-				0B4BE5C92160C9AC0043CB30 /* GKChangePassWordController.h */,
-				0B4BE5C22160C9AA0043CB30 /* GKChangePassWordController.m */,
-				0B4BE5C32160C9AA0043CB30 /* GKChangePhoneController.h */,
-				0B4BE5BC2160C9A90043CB30 /* GKChangePhoneController.m */,
-				0B4BE5B82160C9A80043CB30 /* GKCheckOldPhoneController.h */,
-				0B4BE5BB2160C9A80043CB30 /* GKCheckOldPhoneController.m */,
-				0B4BE5BE2160C9A90043CB30 /* GKForgotController.h */,
-				0B4BE5BA2160C9A80043CB30 /* GKForgotController.m */,
-				0B4BE5C12160C9AA0043CB30 /* GKLoginController.h */,
-				0B4BE5B92160C9A80043CB30 /* GKLoginController.m */,
-				0B4BE5CA2160C9AC0043CB30 /* GKMeDetailController.h */,
-				0B4BE5C62160C9AB0043CB30 /* GKMeDetailController.m */,
-				0B4BE5B52160C9A70043CB30 /* GKSetPasswordController.h */,
-				0B4BE5C72160C9AB0043CB30 /* GKSetPasswordController.m */,
 			);
 			path = PersonalInfoController;
 			sourceTree = "<group>";
@@ -613,22 +693,11 @@
 				0B4BE5A52160C99D0043CB30 /* GKMeHeaderView.m */,
 				0B4BE59C2160C99A0043CB30 /* GKMeCell.h */,
 				0B4BE5992160C99A0043CB30 /* GKMeCell.m */,
-				0B4BE59B2160C99A0043CB30 /* GKCheckCodeCell.h */,
-				0B4BE5952160C9990043CB30 /* GKCheckCodeCell.m */,
-				0B4BE5942160C9980043CB30 /* GKCountrySelectCell.h */,
-				0B4BE5A62160C99D0043CB30 /* GKCountrySelectCell.m */,
-				0B4BE59A2160C99A0043CB30 /* GKDetailCell.h */,
-				0B4BE5962160C9990043CB30 /* GKDetailCell.m */,
-				0B4BE59E2160C99B0043CB30 /* GKForgotView.h */,
-				0B4BE5A42160C99C0043CB30 /* GKForgotView.m */,
-				0B4BE5A72160C99D0043CB30 /* GKIconCellCell.h */,
-				0B4BE5982160C9990043CB30 /* GKIconCellCell.m */,
-				0B4BE5A12160C99B0043CB30 /* GKSetPasswordView.h */,
-				0B4BE5A82160C99D0043CB30 /* GKSetPasswordView.m */,
-				0B4BE5972160C9990043CB30 /* GKSignUpView.h */,
-				0B4BE59F2160C99B0043CB30 /* GKSignUpView.m */,
-				0B4BE5A92160C99E0043CB30 /* GKTFCell.h */,
-				0B4BE59D2160C99B0043CB30 /* GKTFCell.m */,
+				0B4BE5972160C9990043CB30 /* GKBindingPhoneView.h */,
+				0B4BE59F2160C99B0043CB30 /* GKBindingPhoneView.m */,
+				0BFE23E4216C9CC600C9F915 /* GKFeedBackInfoCell.h */,
+				0BFE23E5216C9CC600C9F915 /* GKFeedBackInfoCell.m */,
+				0BFE23E6216C9CC600C9F915 /* GKFeedBackInfoCell.xib */,
 			);
 			path = PersonalInfoController;
 			sourceTree = "<group>";
@@ -664,13 +733,13 @@
 			path = CustionButton;
 			sourceTree = "<group>";
 		};
-		0B7C81EF215CE27200A06345 /* Scan(扫描) */ = {
+		0B7C81EF215CE27200A06345 /* QRCodeScan */ = {
 			isa = PBXGroup;
 			children = (
 				0B7C81F0215CE27200A06345 /* Controller */,
 				0B7C81F3215CE27200A06345 /* View */,
 			);
-			path = "Scan(扫描)";
+			path = QRCodeScan;
 			sourceTree = "<group>";
 		};
 		0B7C81F0215CE27200A06345 /* Controller */ = {
@@ -711,7 +780,9 @@
 			isa = PBXGroup;
 			children = (
 				923AC63B215E924E0016CD1C /* FeedBackMenu.plist */,
+				92FB06D2216722510001D38B /* RechargeStyle.plist */,
 				0B809B0E215E3BBC001186CA /* PersonalCenterMenu.plist */,
+				0B2BF7E9216B637100A8FE20 /* UseingHelperList.plist */,
 			);
 			path = "我的Plist";
 			sourceTree = "<group>";
@@ -815,11 +886,9 @@
 			children = (
 				0B9CF2C0215B7BFC00F76671 /* AppDelegate.h */,
 				0B9CF2C1215B7BFC00F76671 /* AppDelegate.m */,
-				0B8D0DDC215DB97E00030966 /* JFCityViewController */,
 				0B9CF2EF215B812D00F76671 /* Main */,
 				0B9CF2F4215B81B400F76671 /* Home */,
 				0BABC03A215DFD320085CAC3 /* PersonalCenter */,
-				0B9CF484215B917F00F76671 /* LoginMe(登录) */,
 				0B462E0B215F189400AE451F /* LoginMe */,
 				0B9CF33A215B8A0B00F76671 /* Expand */,
 				0B9CF354215B8ACE00F76671 /* config */,
@@ -909,6 +978,7 @@
 		0B9CF354215B8ACE00F76671 /* config */ = {
 			isa = PBXGroup;
 			children = (
+				92333E1621632BC4004B7553 /* GKGlobalStyle.h */,
 				0B9CF360215B8BCC00F76671 /* Macros.h */,
 				0B9CF355215B8ACE00F76671 /* Config.h */,
 				0B9CF35F215B8B4E00F76671 /* ConfigInfo.h */,
@@ -961,8 +1031,10 @@
 		0B9CF37B215B8D7F00F76671 /* Vendors(第三方) */ = {
 			isa = PBXGroup;
 			children = (
+				0B8D0DDC215DB97E00030966 /* JFCityViewController */,
+				0B2BF7CB216B5FF900A8FE20 /* STAutoHeightTextView */,
+				92DE8679216A4018003B23F4 /* HYBStarEvaluationView */,
 				0B70D29E21607CDA00C77DFE /* SIAlertView */,
-				0B7C81EF215CE27200A06345 /* Scan(扫描) */,
 				0B9CF37C215B8D7F00F76671 /* AddressManager */,
 				0B9CF380215B8D7F00F76671 /* AlertViewManager */,
 				0B9CF386215B8D7F00F76671 /* CDDCDDScanning */,
@@ -1366,42 +1438,6 @@
 		0B9CF47B215B8F4B00F76671 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0B9CF47C215B8F4B00F76671 /* GKTabBadgeView.h */,
-				0B9CF47D215B8F4B00F76671 /* GKTabBadgeView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		0B9CF484215B917F00F76671 /* LoginMe(登录) */ = {
-			isa = PBXGroup;
-			children = (
-				0B9CF485215B917F00F76671 /* Controller */,
-				0B9CF48B215B917F00F76671 /* View */,
-			);
-			path = "LoginMe(登录)";
-			sourceTree = "<group>";
-		};
-		0B9CF485215B917F00F76671 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				0B9CF486215B917F00F76671 /* DCLoginViewController.h */,
-				0B9CF487215B917F00F76671 /* DCLoginViewController.m */,
-				0B9CF488215B917F00F76671 /* DCLoginViewController.xib */,
-				0B9CF489215B917F00F76671 /* DCRegisteredViewController.h */,
-				0B9CF48A215B917F00F76671 /* DCRegisteredViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		0B9CF48B215B917F00F76671 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				0B462E14215F4C8B00AE451F /* DCAccountPsdView.h */,
-				0B462E15215F4C8B00AE451F /* DCAccountPsdView.m */,
-				0B462E13215F4C8B00AE451F /* DCAccountPsdView.xib */,
-				0B9CF48F215B917F00F76671 /* DCVerificationView.h */,
-				0B9CF490215B917F00F76671 /* DCVerificationView.m */,
-				0B9CF491215B917F00F76671 /* DCVerificationView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1420,8 +1456,9 @@
 		0BABC036215DCA650085CAC3 /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
-				0BABC037215DCA650085CAC3 /* AFNetPackage.h */,
-				0BABC038215DCA650085CAC3 /* AFNetPackage.m */,
+				0BBD83FA216EFAB800B47EC3 /* AFNetPackage.h */,
+				0BBD83F9216EFAB800B47EC3 /* AFNetPackage.m */,
+				0BBD83FC216EFB2100B47EC3 /* Http */,
 			);
 			path = HTTP;
 			sourceTree = "<group>";
@@ -1429,8 +1466,9 @@
 		0BABC03A215DFD320085CAC3 /* PersonalCenter */ = {
 			isa = PBXGroup;
 			children = (
-				0BABC03F215DFE740085CAC3 /* Controller */,
+				0B2BF7D7216B60A500A8FE20 /* Model */,
 				0BABC03E215DFE6E0085CAC3 /* View */,
+				0BABC03F215DFE740085CAC3 /* Controller */,
 			);
 			path = PersonalCenter;
 			sourceTree = "<group>";
@@ -1444,6 +1482,9 @@
 				0BABC047215E14FE0085CAC3 /* GKCustomFlowLayout.m */,
 				0BABC040215E00B50085CAC3 /* GKPersonalCell.h */,
 				0BABC041215E00C00085CAC3 /* GKPersonalCell.m */,
+				9275D24B2169DAC40004DBFE /* GKOrderCell.h */,
+				9275D2492169DAC30004DBFE /* GKOrderCell.m */,
+				9275D24A2169DAC30004DBFE /* GKOrderCell.xib */,
 				0B4BE5902160C9230043CB30 /* PersonalInfoController */,
 				9271FBCB215E81E0000DA567 /* moreSevenView */,
 			);
@@ -1461,6 +1502,20 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		0BBD83FC216EFB2100B47EC3 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				0BBD83FD216EFB2100B47EC3 /* GCHttpDataTool.h */,
+				0BBD83FE216EFB2100B47EC3 /* GCHttpDataTool.m */,
+				0BBD83FF216EFB2100B47EC3 /* GCHttpTool.h */,
+				0BBD8400216EFB2100B47EC3 /* GCHttpTool.m */,
+				0BBD8401216EFB2100B47EC3 /* HttpCommon.h */,
+				0BBD8402216EFB2100B47EC3 /* MQError.h */,
+				0BBD8403216EFB2100B47EC3 /* MQError.m */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
 		34432A0679DEF282FD669FCF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1473,8 +1528,36 @@
 		9271FBCA215E81A8000DA567 /* moreSevenController */ = {
 			isa = PBXGroup;
 			children = (
+				92FB06BC2165F1670001D38B /* GKBalanceViewController.h */,
+				92FB06BD2165F1760001D38B /* GKBalanceViewController.m */,
+				92FB06C5216682710001D38B /* GKBalanceViewController.storyboard */,
+				92FB06C2216681910001D38B /* GKRechargeViewController.h */,
+				92FB06C3216681910001D38B /* GKRechargeViewController.m */,
+				0BC4047E216DF61700EFC9AC /* GKTopUpTermsViewController.h */,
+				0BC4047F216DF61800EFC9AC /* GKTopUpTermsViewController.m */,
+				9275D2472169D9CF0004DBFE /* GKOrderManagementViewController.h */,
+				9275D2462169D9CE0004DBFE /* GKOrderManagementViewController.m */,
+				9275D24E216A11620004DBFE /* GKOrderRateViewController.h */,
+				9275D24F216A11630004DBFE /* GKOrderRateViewController.m */,
+				92AAF4EC216A7E0D003559BD /* GKOrderDetailsViewController.h */,
+				92AAF4EA216A7E0C003559BD /* GKOrderDetailsViewController.m */,
+				92AAF4EB216A7E0C003559BD /* GKOrderDetailsViewController.xib */,
+				0B2BF7D2216B605B00A8FE20 /* GKUseingHelpViewController.h */,
+				0B2BF7D3216B605B00A8FE20 /* GKUseingHelpViewController.m */,
+				0B2BF7E7216B61A300A8FE20 /* GKUseingHelpViewController.xib */,
+				9211939E2168CABF001DEC72 /* GKAboutUsViewController.h */,
+				9211939C2168CABE001DEC72 /* GKAboutUsViewController.m */,
+				9211939D2168CABF001DEC72 /* GKAboutUsViewController.xib */,
 				923AC638215E8E990016CD1C /* GKFeedBackViewController.h */,
 				923AC639215E8EA40016CD1C /* GKFeedBackViewController.m */,
+				9239A746216A91F10060A389 /* GKFeedBackRecordViewController.h */,
+				9239A747216A91F10060A389 /* GKFeedBackRecordViewController.m */,
+				9239A749216A93810060A389 /* GKFeedBackRecordViewController.xib */,
+				0BFE23DE216C868300C9F915 /* GKFeedBackInfoViewController.h */,
+				0BFE23DC216C868300C9F915 /* GKFeedBackInfoViewController.m */,
+				0BFE23DD216C868300C9F915 /* GKFeedBackInfoViewController.xib */,
+				0BBD83F6216EF19300B47EC3 /* GKFeedBackInfo2ViewController.h */,
+				0BBD83F7216EF19400B47EC3 /* GKFeedBackInfo2ViewController.m */,
 			);
 			path = moreSevenController;
 			sourceTree = "<group>";
@@ -1482,8 +1565,28 @@
 		9271FBCB215E81E0000DA567 /* moreSevenView */ = {
 			isa = PBXGroup;
 			children = (
+				92FB06B42165ED820001D38B /* GKBalanceView.h */,
+				92FB06B52165ED830001D38B /* GKBalanceView.m */,
+				0BFCB2F4216B24F400B0EFD3 /* GKRechargeStyleCell.h */,
+				0BFCB2F3216B24F400B0EFD3 /* GKRechargeStyleCell.m */,
+				0BFCB2F5216B24F400B0EFD3 /* GKRechargeStyleCell.xib */,
+				0B2BF7E1216B60C000A8FE20 /* DDTableViewHeader.h */,
+				0B2BF7E2216B60C100A8FE20 /* DDTableViewHeader.m */,
+				0B2BF7E4216B60C100A8FE20 /* MoreTableViewCell.h */,
+				0B2BF7E3216B60C100A8FE20 /* MoreTableViewCell.m */,
 			);
 			path = moreSevenView;
+			sourceTree = "<group>";
+		};
+		92DE8679216A4018003B23F4 /* HYBStarEvaluationView */ = {
+			isa = PBXGroup;
+			children = (
+				92DE867B216A4018003B23F4 /* HYBStarEvaluationView.h */,
+				92DE867D216A4019003B23F4 /* HYBStarEvaluationView.m */,
+				92DE867A216A4018003B23F4 /* star_gray.png */,
+				92DE867C216A4018003B23F4 /* star_yellow.png */,
+			);
+			path = HYBStarEvaluationView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1521,7 +1624,7 @@
 						CreatedOnToolsVersion = 9.4;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -1550,31 +1653,43 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BC4047D216DCB6900EFC9AC /* GKStartChargingViewController.xib in Resources */,
+				0BFE23E8216C9F4F00C9F915 /* GKFeedBackInfoCell.xib in Resources */,
+				0BFE23E0216C8EE300C9F915 /* GKFeedBackInfoViewController.xib in Resources */,
+				0B2BF7E8216B62E500A8FE20 /* GKUseingHelpViewController.xib in Resources */,
+				0BFCB301216B3CC700B0EFD3 /* GKStarAndLabellingEvaluationView.xib in Resources */,
+				0BFCB2FB216B251400B0EFD3 /* GKPriceEvaluationView.xib in Resources */,
+				0B2BF7EA216B637100A8FE20 /* UseingHelperList.plist in Resources */,
+				92AAF4EE216A7E64003559BD /* GKOrderDetailsViewController.xib in Resources */,
+				9275D24D2169DB960004DBFE /* GKOrderCell.xib in Resources */,
+				9211AA182168F28F00502624 /* GKAboutUsViewController.xib in Resources */,
+				926664722168B16900CEC548 /* RechargeStyle.plist in Resources */,
 				0B462E10215F280700AE451F /* GKLoginViewController.xib in Resources */,
-				0B462E16215F4C8B00AE451F /* DCAccountPsdView.xib in Resources */,
 				923AC63C215E93680016CD1C /* FeedBackMenu.plist in Resources */,
 				0B70D29421605F8C00C77DFE /* GKBusInfoCell.xib in Resources */,
 				0B9CF319215B863600F76671 /* LaunchScreen.storyboard in Resources */,
 				0B9CF31A215B863600F76671 /* Main.storyboard in Resources */,
+				92FB06C6216682710001D38B /* GKBalanceViewController.storyboard in Resources */,
 				0B70D2A421607CDA00C77DFE /* SIAlertView.bundle in Resources */,
 				0B9CF436215B8D7F00F76671 /* AddressTableViewCell.xib in Resources */,
 				0B9CF434215B8D7F00F76671 /* Cities.json in Resources */,
-				0B9CF496215B917F00F76671 /* GKAccountPsdByPhoneView.xib in Resources */,
 				0B9CF44F215B8D7F00F76671 /* restrictedshine.tiff in Resources */,
 				0B9CF44D215B8D7F00F76671 /* line.png in Resources */,
 				0B9CF42E215B8D7F00F76671 /* sqr_line@2x.png in Resources */,
+				0BFCB2F7216B24F400B0EFD3 /* GKRechargeStyleCell.xib in Resources */,
 				0B9CF317215B859500F76671 /* Info.plist in Resources */,
 				0B9CF44E215B8D7F00F76671 /* mask.jpg in Resources */,
-				0B9CF498215B917F00F76671 /* DCVerificationView.xib in Resources */,
-				0B9CF493215B917F00F76671 /* DCLoginViewController.xib in Resources */,
 				0B9CF2CA215B7BFD00F76671 /* Assets.xcassets in Resources */,
+				92DE867F216A4019003B23F4 /* star_yellow.png in Resources */,
 				0B9CF423215B8D7F00F76671 /* addressData.plist in Resources */,
 				0B8D0DF4215DB97F00030966 /* shop_area.sqlite in Resources */,
 				0B9CF42D215B8D7F00F76671 /* navigationbarScanBg.png in Resources */,
+				9239A74A216A93810060A389 /* GKFeedBackRecordViewController.xib in Resources */,
 				0B809B18215E3BBC001186CA /* PersonalCenterMenu.plist in Resources */,
 				0B9CF42C215B8D7F00F76671 /* flsah_normal@2x.png in Resources */,
 				0B9CF441215B8D7F00F76671 /* PYSearch.bundle in Resources */,
 				0B9CF42B215B8D7F00F76671 /* flash_select@2x.png in Resources */,
+				92DE867E216A4019003B23F4 /* star_gray.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1630,63 +1745,71 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92FB06CB21669DD20001D38B /* GKBalanceView.m in Sources */,
 				0B9CF447215B8D7F00F76671 /* UIView+Toast.m in Sources */,
 				0B4BE5B22160C99E0043CB30 /* GKMeHeaderView.m in Sources */,
 				0B9CF373215B8C4C00F76671 /* DCSelPhotos.m in Sources */,
 				0B9CF481215B8F4B00F76671 /* GKAppVersionTool.m in Sources */,
 				0B9CF36F215B8C4C00F76671 /* DCCheckRegular.m in Sources */,
+				0BBD8406216EFB2100B47EC3 /* MQError.m in Sources */,
 				0B7C81E1215CCEE800A06345 /* DCLIRLButton.m in Sources */,
 				0B8D0DFA215DB97F00030966 /* JFCityViewController.m in Sources */,
 				0B9CF44B215B8D7F00F76671 /* XWInteractiveTransition.m in Sources */,
-				0B4BE5CD2160C9AC0043CB30 /* GKForgotController.m in Sources */,
-				0B462E17215F4C8B00AE451F /* DCAccountPsdView.m in Sources */,
 				0B4BE5D52160C9AC0043CB30 /* GKMeViewController.m in Sources */,
 				0B7C81F6215CE27200A06345 /* DCGMScanViewController.m in Sources */,
 				0B9CF49F215B91C600F76671 /* DCNotificationCenterName.m in Sources */,
-				0B9CF495215B917F00F76671 /* GKAccountPsdByPhoneView.m in Sources */,
+				0B2BF7E5216B60C100A8FE20 /* DDTableViewHeader.m in Sources */,
 				0B9CF459215B8D7F00F76671 /* XWCoolAnimator+XWPortal.m in Sources */,
 				0B462E38215F8AC100AE451F /* GKBusInfoListViewController.m in Sources */,
 				0B9CF371215B8C4C00F76671 /* DCObjManager.m in Sources */,
-				0B4BE5AB2160C99E0043CB30 /* GKDetailCell.m in Sources */,
 				0B9CF438215B8D7F00F76671 /* ChooseLocationView.m in Sources */,
+				0B2BF7D1216B5FF900A8FE20 /* UITextView+STAutoHeight.m in Sources */,
 				0B70D2A521607CDA00C77DFE /* SIAlertView.m in Sources */,
 				0B9CF455215B8D7F00F76671 /* XWCoolAnimator+XWFold.m in Sources */,
+				0B2BF7E0216B60AC00A8FE20 /* UIColor+Extension.m in Sources */,
 				0B9CF34C215B8A6D00F76671 /* NSObject+DCNull.m in Sources */,
+				0BFCB2FC216B251400B0EFD3 /* GKPriceEvaluationView.m in Sources */,
 				0B9CF34E215B8A6D00F76671 /* UIBarButtonItem+DCBarButtonItem.m in Sources */,
-				0B9CF494215B917F00F76671 /* DCRegisteredViewController.m in Sources */,
 				0B7C81F7215CE27200A06345 /* DCCameraTopView.m in Sources */,
 				0B9CF46B215B8D7F00F76671 /* YBRectConst.m in Sources */,
-				0B4BE5CC2160C9AC0043CB30 /* GKLoginController.m in Sources */,
+				0BFCB2F6216B24F400B0EFD3 /* GKRechargeStyleCell.m in Sources */,
 				0B9CF449215B8D7F00F76671 /* UIView+Snapshot.m in Sources */,
 				0B8D0DFC215DB97F00030966 /* JFLocation.m in Sources */,
+				92FB06C4216681910001D38B /* GKRechargeViewController.m in Sources */,
 				0B9CF464215B8D7F00F76671 /* XWFilterAnimator+XWRipple.m in Sources */,
 				0B9CF482215B8F4B00F76671 /* GKUserInfo.m in Sources */,
 				0B9CF45B215B8D7F00F76671 /* XWCoolAnimator.m in Sources */,
 				0B8D0DF7215DB97F00030966 /* JFCityCollectionViewCell.m in Sources */,
+				0B2BF7E6216B60C100A8FE20 /* MoreTableViewCell.m in Sources */,
 				0B9CF35D215B8ACE00F76671 /* GKButton.m in Sources */,
 				0B9CF2C5215B7BFC00F76671 /* ViewController.m in Sources */,
 				0B9CF429215B8D7F00F76671 /* DCScanningViewController.m in Sources */,
 				0B9CF43B215B8D7F00F76671 /* JKDBModel.m in Sources */,
 				0B9CF370215B8C4C00F76671 /* DCKeepNewUserData.m in Sources */,
+				0BFE23DF216C868300C9F915 /* GKFeedBackInfoViewController.m in Sources */,
 				0B9CF45A215B8D7F00F76671 /* XWCoolAnimator+XWScanning.m in Sources */,
 				0B9CF468215B8D7F00F76671 /* XWMagicMoveAnimator.m in Sources */,
+				0BBD8405216EFB2100B47EC3 /* GCHttpTool.m in Sources */,
 				0B9CF43C215B8D7F00F76671 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				0B9CF432215B8D7F00F76671 /* UIView+Frame.m in Sources */,
 				0BABC03D215DFDA10085CAC3 /* GKPersonalCenterViewController.m in Sources */,
 				923AC63A215E8EA40016CD1C /* GKFeedBackViewController.m in Sources */,
 				0B9CF424215B8D7F00F76671 /* AddressPickerView.m in Sources */,
+				0B2BF7D4216B605C00A8FE20 /* GKUseingHelpViewController.m in Sources */,
 				0B4BE5AD2160C99E0043CB30 /* GKMeCell.m in Sources */,
 				0B9CF352215B8A6D00F76671 /* UILabel+DCLabel.m in Sources */,
-				0B4BE5AE2160C99E0043CB30 /* GKTFCell.m in Sources */,
 				0B9CF451215B8D7F00F76671 /* SDPhotoBrowser.m in Sources */,
 				0B9CF454215B8D7F00F76671 /* XWCoolAnimator+XWExplode.m in Sources */,
+				9275D24C2169DAC40004DBFE /* GKOrderCell.m in Sources */,
 				0B9CF43E215B8D7F00F76671 /* JPFPSStatus.m in Sources */,
+				0B2BF7DD216B60A500A8FE20 /* DDSectionModel.m in Sources */,
 				0B9CF460215B8D7F00F76671 /* XWFilterAnimator+XWFlash.m in Sources */,
 				0B4BE5D22160C9AC0043CB30 /* GKBindingPhoneController.m in Sources */,
-				0BABC039215DCA650085CAC3 /* AFNetPackage.m in Sources */,
 				0B9CF465215B8D7F00F76671 /* XWFilterAnimator+XWSwipe.m in Sources */,
+				0BBD83FB216EFAB900B47EC3 /* AFNetPackage.m in Sources */,
 				0B9CF34F215B8A6D00F76671 /* UIColor+DCColorChange.m in Sources */,
 				0B9CF469215B8D7F00F76671 /* YBPopupMenu.m in Sources */,
+				92AAF4ED216A7E0D003559BD /* GKOrderDetailsViewController.m in Sources */,
 				0B9CF463215B8D7F00F76671 /* XWFilterAnimator+XWPageCurl.m in Sources */,
 				0B7C81E0215CCEE800A06345 /* DCCustionButton.m in Sources */,
 				0B9CF458215B8D7F00F76671 /* XWCoolAnimator+XWPageFlip.m in Sources */,
@@ -1695,43 +1818,47 @@
 				0B9CF444215B8D7F00F76671 /* PYSearchViewController.m in Sources */,
 				0B9CF34D215B8A6D00F76671 /* NSURL+DCHook.m in Sources */,
 				0B9CF446215B8D7F00F76671 /* UIView+PYSearchExtension.m in Sources */,
+				0BFCB300216B309500B0EFD3 /* GKStarAndLabellingEvaluationView.m in Sources */,
 				0B9CF431215B8D7F00F76671 /* CDDTopTip.m in Sources */,
 				0B9CF427215B8D7F00F76671 /* DCFlashButton.m in Sources */,
-				0B4BE5D42160C9AC0043CB30 /* GKSetPasswordController.m in Sources */,
 				0B9CF43A215B8D7F00F76671 /* JKDBHelper.m in Sources */,
 				0B9CF440215B8D7F00F76671 /* NSBundle+PYSearchExtension.m in Sources */,
-				0B4BE5D12160C9AC0043CB30 /* GKChangePassWordController.m in Sources */,
 				0B462E0E215F18B700AE451F /* GKLoginViewController.m in Sources */,
+				0BC40480216DF61800EFC9AC /* GKTopUpTermsViewController.m in Sources */,
 				0B9CF42A215B8D7F00F76671 /* DCScanTool.m in Sources */,
 				0B9CF425215B8D7F00F76671 /* UIPlaceHolderTextView.m in Sources */,
 				0B9CF445215B8D7F00F76671 /* UIColor+PYSearchExtension.m in Sources */,
+				9275D250216A11630004DBFE /* GKOrderRateViewController.m in Sources */,
 				0B7C81EB215CDAFD00A06345 /* UIButton+GKButton.m in Sources */,
 				0B9CF45D215B8D7F00F76671 /* XWFilterAnimator+XWBarSwipe.m in Sources */,
+				92FB06BE2165F1760001D38B /* GKBalanceViewController.m in Sources */,
 				0B4BE58E2160C1290043CB30 /* GKBusMoreInfoViewController.m in Sources */,
+				0BBD83F8216EF19400B47EC3 /* GKFeedBackInfo2ViewController.m in Sources */,
 				0B9CF353215B8A6D00F76671 /* UIView+DCExtension.m in Sources */,
-				0B4BE5AC2160C99E0043CB30 /* GKIconCellCell.m in Sources */,
 				0B8D0DF3215DB97F00030966 /* JFAreaDataManager.m in Sources */,
+				9239A748216A91F20060A389 /* GKFeedBackRecordViewController.m in Sources */,
+				0BC4047C216DA1D200EFC9AC /* GKStartChargingViewController.m in Sources */,
 				0B9CF462215B8D7F00F76671 /* XWFilterAnimator+XWMod.m in Sources */,
-				0B4BE5AA2160C99E0043CB30 /* GKCheckCodeCell.m in Sources */,
 				0B9CF430215B8D7F00F76671 /* UIView+DCRolling.m in Sources */,
 				0B9CF428215B8D7F00F76671 /* DCScanIdentifyAreaView.m in Sources */,
 				0B9CF439215B8D7F00F76671 /* CitiesDataTool.m in Sources */,
 				0B9CF448215B8D7F00F76671 /* UINavigationController+XWTransition.m in Sources */,
 				0BABC042215E00C00085CAC3 /* GKPersonalCell.m in Sources */,
-				0B4BE5B32160C99E0043CB30 /* GKCountrySelectCell.m in Sources */,
 				0B9CF467215B8D7F00F76671 /* XWFilterTransitionView.m in Sources */,
 				0B9CF426215B8D7F00F76671 /* WJYAlertView.m in Sources */,
 				0B9CF45E215B8D7F00F76671 /* XWFilterAnimator+XWBoxBlur.m in Sources */,
+				9211939F2168CABF001DEC72 /* GKAboutUsViewController.m in Sources */,
 				0B9CF47F215B8F4B00F76671 /* GKNavigationController.m in Sources */,
-				0B4BE5D32160C9AC0043CB30 /* GKMeDetailController.m in Sources */,
 				0B4BE5CB2160C9AC0043CB30 /* GKChangeNameController.m in Sources */,
 				0B9CF316215B859500F76671 /* main.m in Sources */,
+				0BFE23E7216C9CC600C9F915 /* GKFeedBackInfoCell.m in Sources */,
 				0B8D0DFB215DB97F00030966 /* JFSearchView.m in Sources */,
 				0B70D29321605F8C00C77DFE /* GKBusInfoCell.m in Sources */,
 				0B9CF457215B8D7F00F76671 /* XWCoolAnimator+XWMiddlePageFlip.m in Sources */,
 				0B9CF466215B8D7F00F76671 /* XWFilterAnimator.m in Sources */,
 				0BABC048215E14FE0085CAC3 /* GKCustomFlowLayout.m in Sources */,
 				0B9CF350215B8A6D00F76671 /* UIImage+DCCircle.m in Sources */,
+				0B2BF7D0216B5FF900A8FE20 /* UIScrollView+STAutoHeight.m in Sources */,
 				0B9CF453215B8D7F00F76671 /* XWCircleSpreadAnimator.m in Sources */,
 				0B462E1D215F4DFA00AE451F /* GKSignInCodeView.m in Sources */,
 				0B9CF435215B8D7F00F76671 /* AddressTableViewCell.m in Sources */,
@@ -1740,13 +1867,11 @@
 				0B9CF42F215B8D7F00F76671 /* DCTitleRolling.m in Sources */,
 				0B8D0DF8215DB97F00030966 /* JFCityHeaderView.m in Sources */,
 				0B4B1121215B974500056DD6 /* GKHomeViewController.m in Sources */,
-				0B4BE5CF2160C9AC0043CB30 /* GKChangePhoneController.m in Sources */,
+				9275D2482169D9CF0004DBFE /* GKOrderManagementViewController.m in Sources */,
+				0BBD8404216EFB2100B47EC3 /* GCHttpDataTool.m in Sources */,
 				0B9CF372215B8C4C00F76671 /* DCPlaceholderTextView.m in Sources */,
 				0B9CF442215B8D7F00F76671 /* PYSearchConst.m in Sources */,
-				0B4BE5B12160C99E0043CB30 /* GKForgotView.m in Sources */,
 				0B7C81E2215CCEE800A06345 /* GKUpDownButton.m in Sources */,
-				0B9CF483215B8F4B00F76671 /* GKTabBadgeView.m in Sources */,
-				0B4BE5CE2160C9AC0043CB30 /* GKCheckOldPhoneController.m in Sources */,
 				0B9CF2C2215B7BFC00F76671 /* AppDelegate.m in Sources */,
 				0BABC045215E01010085CAC3 /* GKPersonalHeaderView.m in Sources */,
 				0B8D0DF5215DB97F00030966 /* JFButton.m in Sources */,
@@ -1754,26 +1879,27 @@
 				0B9CF35E215B8ACE00F76671 /* GKTextField.m in Sources */,
 				0B9CF374215B8C4C00F76671 /* DCSpeedy.m in Sources */,
 				0B9CF433215B8D7F00F76671 /* AddressItem.m in Sources */,
-				0B4BE5AF2160C99E0043CB30 /* GKSignUpView.m in Sources */,
+				0B4BE5AF2160C99E0043CB30 /* GKBindingPhoneView.m in Sources */,
 				0B9CF43F215B8D7F00F76671 /* PPNumberButton.m in Sources */,
+				92FB06B0216351DC0001D38B /* GKChangeIPhoneController.m in Sources */,
 				0B8D0DF9215DB97F00030966 /* JFCityTableViewCell.m in Sources */,
 				0B9CF461215B8D7F00F76671 /* XWFilterAnimator+XWMask.m in Sources */,
+				92DE8680216A4019003B23F4 /* HYBStarEvaluationView.m in Sources */,
 				0B9CF351215B8A6D00F76671 /* UIImageView+DCExtension.m in Sources */,
 				0B9CF437215B8D7F00F76671 /* AddressView.m in Sources */,
-				0B4BE5B42160C99E0043CB30 /* GKSetPasswordView.m in Sources */,
 				0B9CF456215B8D7F00F76671 /* XWCoolAnimator+XWLines.m in Sources */,
-				0B9CF492215B917F00F76671 /* DCLoginViewController.m in Sources */,
 				0B7C81EE215CDB3800A06345 /* UIButton+GKUpDownButton.m in Sources */,
 				0B9CF443215B8D7F00F76671 /* PYSearchSuggestionViewController.m in Sources */,
 				0B9CF45C215B8D7F00F76671 /* XWDrawerAnimator.m in Sources */,
+				9211939B2168C25B001DEC72 /* GKServiceTermsViewController.m in Sources */,
 				0B7C81E3215CCEE800A06345 /* DCZuoWenRightButton.m in Sources */,
 				0B9CF45F215B8D7F00F76671 /* XWFilterAnimator+XWCopyMachine.m in Sources */,
 				0B9CF49E215B91C600F76671 /* DCConsts.m in Sources */,
-				0B9CF497215B917F00F76671 /* DCVerificationView.m in Sources */,
 				0B9CF375215B8C4C00F76671 /* Foundation+Log.m in Sources */,
 				0B9CF44A215B8D7F00F76671 /* UIViewController+XWTransition.m in Sources */,
 				0B9CF46A215B8D7F00F76671 /* YBPopupMenuPath.m in Sources */,
 				0B70D2A621607CDA00C77DFE /* UIWindow+SIUtils.m in Sources */,
+				0B2BF7DC216B60A500A8FE20 /* DDCellModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1914,7 +2040,8 @@
 			baseConfigurationReference = 5275659C3EC91469680A0B9C /* Pods-GKBusCharging.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = GKBusCharging/GKBusCharging.entitlements;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CJ6W4Z749T;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
@@ -1928,6 +2055,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.goockr.GKBusCharging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1937,7 +2066,8 @@
 			baseConfigurationReference = 541A3F9A7892F07907BB40A1 /* Pods-GKBusCharging.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = GKBusCharging/GKBusCharging.entitlements;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CJ6W4Z749T;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
@@ -1951,6 +2081,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.goockr.GKBusCharging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

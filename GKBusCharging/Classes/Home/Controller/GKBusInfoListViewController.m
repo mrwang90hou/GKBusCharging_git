@@ -41,7 +41,7 @@
 
 static NSString *GKBusInfoCellID = @"GKBusInfoCell";
 
-@interface GKBusInfoListViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface GKBusInfoListViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *evaluations;
 
@@ -134,11 +134,13 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
     searchTF.clearButtonMode = UITextFieldViewModeWhileEditing;     // 清除按钮的状态=只有在文本字段中编辑文本时，才会显示覆盖视图。
     //searchTF.keyboardType = UIKeyboardTypeASCIICapable;        //限制英文输入
     searchTF.placeholder = @"查询公交线路";
-    //[searchTF setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
+//    [searchTF setValue:[UIFont boldSystemFontOfSize:13] forKeyPath:@"_Label.font"];
     [searchTF setValue:[UIFont boldSystemFontOfSize:13] forKeyPath:@"_placeholderLabel.font"];
+    
     searchTF.backgroundColor = RGBall(248);
     [searchTF setTextAlignment:NSTextAlignmentLeft];
     searchTF.leftView = search_btn;
+    searchTF.delegate = self;
     searchTF.leftViewMode = UITextFieldViewModeAlways;
 //    [searchTF setLeftMargin:15];
     searchTF.layer.masksToBounds = YES;
@@ -210,18 +212,34 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
         //        [self preData];//获取数据
         [weakSelf.cityNameBtn setTitle:self.cityName forState:UIControlStateNormal];
     }];
-    //    GKNavigationController *navigationController = [[GKNavigationController alloc] initWithRootViewController:cityViewController];
     [self.navigationController pushViewController:cityViewController animated:YES];
     
-    
-    //    [self presentViewController:navigationController animated:YES completion:^{
-    //        self.isPickedCity = YES;
-    //    }];
 }
-//
-//- (void)didReceiveMemoryWarning {
-//    [super didReceiveMemoryWarning];
-//    // Dispose of any resources that can be recreated.
-//}
+
+// 输入的回车键键
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self actionCommodityStyleSearch];
+    [textField endEditing:YES];
+    return YES;
+}
+#pragma mark -执行不同的搜索事件
+
+/**
+ *  执行【列车信息】搜索
+ */
+- (void)actionCommodityStyleSearch {
+//    [self hideInput];
+//    [_datas removeAllObjects];
+    NSString *searchString = [_searchTF text];
+    if (![searchString isEqualToString:@""]) {
+//        _datas = [GFRangeStyleResultDao searchDataByName:searchString];
+        //执行搜索操作
+    }else
+    {
+        [SVProgressHUD showSuccessWithStatus:@"请先输入您所要查找的内容！"];
+    }
+}
+
+
 
 @end
