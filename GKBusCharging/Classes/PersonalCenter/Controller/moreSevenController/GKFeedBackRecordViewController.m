@@ -9,6 +9,7 @@
 
 #import "GKFeedBackRecordViewController.h"
 #import "GKFeedBackInfoViewController.h"
+#import "GKFeedBackInfo2ViewController.h"
 
 //#import "DCTabBarController.h"
 ////#import "DCRegisteredViewController.h"
@@ -130,7 +131,9 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    GKFeedBackInfoViewController *vc = [GKFeedBackInfoViewController new];
+    //    GKFeedBackInfoViewController *vc = [GKFeedBackInfoViewController new];
+    GKFeedBackInfo2ViewController *vc = [GKFeedBackInfo2ViewController new];
+    
 //    vc.title = @"反馈详情";
     [self.navigationController pushViewController:vc animated:YES];
     

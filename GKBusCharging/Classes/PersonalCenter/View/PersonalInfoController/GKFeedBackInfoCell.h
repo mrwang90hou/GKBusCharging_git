@@ -12,9 +12,6 @@
 //-(void)createCellWithDictionary:(NSDictionary *)dict withNoCommentFlag:(BOOL)flag;
 //@property (nonatomic, assign) BOOL hidden;
 
-
-
-
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *peopleTitleLabel;
 @property (strong, nonatomic) IBOutlet UITextView *detailTV;

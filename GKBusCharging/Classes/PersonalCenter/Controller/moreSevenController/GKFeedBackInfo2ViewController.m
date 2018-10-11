@@ -1,5 +1,5 @@
 //
-//  GKFeedBackInfoViewController.m
+//  GKFeedBackInfo2ViewController.m
 //  GKBusCharging
 //
 //  Created by 王宁 on 2018/10/9.
@@ -7,7 +7,7 @@
 //
 
 
-#import "GKFeedBackInfoViewController.h"
+#import "GKFeedBackInfo2ViewController.h"
 
 // Controllers
 
@@ -26,13 +26,12 @@
 // Others
 
 static NSString *GKFeedBackInfoCellID = @"GKFeedBackInfoCell";
-@interface GKFeedBackInfoViewController ()<UITableViewDataSource,UITableViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
-@property (strong, nonatomic) IBOutlet UIView *textView;
+static NSString *GKBusInfoCellID = @"GKBusInfoCell";
+@interface GKFeedBackInfo2ViewController ()<UITableViewDataSource,UITableViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UITextView *detailTF;
-
+@property (nonatomic, assign) NSString *timeLabelString;
+@property (nonatomic, assign) NSString *detailTFString;
 //@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) UITableView *tableView;
 
@@ -42,14 +41,14 @@ static NSString *GKFeedBackInfoCellID = @"GKFeedBackInfoCell";
 
 @end
 
-@implementation GKFeedBackInfoViewController
+@implementation GKFeedBackInfo2ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"反馈详情";
+    self.title = @"反馈详情2";
     [self getData];
+    [self setupUI];
     //动态控制 detailTF 的换行，并使得textView随之扩大
-    
 //    UITextView *contentTV = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, ScreenW-30, 44)];
 //    [self.textView addSubview:contentTV];
 //    contentTV.font = [UIFont systemFontOfSize:16];
@@ -70,19 +69,21 @@ static NSString *GKFeedBackInfoCellID = @"GKFeedBackInfoCell";
 //    contentTV.textViewHeightDidChangedHandle = ^(CGFloat textViewHeight) {
 //    };
 //    self.detailTF = contentTV;
-    
     //重新布局设置[self.textView]的约束！！！
 //    CGRectGetHeight(self.detailTF.frame.size.height);
-    
 //    [self.tableView setHidden:true];
-    
 }
-
+-(void)setupUI{
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+}
 #pragma mark -页面逻辑方法
 
 -(void)getData{
-    self.timeLabel.text = @"2018/10/09 15:26:25";
-    self.detailTF.text = @"此处显示的是客户提交的错误故障信息详情！";
+    self.timeLabelString = @"2018/10/09 15:26:25";
+    self.detailTFString = @"此处显示的是客户提交的错误故障信息详情！";
 }
 #pragma mark - lazy load
 -(UITableView *)tableView{
@@ -91,6 +92,7 @@ static NSString *GKFeedBackInfoCellID = @"GKFeedBackInfoCell";
 //    UITableViewStyleGrouped
             _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
             [_tableView registerNib:[UINib nibWithNibName:@"GKFeedBackInfoCell" bundle:nil] forCellReuseIdentifier:GKFeedBackInfoCellID];
+//            [_tableView registerNib:[UINib nibWithNibName:@"GKBusInfoCell" bundle:nil] forCellReuseIdentifier:GKBusInfoCellID];
             _tableView.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1];
             _tableView.allowsSelection = NO;
             _tableView.scrollEnabled = YES;
@@ -108,32 +110,39 @@ static NSString *GKFeedBackInfoCellID = @"GKFeedBackInfoCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-//    return self.dataSource[section].isExpanded ? (self.dataSource[section].cellModels.count) : 0;
     return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    GKFeedBackInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GKFeedBackInfoCell"];
-    if (!cell) {
-        cell = [[GKFeedBackInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GKFeedBackInfoCell"];
+//    GKFeedBackInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GKFeedBackInfoCell"];
+//    if (!cell) {
+//        cell = [[GKFeedBackInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GKFeedBackInfoCell"];
+//    }
+
+    GKFeedBackInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:GKFeedBackInfoCellID forIndexPath:indexPath];
+    if (indexPath.row == 0) {
+        cell.peopleTitleLabel.text = self.timeLabelString;
+        cell.peopleTitleLabel.textColor = RGBall(153);
+        [cell.timeLabel setHidden:true];
+        cell.detailTV.text = self.detailTFString;
+    }else{
+        cell.peopleTitleLabel.textColor = RGBall(51);
+        cell.peopleTitleLabel.text = @"客服回复";
+        cell.timeLabel.text = @"2018/08/26  10:20:00";
+        cell.detailTV.text = @"亲，正常流程需要等待3-5个工作日，请耐心等待。";
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 
-//    GKFeedBackInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:GKFeedBackInfoCellID forIndexPath:indexPath];
-    cell.peopleTitleLabel.text = @"客服回复";
-    cell.timeLabel.text = @"2018/08/26  10:20:00";
-    cell.detailTV.text = @"亲，正常流程需要等待3-5个工作日，请耐心等待。";
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.hidden = YES;
+//    GKBusInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:GKBusInfoCellID forIndexPath:indexPath];
+//    cell.hidden = YES;
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return  12;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 120;
+    
+    
+    
+    return 100;
 }
 
 

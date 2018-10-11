@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,19 +12,29 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="FPe-97-7Ux" customClass="GKFeedBackInfoCell">
-            <rect key="frame" x="0.0" y="0.0" width="355" height="175"/>
+            <rect key="frame" x="0.0" y="0.0" width="355" height="130"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FPe-97-7Ux" id="E2r-gF-k5b">
-                <rect key="frame" x="0.0" y="0.0" width="355" height="174.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="355" height="129.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fR-ug-Etv" userLabel="bgView">
-                        <rect key="frame" x="0.0" y="0.0" width="355" height="174.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="355" height="129.5"/>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mhe-HG-1Nt" userLabel="headView">
                         <rect key="frame" x="0.0" y="5" width="355" height="44"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发信人" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcb-xt-8BG" userLabel="发信人">
+                                <rect key="frame" x="11" y="12" width="150" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Bgz-Xq-8cm"/>
+                                    <constraint firstAttribute="width" constant="150" id="pZA-Et-Ktg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018/07/26  9:20:59" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWJ-G3-zOK" userLabel="时间">
                                 <rect key="frame" x="195" y="12" width="150" height="20"/>
                                 <constraints>
@@ -32,16 +43,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发信人" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcb-xt-8BG" userLabel="发信人">
-                                <rect key="frame" x="11" y="12" width="90" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="Bgz-Xq-8cm"/>
-                                    <constraint firstAttribute="width" constant="90" id="pZA-Et-Ktg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -56,10 +57,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbg-c6-wY2" userLabel="FootView">
-                        <rect key="frame" x="0.0" y="50" width="355" height="124.5"/>
+                        <rect key="frame" x="0.0" y="50" width="355" height="79.5"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="亲，正常流程需要等待3-5个工作日，请耐心等待。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jLC-t4-che">
-                                <rect key="frame" x="5" y="3" width="345" height="118.5"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="亲，正常流程需要等待3-5个工作日，请耐心等待。" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLC-t4-che">
+                                <rect key="frame" x="5" y="3" width="345" height="73.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
