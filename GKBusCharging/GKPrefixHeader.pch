@@ -25,6 +25,8 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
+
+#import "GCHttpDataTool.h"
 #import "AFNetworking.h"
 #import "Masonry.h"
 #import "SVProgressHUD.h"

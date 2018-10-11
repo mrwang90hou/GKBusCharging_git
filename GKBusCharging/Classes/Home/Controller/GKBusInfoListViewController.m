@@ -55,6 +55,7 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
     self.title = @"车辆信息";
     [self setupUI];
 }
+
 -(void)setupUI{
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -99,7 +100,7 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableView registerNib:[UINib nibWithNibName:@"GKBusInfoCell" bundle:nil] forCellReuseIdentifier:GKBusInfoCellID];
         _tableView.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1];
-        _tableView.allowsSelection = YES;
+        _tableView.allowsSelection = NO;
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }

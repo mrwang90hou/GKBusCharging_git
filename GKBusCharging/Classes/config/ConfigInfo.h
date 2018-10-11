@@ -12,7 +12,7 @@
 
 
 //项目缓存信息值
-#define TOKEN  @"token"
+//#define TOKEN  @"token"
 //获取屏幕宽高
 //#define SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
 //#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height

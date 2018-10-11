@@ -159,6 +159,18 @@
         }];
         codeTF.clearButtonMode = UITextFieldViewModeWhileEditing;
         codeTF.placeholder = @"请输入验证码";
+        
+//        NSString *holderText = @"请输入验证码";
+//        NSMutableAttributedString *placeholder = [[NSMutableAttributedString alloc] initWithString:holderText];
+//        [placeholder addAttribute:NSForegroundColorAttributeName
+//                            value:[UIColor redColor]
+//                            range:NSMakeRange(0, holderText.length)];
+//        [placeholder addAttribute:NSFontAttributeName
+//                            value:[UIFont boldSystemFontOfSize:16]
+//                            range:NSMakeRange(0, holderText.length)];
+//        codeTF.attributedPlaceholder = placeholder;
+        
+        
         codeTF.font = GKMediumFont(16);
         self.codeTF = codeTF;
         
@@ -204,119 +216,118 @@
         
         [self.phoneTF addTarget:self action:@selector(textFieldDidBeginEditing:) forControlEvents:UIControlEventEditingChanged];
         [self.codeTF addTarget:self action:@selector(textFieldDidBeginEditing:) forControlEvents:UIControlEventEditingChanged];
-        
-        
-        self.phoneTF.text = @"01234567890";
+        self.phoneTF.text = @"18577986175";
+        self.codeTF.text = @"277293";
         
     }
     return self;
 }
 //获取验证码按钮
 - (void)codeBtnClick:(UIButton *)btn{
-    __block NSInteger time = 59; //倒计时时间
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    //验证码请求操作
     
-    self.nextBtn.enabled = YES;
-    self.codeTF.text = @"01234";
-    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
-    dispatch_source_set_event_handler(_timer, ^{
-        if(time <= 0){ //倒计时结束，关闭
-            dispatch_source_cancel(_timer);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.clickLayer removeFromSuperlayer];
-                [btn setTitle:@"获取验证码" forState:UIControlStateNormal];
-                [btn setTitleColor:UIColorFromHex(0x1FCE9B) forState:UIControlStateNormal];
-                btn.userInteractionEnabled = YES;
-                btn.enabled = YES;
+    [self requestDataBySendMsg];
+    //手机号异常或者请求失败时，则点击获取验证码无变化，提示手机号错误
+    //判断手机号是否有效
+    if ([self IsPhoneNumber:self.phoneTF.text] == YES ) {
+        NSDictionary *dict=@{
+                             @"token":@"PK1ET0sXJatywLfN",
+//                             @"token":TOKEN,
+                             @"phone":self.phoneTF.text,
+                             };
+        [SVProgressHUD showWithStatus:@"正在获取验证码..."];
+        [GCHttpDataTool getLoginSmsCodeWithDict:dict success:^(id responseObject) {
+            
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:@"验证码发送成功！"];
+            //倒计时设计
+            //[MQButtonCountDownTool startTimeWithButton:self.smsCode_bt];
+            __block NSInteger time = 59; //倒计时时间
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+            self.nextBtn.enabled = YES;
+            //    self.codeTF.text = @"01234";
+            dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+            dispatch_source_set_event_handler(_timer, ^{
+                if(time <= 0){ //倒计时结束，关闭
+                    dispatch_source_cancel(_timer);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.clickLayer removeFromSuperlayer];
+                        [btn setTitle:@"获取验证码" forState:UIControlStateNormal];
+                        [btn setTitleColor:UIColorFromHex(0x1FCE9B) forState:UIControlStateNormal];
+                        btn.userInteractionEnabled = YES;
+                        btn.enabled = YES;
+                    });
+                }else{
+                    int seconds = time % 60;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //设置按钮显示读秒效果
+                        [btn setTitle:[NSString stringWithFormat:@"%.2d秒重新获取", seconds] forState:UIControlStateNormal];
+                        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                        btn.userInteractionEnabled = NO;
+                        btn.enabled = NO;
+                    });
+                    time--;
+                }
             });
-        }else{
-            int seconds = time % 60;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                //颜色渐变
-//                CAGradientLayer *layer = [CAGradientLayer layer];
-//                layer.frame = CGRectMake(0, 0, btn.frame.size.width, btn.frame.size.height);
-//                layer.startPoint = CGPointMake(0, 0);
-//                layer.endPoint = CGPointMake(1, 1);
-//                layer.colors = @[(id)UIColorFromHex(0xFCE9B).CGColor,(id)UIColorFromHex(0xFCE9B).CGColor,(id)UIColorFromHex(0xFCE9B).CGColor];
-//                if (self.clickLayer ==nil) {
-//                    [btn.layer insertSublayer:layer atIndex:0];
-//                    self.clickLayer = layer;
-//                }
-                //设置按钮显示读秒效果
-                [btn setTitle:[NSString stringWithFormat:@"%.2d秒重新获取", seconds] forState:UIControlStateNormal];
-                [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                btn.userInteractionEnabled = NO;
-                btn.enabled = NO;
-            });
-            time--;
-        }
-    });
-    dispatch_resume(_timer);
+            dispatch_resume(_timer);
+            
+        } failure:^(MQError *error) {
+            
+            //            [self.hud hudUpdataTitile:error.msg hideTime:1.0];
+            [SVProgressHUD showErrorWithStatus:error.msg];//验证码发送失败，请检查网络！
+            
+        }];
+    }else{
+        [SVProgressHUD showErrorWithStatus:@"无效手机号码"];
+    }
 }
 //登录按钮
 -(void)nextBtnClick:(UIButton *)btn{
-//    NSString *url = [NSString stringWithFormat:@"%@/controller/api/login.php",@"http://192.168.0.107/Hotels_Server_new"];
-//    NSLog(@"URL连接为：%@", url);
     if ([self.phoneTF.text isEqualToString:@""]) {
         [SVProgressHUD showInfoWithStatus:@"请输入账号"];
         return ;
     }
     if ([self.pwdTF.text isEqualToString:@""]) {
-        [SVProgressHUD showInfoWithStatus:@"请输入密码"];
+        [SVProgressHUD showInfoWithStatus:@"请输入验证码"];
         return;
     }
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"telephone"] = self.phoneTF.text;
-    params[@"password"] = self.pwdTF.text;
-    [SVProgressHUD showWithStatus:@"正在登录"];
-//    [LY_NetworkManager ly_GETRequestWithUrlString2:url parameters:params progress:nil success:^(id responseObject) {
-//
-////    [LY_NetworkManager ly_GETRequestWithUrlString2:url parameters:params progress:nil success:^(id *responseDict, NSDictionary *dataDict, BOOL result, NSString *errorMessage) {
-////        NSArray * contentA = [responseDict objectForKey:@"code"];
-////        NSArray * contentA = [responseObject objectForKey:@"content"];
-////        NSLog(@"contentA=%@",contentA[0]);
-//        NSLog(@"responseDict=%@",responseObject[@"code"]);
-////        for (int i=0; i<contentA.count; i++) {
-////            NSLog(@"%@",contentA[i]);
-////        }
-////        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseDict options:NSJSONReadingMutableLeaves error:nil];
-////        int a = [json[@"code"] integerValue];
-////        NSLog(@"%d",a);
-////        if ([[contentA[0] stringByReplacingOccurrencesOfString:@"\"" withString:@""] isEqualToString:@"200"]) {
-////        if ([json[@"code"] integerValue] == 200) {
-//        if ([responseObject[@"code"] integerValue] == 200) {
-//            [SVProgressHUD showSuccessWithStatus:@"登录成功"];
-////            UserInfo *userInfo = [[UserInfo alloc] init];
-////            userInfo.id = json[@"data"][@"id"];
-////            userInfo.telephone = json[@"data"][@"telephone"];
-////            userInfo.password =  json[@"data"][@"password"];
-////            userInfo.avator =  json[@"data"][@"avator"];
-////            userInfo.birthday =  json[@"data"][@"birthday"];
-////            userInfo.gender =  json[@"data"][@"gender"];
-////            userInfo.account =  json[@"data"][@"account"];
-////            userInfo.nickname =  json[@"data"][@"nickname"];
-////            [UserManager saveUserObject:userInfo];
-////            [self.navigationController popViewControllerAnimated:YES];
-//        }else{
-//            [SVProgressHUD showErrorWithStatus:@"登录失败"];
-//        }
-//    } failure:^(NSError *error, NSString *errorMessage) {
-//        [SVProgressHUD showErrorWithStatus:errorMessage];
-//    }];
-    
     WEAKSELF
     if (![self.phoneTF.text isEqualToString:@""] && ![self.codeTF.text isEqualToString:@""]) {
-        [DCObjManager dc_saveUserData:@"1" forKey:@"isLogin"]; //1代表登录
-        [DCObjManager dc_saveUserData:self.phoneTF.text forKey:@"UserPhone"]; //记录手机号
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-            [weakSelf makeToast:@"登录成功" duration:0.5 position:CSToastPositionCenter];
-//            [weakSelf setUpUserBaseData];
-            AppDelegate *app=(AppDelegate *)[UIApplication sharedApplication].delegate;
-            [app autoLogin];
-        });
+        [SVProgressHUD showWithStatus:@"正在登录中..."];
+        NSDictionary *dict=@{
+                             @"phone":self.phoneTF.text,
+                             @"code":self.codeTF.text,
+                             @"type":PhoneTypeID,
+                             };
+        [GCHttpDataTool smsLoginWithDict:dict success:^(id responseObject) {
+//            [[GCUser getInstance] updateUserInfoWithdict:responseObject[@"userInfo"]];
+//            [MQSaveLoadTool preferenceSaveUserInfo:responseObject[@"userInfo"] whitKey:KPreferenceUserInfo];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:KNotiLoginSuccess object:nil];
+            [DCObjManager dc_saveUserData:@"1" forKey:@"isLogin"]; //1代表登录
+            [DCObjManager dc_saveUserData:@"app_termUserInfo_18577986175" forKey:@"key"]; //存储key 值
+            [DCObjManager dc_saveUserData:self.phoneTF.text forKey:@"UserPhone"]; //记录手机号
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+                [weakSelf makeToast:@"登录成功" duration:0.5 position:CSToastPositionCenter];
+                //            [weakSelf setUpUserBaseData];
+                AppDelegate *app=(AppDelegate *)[UIApplication sharedApplication].delegate;
+                [app autoLogin];
+            });
+        } failure:^(MQError *error) {
+            switch (error.code) {
+                case 400:
+                    
+                    break;
+                case 500:
+                    
+                    break;
+                    
+                default:
+                    break;
+            }
+            [SVProgressHUD showErrorWithStatus:error.msg];
+        }];
         
     }else{
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -362,6 +373,41 @@
 //        });
 //    }
 //}
-
-
+#pragma mark -数据请求操作
+- (void)requestDataBySendMsg{
+//    [self.view endEditing:YES];
+    
+    //判断手机号是否有效
+    if ([self IsPhoneNumber:self.phoneTF.text] == YES ) {
+        NSDictionary *dict=@{
+                             @"token":@"PK1ET0sXJatywLfN",
+                             @"token":TOKEN,
+                             @"mobile":self.phoneTF.text,
+                             };
+        [SVProgressHUD showWithStatus:@"正在获取验证码..."];
+        [GCHttpDataTool getLoginSmsCodeWithDict:dict success:^(id responseObject) {
+            
+            [SVProgressHUD dismiss];
+            //倒计时设计
+//            [MQButtonCountDownTool startTimeWithButton:self.smsCode_bt];
+            
+            
+        } failure:^(MQError *error) {
+            
+//            [self.hud hudUpdataTitile:error.msg hideTime:1.0];
+            [SVProgressHUD showErrorWithStatus:error.msg];
+            
+        }];
+    }else{
+        [SVProgressHUD showErrorWithStatus:@"无效手机号码"];
+    }
+    
+    //functype=vc&mobile=13763085121
+   
+}
+- (BOOL)IsPhoneNumber:(NSString *)number{
+    NSString *phoneRegex1=@"1[3456789]([0-9]){9}";
+    NSPredicate *phoneTest1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex1];
+    return  [phoneTest1 evaluateWithObject:number];
+}
 @end
