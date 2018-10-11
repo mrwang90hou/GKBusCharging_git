@@ -217,7 +217,7 @@
         [self.phoneTF addTarget:self action:@selector(textFieldDidBeginEditing:) forControlEvents:UIControlEventEditingChanged];
         [self.codeTF addTarget:self action:@selector(textFieldDidBeginEditing:) forControlEvents:UIControlEventEditingChanged];
         self.phoneTF.text = @"18577986175";
-        self.codeTF.text = @"277293";
+//        self.codeTF.text = @"277293";
         
     }
     return self;
