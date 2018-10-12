@@ -82,6 +82,7 @@
 
 @property (nonatomic,strong) UIView *bgView;
 
+@property (nonatomic,strong) UIView *bgHeaderView;
 
 @end
 
@@ -145,10 +146,12 @@
     }];
     
     //设置定位按钮
-    DCZuoWenRightButton *cityNameBtn = [DCZuoWenRightButton buttonWithType:UIButtonTypeRoundedRect];
+    DCZuoWenRightButton *cityNameBtn = [DCZuoWenRightButton buttonWithType:UIButtonTypeCustom];
+//    UIButton *saveBtn = [UIButton buttonWithType:UIButtonTypeCustom]
     [cityNameBtn setImage:SETIMAGE(@"iocn_place_pull_down") forState:0];
     // 设置图标
     [cityNameBtn setTitle:self.cityName forState:UIControlStateNormal];
+    cityNameBtn.titleLabel.font = PFR15Font;
     [cityNameBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [cityNameBtn addTarget:self action:@selector(pickCity) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:cityNameBtn];
@@ -182,7 +185,7 @@
     [topView addSubview:topSearchView];
     
     [topSearchView mas_makeConstraints:^(MASConstraintMaker *make) {
-        [make.left.mas_equalTo(self.cityNameBtn.mas_right)setOffset:3];
+        [make.left.mas_equalTo(self.cityNameBtn.mas_right)setOffset:5];
         [make.right.mas_equalTo(self.busListBtn.mas_left)setOffset:-3];
         make.height.mas_equalTo(@33);
         make.centerY.mas_equalTo(topView);
@@ -703,6 +706,16 @@
         make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     self.bgView = bgView;
+    UIView *bgHeaderView = [[UIView alloc] init];
+    [self.bgView addSubview:bgHeaderView];
+//    bgHeaderView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+    bgHeaderView.frame = CGRectMake(0,0, ScreenW, (ScreenH-K_HEIGHT_NAVBAR)/2+K_HEIGHT_NAVBAR);
+    self.bgHeaderView = bgHeaderView;
+    
+    
+    
+    
+    [self setKeyBoardListener];
     //整体的布局view
 //    GKSignInCodeView *totalView = [GKSignInCodeView new];
 //    [bgView addSubview:totalView];
@@ -761,11 +774,57 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.navigationController pushViewController:[GKOrderDetailsViewController new] animated:YES];
     });
-    
 }
 
 -(void)close{
     [self.bgView removeFromSuperview];
+}
+//点击空白处的点击事件
+/**
+ *  @author wn, 18-10-12 18:09:58
+ *
+ *  给当前view添加手势识别
+ */
+- (void)setKeyBoardListener
+{
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(screenClick)];
+    [self.bgHeaderView addGestureRecognizer:recognizer];
+}
+
+/**
+ *  @author wn, 15-10-12 18:09:32
+ *
+ *  点击屏幕预备 removeFromSuperview
+ */
+- (void)screenClick
+{
+    //    [SVProgressHUD showInfoWithStatus:@"您点击了 bgView!"];
+    //    [self.view endEditing:YES];
+    [self initAlertView2];
+}
+
+- (void)initAlertView2{
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"     " andMessage:@"是否退出评价?"];
+    [alertView addButtonWithTitle:@"结束评价"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alertView) {
+                              [alertView dismissAnimated:NO];
+                              [self endOfTheEvaluate];
+                              
+                          }];
+    
+    [alertView addButtonWithTitle:@"继续评价"
+                             type:SIAlertViewButtonTypeDestructive
+                          handler:^(SIAlertView *alertView) {
+                              
+                              [alertView dismissAnimated:NO];
+                              
+                          }];
+    [alertView show];
+}
+
+- (void)endOfTheEvaluate{
+    [self close];
 }
 
 - (void)qrCodeSuccessAction{
@@ -775,9 +834,6 @@
         [self.navigationController pushViewController:[GKStartChargingViewController new] animated:YES];
     });
 }
-
-
-
 
 -(NSMutableArray *)images{
     if (!_images) {

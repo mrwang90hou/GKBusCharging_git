@@ -89,10 +89,12 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
     }];
     
     //设置定位按钮
-    DCZuoWenRightButton *cityNameBtn = [DCZuoWenRightButton buttonWithType:UIButtonTypeRoundedRect];
+//    DCZuoWenRightButton *cityNameBtn = [DCZuoWenRightButton buttonWithType:UIButtonTypeRoundedRect];
+    DCZuoWenRightButton *cityNameBtn = [DCZuoWenRightButton buttonWithType:UIButtonTypeCustom];
     [cityNameBtn setImage:SETIMAGE(@"iocn_place_pull_down") forState:0];
     // 设置图标
     [cityNameBtn setTitle:self.cityName forState:UIControlStateNormal];
+    cityNameBtn.titleLabel.font = PFR15Font;
     [cityNameBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [cityNameBtn addTarget:self action:@selector(pickCity) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:cityNameBtn];
@@ -113,7 +115,7 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
     [topView addSubview:topSearchView];
     
     [topSearchView mas_makeConstraints:^(MASConstraintMaker *make) {
-        [make.left.mas_equalTo(self.cityNameBtn.mas_right)setOffset:3];
+        [make.left.mas_equalTo(self.cityNameBtn.mas_right)setOffset:5];
         [make.right.mas_equalTo(self.view)setOffset:-3];
         make.height.mas_equalTo(@33);
         make.centerY.mas_equalTo(topView);
