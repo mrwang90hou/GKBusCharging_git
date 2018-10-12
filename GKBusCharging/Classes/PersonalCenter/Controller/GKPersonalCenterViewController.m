@@ -231,7 +231,7 @@
     if ([[DCObjManager dc_readUserDataForKey:@"myPhone"] length] == 11) {
         [self.headerView.phoneBtn setTitle:[DCObjManager dc_readUserDataForKey:@"myPhone"] forState:UIControlStateNormal];
     }else{
-        [self.headerView.phoneBtn setTitle:@"绑定手机号码>" forState:UIControlStateNormal];
+        [self.headerView.phoneBtn setTitle:@"绑定手机号码" forState:UIControlStateNormal];
     }
 //    NSLog(@"updateUIReload222");
 //    [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"self.headerView.headTitleLabel.text = %@",self.self.headTitleLabel.text]];

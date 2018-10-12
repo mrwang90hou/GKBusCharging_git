@@ -44,8 +44,8 @@
 @interface GKFeedBackViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UITextFieldDelegate>
 {
     UILabel *titleHeaderLabel;
-//    DCZuoWenRightButton *feedbackRecordBtn;
-    UIButton *feedbackRecordBtn;
+    DCZuoWenRightButton *feedbackRecordBtn;
+//    UIButton *feedbackRecordBtn;
 }
 
 @property (nonatomic,strong) NSMutableArray *titleListArray;
@@ -150,7 +150,7 @@
 - (void)getUI{
     
     titleHeaderLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, 100, 20)];
-    feedbackRecordBtn = [[UIButton alloc]initWithFrame:CGRectMake(ScreenW - 80, 5, 100, 20)];
+    feedbackRecordBtn = [[DCZuoWenRightButton alloc]initWithFrame:CGRectMake(ScreenW - 80, 5, 100, 20)];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.collectionView.backgroundColor = TABLEVIEW_BG;
@@ -437,7 +437,9 @@
         titleHeaderLabel.textColor = RGB(88, 79, 96);
         [header addSubview:titleHeaderLabel];
 //        feedbackRecordBtn.titleLabel.text = @"反馈记录>";
-        [feedbackRecordBtn setTitle:@"反馈记录>" forState:UIControlStateNormal];
+        feedbackRecordBtn = [DCZuoWenRightButton buttonWithType:UIButtonTypeCustom];
+        [feedbackRecordBtn setTitle:@"反馈记录" forState:UIControlStateNormal];
+        [feedbackRecordBtn setImage:SETIMAGE(@"btn_more_small") forState:UIControlStateNormal];
         feedbackRecordBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
         [feedbackRecordBtn setTitleColor:RGB(88, 79, 96) forState:UIControlStateNormal];
 //        feedbackRecordBtn.titleLabel.textColor = RGB(88, 79, 96);
@@ -456,7 +458,7 @@
 //            make.top.equalTo(self->titleHeaderLabel);
             make.centerY.equalTo(header);
             make.right.mas_equalTo(self.view.mas_right).offset(-4);;
-            make.width.equalTo(@100);
+            make.width.equalTo(@70);
             make.height.equalTo(@20);
         }];
         

@@ -47,7 +47,9 @@ static NSString *GKOrderCellID = @"GKOrderCell";
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *evaluations;
 @property (nonatomic, strong) UILabel *costLabel;
-@property (nonatomic, strong) UIButton *detailsCheckBtn;//DCZuoWenRightButton
+//@property (nonatomic, strong) UIButton *detailsCheckBtn;
+@property (nonatomic, strong) DCZuoWenRightButton *detailsCheckBtn;
+
 
 
 
@@ -103,22 +105,23 @@ static NSString *GKOrderCellID = @"GKOrderCell";
     [consumeView setBackgroundColor:[UIColor whiteColor]];
     
     //设置定位按钮
-//    DCZuoWenRightButton *detailsCheckBtn = [DCZuoWenRightButton buttonWithType:UIButtonTypeRoundedRect];
-    UIButton *detailsCheckBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    DCZuoWenRightButton *detailsCheckBtn = [DCZuoWenRightButton buttonWithType:UIButtonTypeCustom];
+//    UIButton *detailsCheckBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
 //    [detailsCheckBtn setImage:SETIMAGE(@"home_icon_page_more") forState:0];
     // 设置图标
-    [detailsCheckBtn setTitle:@"查看明细>" forState:UIControlStateNormal];
+    [detailsCheckBtn setTitle:@"查看明细" forState:UIControlStateNormal];
     [detailsCheckBtn setTitleColor:TEXTGRAYCOLOR forState:UIControlStateNormal];
     detailsCheckBtn.titleLabel.font = PFR12Font;
+    [detailsCheckBtn setImage:SETIMAGE(@"btn_more_small") forState:0];
     [detailsCheckBtn addTarget:self action:@selector(detailsCheckBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [consumeView addSubview:detailsCheckBtn];
     [detailsCheckBtn mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.left.mas_equalTo(consumeView.mas_left).offset(4);
-        make.centerX.equalTo(consumeView);
+        make.centerX.mas_equalTo(consumeView).offset(12);
         make.centerY.equalTo(consumeView.mas_centerY).offset(22);
         make.height.equalTo(@(22));
-        make.width.equalTo(@90);
+        make.width.equalTo(@80);
     }];
     self.detailsCheckBtn = detailsCheckBtn;
     

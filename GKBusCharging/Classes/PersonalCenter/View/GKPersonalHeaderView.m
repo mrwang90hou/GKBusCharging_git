@@ -6,7 +6,6 @@
 //  Copyright © 2018年 goockr. All rights reserved.
 //
 #import "GKPersonalHeaderView.h"
-#import "DCZuoWenRightButton.h"
 
 @implementation GKPersonalHeaderView
 - (id)initWithFrame:(CGRect)frame{
@@ -52,7 +51,8 @@
         headTitleLabel.font = GKBlodFont(24);
         headTitleLabel.textColor = RGB(88, 79, 96);
 
-        UIButton * phoneBtn = [[UIButton alloc]init];
+//        UIButton * phoneBtn = [[UIButton alloc]init];
+        DCZuoWenRightButton *phoneBtn = [DCZuoWenRightButton buttonWithType:UIButtonTypeCustom];
         [self addSubview:phoneBtn];
         [phoneBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(lineView.mas_bottom).with.offset(3);
@@ -65,10 +65,10 @@
         if ([[DCObjManager dc_readUserDataForKey:@"myPhone"] length] == 11) {
             [phoneBtn setTitle:[DCObjManager dc_readUserDataForKey:@"myPhone"] forState:UIControlStateNormal];
         }else{
-            [phoneBtn setTitle:@"绑定手机号码>" forState:UIControlStateNormal];
+            [phoneBtn setTitle:@"绑定手机号码" forState:UIControlStateNormal];
         }
         [phoneBtn setTitleColor:RGB(31, 206, 155) forState:UIControlStateNormal];
-//        [phoneBtn setImage:[UIImage imageNamed:@"icon_namber_more"] forState:UIControlStateNormal];
+        [phoneBtn setImage:[UIImage imageNamed:@"icon_namber_more"] forState:UIControlStateNormal];
         phoneBtn.titleLabel.font = GKBlodFont(16);
         self.phoneBtn = phoneBtn;
 

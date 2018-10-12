@@ -369,7 +369,7 @@
     }];
     //订单详情
 //    UIButton *orderInfoBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    DCZuoWenRightButton *orderInfoBtn = [DCZuoWenRightButton new];
+    DCZuoWenRightButton *orderInfoBtn = [DCZuoWenRightButton buttonWithType:UIButtonTypeCustom];
     [orderInfoBtn setImage:SETIMAGE(@"home_icon_page_more") forState:0];
     //设置图标
     [orderInfoBtn setTitle:@"订单详情" forState:UIControlStateNormal];
@@ -408,8 +408,8 @@
     [orderInfoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(topView.mas_right).offset(-5);
 //        make.centerY.equalTo(topView);
-//        make.centerY.equalTo(myLabel);
-        make.bottom.mas_equalTo(topView.mas_bottom).offset(-15);
+        make.centerY.equalTo(myLabel);
+//        make.bottom.mas_equalTo(topView.mas_bottom).offset(-15);
 //        make.top.mas_equalTo(topView.mas_top).offset(10);
         make.height.equalTo(@22);
         make.width.equalTo(@90);
