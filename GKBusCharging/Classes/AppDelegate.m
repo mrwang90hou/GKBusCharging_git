@@ -37,25 +37,25 @@
     [GKUserDefault synchronize];
     [self setIQKeybordManager];
     [self setSVprogressHUD];
-//    [self KVONetworkChange];
+    [self KVONetworkChange];
 //    [self setNotificationPush];
 //    [self setUMeng];
-    [self addObserver];
+//    [self addObserver];
     return YES;
 }
 
 
-- (void) addObserver
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:LOGINSELECTCENTERINDEX object:nil];
-}
-
-
-#pragma mark -登录成功通知
-- (void) loginSuccess:(NSNotification *)noti
-{
-    [self autoLogin];
-}
+//- (void) addObserver
+//{
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:LOGINSELECTCENTERINDEX object:nil];
+//}
+//
+//
+//#pragma mark -登录成功通知
+//- (void) loginSuccess:(NSNotification *)noti
+//{
+//    [self autoLogin];
+//}
 - (void) autoLogin{
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -102,20 +102,19 @@
 }
 //实时监控网络状态
 - (void)KVONetworkChange {
-//    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-//        if (status == AFNetworkReachabilityStatusNotReachable) {
-//            NSLog(@"没网");
-//            [GKUserDefault setObject:@"0" forKey:@"NetworkStatus"];
-//            [GKUserDefault synchronize];
-//        }else{
-//            [GKUserDefault setObject:@"1" forKey:@"NetworkStatus"];
-//            [GKUserDefault synchronize];
-//            NSLog(@"有网");
-//        }
-//    }];
-//
-//    //监控网络状态，开启监听
-//    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        if (status == AFNetworkReachabilityStatusNotReachable) {
+            NSLog(@"没网");
+            [GKUserDefault setObject:@"0" forKey:@"NetworkStatus"];
+            [GKUserDefault synchronize];
+        }else{
+            [GKUserDefault setObject:@"1" forKey:@"NetworkStatus"];
+            [GKUserDefault synchronize];
+            NSLog(@"有网");
+        }
+    }];
+    //监控网络状态，开启监听
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 }
 
 //- (void)customizeInterfaceWithTabBarController:(CYLTabBarController *)tabBarController {

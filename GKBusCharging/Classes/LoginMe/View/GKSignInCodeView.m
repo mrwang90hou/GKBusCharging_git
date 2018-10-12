@@ -198,7 +198,8 @@
         GKButton * nextBtn = [GKButton new];
         [self addSubview:nextBtn];
         [nextBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(codeView.mas_bottom).with.offset(48);
+//            make.top.mas_equalTo(codeView.mas_bottom).with.offset(48);
+            make.bottom.mas_equalTo(weakSelf.mas_bottom).offset(-18);
             make.left.mas_equalTo(weakSelf).with.offset(20);
             make.right.mas_equalTo(weakSelf).with.offset(-20);
             make.height.mas_equalTo(44);
@@ -311,8 +312,9 @@
                 [SVProgressHUD dismiss];
                 [weakSelf makeToast:@"登录成功" duration:0.5 position:CSToastPositionCenter];
                 //            [weakSelf setUpUserBaseData];
-                AppDelegate *app=(AppDelegate *)[UIApplication sharedApplication].delegate;
-                [app autoLogin];
+//                AppDelegate *app=(AppDelegate *)[UIApplication sharedApplication].delegate;
+//                [app autoLogin];
+                [[NSNotificationCenter defaultCenter]postNotificationName:LOGINSELECTCENTERINDEX object:nil];
             });
         } failure:^(MQError *error) {
             switch (error.code) {

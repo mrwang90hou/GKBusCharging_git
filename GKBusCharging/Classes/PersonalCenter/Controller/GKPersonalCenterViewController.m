@@ -17,7 +17,7 @@
 #import "GKFeedBackViewController.h"
 #import "GKMeViewController.h"
 #import "GKBindingPhoneController.h"
-
+#import "GKLoginViewController.h"
 #import "GKBalanceViewController.h"
 #import "GKAboutUsViewController.h"
 #import "GKOrderManagementViewController.h"
@@ -169,23 +169,36 @@
 }
 
 -(void)updatas{
-//    [SVProgressHUD showInfoWithStatus:@"updatas"];
-    [self requestData];
-    
+    //登录成功
+    if ([[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
+         [self requestData];
+    } else {
+        return;
+    }
 }
+
 -(void)requestData{
+    
     NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
-//    NSLog(@"cookid = %@",cookid);
-    NSDictionary *dict=@{
-                         @"cookid":cookid
-                         };
-    [SVProgressHUD showWithStatus:@"正在查询用户状态..."];
-    [GCHttpDataTool cxChargingLineStatusWithDict:dict success:^(id responseObject) {
-        [SVProgressHUD dismiss];
-        [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
-    } failure:^(MQError *error) {
-        [SVProgressHUD showErrorWithStatus:error.msg];
-    }];
+    if (cookid) {
+        //    NSLog(@"cookid = %@",cookid);
+        NSDictionary *dict=@{
+                             @"cookid":cookid
+                             };
+        [SVProgressHUD showWithStatus:@"正在查询用户状态..."];
+        [GCHttpDataTool cxChargingLineStatusWithDict:dict success:^(id responseObject) {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+        }];
+        NSLog(@"《冲哈哈》获取用户cookid成功");
+    }else{
+//        [SVProgressHUD showErrorWithStatus:@"cookid is null"];
+        NSLog(@"❌❌获取用户cookid失败❌❌");
+        return;
+    }
+
 }
 
 
@@ -344,6 +357,9 @@
 //点击item方法
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self checkLoginStatus]) {
+        return;
+    }
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 //    GKBaseSetViewController *vc = [[GKBaseSetViewController alloc]init];
     GKBaseSetViewController *nextVC;
@@ -399,14 +415,40 @@
 #pragma mark -自定义方法
 
 -(void)turnToGKMeViewController{
-    
+    //判断是否登录状态
+//    if (![[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
+//        GKLoginViewController *VC=[[GKLoginViewController alloc]init];
+//        UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:VC];
+//        [self presentViewController:nav animated:YES completion:nil];
+//    } else {
+//        GKMeViewController * vc = [[GKMeViewController alloc]init];
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
+    if ([self checkLoginStatus]) {
+        return;
+    }
     GKMeViewController * vc = [[GKMeViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)turnToGKBindingPhoneController{
+    if ([self checkLoginStatus]) {
+        return;
+    }
     GKBindingPhoneController * vc = [[GKBindingPhoneController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(Boolean)checkLoginStatus{
+    //判断是否登录状态
+    if (![[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
+        GKLoginViewController *VC=[[GKLoginViewController alloc]init];
+        UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:VC];
+        [self presentViewController:nav animated:YES completion:nil];
+        return true;
+    } else {
+        return false;
+    }
 }
 
 @end

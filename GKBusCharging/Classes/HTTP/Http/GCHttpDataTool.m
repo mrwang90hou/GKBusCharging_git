@@ -38,7 +38,7 @@
 
 +(void)smsLoginWithDict:(NSDictionary *)dict success:(void (^)(id))success failure:(void (^)(MQError *))failure
 {
-    NSString *urlString=[NSString stringWithFormat:@"%@",SENDMessageURL];
+    NSString *urlString=[NSString stringWithFormat:@"%@",LOGINAccountURL];
     NSLog(@"当前URL请求【验证码登录】为：%@",urlString);
     NSLog(@"parameters参数为：%@",dict);
     

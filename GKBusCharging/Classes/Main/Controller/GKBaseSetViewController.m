@@ -35,7 +35,7 @@
 {
     [super viewWillAppear:animated];
 //    [self.navigationController setNavigationBarHidden:YES animated:animated];
-    [self setUpAcceptNote];
+//    [self setUpAcceptNote];
 }
 
 #pragma mark - 接受跟换控制

@@ -73,20 +73,26 @@
     
 //    [self setUpTiTleView];
     
-//    [self setUpAcceptNote];
+    [self setUpAcceptNote];
 }
 
 #pragma mark - 接受跟换控制
 - (void)setUpAcceptNote
 {
     [[NSNotificationCenter defaultCenter]addObserverForName:LOGINSELECTCENTERINDEX object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-        // 正常登录成功，跳转至主界面
-        //        [SVProgressHUD showSuccessWithStatus:@"跳转至主页面！"];
-        //        GKNavigationController *navigationController = [[GKNavigationController alloc]initWithRootViewController:[[GKHomeViewController alloc]init]];
-        //        [UIApplication sharedApplication].keyWindow.rootViewController = navigationController;
+        [self close];
+        
+        [self.view endEditing:YES];
+        //返回主视图
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [SVProgressHUD showSuccessWithStatus:@"登录成功!"];
     }];
+    
 }
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 #pragma mark - base
 - (void)sertUpBase {
     self.view.backgroundColor = [UIColor whiteColor];
@@ -156,8 +162,7 @@
 
 #pragma mark - 退出当前界面
 - (IBAction)dismissViewController {
-    [SVProgressHUD showInfoWithStatus:@"点击关闭退出按钮！"];
-    
+//    [SVProgressHUD showInfoWithStatus:@"点击关闭退出按钮！"];
     [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -214,6 +219,7 @@
 
 -(void)close{
     [self.bgView removeFromSuperview];
+    
 }
 
 - (IBAction)serviceContractAction:(id)sender {

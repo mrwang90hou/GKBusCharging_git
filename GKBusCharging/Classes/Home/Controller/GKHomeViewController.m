@@ -20,6 +20,8 @@
 #import "GKOrderDetailsViewController.h"
 
 #import "GKStartChargingViewController.h"
+
+#import "GKLoginViewController.h"
 //#import "DCTabBarController.h"
 //#import "DCRegisteredViewController.h"
 // Models
@@ -71,6 +73,8 @@
 
 @property (nonatomic,strong) UIButton *busListBtn;
 
+@property (nonatomic,strong) GKUpDownButton *plusButton;
+
 @property (nonatomic, strong) NSMutableArray *images;
 /* 弹窗评价窗口1 , 2 */
 @property (strong , nonatomic)GKPriceEvaluationView *priceEvaluationView;
@@ -78,7 +82,6 @@
 @property (strong , nonatomic)GKStarAndLabellingEvaluationView *starAndLabellingEvaluationView;
 
 @property (nonatomic,strong) UIView *infoView;
-
 
 @property (nonatomic,strong) UIView *bgView;
 
@@ -100,6 +103,7 @@
 - (void)viewDidLoad {
     self.cityName = @"佛山市";
     [super viewDidLoad];
+    [self.view setBackgroundColor:RGBall(248)];
     
     [self setUpNavBarView];
     
@@ -214,7 +218,7 @@
 
 - (void)setUpTabBarView{
     UIView *tabBarView = [[UIView alloc]init];
-    [tabBarView setBackgroundColor:[UIColor clearColor]];
+    [tabBarView setBackgroundColor:RGBall(248)];
     [self.view addSubview:tabBarView];
     
     [tabBarView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -232,7 +236,8 @@
     }];
     //扫码按钮
     GKUpDownButton *plusButton = [[GKUpDownButton alloc] init];
-    [plusButton setImage:SETIMAGE(@"nav_btn_scavenging_charging_normal") forState:0];
+    [plusButton setImage:SETIMAGE(@"nav_btn_scavenging_charging_normal") forState:UIControlStateNormal];
+    [plusButton setImage:SETIMAGE(@"nav_btn_scavenging_charging_normal_2") forState:UIControlStateSelected];
     [plusButton setImage:SETIMAGE(@"nav_btn_scavenging_charging_normal_2") forState:UIControlStateHighlighted];
     // 设置图标
     [plusButton setTitle:@"扫码充电" forState:UIControlStateNormal];
@@ -248,6 +253,7 @@
         make.height.mas_equalTo(K_HEIGHT_TABBAR/2*3);
         make.width.mas_equalTo(K_HEIGHT_TABBAR/2*3);
     }];
+    self.plusButton = plusButton;
     //个人中心
     GKUpDownButton * personCenterBtn = [[GKUpDownButton alloc] init];
     [personCenterBtn setImage:SETIMAGE(@"nav_btn_personal_center_normal") forState:0];
@@ -440,6 +446,13 @@
     }else{
         self.infoView.hidden = true;
     }
+    if (![[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
+//        self.plusButton.selected = false;
+        [self.plusButton setImage:SETIMAGE(@"nav_btn_scavenging_charging_normal_2") forState:UIControlStateNormal];
+    }else{
+//        self.plusButton.selected = true;
+        [self.plusButton setImage:SETIMAGE(@"nav_btn_scavenging_charging_normal") forState:UIControlStateNormal];
+    }
 }
 
 
@@ -504,6 +517,9 @@
 }
 
 - (void)scanQRCode{
+    if ([self checkLoginStatus]) {
+        return;
+    }
     DCGMScanViewController *dcGMvC = [DCGMScanViewController new];
 //    UINavigationController *newNaVC = [[UINavigationController alloc]initWithRootViewController:dcGMvC];
     [self.navigationController pushViewController:dcGMvC animated:YES];
@@ -511,6 +527,9 @@
 }
 
 -(void)pickCity{
+    if ([self checkLoginStatus]) {
+        return;
+    }
     WEAKSELF
     JFCityViewController *cityViewController = [[JFCityViewController alloc] init];
     cityViewController.title = @"城市";
@@ -531,6 +550,9 @@
 }
 
 - (void)turnToBusInfoList{
+    if ([self checkLoginStatus]) {
+        return;
+    }
     GKBusInfoListViewController *vc = [GKBusInfoListViewController new];
 //    HotelEvaluateVC *vc = [HotelEvaluateVC new];
     vc.title = @"车辆信息";
@@ -538,6 +560,9 @@
 }
 
 - (void)orderInfoBtnAction{
+    if ([self checkLoginStatus]) {
+        return;
+    }
     [self.navigationController pushViewController:[GKOrderManagementViewController new] animated:YES];
 }
 
@@ -797,6 +822,9 @@
 }
 
 - (void)qrCodeSuccessAction{
+    if ([self checkLoginStatus]) {
+        return;
+    }
     [SVProgressHUD showWithStatus:@"正在跳转\n请稍后。。。"];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [SVProgressHUD dismiss];
@@ -832,5 +860,17 @@
         _advertiseView = adview;
     }
     return _advertiseView;
+}
+
+-(Boolean)checkLoginStatus{
+    //判断是否登录状态
+    if (![[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
+        GKLoginViewController *VC=[[GKLoginViewController alloc]init];
+        UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:VC];
+        [self presentViewController:nav animated:YES completion:nil];
+        return true;
+    } else {
+        return false;
+    }
 }
 @end

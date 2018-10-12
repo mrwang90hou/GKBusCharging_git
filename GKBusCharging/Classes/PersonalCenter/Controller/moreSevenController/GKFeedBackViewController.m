@@ -157,9 +157,9 @@
     //设置collectionView滚动方向
     [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
     //设置headerView的尺寸大小
-    //    layout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 100);
+    //layout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 100);
     //该方法也可以设置itemSize
-    //    layout.itemSize =CGSizeMake(110, 150);
+    //layout.itemSize =CGSizeMake(110, 150);
     
     layout.sectionInset =UIEdgeInsetsMake(0, 0, 0, 0);
     layout.headerReferenceSize =CGSizeMake(ScreenW, 40*ScreenH/667);
