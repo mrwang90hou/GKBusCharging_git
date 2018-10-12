@@ -35,6 +35,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic,strong)  NSMutableArray *dataSoucre;
+
+@property (nonatomic,strong) UIView *noDatasView;
+
 //@property (nonatomic,strong)  MQHudTool *hud;
 
 @end
@@ -48,7 +51,7 @@
 //        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 //        [_tableView registerNib:[UINib nibWithNibName:@"GKBusInfoCell" bundle:nil] forCellReuseIdentifier:GKBusInfoCellID];
 //        _tableView.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1];
-        _tableView.allowsSelection = NO;
+        _tableView.allowsSelection = YES;
 //        _tableView.delegate = self;
 //        _tableView.dataSource = self;
 //    }
@@ -62,9 +65,9 @@
     if (_dataSoucre==nil) {
         _dataSoucre=[NSMutableArray array];
     }
+    [_dataSoucre addObject:@"反馈记录"];
     return _dataSoucre;
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -74,7 +77,49 @@
 }
 
 - (void)getUI{
+    [self.view setBackgroundColor:TABLEVIEW_BG];
+    UIView *noDatasView = [[UIView alloc]init];
+    [self.view addSubview:noDatasView];
+    [noDatasView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.view).offset(-ScreenH/4);
+        make.centerX.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(150, 150));
+    }];
+//    [noDatasView setBackgroundColor:Main_Color];
+    UIImageView *noDatasImageView = [[UIImageView alloc]initWithImage:SETIMAGE(@"blank_page_no_order")];
+    [noDatasView addSubview:noDatasImageView];
+    [noDatasImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(noDatasView).offset(-20);
+        make.centerX.equalTo(noDatasView);
+        make.size.mas_equalTo(CGSizeMake(110, 83));
+    }];
     
+    UILabel *messageLabel = [[UILabel alloc]init];
+    [noDatasView addSubview:messageLabel];
+    [messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(noDatasImageView.mas_bottom).offset(10);
+        make.centerX.equalTo(noDatasView);
+        make.size.mas_equalTo(CGSizeMake(120, 20));
+    }];
+    [messageLabel setTextColor:TEXTGRAYCOLOR];
+    [messageLabel setFont:GKFont(14)];
+    [messageLabel setText:@"暂无反馈记录"];
+    messageLabel.textAlignment = NSTextAlignmentCenter;
+    self.noDatasView = noDatasView;
+//    blank_page_no_order
+//    暂无订单详情
+    [_dataSoucre addObject:@"www"];
+    [_dataSoucre addObject:@"www"];
+    [_dataSoucre addObject:@"www"];
+    [_dataSoucre addObject:@"www"];
+    [_dataSoucre addObject:@"www"];
+    [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"_dataSoucre.count = %lu",(unsigned long)[_dataSoucre count]]];
+    if (_dataSoucre == nil) {
+        [_tableView setHidden:true];
+        [_noDatasView setHidden:false];
+    }else{
+        [_noDatasView setHidden:true];
+    }
 }
 #pragma mark -页面逻辑方法
 
@@ -103,9 +148,6 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    PermissionsDeviceCell *cell=[PermissionsDeviceCell cellWithTableView:tableView];
-//    UITableViewCell *cell=[UITableViewCell cellWithTableView:tableView];
-//    UITableViewCell *cell=[UITableViewCell alloc]initWithCoder:<#(nonnull NSCoder *)#>;
     
     static NSString *ID = @"wine";
 //    GKTFCell
@@ -124,7 +166,6 @@
     [cell.detailTextLabel setTextColor:TEXTGRAYCOLOR];
     [cell.detailTextLabel setFont:GKFont(12)];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//    cell.
     return cell;
 }
 
@@ -133,21 +174,8 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     //    GKFeedBackInfoViewController *vc = [GKFeedBackInfoViewController new];
     GKFeedBackInfo2ViewController *vc = [GKFeedBackInfo2ViewController new];
-    
-//    vc.title = @"反馈详情";
     [self.navigationController pushViewController:vc animated:YES];
     
-}
-//- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-//    return @"向左滑动删除";
-//}
-
--(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
-
-{
-//    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-//    header.textLabel.textColor = [UIColor grayColor];
-//    header.textLabel.font = [UIFont boldSystemFontOfSize:12];
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -159,113 +187,4 @@
 //    return KScreenScaleValue(22);
     return 11;
 }
-
-/**
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
-
--(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
-}
-
- *  左滑cell时出现什么按钮
-- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSArray * array;
-    
-    //    if ([self.editButtonItem.title isEqualToString:@"编辑"]) {
-    //        return self.tableView.indexPathsForSelectedRows;;
-    //    }
-    //
-    UITableViewRowAction *action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-        _indexPath = indexPath;
-        [self makeSure];
-    }];
-    
-    array = @[action];
-    
-    return array;
-}
-
-//删除的二次确认
--(void)makeSure
-{
-    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"提示" andMessage:@"确认删除？"];
-    
-    [alertView addButtonWithTitle:@"取消"
-                             type:SIAlertViewButtonTypeDefault
-                          handler:^(SIAlertView *alertView) {
-                              
-                              [alertView dismissAnimated:NO];
-                              
-                          }];
-    
-    [alertView addButtonWithTitle:@"确定"
-                             type:SIAlertViewButtonTypeDefault
-                          handler:^(SIAlertView *alertView) {
-                              
-                              [alertView dismissAnimated:NO];
-                              [self deleteDeviceWithIndexPath];
-                              
-                          }];
-    
-    [alertView show];
-}
-
--(void)deleteDeviceWithIndexPath
-{
-    [self.hud addNormHudWithSupView:self.view title:@"正在删除..."];
-    
-    GCDevice * device = self.dataSoucre[_indexPath.row];
-    
-    NSDictionary * dic = @{@"mobile":[GCUser getInstance].mobile,@"token":[GCUser getInstance].token,@"devcode":device.deviceId};
-    [GCHttpDataTool delDeviceRefWithDict:dic success:^(id responseObject) {
-        
-        [self.hud hide];
-        NSLog(@" 删除结果 == %@",responseObject);
-        if (responseObject[@"result"] && [responseObject[@"result"] intValue] == 0) {
-            
-            [[GCUser getInstance].deviceList removeObject:device];
-            
-            if ([GCUser getInstance].device.deviceId == device.deviceId) {
-                if ([GCUser getInstance].deviceList.count > 0) {
-                    [GCUser getInstance].device = [GCUser getInstance].deviceList[0];
-                }else
-                {
-                    [GCUser getInstance].device = nil;
-                }
-            }
-            
-            [self getData];
-            
-            [self.tableView reloadData];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:KNotiSelectDeviceChange object:nil];
-        }
-        
-    } failure:^(MQError *error) {
-        [self.hud hudUpdataTitile:@"删除失败" hideTime:1.2];
-    }];
-}
-
--(MQHudTool *)hud
-{
-    if (_hud==nil) {
-        _hud=[[MQHudTool alloc] init];
-    }
-    
-    return _hud;
-}
-
-
-
--(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return   UITableViewCellEditingStyleDelete;
-}
-
- */
 @end

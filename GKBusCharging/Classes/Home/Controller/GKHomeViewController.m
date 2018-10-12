@@ -375,34 +375,6 @@
     [orderInfoBtn setTitle:@"订单详情" forState:UIControlStateNormal];
     [orderInfoBtn setTitleColor:RGB(88, 79, 96) forState:UIControlStateNormal];
     orderInfoBtn.titleLabel.font = PFR15Font;
-    
-    /* button 的左字右图 设计方案
-//    [orderInfoBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, orderInfoBtn.imageView.dc_width, 0, orderInfoBtn.imageView.dc_width)];
-//    [orderInfoBtn setImageEdgeInsets:UIEdgeInsetsMake(0, orderInfoBtn.titleLabel.bounds.size.width, 0, -orderInfoBtn.titleLabel.bounds.size.width)];
-
-//    CGFloat imageWidth = orderInfoBtn.imageView.bounds.size.width;
-//    CGFloat labelWidth = orderInfoBtn.titleLabel.bounds.size.width;
-//    orderInfoBtn.imageEdgeInsets = UIEdgeInsetsMake(0, labelWidth, 0, -labelWidth);
-//    orderInfoBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -imageWidth, 0, imageWidth);
-    
-    
-    // button标题的偏移量
-//    orderInfoBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -orderInfoBtn.imageView.bounds.size.width+2, 0, orderInfoBtn.imageView.bounds.size.width);
-    // button图片的偏移量
-//    orderInfoBtn.imageEdgeInsets = UIEdgeInsetsMake(0, orderInfoBtn.titleLabel.bounds.size.width, 0, -orderInfoBtn.titleLabel.bounds.size.width);
-    
-//    orderInfoBtn.imageEdgeInsets = UIEdgeInsetsMake(0, labelWidth, 0, -labelWidth);
-//    orderInfoBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -imageWidth, 0, imageWidth);
-
-//    orderInfoBtn.showsTouchWhenHighlighted = YES;
-//    orderInfoBtn.contentEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
-//    // 重点位置开始
-//    orderInfoBtn.imageEdgeInsets = UIEdgeInsetsMake(0, orderInfoBtn.titleLabel.dc_width + 2.5, 0, -orderInfoBtn.titleLabel.dc_width - 2.5);
-//    orderInfoBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -orderInfoBtn.currentImage.size.width, 0, orderInfoBtn.currentImage.size.width);
-//    // 重点位置结束
-//    orderInfoBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-     */
-    
     [orderInfoBtn addTarget:self action:@selector(orderInfoBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:orderInfoBtn];
     [orderInfoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -423,7 +395,6 @@
         make.top.mas_equalTo(infoView).offset(DCNaviH);
     }];
     
-    
     UILabel *countDTownTimeLabel = [[UILabel alloc]init];
     [countDTownTimeLabel setText:@"00:56:01"];
     countDTownTimeLabel.textAlignment = NSTextAlignmentCenter;
@@ -435,8 +406,6 @@
         make.centerY.mas_equalTo(bgImageView).offset(-K_HEIGHT_TABBAR/3*2);
         make.size.mas_equalTo(CGSizeMake(250, 55));
     }];
-    
-    
     
     UILabel *hintLabel = [[UILabel alloc]init];
     [hintLabel setText:@"充电中"];

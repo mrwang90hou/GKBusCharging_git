@@ -46,22 +46,98 @@ static NSString *GKOrderCellID = @"GKOrderCell";
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *evaluations;
 
+@property (nonatomic,strong)  NSMutableArray *dataSoucre;
+
+@property (nonatomic,strong) UIView *noDatasView;
+
+
 @end
 
 @implementation GKOrderManagementViewController
-#pragma mark - LazyLoad
+#pragma mark - lazy load
+-(UITableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];//UITableViewStyleGrouped
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [_tableView registerNib:[UINib nibWithNibName:@"GKOrderCell" bundle:nil] forCellReuseIdentifier:GKOrderCellID];
+        _tableView.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1];
+        _tableView.allowsSelection = NO;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
+    return _tableView;
+}
+
+-(NSMutableArray *)evaluations{
+    if (!_evaluations) {
+        _evaluations = [NSMutableArray array];
+    }
+    return _evaluations;
+}
+
+- (NSMutableArray *)dataSoucre
+{
+    if (_dataSoucre==nil) {
+        _dataSoucre=[NSMutableArray array];
+    }
+    [_dataSoucre addObject:@"订单管理"];
+    return _dataSoucre;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"订单管理";
-    [self setupUI];
+    [self getUI];
+    [self getData];
 }
 
--(void)setupUI{
-    [self.view addSubview:self.tableView];
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+- (void)getUI{
+    
+    [self.view setBackgroundColor:TABLEVIEW_BG];
+    UIView *noDatasView = [[UIView alloc]init];
+    [self.view addSubview:noDatasView];
+    [noDatasView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.view).offset(-ScreenH/4);
+        make.centerX.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(150, 150));
     }];
+    //    [noDatasView setBackgroundColor:Main_Color];
+    
+    
+    UIImageView *noDatasImageView = [[UIImageView alloc]initWithImage:SETIMAGE(@"blank_page_no_order")];
+    [noDatasView addSubview:noDatasImageView];
+    [noDatasImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(noDatasView).offset(-20);
+        make.centerX.equalTo(noDatasView);
+        make.size.mas_equalTo(CGSizeMake(110, 83));
+    }];
+    
+    UILabel *messageLabel = [[UILabel alloc]init];
+    [noDatasView addSubview:messageLabel];
+    [messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(noDatasImageView.mas_bottom).offset(10);
+        make.centerX.equalTo(noDatasView);
+        make.size.mas_equalTo(CGSizeMake(120, 20));
+    }];
+    [messageLabel setTextColor:TEXTGRAYCOLOR];
+    [messageLabel setFont:GKFont(14)];
+    [messageLabel setText:@"暂无订单详情"];
+    messageLabel.textAlignment = NSTextAlignmentCenter;
+    self.noDatasView = noDatasView;
+    //    blank_page_no_order
+    //    暂无订单详情
+    [_dataSoucre addObject:@"订单管理"];
+    if (_dataSoucre.count == 0) {
+        [_tableView setHidden:true];
+        [_noDatasView setHidden:false];
+    }else{
+        [_noDatasView setHidden:true];
+    }
+}
+
+
+-(void)getData{
+    
 }
 
 
@@ -123,26 +199,6 @@ static NSString *GKOrderCellID = @"GKOrderCell";
 //    GKBusMoreInfoViewController *vc = [[GKBusMoreInfoViewController alloc] init];
 //    vc.title = [NSString stringWithFormat:@"信息详情[第%ld个]",indexPath.row+1];
 //    [self.navigationController pushViewController:vc animated:YES];
-}
-#pragma mark - lazy load
--(UITableView *)tableView{
-    if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];//UITableViewStyleGrouped
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        [_tableView registerNib:[UINib nibWithNibName:@"GKOrderCell" bundle:nil] forCellReuseIdentifier:GKOrderCellID];
-        _tableView.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1];
-        _tableView.allowsSelection = NO;
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-    }
-    return _tableView;
-}
-
--(NSMutableArray *)evaluations{
-    if (!_evaluations) {
-        _evaluations = [NSMutableArray array];
-    }
-    return _evaluations;
 }
 
 - (void)touch{

@@ -28,12 +28,6 @@
 	</dict>
 	<dict>
 		<key>titleName</key>
-		<string>更新APP</string>
-		<key>imageName</key>
-		<string>icon_personal_center_app_down</string>
-	</dict>
-	<dict>
-		<key>titleName</key>
 		<string>紧急报警</string>
 		<key>imageName</key>
 		<string>icon_personal_center_sos</string>

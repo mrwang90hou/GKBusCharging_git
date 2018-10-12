@@ -28,12 +28,6 @@
 	</dict>
 	<dict>
 		<key>titleName</key>
-		<string>物理按钮无法停止充电</string>
-		<key>imageName</key>
-		<string>icon_fault_5</string>
-	</dict>
-	<dict>
-		<key>titleName</key>
 		<string>其他</string>
 		<key>imageName</key>
 		<string>icon_fault_6</string>

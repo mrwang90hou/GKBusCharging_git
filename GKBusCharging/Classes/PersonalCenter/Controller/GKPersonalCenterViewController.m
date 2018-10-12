@@ -170,7 +170,22 @@
 
 -(void)updatas{
 //    [SVProgressHUD showInfoWithStatus:@"updatas"];
-//    NSLog(@"viewWillAppear");
+    [self requestData];
+    
+}
+-(void)requestData{
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+//    NSLog(@"cookid = %@",cookid);
+    NSDictionary *dict=@{
+                         @"cookid":cookid
+                         };
+    [SVProgressHUD showWithStatus:@"正在查询用户状态..."];
+    [GCHttpDataTool cxChargingLineStatusWithDict:dict success:^(id responseObject) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
+    } failure:^(MQError *error) {
+        [SVProgressHUD showErrorWithStatus:error.msg];
+    }];
 }
 
 
@@ -237,7 +252,6 @@
 //    [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"self.headerView.headTitleLabel.text = %@",self.self.headTitleLabel.text]];
 }
 
-
 - (void)getData{
 //    self.titleListArray = @[@"余额:",@"订单管理",@"使用帮助",@"关于我们",@"紧急报警",@"意见反馈"];
     [self getDataFromPlist];
@@ -279,7 +293,7 @@
 //每个section的item个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 7;
+    return 6;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -349,18 +363,18 @@
             //        case 4:
             //            nextVC = [[GFMyTradeViewController alloc] init];
             //            break;
-        case 4://更新APP
-            nextVC = [[GKBaseSetViewController alloc] init];
-            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
-            return;
-            break;
-        case 5://紧急报警
+//        case 4://更新APP
+//            nextVC = [[GKBaseSetViewController alloc] init];
+//            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
+//            return;
+//            break;
+        case 4://紧急报警
             nextVC = [[GKStartChargingViewController alloc] init];
 //            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
             [SVProgressHUD showErrorWithStatus:@"暂用于GKStartChargingViewController测试页面！"];
 //            return;
             break;
-        case 6://意见反馈
+        case 5://意见反馈
             nextVC = [[GKFeedBackViewController alloc] init];
             break;
 //        case 8:

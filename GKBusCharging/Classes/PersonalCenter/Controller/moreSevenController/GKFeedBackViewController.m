@@ -334,6 +334,7 @@
     [self.nameTF addTarget:self action:@selector(textFieldDidBeginEditing:) forControlEvents:UIControlEventEditingChanged];
     [self.phoneTF addTarget:self action:@selector(textFieldDidBeginEditing:) forControlEvents:UIControlEventEditingChanged];
 }
+
 - (void)updataUI{
     [self.endingBtn setTitle:@"返回首页" forState: UIControlStateNormal];
 }
@@ -376,7 +377,7 @@
 //每个section的item个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 6;
+    return 5;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -504,7 +505,7 @@
     }
     //点击collectionView 后 writeToInfoview 的显示
     [self.writeToInfoview setHidden:false];
-    if (indexPath.row != 5) {
+    if (indexPath.row != 4) {
         [self.opinionContentTV setHidden:true];
     }else{
         [self.opinionContentTV setHidden:false];

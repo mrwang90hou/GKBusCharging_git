@@ -233,7 +233,7 @@
         NSDictionary *dict=@{
                              @"token":@"PK1ET0sXJatywLfN",
 //                             @"token":TOKEN,
-                             @"phone":self.phoneTF.text,
+                             @"phone":self.phoneTF.text
                              };
         [SVProgressHUD showWithStatus:@"正在获取验证码..."];
         [GCHttpDataTool getLoginSmsCodeWithDict:dict success:^(id responseObject) {
@@ -298,14 +298,14 @@
         NSDictionary *dict=@{
                              @"phone":self.phoneTF.text,
                              @"code":self.codeTF.text,
-                             @"type":PhoneTypeID,
+                             @"type":PhoneTypeID
                              };
         [GCHttpDataTool smsLoginWithDict:dict success:^(id responseObject) {
 //            [[GCUser getInstance] updateUserInfoWithdict:responseObject[@"userInfo"]];
 //            [MQSaveLoadTool preferenceSaveUserInfo:responseObject[@"userInfo"] whitKey:KPreferenceUserInfo];
 //            [[NSNotificationCenter defaultCenter] postNotificationName:KNotiLoginSuccess object:nil];
             [DCObjManager dc_saveUserData:@"1" forKey:@"isLogin"]; //1代表登录
-            [DCObjManager dc_saveUserData:@"app_termUserInfo_18577986175" forKey:@"key"]; //存储key 值
+            [DCObjManager dc_saveUserData:@"app_termUserInfo_18577986175" forKey:@"key"]; //存储key 值cookid
             [DCObjManager dc_saveUserData:self.phoneTF.text forKey:@"UserPhone"]; //记录手机号
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismiss];
