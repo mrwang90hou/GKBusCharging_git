@@ -81,7 +81,7 @@
 //#define yhzdqxURL GKMAIN_URL @"/charge/smallrount/getdetail";
 
 //获取个人信息
-#define GETPersonalInfoURL GK_URL @"/charge/smallrount/info"
+#define GETUserInfoURL GK_URL @"/charge/smallrount/info"
 //#define grxxURL GKMAIN_URL @"/charge/smallrount/info";
 
 //上传故障信息

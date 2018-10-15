@@ -88,7 +88,6 @@
         manager.responseSerializer = [AFJSONResponseSerializer serializer];
         // 可接受的文本参数规格
 //        manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
-
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html",@"text/plain",nil];
         AFSecurityPolicy *security = [AFSecurityPolicy defaultPolicy];
         security.allowInvalidCertificates = YES;
@@ -146,7 +145,7 @@
 //        }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        NSLog(@"task.state = %@)",error.userInfo);
+        NSLog(@"task.state = %@)",error.userInfo);
         MQError *err=[MQError errorWithCode:-1 msg:@"网络请求失败"];
 //        err.msg = error.mj_JSONString;
         failure(err);
