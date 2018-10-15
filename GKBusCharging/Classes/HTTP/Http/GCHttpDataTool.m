@@ -26,7 +26,20 @@
     
     [GCHttpTool Post:urlString parameters:dict success:^(id responseObject) {
         
-        success(responseObject);
+        if ([responseObject[@"code"] intValue] != 200)
+        {
+            MQError *err=[[MQError alloc] init];;
+            
+            err.code=[responseObject[@"code"] intValue];
+            
+            err.msg=responseObject[@"msg"];
+            
+            failure(err);
+            NSLog(@"❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌[responseObject[@Code] intValue] = %d",[responseObject[@"Code"] intValue]);
+            
+        }else{
+            success(responseObject);
+        }
         
     } failure:^(MQError *error) {
         
@@ -44,7 +57,20 @@
     
     [GCHttpTool Post:urlString parameters:dict success:^(id responseObject) {
         
-        success(responseObject);
+        if ([responseObject[@"code"] intValue] != 200)
+        {
+            MQError *err=[[MQError alloc] init];;
+            
+            err.code=[responseObject[@"code"] intValue];
+            
+            err.msg=responseObject[@"msg"];
+            
+            failure(err);
+            NSLog(@"❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌[responseObject[@Code] intValue] = %d",[responseObject[@"Code"] intValue]);
+            
+        }else{
+            success(responseObject);
+        }
         
     } failure:^(MQError *error) {
         
@@ -85,7 +111,43 @@
     [GCHttpTool Post:urlString parameters:dict success:^(id responseObject) {
         
         success(responseObject);
+//        Result
+//        0:请求发送到达客户端
+//        -4:网络错误
+//        -5:保存数据出错
+//        -7:机柜正在处理其他请求
+//        -8:机柜繁忙
+        NSString *errorStr = @"";
+        switch ([responseObject[@"Result"] intValue]) {
+            case 0:
+                success(responseObject);
+                break;
+            case -4:
+                errorStr = @"网络错误";
+                break;
+            case -5:
+                errorStr = @"保存数据出错";
+                break;
+//            case -6:
+//                errorStr = @"网络错误";
+                break;
+            case -7:
+                errorStr = @"机柜正在处理其他请求";
+                break;
+            case -8:
+                errorStr = @"机柜繁忙";
+                break;
+                
+            default:
+                break;
+                
+        }
+        MQError *err=[MQError errorWithCode:-1 msg:errorStr];
+//        failure(err);
         
+        err.code=[responseObject[@"result"] intValue];
+        err.msg=responseObject[@"msg"];
+        failure(err);
     } failure:^(MQError *error) {
         
         failure(error);
@@ -95,14 +157,11 @@
 }
 
 
-
-
 + (void)cxChargingLineStatusWithDict:(NSDictionary *)dict success:(void (^)(id))success failure:(void (^)(MQError *))failure
 {
     NSString *urlString=[NSString stringWithFormat:@"%@",CXChargingLineStatusURL];
     NSLog(@"当前URL请求【查询充电状态、查询用户状态】为：%@",urlString);
     NSLog(@"parameters参数为：%@",dict);
-    
     
     [GCHttpTool Post:urlString parameters:dict success:^(id responseObject) {
         
@@ -175,13 +234,11 @@
 }
 
 
-+(void)getPersonalInfoWithDict:(NSDictionary *)dict success:(void (^)(id))success failure:(void (^)(MQError *))failure
++(void)getUserInfoWithDict:(NSDictionary *)dict success:(void (^)(id))success failure:(void (^)(MQError *))failure
 {
-    NSString *urlString=[NSString stringWithFormat:@"%@",GETPersonalInfoURL];
+    NSString *urlString=[NSString stringWithFormat:@"%@",GETUserInfoURL];
     NSLog(@"当前URL请求【获取个人信息】为：%@",urlString);
     NSLog(@"parameters参数为：%@",dict);
-    
-    
     [GCHttpTool Post:urlString parameters:dict success:^(id responseObject) {
         
         success(responseObject);
@@ -200,10 +257,23 @@
     NSLog(@"当前URL请求【处理用户报障信息、上传故障信息】为：%@",urlString);
     NSLog(@"parameters参数为：%@",dict);
     
-    
     [GCHttpTool Post:urlString parameters:dict success:^(id responseObject) {
-        
-        success(responseObject);
+        if ([responseObject[@"code"] intValue] != 200)
+        {
+            if ([responseObject[@"code"] intValue] == 500) {
+                MQError *err=[MQError errorWithCode:-1 msg:@"缺少参数！"];
+                failure(err);
+            }
+            MQError *err=[[MQError alloc] init];
+            
+            err.code=[responseObject[@"code"] intValue];
+            
+            err.msg=responseObject[@"msg"];
+            
+            failure(err);
+        }else{
+            success(responseObject);
+        }
         
     } failure:^(MQError *error) {
         
@@ -339,8 +409,21 @@
     
     
     [GCHttpTool Post:urlString parameters:dict success:^(id responseObject) {
-        
-        success(responseObject);
+        if ([responseObject[@"code"] intValue] != 200)
+        {
+            if ([responseObject[@"code"] intValue] == 404) {
+                MQError *err=[MQError errorWithCode:-1 msg:@"评价失败！"];
+                failure(err);
+            }
+            MQError *err=[[MQError alloc] init];
+            
+            err.code=[responseObject[@"code"] intValue];
+            
+            err.msg=responseObject[@"msg"];
+            failure(err);
+        }else{
+            success(responseObject);
+        }
         
     } failure:^(MQError *error) {
         
@@ -356,8 +439,6 @@
     
     NSLog(@"当前URL请求【获取城市列表】为：%@",urlString);
     NSLog(@"parameters参数为：%@",dict);
-    
-    
     [GCHttpTool Post:urlString parameters:dict success:^(id responseObject) {
         
         success(responseObject);

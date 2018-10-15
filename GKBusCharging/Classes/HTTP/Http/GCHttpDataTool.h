@@ -110,7 +110,7 @@
  @param success 请求成功的回调
  @param failure 请求失败的回调
  */
-+ (void) getPersonalInfoWithDict:(NSDictionary *)dict success:(void (^)(id responseObject))success failure:(void (^)(MQError *error))failure;
++ (void) getUserInfoWithDict:(NSDictionary *)dict success:(void (^)(id responseObject))success failure:(void (^)(MQError *error))failure;
 
 
 /**
@@ -168,7 +168,7 @@
  @param success 请求成功的回调
  @param failure 请求失败的回调
  */
-+ (void)getEvaluateOrder2WithDict:(NSDictionary *)dict success:(void (^)(id))success failure:(void (^)(MQError *))failure;
++ (void)getEvaluateOrderWithDict:(NSDictionary *)dict success:(void (^)(id))success failure:(void (^)(MQError *))failure;
 
 /**
  【16】获取评价订单详细2
