@@ -124,16 +124,33 @@
 #pragma mark -页面逻辑方法
 
 - (void)getData{
-    
+    [self requestData];
 }
-
+//获取故障历史信息、报障历史列表
+-(void)requestData{
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+    if (cookid) {
+        
+        NSDictionary *dict=@{
+                          @"id":@"212423414"
+                          };
+        [GCHttpDataTool getFaultListWithDict:dict success:^(id responseObject) {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:@"获取故障历史信息、报障历史列表成功！"];
+            
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+        }];
+    }else{
+        return;
+    }
+}
 #pragma mark -用户交互方法
 
 
 
-
-
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
+
 #pragma mark collectionView代理方法
 
 #pragma mark -tableView数据源

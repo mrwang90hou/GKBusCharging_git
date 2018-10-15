@@ -144,12 +144,29 @@ static NSString *saomapandingUrl = @"https://www.zgzzwl.com.cn/";
         [SVProgressHUD showSuccessWithStatus:@"通过识别图片获取二维码信息，URL 信息链接修复成功"];
     }
 //    NSLog(@"message.length = %lu",(unsigned long)message.length);
-    
+    NSArray *array = [message componentsSeparatedByString:@"p="];//从字符A中分隔成2个元素的数组
+    NSLog(@"array:%@",array);
+    NSLog(@"array1 ==== %@",[array firstObject]);
+    NSLog(@"array2 ==== %@",[array lastObject]);
+    NSString *codeStr = [array lastObject];
     //判断是否为正确的【二维码】
     if ([message containsString:saomapandingUrl]) {
-        NSLog(@"正确的二维码");
-        [self.navigationController popViewControllerAnimated:YES];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"QRCodeSuccess" object:nil];
+        //扫码接口
+        NSDictionary *dict=@{
+                          @"cabid":codeStr
+                          };
+        [GCHttpDataTool scanQRCodeChargeWithDict:dict success:^(id responseObject) {
+            [SVProgressHUD showSuccessWithStatus:@"扫码二维码成功！"];
+            
+            NSLog(@"正确的二维码");
+            [self.navigationController popViewControllerAnimated:YES];
+            NSDictionary *result = responseObject;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"QRCodeSuccess" object:nil userInfo:result];
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+        }];
+        
+        
 //        [SVProgressHUD showWithStatus:@"正在跳转\n请稍后。。。"];
 //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //            [SVProgressHUD dismiss];
@@ -163,7 +180,7 @@ static NSString *saomapandingUrl = @"https://www.zgzzwl.com.cn/";
     }
     
     
-    [DCObjManager dc_saveUserData:@"9999887712345613" forKey:@"deviceID"]; //记录当前扫码获取的设备 deviceID
+//    [DCObjManager dc_saveUserData:@"9999887712345613" forKey:@"deviceID"]; //记录当前扫码获取的设备 deviceID
     
     
 }

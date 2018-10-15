@@ -62,8 +62,41 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
     self.cityName = @"佛山市";
     [self setupUI];
     [self setUpNavBarView];
+    [self getData];
 }
 
+-(void)getData{
+    [self requestData];
+}
+//获取公交车列表
+-(void)requestData{
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+    if (cookid) {
+        
+        NSDictionary *dict=@{
+                             @"condition":@"B12",
+                             @"citycode":@"11"
+                             };
+        dict = nil;
+        if (dict != nil) {
+            [GCHttpDataTool getBusListWithDict:dict success:^(id responseObject) {
+                [SVProgressHUD dismiss];
+                [SVProgressHUD showSuccessWithStatus:@"获取公交车列表成功！"];
+            } failure:^(MQError *error) {
+                [SVProgressHUD showErrorWithStatus:error.msg];
+            }];
+        }else{
+            [GCHttpDataTool getBusListWithDict:nil success:^(id responseObject) {
+                [SVProgressHUD dismiss];
+                [SVProgressHUD showSuccessWithStatus:@"获取公交车列表成功！"];
+            } failure:^(MQError *error) {
+                [SVProgressHUD showErrorWithStatus:error.msg];
+            }];
+        }
+    }else{
+        return;
+    }
+}
 -(void)setupUI{
     [self.view addSubview:self.tableView];
 //    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -203,6 +236,7 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
 - (void)touch{
     NSLog(@"touch!!!");
 }
+
 -(void)pickCity{
     WEAKSELF
     JFCityViewController *cityViewController = [[JFCityViewController alloc] init];

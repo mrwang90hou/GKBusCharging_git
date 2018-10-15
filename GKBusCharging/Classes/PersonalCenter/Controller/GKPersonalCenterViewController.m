@@ -161,7 +161,6 @@
 #pragma mark -页面逻辑方法
 - (void) addObserver
 {
-    //
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUIReload) name:KNotiUserNameChange object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUIReload) name:KNotiPhoneNumberChange object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotiDeivceDisconnect) name:KNotiDeviceDisconnectFormServe object:nil];
@@ -171,24 +170,28 @@
 -(void)updatas{
     //登录成功
     if ([[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
-         [self requestData];
+        [self requestData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self requestData2];
+        });
     } else {
         return;
     }
 }
-
+//查询用户状态
 -(void)requestData{
-    
     NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
     if (cookid) {
         //    NSLog(@"cookid = %@",cookid);
-        NSDictionary *dict=@{
-                             @"cookid":cookid
-                             };
-        [SVProgressHUD showWithStatus:@"正在查询用户状态..."];
-        [GCHttpDataTool cxChargingLineStatusWithDict:dict success:^(id responseObject) {
+//        NSDictionary *dict=@{
+//                             @"cookid":cookid
+//                             };
+        [GCHttpDataTool cxChargingLineStatusWithDict:nil success:^(id responseObject) {
             [SVProgressHUD dismiss];
-            [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
+//            [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
+//            [responseObject[@"type"] intValue];
+//            [responseObject[@"userid"] string];
+            
         } failure:^(MQError *error) {
             [SVProgressHUD showErrorWithStatus:error.msg];
         }];
@@ -198,12 +201,32 @@
         NSLog(@"❌❌获取用户cookid失败❌❌");
         return;
     }
-
+}
+//用户信息查询
+-(void)requestData2{
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+    if (cookid) {
+        //    NSLog(@"cookid = %@",cookid);
+        //        NSDictionary *dict=@{
+        //                             @"cookid":cookid
+        //                             };
+        [GCHttpDataTool getUserInfoWithDict:nil success:^(id responseObject) {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
+            //            [responseObject[@"type"] intValue];
+            //            [responseObject[@"userid"] string];
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+        }];
+        NSLog(@"《冲哈哈》获取用户cookid成功");
+    }else{
+        //        [SVProgressHUD showErrorWithStatus:@"cookid is null"];
+        NSLog(@"❌❌获取用户cookid失败❌❌");
+        return;
+    }
 }
 
-
 - (void)getUI{
-    
 //    [SVProgressHUD showInfoWithStatus:@"getUI"];
 //    NSLog(@"viewDidLoad");
     GKPersonalHeaderView * headerView = [[GKPersonalHeaderView alloc] initWithFrame:CGRectZero];

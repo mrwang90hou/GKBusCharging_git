@@ -330,6 +330,41 @@ static NSString *GKOrderCellID = @"GKOrderCell";
 //    self.evaluationContentTF = evaluationContentTF;
 }
 
+-(void)getData{
+    [self requestData1];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self requestData2];
+    });
+}
+// 获取评价账单详细01
+-(void)requestData1{
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+    if (cookid) {
+        [GCHttpDataTool getEvaluateOrderWithDict:nil success:^(id responseObject) {
+            [SVProgressHUD showSuccessWithStatus:@"获取评价账单详细01成功！"];
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+        }];
+    }else{
+        return;
+    }
+}
+// 获取评价账单详细02
+-(void)requestData2{
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+    if (cookid) {
+        NSDictionary *dict=@{
+                             @"ordernum":@"1181012182203000001"
+                             };
+        [GCHttpDataTool getEvaluateOrder2WithDict:dict success:^(id responseObject) {
+            [SVProgressHUD showSuccessWithStatus:@"获取评价账单详细02成功！"];
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+        }];
+    }else{
+        return;
+    }
+}
 
 #pragma mark - UITableViewDataSourceDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

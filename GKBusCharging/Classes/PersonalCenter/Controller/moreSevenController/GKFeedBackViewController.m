@@ -563,18 +563,29 @@
 
 -(void)againCommitFeedback{
     [SVProgressHUD showWithStatus:@"正在提交中，请稍后..."];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [SVProgressHUD dismiss];
-        [DCObjManager dc_saveUserData:@"0" forKey:@"isWorking"];
-        [self updataUI];
-        self.isCommitOrNot = true;
-        [SVProgressHUD showSuccessWithStatus:@"提交成功！"];
-        //弹窗评价窗口
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [SVProgressHUD dismiss];
+//        [DCObjManager dc_saveUserData:@"0" forKey:@"isWorking"];
+//        [self updataUI];
+//        self.isCommitOrNot = true;
+//        [SVProgressHUD showSuccessWithStatus:@"提交成功！"];
+//        //弹窗评价窗口
+//    });
+    NSDictionary *dict=@{
+                         @"devid":@"9999887712345613",
+                         @"cabid":@"4e3937313233341315363137",
+                         @"types":@"1",
+                         @"msg":@"提交错误信息iOS端测试内容！！！",
+                         @"lend":@"37823"    //必填 若报障充电线处于放电状态默认‘lend’字符串 其他状态默认‘ok’字符串
+                         };
+    [GCHttpDataTool uploadFaultInfoWithDict:dict success:^(id responseObject) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD showSuccessWithStatus:@"提交成功！"];
+        });
+    } failure:^(MQError *error) {
+        [SVProgressHUD showErrorWithStatus:error.msg];
+    }];
 }
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

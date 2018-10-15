@@ -531,22 +531,37 @@
         return;
     }
     WEAKSELF
-    JFCityViewController *cityViewController = [[JFCityViewController alloc] init];
-    cityViewController.title = @"城市";
-    [cityViewController choseCityBlock:^(NSString *cityName) {
-        weakSelf.cityName = cityName;
-        //        [ProjectUtil saveCityName:cityName];
-        //        [weakSelf updateLeftBarButtonItem];
-        //        [self preData];//获取数据
-        [weakSelf.cityNameBtn setTitle:self.cityName forState:UIControlStateNormal];
-    }];
-    //    GKNavigationController *navigationController = [[GKNavigationController alloc] initWithRootViewController:cityViewController];
-    [self.navigationController pushViewController:cityViewController animated:YES];
-    
-    
-    //    [self presentViewController:navigationController animated:YES completion:^{
-    //        self.isPickedCity = YES;
-    //    }];
+    //获取城市列表
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+    if (cookid) {
+//        NSDictionary *dict=@{
+//                         @"condition":@"贵阳"
+//                         };
+        [GCHttpDataTool getCityListWithDict:nil success:^(id responseObject) {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:@"获取城市列表成功！"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                JFCityViewController *cityViewController = [[JFCityViewController alloc] init];
+                cityViewController.title = @"城市";
+                [cityViewController choseCityBlock:^(NSString *cityName) {
+                    weakSelf.cityName = cityName;
+                    //        [ProjectUtil saveCityName:cityName];
+                    //        [weakSelf updateLeftBarButtonItem];
+                    //        [self preData];//获取数据
+                    [weakSelf.cityNameBtn setTitle:self.cityName forState:UIControlStateNormal];
+                }];
+                //    GKNavigationController *navigationController = [[GKNavigationController alloc] initWithRootViewController:cityViewController];
+                [self.navigationController pushViewController:cityViewController animated:YES];
+                //    [self presentViewController:navigationController animated:YES completion:^{
+                //        self.isPickedCity = YES;
+                //    }];
+            });
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+        }];
+    }else{
+        return;
+    }
 }
 
 - (void)turnToBusInfoList{
@@ -563,6 +578,7 @@
     if ([self checkLoginStatus]) {
         return;
     }
+    //跳转至订单管理页面
     [self.navigationController pushViewController:[GKOrderManagementViewController new] animated:YES];
 }
 
@@ -685,6 +701,33 @@
         //弹窗评价窗口
         [self setUpContentView];
     });
+    
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+    if (cookid) {
+//        ordernum： 必填  订单号
+//        comments： 必填  评论内容
+//        score： 必填  分数 默认1-5
+        NSDictionary *dict=@{
+                             @"ordernum":@"1181012182203000001",
+                             @"comments":@"这是【 评价订单】测试内容！",
+                             @"score":@"2"
+                             };
+        [GCHttpDataTool orderEvaluateWithDict:dict success:^(id responseObject) {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:@"【 评价订单】成功！"];
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+        }];
+        NSLog(@"《冲哈哈》获取用户cookid成功");
+    }else{
+        //        [SVProgressHUD showErrorWithStatus:@"cookid is null"];
+        NSLog(@"❌❌获取用户cookid失败❌❌");
+        return;
+    }
+    
+    
+    
+    
 }
 
 
@@ -745,7 +788,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(starIsChangedAction) name:@"starIsChanged" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(close) name:@"close" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cheackDetailsAction) name:@"cheackDetails" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(qrCodeSuccessAction) name:@"QRCodeSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(qrCodeSuccessAction:) name:@"QRCodeSuccess" object:nil];
 }
 
 - (void)starIsChangedAction{
@@ -775,7 +818,7 @@
 }
 //点击空白处的点击事件
 /**
- *  @author wn, 18-10-12 18:09:58
+ *  @author 洛忆, 18-10-12 18:09:58
  *
  *  给当前view添加手势识别
  */
@@ -786,7 +829,7 @@
 }
 
 /**
- *  @author wn, 15-10-12 18:09:32
+ *  @author 洛忆, 18-10-12 18:09:32
  *
  *  点击屏幕预备 removeFromSuperview
  */
@@ -821,14 +864,17 @@
     [self close];
 }
 
-- (void)qrCodeSuccessAction{
+- (void)qrCodeSuccessAction:(NSNotification *)noti{
     if ([self checkLoginStatus]) {
         return;
     }
+    NSDictionary *totalData = [noti userInfo];
     [SVProgressHUD showWithStatus:@"正在跳转\n请稍后。。。"];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [SVProgressHUD dismiss];
-        [self.navigationController pushViewController:[GKStartChargingViewController new] animated:YES];
+        GKStartChargingViewController *vc = [[GKStartChargingViewController alloc]init];
+        vc.totalData = totalData;
+        [self.navigationController pushViewController:vc animated:YES];
     });
 }
 

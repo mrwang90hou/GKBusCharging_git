@@ -17,8 +17,8 @@
 #import "GKMeCell.h"
 #import "GKMeHeaderView.h"
 
-//@interface GKMeViewController ()<UITableViewDelegate,UITableViewDataSource>
-@interface GKMeViewController ()<UITableViewDataSource>
+@interface GKMeViewController ()<UITableViewDelegate,UITableViewDataSource>
+//@interface GKMeViewController ()<UITableViewDataSource>
 //@property (nonatomic,assign) BOOL isNeedNav;
 //@property (nonatomic,strong) UILabel *dataLabel;
 @property (nonatomic,strong) NSMutableArray *statusArray;
@@ -66,6 +66,7 @@
     [self getData];
     [self getUI];
     [self addObserver];
+    [self requestData];
 }
 
 
@@ -77,7 +78,7 @@
 #pragma mark -页面逻辑方法
 - (void) addObserver
 {
-    //
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUIReload2) name:KNotiUserNameChange object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUIReload2) name:KNotiPhoneNumberChange object:nil];
     //
@@ -139,6 +140,29 @@
             [_statusArray addObject:@"立即绑定"];
         }
 //        NSLog(@"_statusArray = %@",[_statusArray objectAtIndex:i]);
+    }
+}
+//用户信息查询
+-(void)requestData{
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+    if (cookid) {
+        //    NSLog(@"cookid = %@",cookid);
+        //        NSDictionary *dict=@{
+        //                             @"cookid":cookid
+        //                             };
+        [GCHttpDataTool getUserInfoWithDict:nil success:^(id responseObject) {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
+            //            [responseObject[@"type"] intValue];
+            //            [responseObject[@"userid"] string];
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+        }];
+        NSLog(@"《冲哈哈》获取用户cookid成功");
+    }else{
+        //        [SVProgressHUD showErrorWithStatus:@"cookid is null"];
+        NSLog(@"❌❌获取用户cookid失败❌❌");
+        return;
     }
 }
 #pragma mark -实现UITableViewDataSource

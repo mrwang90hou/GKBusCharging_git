@@ -88,9 +88,16 @@ static NSString *GKOrderCellID = @"GKOrderCell";
     [super viewDidLoad];
     self.title = @"订单管理";
     [self getUI];
+    [self setupUI];
     [self getData];
+    
 }
-
+-(void)setupUI{
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+}
 - (void)getUI{
     
     [self.view setBackgroundColor:TABLEVIEW_BG];
@@ -127,20 +134,72 @@ static NSString *GKOrderCellID = @"GKOrderCell";
     //    blank_page_no_order
     //    暂无订单详情
     [_dataSoucre addObject:@"订单管理"];
-    if (_dataSoucre.count == 0) {
-        [_tableView setHidden:true];
-        [_noDatasView setHidden:false];
-    }else{
+//    if (_dataSoucre.count == 0) {
+//        [_tableView setHidden:true];
+//        [_noDatasView setHidden:false];
+//    }else{
+        [_tableView setHidden:false];
         [_noDatasView setHidden:true];
-    }
+//    }
+    
 }
 
 
 -(void)getData{
     
+    [self requestData1];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self requestData2];
+    });
 }
-
-
+//查询用户未完成订单列表
+-(void)requestData1{
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+    if (cookid) {
+        //    NSLog(@"cookid = %@",cookid);
+        NSDictionary *dict=@{
+//                             1表示查询未完成订单 2表示查询已完成订单
+                             @"selectcode":@"1"
+                             };
+        [GCHttpDataTool cxUserBillListWithDict:dict success:^(id responseObject) {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:@"查询用户未完成订单列表成功！"];
+            //            [responseObject[@"type"] intValue];
+            //            [responseObject[@"userid"] string];
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+        }];
+        NSLog(@"《冲哈哈》获取用户cookid成功");
+    }else{
+        //        [SVProgressHUD showErrorWithStatus:@"cookid is null"];
+        NSLog(@"❌❌获取用户cookid失败❌❌");
+        return;
+    }
+}
+//查询用户已完成订单列表
+-(void)requestData2{
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+    if (cookid) {
+        //    NSLog(@"cookid = %@",cookid);
+        NSDictionary *dict=@{
+                             //                             1表示查询未完成订单 2表示查询已完成订单
+                             @"selectcode":@"2"
+                             };
+        [GCHttpDataTool cxUserBillListWithDict:dict success:^(id responseObject) {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:@"查询用户已完成订单列表成功！"];
+            //            [responseObject[@"type"] intValue];
+            //            [responseObject[@"userid"] string];
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+        }];
+        NSLog(@"《冲哈哈》获取用户cookid成功");
+    }else{
+        //        [SVProgressHUD showErrorWithStatus:@"cookid is null"];
+        NSLog(@"❌❌获取用户cookid失败❌❌");
+        return;
+    }
+}
 #pragma mark - UITableViewDataSourceDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
