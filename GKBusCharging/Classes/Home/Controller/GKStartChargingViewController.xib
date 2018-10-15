@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,13 +26,17 @@
                         <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="charging_bg2" translatesAutoresizingMaskIntoConstraints="NO" id="2LZ-QZ-r9w" userLabel="bgImageView">
                             <rect key="frame" x="8" y="8" width="339" height="191"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_start_charging" translatesAutoresizingMaskIntoConstraints="NO" id="H0P-gA-oqX" userLabel="chargingStatusImageView">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WK4-to-ybI" userLabel="btn_start_charging">
                             <rect key="frame" x="97.5" y="23.5" width="160" height="160"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="160" id="Cuf-2f-G3c"/>
-                                <constraint firstAttribute="height" constant="160" id="sSw-RQ-Xms"/>
+                                <constraint firstAttribute="width" constant="160" id="1Xj-yI-4eB"/>
+                                <constraint firstAttribute="height" constant="160" id="paQ-hK-Sql"/>
                             </constraints>
-                        </imageView>
+                            <state key="normal" backgroundImage="btn_start_charging"/>
+                            <connections>
+                                <action selector="startChargingAction:" destination="-1" eventType="touchUpInside" id="1az-VO-vYU"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开始充电" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nx-ha-vy1" userLabel="statusLabel">
                             <rect key="frame" x="149" y="140" width="57.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -60,20 +65,20 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="H0P-gA-oqX" firstAttribute="centerY" secondItem="9RQ-jB-cOQ" secondAttribute="centerY" id="9t4-s8-Xtt"/>
-                        <constraint firstItem="H0P-gA-oqX" firstAttribute="centerX" secondItem="9RQ-jB-cOQ" secondAttribute="centerX" id="Bfa-oO-9PJ"/>
-                        <constraint firstItem="8wh-Nw-AUP" firstAttribute="centerX" secondItem="H0P-gA-oqX" secondAttribute="centerX" id="K6q-zC-quV"/>
+                        <constraint firstItem="8wh-Nw-AUP" firstAttribute="centerX" secondItem="WK4-to-ybI" secondAttribute="centerX" id="K6q-zC-quV"/>
                         <constraint firstItem="8wh-Nw-AUP" firstAttribute="top" secondItem="QFn-NP-otJ" secondAttribute="bottom" constant="12" id="KkZ-xl-MJ7"/>
                         <constraint firstItem="2nx-ha-vy1" firstAttribute="centerX" secondItem="9RQ-jB-cOQ" secondAttribute="centerX" id="LBE-0L-24a"/>
                         <constraint firstItem="2LZ-QZ-r9w" firstAttribute="trailing" secondItem="9RQ-jB-cOQ" secondAttribute="trailing" constant="-8" id="TEs-fB-w26"/>
-                        <constraint firstItem="QFn-NP-otJ" firstAttribute="centerX" secondItem="H0P-gA-oqX" secondAttribute="centerX" id="Yq7-v0-5v3"/>
+                        <constraint firstItem="QFn-NP-otJ" firstAttribute="centerX" secondItem="WK4-to-ybI" secondAttribute="centerX" id="Yq7-v0-5v3"/>
                         <constraint firstItem="2LZ-QZ-r9w" firstAttribute="top" secondItem="9RQ-jB-cOQ" secondAttribute="top" constant="8" id="d0C-Jc-Xqc"/>
                         <constraint firstItem="QFn-NP-otJ" firstAttribute="centerY" secondItem="9RQ-jB-cOQ" secondAttribute="centerY" id="dps-af-FO0"/>
-                        <constraint firstItem="2nx-ha-vy1" firstAttribute="centerY" secondItem="H0P-gA-oqX" secondAttribute="bottom" constant="-35" id="f5Y-r1-fHn"/>
+                        <constraint firstItem="2nx-ha-vy1" firstAttribute="centerY" secondItem="WK4-to-ybI" secondAttribute="bottom" constant="-35" id="f5Y-r1-fHn"/>
+                        <constraint firstItem="WK4-to-ybI" firstAttribute="centerY" secondItem="9RQ-jB-cOQ" secondAttribute="centerY" id="fox-Da-aT4"/>
                         <constraint firstItem="2LZ-QZ-r9w" firstAttribute="leading" secondItem="9RQ-jB-cOQ" secondAttribute="leading" constant="8" id="hKp-ix-OOE"/>
                         <constraint firstItem="QWS-a2-gkn" firstAttribute="centerX" secondItem="9RQ-jB-cOQ" secondAttribute="centerX" id="lPI-1H-1Bu"/>
                         <constraint firstItem="2LZ-QZ-r9w" firstAttribute="bottom" secondItem="9RQ-jB-cOQ" secondAttribute="bottom" constant="-8" id="nMV-O9-oRU"/>
-                        <constraint firstItem="QWS-a2-gkn" firstAttribute="centerY" secondItem="H0P-gA-oqX" secondAttribute="centerY" id="udN-Q9-vmF"/>
+                        <constraint firstItem="QWS-a2-gkn" firstAttribute="centerY" secondItem="WK4-to-ybI" secondAttribute="centerY" id="udN-Q9-vmF"/>
+                        <constraint firstItem="WK4-to-ybI" firstAttribute="centerX" secondItem="9RQ-jB-cOQ" secondAttribute="centerX" id="v5R-th-IyY"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="租电规则" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rM1-UF-1gG" userLabel="租电规则">

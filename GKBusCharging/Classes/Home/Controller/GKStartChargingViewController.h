@@ -9,4 +9,5 @@
 
 @interface GKStartChargingViewController : GKBaseSetViewController
 
+@property (nonatomic,strong) NSDictionary *totalData;
 @end
