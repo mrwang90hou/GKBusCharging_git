@@ -29,6 +29,7 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - SocketRocket (0.5.1)
   - SVProgressHUD (2.2.5)
   - TZImagePickerController (3.0.0)
   - UMCAnalytics (5.5.0):
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - MJRefresh
   - SDCycleScrollView
   - SDWebImage (= 3.8.2)
+  - SocketRocket
   - SVProgressHUD
   - TZImagePickerController
   - UMCAnalytics
@@ -69,6 +71,7 @@ SPEC REPOS:
     - MJRefresh
     - SDCycleScrollView
     - SDWebImage
+    - SocketRocket
     - SVProgressHUD
     - TZImagePickerController
     - UMCAnalytics
@@ -88,6 +91,7 @@ SPEC CHECKSUMS:
   MJRefresh: 0efa19656679d70a0f47cbe76e56c2271fe53a97
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TZImagePickerController: fb2642a6530dc12eb38c14a53972fd6869327677
   UMCAnalytics: 4667788559a72f2fa5077117d1b8802a3b6eb6bb
@@ -95,6 +99,6 @@ SPEC CHECKSUMS:
   UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: d9df800cba88037ba9d5618a793b0e9c65b7c8e3
+PODFILE CHECKSUM: afaa3840cf4a8f8707ff92527f30c8616308a190
 
 COCOAPODS: 1.5.3

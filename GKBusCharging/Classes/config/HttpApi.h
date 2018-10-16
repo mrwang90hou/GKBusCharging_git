@@ -14,7 +14,7 @@
 #define GKMAIN_URL_TEST @"http://allenryosuke.nat300.top"
 
 //正式发布时需要改成1
-#define RELEASEtoAPPSTORE 0
+#define RELEASEtoAPPSTORE 1
 
 #if RELEASEtoAPPSTORE
 // 1 = YES
@@ -53,8 +53,25 @@
 #define SMPDURL GKMAIN_URL @"/"
 
 //客户端数据推送
-#define WebSocketURL = "ws://allenryosuke.nat300.top/charge/wsk"
-//#define webSocketURL = "ws://www.zgzzwl.com.cn/charge/wsk";
+#if RELEASEtoAPPSTORE
+// 1 = YES
+#define webSocketURL @"wss://www.zgzzwl.com.cn/charge/wsk"
+#else
+// 0 = NO
+#define WebSocketURL @"ws://allenryosuke.nat300.top/charge/wsk"
+#endif
+
+#define KIP webSocketURL @"?type=selectcharge&userId=ca9899ae7c5b4d1e94d1e48957fac063&socketId=4e3937313233341315323137"
+#define KIP2 @"ws://allenryosuke.nat300.top/charge/wsk?type=selectcharge&userId=56fb8c0de6494d44ac2614eea4edb1ff&socketId=4e3937313233341315363137"
+
+//返回客户端数据推送地址
+//public static String getWebSocketUrl() {
+//    MLog.v(webSocketUrl + "?type=selectcharge&userId=" + userId + "&socketId=" + socketId);
+//    //MLog.v(webSocketUrl + "?type=selectcharge&userId=" + userId + "&socketId=9999887712345612");
+//    return webSocketUrl + "?type=selectcharge&userId=" + userId + "&socketId=" + socketId;
+//    //return webSocketUrl + "?type=selectcharge&userId=03f194e58a16437fa8fc857a5dcabc45&socketId=9999887712345605";
+//    //return webSocketUrl + "?type=selectcharge&userId=" + userId + "&socketId=9999887712345612";
+//}
 
 //租借充电线
 #define RENTChargingLineURL GK_URL @"/charge/smallrount/lend"

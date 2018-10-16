@@ -12,6 +12,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GKStartChargingViewController">
             <connections>
+                <outlet property="bgImageView" destination="2LZ-QZ-r9w" id="lBI-Fn-JjH"/>
+                <outlet property="chargingLoadingIamgeView" destination="QWS-a2-gkn" id="26S-Ev-Lz9"/>
+                <outlet property="chargingTimeLabel" destination="QFn-NP-otJ" id="kYH-i2-N05"/>
+                <outlet property="chargingTimeStatusLabel" destination="8wh-Nw-AUP" id="Ty3-Ae-7D1"/>
+                <outlet property="endBtn" destination="I5B-ph-S0t" id="xSu-2x-tWA"/>
+                <outlet property="startChargingBtn" destination="WK4-to-ybI" id="MwF-Au-b8z"/>
+                <outlet property="statusLabel" destination="2nx-ha-vy1" id="yVm-tu-VZh"/>
                 <outlet property="view" destination="B8a-MQ-tOt" id="qmJ-Gf-b1n"/>
             </connections>
         </placeholder>
@@ -43,10 +50,10 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="QWS-a2-gkn" userLabel="chargingloadingImageView">
-                            <rect key="frame" x="82.5" y="51.5" width="190" height="104"/>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="charging_bg1" translatesAutoresizingMaskIntoConstraints="NO" id="QWS-a2-gkn" userLabel="chargingloadingImageView">
+                            <rect key="frame" x="82.5" y="8.5" width="190" height="190"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="104" id="fYm-52-oJh"/>
+                                <constraint firstAttribute="height" constant="190" id="fYm-52-oJh"/>
                                 <constraint firstAttribute="width" constant="190" id="jhI-8d-sHk"/>
                             </constraints>
                         </imageView>
@@ -183,7 +190,7 @@
     <resources>
         <image name="btn_4" width="307" height="44"/>
         <image name="btn_start_charging" width="190" height="190"/>
+        <image name="charging_bg1" width="190" height="190"/>
         <image name="charging_bg2" width="301" height="230"/>
-        <image name="loading" width="190" height="104"/>
     </resources>
 </document>

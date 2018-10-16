@@ -20,5 +20,6 @@ pod 'GQGesVCTransition'
 pod 'UMCCommon'
 pod 'UMCAnalytics'
 pod 'UMCSecurityPlugins'
+pod 'SocketRocket'
 target 'GKBusCharging' do
 end
