@@ -37,7 +37,7 @@
 
 #pragma mark - LifeCyle
 //用于做扫码判定,没有这个请求头认为不是充电宝
-static NSString *saomapandingUrl = @"https://www.zgzzwl.com.cn/";
+//static NSString *saomapandingUrl = @"https://www.zgzzwl.com.cn/";
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -150,7 +150,7 @@ static NSString *saomapandingUrl = @"https://www.zgzzwl.com.cn/";
     NSLog(@"array2 ==== %@",[array lastObject]);
     NSString *codeStr = [array lastObject];
     //判断是否为正确的【二维码】
-    if ([message containsString:saomapandingUrl]) {
+    if ([message containsString:GK_URL]) {
         //扫码接口
         NSDictionary *dict=@{
                           @"cabid":codeStr

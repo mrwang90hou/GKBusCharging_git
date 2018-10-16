@@ -168,6 +168,9 @@
 		0BC4047C216DA1D200EFC9AC /* GKStartChargingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4047B216DA1D200EFC9AC /* GKStartChargingViewController.m */; };
 		0BC4047D216DCB6900EFC9AC /* GKStartChargingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BC40479216DA1D200EFC9AC /* GKStartChargingViewController.xib */; };
 		0BC40480216DF61800EFC9AC /* GKTopUpTermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4047F216DF61800EFC9AC /* GKTopUpTermsViewController.m */; };
+		0BD8C7B22175C3D5006BDDA1 /* SocketRocketUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD8C7B12175B831006BDDA1 /* SocketRocketUtility.m */; };
+		0BD8C7B82175D758006BDDA1 /* XLCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD8C7B52175D758006BDDA1 /* XLCircle.m */; };
+		0BD8C7B92175D758006BDDA1 /* XLCircleProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD8C7B72175D758006BDDA1 /* XLCircleProgress.m */; };
 		0BFCB2F6216B24F400B0EFD3 /* GKRechargeStyleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFCB2F3216B24F400B0EFD3 /* GKRechargeStyleCell.m */; };
 		0BFCB2F7216B24F400B0EFD3 /* GKRechargeStyleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BFCB2F5216B24F400B0EFD3 /* GKRechargeStyleCell.xib */; };
 		0BFCB2FB216B251400B0EFD3 /* GKPriceEvaluationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BFCB2F8216B251300B0EFD3 /* GKPriceEvaluationView.xib */; };
@@ -525,6 +528,13 @@
 		0BC4047B216DA1D200EFC9AC /* GKStartChargingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKStartChargingViewController.m; sourceTree = "<group>"; };
 		0BC4047E216DF61700EFC9AC /* GKTopUpTermsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKTopUpTermsViewController.h; sourceTree = "<group>"; };
 		0BC4047F216DF61800EFC9AC /* GKTopUpTermsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKTopUpTermsViewController.m; sourceTree = "<group>"; };
+		0BD8C7B02175B831006BDDA1 /* SocketRocketUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketRocketUtility.h; sourceTree = "<group>"; };
+		0BD8C7B12175B831006BDDA1 /* SocketRocketUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketRocketUtility.m; sourceTree = "<group>"; };
+		0BD8C7B42175D758006BDDA1 /* XLCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCircle.h; sourceTree = "<group>"; };
+		0BD8C7B52175D758006BDDA1 /* XLCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCircle.m; sourceTree = "<group>"; };
+		0BD8C7B62175D758006BDDA1 /* XLCircleProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCircleProgress.h; sourceTree = "<group>"; };
+		0BD8C7B72175D758006BDDA1 /* XLCircleProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCircleProgress.m; sourceTree = "<group>"; };
+		0BD8C7BA2175DA3C006BDDA1 /* endPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = endPoint.png; sourceTree = "<group>"; };
 		0BFCB2F3216B24F400B0EFD3 /* GKRechargeStyleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKRechargeStyleCell.m; sourceTree = "<group>"; };
 		0BFCB2F4216B24F400B0EFD3 /* GKRechargeStyleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKRechargeStyleCell.h; sourceTree = "<group>"; };
 		0BFCB2F5216B24F400B0EFD3 /* GKRechargeStyleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKRechargeStyleCell.xib; sourceTree = "<group>"; };
@@ -763,6 +773,7 @@
 		0B809B0A215E3B32001186CA /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				0BD8C7BA2175DA3C006BDDA1 /* endPoint.png */,
 				0B809B0B215E3B8A001186CA /* Plist */,
 			);
 			path = Resource;
@@ -1003,6 +1014,7 @@
 		0B9CF361215B8C4B00F76671 /* Tools(工具) */ = {
 			isa = PBXGroup;
 			children = (
+				0BD8C7B32175D758006BDDA1 /* XLCircleProgress */,
 				0B9CF362215B8C4B00F76671 /* DCCheckRegular.h */,
 				0B9CF363215B8C4B00F76671 /* DCCheckRegular.m */,
 				0B9CF364215B8C4B00F76671 /* DCKeepNewUserData.h */,
@@ -1458,6 +1470,7 @@
 			children = (
 				0BBD83FA216EFAB800B47EC3 /* AFNetPackage.h */,
 				0BBD83F9216EFAB800B47EC3 /* AFNetPackage.m */,
+				0BD8C7AF2175B831006BDDA1 /* WebSocket */,
 				0BBD83FC216EFB2100B47EC3 /* Http */,
 			);
 			path = HTTP;
@@ -1514,6 +1527,26 @@
 				0BBD8403216EFB2100B47EC3 /* MQError.m */,
 			);
 			path = Http;
+			sourceTree = "<group>";
+		};
+		0BD8C7AF2175B831006BDDA1 /* WebSocket */ = {
+			isa = PBXGroup;
+			children = (
+				0BD8C7B02175B831006BDDA1 /* SocketRocketUtility.h */,
+				0BD8C7B12175B831006BDDA1 /* SocketRocketUtility.m */,
+			);
+			path = WebSocket;
+			sourceTree = "<group>";
+		};
+		0BD8C7B32175D758006BDDA1 /* XLCircleProgress */ = {
+			isa = PBXGroup;
+			children = (
+				0BD8C7B42175D758006BDDA1 /* XLCircle.h */,
+				0BD8C7B52175D758006BDDA1 /* XLCircle.m */,
+				0BD8C7B62175D758006BDDA1 /* XLCircleProgress.h */,
+				0BD8C7B72175D758006BDDA1 /* XLCircleProgress.m */,
+			);
+			path = XLCircleProgress;
 			sourceTree = "<group>";
 		};
 		34432A0679DEF282FD669FCF /* Pods */ = {
@@ -1745,6 +1778,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BD8C7B22175C3D5006BDDA1 /* SocketRocketUtility.m in Sources */,
 				92FB06CB21669DD20001D38B /* GKBalanceView.m in Sources */,
 				0B9CF447215B8D7F00F76671 /* UIView+Toast.m in Sources */,
 				0B4BE5B22160C99E0043CB30 /* GKMeHeaderView.m in Sources */,
@@ -1798,6 +1832,7 @@
 				0B2BF7D4216B605C00A8FE20 /* GKUseingHelpViewController.m in Sources */,
 				0B4BE5AD2160C99E0043CB30 /* GKMeCell.m in Sources */,
 				0B9CF352215B8A6D00F76671 /* UILabel+DCLabel.m in Sources */,
+				0BD8C7B82175D758006BDDA1 /* XLCircle.m in Sources */,
 				0B9CF451215B8D7F00F76671 /* SDPhotoBrowser.m in Sources */,
 				0B9CF454215B8D7F00F76671 /* XWCoolAnimator+XWExplode.m in Sources */,
 				9275D24C2169DAC40004DBFE /* GKOrderCell.m in Sources */,
@@ -1813,6 +1848,7 @@
 				0B9CF463215B8D7F00F76671 /* XWFilterAnimator+XWPageCurl.m in Sources */,
 				0B7C81E0215CCEE800A06345 /* DCCustionButton.m in Sources */,
 				0B9CF458215B8D7F00F76671 /* XWCoolAnimator+XWPageFlip.m in Sources */,
+				0BD8C7B92175D758006BDDA1 /* XLCircleProgress.m in Sources */,
 				0B9CF452215B8D7F00F76671 /* SDWaitingView.m in Sources */,
 				0B9CF450215B8D7F00F76671 /* SDBrowserImageView.m in Sources */,
 				0B9CF444215B8D7F00F76671 /* PYSearchViewController.m in Sources */,

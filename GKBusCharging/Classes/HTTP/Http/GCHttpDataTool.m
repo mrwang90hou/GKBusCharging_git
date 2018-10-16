@@ -107,47 +107,47 @@
     NSLog(@"当前URL请求【租借充电线】为：%@",urlString);
     NSLog(@"parameters参数为：%@",dict);
     
-    
     [GCHttpTool Post:urlString parameters:dict success:^(id responseObject) {
         
-        success(responseObject);
-//        Result
-//        0:请求发送到达客户端
-//        -4:网络错误
-//        -5:保存数据出错
-//        -7:机柜正在处理其他请求
-//        -8:机柜繁忙
-        NSString *errorStr = @"";
-        switch ([responseObject[@"Result"] intValue]) {
-            case 0:
-                success(responseObject);
-                break;
-            case -4:
-                errorStr = @"网络错误";
-                break;
-            case -5:
-                errorStr = @"保存数据出错";
-                break;
-//            case -6:
-//                errorStr = @"网络错误";
-                break;
-            case -7:
-                errorStr = @"机柜正在处理其他请求";
-                break;
-            case -8:
-                errorStr = @"机柜繁忙";
-                break;
-                
-            default:
-                break;
-                
+        if ([responseObject[@"result"] intValue] == 0) {
+            success(responseObject);
+        }else{
+            //        Result
+            //        0:请求发送到达客户端
+            //        -4:网络错误
+            //        -5:保存数据出错
+            //        -7:机柜正在处理其他请求
+            //        -8:机柜繁忙
+            NSString *errorStr = @"";
+            switch ([responseObject[@"result"] intValue]) {
+                    //            case 0:
+                    //                success(responseObject);
+                    //                break;
+                case -4:
+                    errorStr = @"网络错误";
+                    break;
+                case -5:
+                    errorStr = @"保存数据出错";
+                    break;
+    //            case -6:
+    //                errorStr = @"网络错误";
+                    break;
+                case -7:
+                    errorStr = @"机柜正在处理其他请求";
+                    break;
+                case -8:
+                    errorStr = @"机柜繁忙";
+                    break;
+                default:
+                    break;
+                    
+            }
+            MQError *err=[MQError errorWithCode:[responseObject[@"result"] intValue] msg:errorStr];
+            //        failure(err);
+            //        err.code = [responseObject[@"result"] intValue];
+            //        err.msg=responseObject[@"msg"];
+            failure(err);
         }
-        MQError *err=[MQError errorWithCode:-1 msg:errorStr];
-//        failure(err);
-        
-        err.code=[responseObject[@"result"] intValue];
-        err.msg=responseObject[@"msg"];
-        failure(err);
     } failure:^(MQError *error) {
         
         failure(error);
@@ -182,8 +182,18 @@
     NSLog(@"parameters参数为：%@",dict);
     
     [GCHttpTool Post:urlString parameters:dict success:^(id responseObject) {
-        
-        success(responseObject);
+        if ([responseObject[@"code"] intValue] != 200)
+        {
+            MQError *err=[[MQError alloc] init];;
+            
+            err.code=[responseObject[@"code"] intValue];
+            
+            err.msg=responseObject[@"msg"];
+            
+            failure(err);
+        }else{
+            success(responseObject);
+        }
         
     } failure:^(MQError *error) {
         
