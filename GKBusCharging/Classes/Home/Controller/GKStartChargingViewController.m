@@ -128,7 +128,7 @@
 #pragma mark -页面逻辑方法
 - (void) addObserver
 {
-    NSString *webSocketString = [NSString stringWithFormat:@"%@?type=selectcharge&userId=%@&socketId=%@",webSocketURL,self.totalData[@"userid"],self.totalData[@"devid"]];
+    NSString *webSocketString = [NSString stringWithFormat:@"%@?type=selectcharge&userId=%@&socketId=%@",WebSocketURL,self.totalData[@"userid"],self.totalData[@"devid"]];
     SocketRocketUtility *socket = [SocketRocketUtility instance];
     self.socket = socket;
     [socket SRWebSocketOpenWithURLString:webSocketString];

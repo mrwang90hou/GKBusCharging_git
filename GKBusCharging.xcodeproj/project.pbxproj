@@ -171,6 +171,8 @@
 		0BD8C7B22175C3D5006BDDA1 /* SocketRocketUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD8C7B12175B831006BDDA1 /* SocketRocketUtility.m */; };
 		0BD8C7B82175D758006BDDA1 /* XLCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD8C7B52175D758006BDDA1 /* XLCircle.m */; };
 		0BD8C7B92175D758006BDDA1 /* XLCircleProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD8C7B72175D758006BDDA1 /* XLCircleProgress.m */; };
+		0BE6583921789594004F6DB3 /* GKRechargeCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6583721789594004F6DB3 /* GKRechargeCardViewController.m */; };
+		0BE6583C2178980F004F6DB3 /* GKRechargeCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6583A2178980F004F6DB3 /* GKRechargeCardCell.m */; };
 		0BFCB2F6216B24F400B0EFD3 /* GKRechargeStyleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFCB2F3216B24F400B0EFD3 /* GKRechargeStyleCell.m */; };
 		0BFCB2F7216B24F400B0EFD3 /* GKRechargeStyleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BFCB2F5216B24F400B0EFD3 /* GKRechargeStyleCell.xib */; };
 		0BFCB2FB216B251400B0EFD3 /* GKPriceEvaluationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BFCB2F8216B251300B0EFD3 /* GKPriceEvaluationView.xib */; };
@@ -535,6 +537,10 @@
 		0BD8C7B62175D758006BDDA1 /* XLCircleProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCircleProgress.h; sourceTree = "<group>"; };
 		0BD8C7B72175D758006BDDA1 /* XLCircleProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCircleProgress.m; sourceTree = "<group>"; };
 		0BD8C7BA2175DA3C006BDDA1 /* endPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = endPoint.png; sourceTree = "<group>"; };
+		0BE6583721789594004F6DB3 /* GKRechargeCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKRechargeCardViewController.m; sourceTree = "<group>"; };
+		0BE6583821789594004F6DB3 /* GKRechargeCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKRechargeCardViewController.h; sourceTree = "<group>"; };
+		0BE6583A2178980F004F6DB3 /* GKRechargeCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKRechargeCardCell.m; sourceTree = "<group>"; };
+		0BE6583B2178980F004F6DB3 /* GKRechargeCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKRechargeCardCell.h; sourceTree = "<group>"; };
 		0BFCB2F3216B24F400B0EFD3 /* GKRechargeStyleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKRechargeStyleCell.m; sourceTree = "<group>"; };
 		0BFCB2F4216B24F400B0EFD3 /* GKRechargeStyleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKRechargeStyleCell.h; sourceTree = "<group>"; };
 		0BFCB2F5216B24F400B0EFD3 /* GKRechargeStyleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKRechargeStyleCell.xib; sourceTree = "<group>"; };
@@ -1566,6 +1572,8 @@
 				92FB06C5216682710001D38B /* GKBalanceViewController.storyboard */,
 				92FB06C2216681910001D38B /* GKRechargeViewController.h */,
 				92FB06C3216681910001D38B /* GKRechargeViewController.m */,
+				0BE6583821789594004F6DB3 /* GKRechargeCardViewController.h */,
+				0BE6583721789594004F6DB3 /* GKRechargeCardViewController.m */,
 				0BC4047E216DF61700EFC9AC /* GKTopUpTermsViewController.h */,
 				0BC4047F216DF61800EFC9AC /* GKTopUpTermsViewController.m */,
 				9275D2472169D9CF0004DBFE /* GKOrderManagementViewController.h */,
@@ -1600,6 +1608,8 @@
 			children = (
 				92FB06B42165ED820001D38B /* GKBalanceView.h */,
 				92FB06B52165ED830001D38B /* GKBalanceView.m */,
+				0BE6583B2178980F004F6DB3 /* GKRechargeCardCell.h */,
+				0BE6583A2178980F004F6DB3 /* GKRechargeCardCell.m */,
 				0BFCB2F4216B24F400B0EFD3 /* GKRechargeStyleCell.h */,
 				0BFCB2F3216B24F400B0EFD3 /* GKRechargeStyleCell.m */,
 				0BFCB2F5216B24F400B0EFD3 /* GKRechargeStyleCell.xib */,
@@ -1811,6 +1821,7 @@
 				0B8D0DFC215DB97F00030966 /* JFLocation.m in Sources */,
 				92FB06C4216681910001D38B /* GKRechargeViewController.m in Sources */,
 				0B9CF464215B8D7F00F76671 /* XWFilterAnimator+XWRipple.m in Sources */,
+				0BE6583C2178980F004F6DB3 /* GKRechargeCardCell.m in Sources */,
 				0B9CF482215B8F4B00F76671 /* GKUserInfo.m in Sources */,
 				0B9CF45B215B8D7F00F76671 /* XWCoolAnimator.m in Sources */,
 				0B8D0DF7215DB97F00030966 /* JFCityCollectionViewCell.m in Sources */,
@@ -1872,6 +1883,7 @@
 				0BBD83F8216EF19400B47EC3 /* GKFeedBackInfo2ViewController.m in Sources */,
 				0B9CF353215B8A6D00F76671 /* UIView+DCExtension.m in Sources */,
 				0B8D0DF3215DB97F00030966 /* JFAreaDataManager.m in Sources */,
+				0BE6583921789594004F6DB3 /* GKRechargeCardViewController.m in Sources */,
 				9239A748216A91F20060A389 /* GKFeedBackRecordViewController.m in Sources */,
 				0BC4047C216DA1D200EFC9AC /* GKStartChargingViewController.m in Sources */,
 				0B9CF462215B8D7F00F76671 /* XWFilterAnimator+XWMod.m in Sources */,

@@ -114,12 +114,12 @@
     [_dataSoucre addObject:@"www"];
     [_dataSoucre addObject:@"www"];
     [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"_dataSoucre.count = %lu",(unsigned long)[_dataSoucre count]]];
-    if (_dataSoucre == nil) {
-        [_tableView setHidden:true];
-        [_noDatasView setHidden:false];
-    }else{
-        [_noDatasView setHidden:true];
-    }
+//    if (_dataSoucre == nil) {
+//        [_tableView setHidden:true];
+//        [_noDatasView setHidden:false];
+//    }else{
+//        [_noDatasView setHidden:true];
+//    }
 }
 #pragma mark -页面逻辑方法
 

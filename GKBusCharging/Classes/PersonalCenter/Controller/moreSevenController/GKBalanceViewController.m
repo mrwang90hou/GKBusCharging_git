@@ -9,16 +9,8 @@
 #import "GKBalanceViewController.h"
 #import "DCGMScanViewController.h"
 #import "GKRechargeViewController.h"
-
+#import "GKRechargeCardViewController.h"
 @interface GKBalanceViewController ()
-@property (nonatomic,strong)UIButton * qrCodeBtn;
-@property (nonatomic,strong)UIButton * rechargeBtn;
-@property (nonatomic,strong)UIButton * getCashBtn;
-
-@property (nonatomic,strong)UILabel * activityContentLabel;
-@property (nonatomic,strong)UILabel * freeHoursLabel;
-@property (nonatomic,strong)UILabel * balanceLabel;
-
 
 @end
 
@@ -216,6 +208,61 @@
     [balanceLabel setTextColor:RGBall(153)];
     self.balanceLabel = balanceLabel;
 
+    /*充电卡的卡片*/
+    UIImageView *rechargeCardView = [[UIImageView alloc]init];
+    [self.view addSubview:rechargeCardView];
+    [rechargeCardView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(balanceCardView.mas_bottom).offset(5);
+        make.left.right.equalTo(favourableActivityBGView);
+        make.height.equalTo(balanceCardView);
+    }];
+    [rechargeCardView setImage:[UIImage imageNamed:@"charging_card_bg"]];
+//    [rechargeCardView setImage:[UIImage imageNamed:@"balance_bg"]];
+    
+    //充值btn
+    UIButton *rechargeCardBtn = [[UIButton alloc]init];
+    [self.view addSubview:rechargeCardBtn];
+    [rechargeCardBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(rechargeCardView);
+        //        make.centerX.mas_equalTo(ScreenW/4*3);
+        make.right.mas_equalTo(rechargeCardView.mas_right).offset(-30);
+        make.size.mas_equalTo(CGSizeMake(110, 44));
+    }];
+    [rechargeCardBtn setBackgroundImage:[UIImage imageNamed:@"btn_3"] forState:UIControlStateNormal];
+    [rechargeCardBtn setTitle:@"购买" forState:UIControlStateNormal];
+    [rechargeCardBtn addTarget:self action:@selector(buyRechargeCardBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    //    [rechargeBtn setTintColor:[UIColor whiteColor]];
+    rechargeCardBtn.titleLabel.textColor = [UIColor whiteColor];
+    self.rechargeCardBtn = rechargeCardBtn;
+    
+    
+    UILabel *rechargeCardTitleLabel = [[UILabel alloc]init];
+    [rechargeCardView addSubview:rechargeCardTitleLabel];
+    [rechargeCardTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(rechargeCardView.mas_left).offset(30);
+        make.centerY.mas_equalTo(rechargeCardView.mas_centerY).offset(-15);
+        make.size.mas_equalTo(CGSizeMake(80, 30));
+    }];
+    [rechargeCardTitleLabel setText:@"充电卡"];
+    rechargeCardTitleLabel.textAlignment = NSTextAlignmentLeft;
+    [rechargeCardTitleLabel setFont:[UIFont fontWithName:PFR size:18]];
+    [rechargeCardTitleLabel setTextColor:TEXTMAINCOLOR];
+    
+    
+    UILabel *rechargeCardLabel = [[UILabel alloc]init];
+    [rechargeCardView addSubview:rechargeCardLabel];
+    [rechargeCardLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(rechargeCardTitleLabel);
+        make.centerY.mas_equalTo(rechargeCardView.mas_centerY).offset(15);
+        make.size.mas_equalTo(CGSizeMake(240, 22));
+    }];
+    [rechargeCardLabel setText:@"免费充电有效期6天"];
+    rechargeCardLabel.textAlignment = NSTextAlignmentLeft;
+    [rechargeCardLabel setFont:[UIFont fontWithName:PFR size:15]];
+    [rechargeCardLabel setTextColor:RGBall(153)];
+    self.rechargeCardLabel = rechargeCardLabel;
+
+    
     UIButton * getCashBtn = [UIButton new];
     [self.view addSubview:getCashBtn];
     [getCashBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -230,6 +277,7 @@
     [getCashBtn setBackgroundImage:[UIImage imageNamed:@"btn_5_disabled"] forState:UIControlStateNormal];
     [getCashBtn addTarget:self action:@selector(getCashBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.getCashBtn = getCashBtn;
+    
 }
 //扫码充电
 - (void)qrCodeBtnClick{
@@ -242,6 +290,14 @@
     [SVProgressHUD showSuccessWithStatus:@"充值！"];
     [self.navigationController pushViewController:[GKRechargeViewController new] animated:YES];
 }
+//购买
+- (void)buyRechargeCardBtnClick{
+    [SVProgressHUD showSuccessWithStatus:@"购买充电卡！"];
+    [self.navigationController pushViewController:[GKRechargeCardViewController new] animated:YES];
+}
+
+
+
 //提现
 - (void)getCashBtnClick{
     [SVProgressHUD showWithStatus:@"正在提现..."];
@@ -250,5 +306,6 @@
         [SVProgressHUD showSuccessWithStatus:@"提现成功！"];
     });
 }
+
 
 @end
