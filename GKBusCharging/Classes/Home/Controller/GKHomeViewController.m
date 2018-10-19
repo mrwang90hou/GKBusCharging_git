@@ -82,10 +82,21 @@
 @property (strong , nonatomic)GKStarAndLabellingEvaluationView *starAndLabellingEvaluationView;
 
 @property (nonatomic,strong) UIView *infoView;
+/*
+ */
+@property (nonatomic,assign)int seconds;
+@property (nonatomic,assign)int minutes;
+@property (nonatomic,assign)int hours;
+@property (nonatomic,assign) int loadRecordTime;
+@property (nonatomic,strong )NSTimer *timer;
+
+
+@property (nonatomic,strong) UILabel *countDownTimeLabel;
 
 @property (nonatomic,strong) UIView *bgView;
 
 @property (nonatomic,strong) UIView *bgHeaderView;
+
 
 @end
 
@@ -104,17 +115,15 @@
     self.cityName = @"佛山市";
     [super viewDidLoad];
     [self.view setBackgroundColor:RGBall(248)];
-    
+    //初始页面加载时获取当前租借状态
+    [self getDatasViewDidLoading];
     [self setUpNavBarView];
-    
     [self setUI];
-    
     [self setUpTabBarView];
-    
     [self getData];
-    
     [self loadSubjectImage];
     [self addObserver];
+    
 }
 
 #pragma mark - 按钮点击
@@ -346,11 +355,12 @@
         make.width.equalTo(self.view);
     }];
     self.infoView = infoView;
-    if ([[DCObjManager dc_readUserDataForKey:@"isWorking"] intValue] == 1) {
-        self.infoView.hidden = false;
-    }else{
-        self.infoView.hidden = true;
-    }
+    [self.infoView setHidden:true];
+//    if ([[DCObjManager dc_readUserDataForKey:@"isWorking"] intValue] == 1) {
+//        self.infoView.hidden = false;
+//    }else{
+//        self.infoView.hidden = true;
+//    }
     //顶部 TopView
     UIView *topView = [[UIView alloc]init];
     [topView setBackgroundColor:[UIColor whiteColor]];
@@ -401,17 +411,18 @@
         make.top.mas_equalTo(infoView).offset(DCNaviH);
     }];
     
-    UILabel *countDTownTimeLabel = [[UILabel alloc]init];
-    [countDTownTimeLabel setText:@"00:56:01"];
-    countDTownTimeLabel.textAlignment = NSTextAlignmentCenter;
-    countDTownTimeLabel.font = [UIFont systemFontOfSize:44.0];
-    [infoView addSubview:countDTownTimeLabel];
-    [countDTownTimeLabel setTextColor:RGB(88,79,96)];
-    [countDTownTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    UILabel *countDownTimeLabel = [[UILabel alloc]init];
+//    [countDTownTimeLabel setText:@"00:56:01"];
+    countDownTimeLabel.textAlignment = NSTextAlignmentCenter;
+    countDownTimeLabel.font = [UIFont systemFontOfSize:44.0];
+    [infoView addSubview:countDownTimeLabel];
+    [countDownTimeLabel setTextColor:RGB(88,79,96)];
+    [countDownTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(bgImageView);
         make.centerY.mas_equalTo(bgImageView).offset(-K_HEIGHT_TABBAR/3*2);
         make.size.mas_equalTo(CGSizeMake(250, 55));
     }];
+    self.countDownTimeLabel = countDownTimeLabel;
     
     UILabel *hintLabel = [[UILabel alloc]init];
     [hintLabel setText:@"充电中"];
@@ -420,8 +431,8 @@
     [infoView addSubview:hintLabel];
     hintLabel.textAlignment = NSTextAlignmentCenter;
     [hintLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(countDTownTimeLabel.mas_top).offset(-15);
-        make.centerX.equalTo(countDTownTimeLabel);
+        make.bottom.mas_equalTo(countDownTimeLabel.mas_top).offset(-15);
+        make.centerX.equalTo(countDownTimeLabel);
         make.size.mas_equalTo(CGSizeMake(90, 25));
     }];
     
@@ -431,21 +442,18 @@
     [endChargingBtn setTitle:@"结束充电" forState:UIControlStateNormal];
     [endChargingBtn addTarget:self action:@selector(initAlertView) forControlEvents:UIControlEventTouchUpInside];
     [endChargingBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(countDTownTimeLabel.mas_bottom).offset(15);
+        make.top.mas_equalTo(countDownTimeLabel.mas_bottom).offset(15);
         make.centerX.equalTo(bgImageView);
         make.size.mas_equalTo(CGSizeMake(190, 47));
     }];
-    
-    
-    
 }
 
 - (void)updataUI{
-    if ([[DCObjManager dc_readUserDataForKey:@"isWorking"] intValue] == 1) {
-        self.infoView.hidden = false;
-    }else{
-        self.infoView.hidden = true;
-    }
+//    if ([[DCObjManager dc_readUserDataForKey:@"isWorking"] intValue] == 1) {
+//        self.infoView.hidden = false;
+//    }else{
+//        self.infoView.hidden = true;
+//    }
     if (![[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
 //        self.plusButton.selected = false;
         [self.plusButton setImage:SETIMAGE(@"nav_btn_scavenging_charging_normal_2") forState:UIControlStateNormal];
@@ -455,6 +463,122 @@
     }
 }
 
+-(void)getDatasViewDidLoading{
+    //登录成功
+    if ([[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
+        [self requestData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self requestData2];
+        });
+    } else {
+        return;
+    }
+}
+//查询用户状态
+-(void)requestData{
+    WEAKSELF
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+    if (cookid) {
+        [GCHttpDataTool cxChargingLineStatusWithDict:nil success:^(id responseObject) {
+            [SVProgressHUD dismiss];
+            //            [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
+//            {
+//                "type" : "-3",
+//                "userid" : "ca9899ae7c5b4d1e94d1e48957fac063"
+//            }
+//            {
+//                "userid" : "ca9899ae7c5b4d1e94d1e48957fac063",
+//                "notice" : false,
+//                "time" : 26058,
+//                "cabid" : "4e3937313233341315323137",
+//                "expirecount" : 1,
+//                "devid" : "0201810061400016",
+//                "type" : "-1"
+//            }
+            switch ([responseObject[@"type"] intValue]) {
+                case 0: //允许租借状态
+                    [self.infoView setHidden:true];
+                    
+                    break;
+                case -1: //已租借充电线 不允许租借
+                    
+                    [self.infoView setHidden:false];
+                    [self.plusButton setSelected:true];
+                    
+                    //获取当前加载时间
+                    int totalTimeBySeconds = [responseObject[@"time"] intValue];
+//                    totalTimeBySeconds = [htmlString intValue]/100;
+                    self.hours =  totalTimeBySeconds/3600;
+                    //format of minute
+                    self.minutes = (totalTimeBySeconds%3600)/60;
+                    //format of second
+                    self.seconds =  totalTimeBySeconds%60-0.5;
+                    //
+                    //            self.minutes = 0;
+                    //            self.hours = 0;
+                    //            self.seconds = 0;
+                    //类方法会自动释放。
+                    //类方法会自动释放。
+                    weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:weakSelf selector:@selector(startRecordTime) userInfo:nil repeats:YES];
+                    //⏳倒计时处理 开始
+                    
+                    break;
+                case -3: //余额不足
+                    [self.infoView setHidden:true];
+                    
+                    
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+            
+            
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+        }];
+        NSLog(@"《冲哈哈》获取用户cookid成功");
+    }else{
+        //        [SVProgressHUD showErrorWithStatus:@"cookid is null"];
+        NSLog(@"❌❌获取用户cookid失败❌❌");
+        return;
+    }
+}
+//用户信息查询
+-(void)requestData2{
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+    if (cookid) {
+        [GCHttpDataTool getUserInfoWithDict:nil success:^(id responseObject) {
+            [SVProgressHUD dismiss];
+//            [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
+//            {
+//                "result" : false,
+//                "expireday" : "0",
+//                "phone" : "18577986175",
+//                "freestr" : "0",
+//                "balance" : -18
+//            }
+//            {
+//                "result" : true,
+//                "expireday" : "0",
+//                "phone" : "18577986175",
+//                "freestr" : "0",
+//                "balance" : -18
+//            }
+            
+            
+            
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+        }];
+        NSLog(@"《冲哈哈》获取用户cookid成功");
+    }else{
+        //        [SVProgressHUD showErrorWithStatus:@"cookid is null"];
+        NSLog(@"❌❌获取用户cookid失败❌❌");
+        return;
+    }
+}
 
 - (void)getData{
     
@@ -520,10 +644,18 @@
     if ([self checkLoginStatus]) {
         return;
     }
-    DCGMScanViewController *dcGMvC = [DCGMScanViewController new];
-//    UINavigationController *newNaVC = [[UINavigationController alloc]initWithRootViewController:dcGMvC];
-    [self.navigationController pushViewController:dcGMvC animated:YES];
-    [DCObjManager dc_saveUserData:@"1" forKey:@"isWorking"];
+    if ([self.plusButton isSelected]) {
+        GKStartChargingViewController *vc = [[GKStartChargingViewController alloc]init];
+        vc.hasBeenCharging = true;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        DCGMScanViewController *dcGMvC = [DCGMScanViewController new];
+        //    UINavigationController *newNaVC = [[UINavigationController alloc]initWithRootViewController:dcGMvC];
+        [self.navigationController pushViewController:dcGMvC animated:YES];
+        //    [DCObjManager dc_saveUserData:@"1" forKey:@"isWorking"];
+    }
+    
+    
 }
 
 -(void)pickCity{
@@ -539,7 +671,7 @@
 //                         };
         [GCHttpDataTool getCityListWithDict:nil success:^(id responseObject) {
             [SVProgressHUD dismiss];
-            [SVProgressHUD showSuccessWithStatus:@"获取城市列表成功！"];
+//            [SVProgressHUD showSuccessWithStatus:@"获取城市列表成功！"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 JFCityViewController *cityViewController = [[JFCityViewController alloc] init];
                 cityViewController.title = @"城市";
@@ -695,7 +827,7 @@
     [SVProgressHUD showWithStatus:@"正在结束充电中，请稍后...\n请勿退出或关闭"];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [SVProgressHUD dismiss];
-        [DCObjManager dc_saveUserData:@"0" forKey:@"isWorking"];
+//        [DCObjManager dc_saveUserData:@"0" forKey:@"isWorking"];
         [self updataUI];
         [SVProgressHUD showSuccessWithStatus:@"结束成功！"];
         //弹窗评价窗口
@@ -724,13 +856,7 @@
         NSLog(@"❌❌获取用户cookid失败❌❌");
         return;
     }
-    
-    
-    
-    
 }
-
-
 
 #pragma mark - 内容
 - (void)setUpContentView
@@ -789,6 +915,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(close) name:@"close" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cheackDetailsAction) name:@"cheackDetails" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(qrCodeSuccessAction:) name:@"QRCodeSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chargeSuccessAction:) name:@"租电成功" object:nil];
 }
 
 - (void)starIsChangedAction{
@@ -873,9 +1000,17 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [SVProgressHUD dismiss];
         GKStartChargingViewController *vc = [[GKStartChargingViewController alloc]init];
+        vc.hasBeenCharging = false;
         vc.totalData = totalData;
         [self.navigationController pushViewController:vc animated:YES];
     });
+}
+
+-(void)chargeSuccessAction:(NSNotification *)noti{
+//    NSDictionary *totalData = [noti userInfo];
+    //收到通知
+    [self requestData];
+    return;
 }
 
 -(NSMutableArray *)images{
@@ -919,4 +1054,43 @@
         return false;
     }
 }
+
+
+#pragma mark -时间记录器
+//nwDispatchTimer;
+-(void)startTimer{
+    _seconds++;
+    //没过１００毫秒，就让秒＋１，然后让毫秒在归零
+    if(_seconds==60){
+        _minutes++;
+        _seconds = 0;
+    }
+    if (_minutes == 60) {
+        _hours++;
+        _minutes = 0;
+    }
+    if (_seconds%2 !=0) {
+//        self.redDView.hidden = YES;
+    }else{
+//        self.redDView.hidden = NO;
+    }
+    //让不断变量的时间数据进行显示到label上面。
+    self.countDownTimeLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",_hours,_minutes,_seconds];
+}
+
+-(void)startRecordTime{
+    _seconds++;
+    //没过１００毫秒，就让秒＋１，然后让毫秒在归零
+    if(_seconds==60){
+        _minutes++;
+        _seconds = 0;
+    }
+    if (_minutes == 60) {
+        _hours++;
+        _minutes = 0;
+    }
+    //让不断变量的时间数据进行显示到label上面。
+    self.countDownTimeLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",_hours,_minutes,_seconds];
+}
+
 @end

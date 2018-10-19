@@ -160,6 +160,7 @@
 		0BABC042215E00C00085CAC3 /* GKPersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC041215E00C00085CAC3 /* GKPersonalCell.m */; };
 		0BABC045215E01010085CAC3 /* GKPersonalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC044215E01010085CAC3 /* GKPersonalHeaderView.m */; };
 		0BABC048215E14FE0085CAC3 /* GKCustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC047215E14FE0085CAC3 /* GKCustomFlowLayout.m */; };
+		0BB1B3E321796E9300B8A899 /* RechargeCardPriceMenu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BB1B3E221796DEE00B8A899 /* RechargeCardPriceMenu.plist */; };
 		0BBD83F8216EF19400B47EC3 /* GKFeedBackInfo2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD83F7216EF19400B47EC3 /* GKFeedBackInfo2ViewController.m */; };
 		0BBD83FB216EFAB900B47EC3 /* AFNetPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD83F9216EFAB800B47EC3 /* AFNetPackage.m */; };
 		0BBD8404216EFB2100B47EC3 /* GCHttpDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD83FE216EFB2100B47EC3 /* GCHttpDataTool.m */; };
@@ -514,6 +515,7 @@
 		0BABC044215E01010085CAC3 /* GKPersonalHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKPersonalHeaderView.m; sourceTree = "<group>"; };
 		0BABC046215E14FE0085CAC3 /* GKCustomFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCustomFlowLayout.h; sourceTree = "<group>"; };
 		0BABC047215E14FE0085CAC3 /* GKCustomFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCustomFlowLayout.m; sourceTree = "<group>"; };
+		0BB1B3E221796DEE00B8A899 /* RechargeCardPriceMenu.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RechargeCardPriceMenu.plist; sourceTree = "<group>"; };
 		0BBD83F6216EF19300B47EC3 /* GKFeedBackInfo2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKFeedBackInfo2ViewController.h; sourceTree = "<group>"; };
 		0BBD83F7216EF19400B47EC3 /* GKFeedBackInfo2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKFeedBackInfo2ViewController.m; sourceTree = "<group>"; };
 		0BBD83F9216EFAB800B47EC3 /* AFNetPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetPackage.m; sourceTree = "<group>"; };
@@ -799,6 +801,7 @@
 				923AC63B215E924E0016CD1C /* FeedBackMenu.plist */,
 				92FB06D2216722510001D38B /* RechargeStyle.plist */,
 				0B809B0E215E3BBC001186CA /* PersonalCenterMenu.plist */,
+				0BB1B3E221796DEE00B8A899 /* RechargeCardPriceMenu.plist */,
 				0B2BF7E9216B637100A8FE20 /* UseingHelperList.plist */,
 			);
 			path = "我的Plist";
@@ -1696,6 +1699,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BB1B3E321796E9300B8A899 /* RechargeCardPriceMenu.plist in Resources */,
 				0BC4047D216DCB6900EFC9AC /* GKStartChargingViewController.xib in Resources */,
 				0BFE23E8216C9F4F00C9F915 /* GKFeedBackInfoCell.xib in Resources */,
 				0BFE23E0216C8EE300C9F915 /* GKFeedBackInfoViewController.xib in Resources */,

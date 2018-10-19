@@ -144,7 +144,7 @@
     [SVProgressHUD showWithStatus:@"正在提交中，请稍后..."];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [SVProgressHUD dismiss];
-        [DCObjManager dc_saveUserData:@"0" forKey:@"isWorking"];
+//        [DCObjManager dc_saveUserData:@"0" forKey:@"isWorking"];
 //        [self updataUI];
         self.isCommitOrNot = true;
         [SVProgressHUD showSuccessWithStatus:@"提交成功！"];

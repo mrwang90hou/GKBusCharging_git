@@ -9,5 +9,6 @@
 
 @interface GKStartChargingViewController : GKBaseSetViewController
 
-@property (nonatomic,strong) NSDictionary *totalData;
+@property (nonatomic,strong) NSMutableDictionary *totalData;
+@property (nonatomic,assign) Boolean hasBeenCharging;
 @end

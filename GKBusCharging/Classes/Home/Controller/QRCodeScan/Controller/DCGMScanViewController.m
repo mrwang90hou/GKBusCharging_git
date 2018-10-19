@@ -37,7 +37,7 @@
 
 #pragma mark - LifeCyle
 //用于做扫码判定,没有这个请求头认为不是充电宝
-//static NSString *saomapandingUrl = @"https://www.zgzzwl.com.cn/";
+static NSString *saomapandingUrl = @"https://www.zgzzwl.com.cn/";
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -141,7 +141,7 @@
         NSLog(@"待修正的二维码");
         [message stringByReplacingOccurrencesOfString:@"PIC="withString:@""];
 //        return;
-        [SVProgressHUD showSuccessWithStatus:@"通过识别图片获取二维码信息，URL 信息链接修复成功"];
+//        [SVProgressHUD showSuccessWithStatus:@"通过识别图片获取二维码信息，URL 信息链接修复成功"];
     }
 //    NSLog(@"message.length = %lu",(unsigned long)message.length);
     NSArray *array = [message componentsSeparatedByString:@"p="];//从字符A中分隔成2个元素的数组
@@ -150,13 +150,13 @@
     NSLog(@"array2 ==== %@",[array lastObject]);
     NSString *codeStr = [array lastObject];
     //判断是否为正确的【二维码】
-    if ([message containsString:GK_URL]) {
+    if ([message containsString:saomapandingUrl]) {
         //扫码接口
         NSDictionary *dict=@{
                           @"cabid":codeStr
                           };
         [GCHttpDataTool scanQRCodeChargeWithDict:dict success:^(id responseObject) {
-            [SVProgressHUD showSuccessWithStatus:@"扫码二维码成功！"];
+//            [SVProgressHUD showSuccessWithStatus:@"扫码二维码成功！"];
             
             NSLog(@"正确的二维码");
             [self.navigationController popViewControllerAnimated:YES];

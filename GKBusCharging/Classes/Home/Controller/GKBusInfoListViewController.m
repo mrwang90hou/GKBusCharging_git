@@ -81,14 +81,14 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
         if (dict != nil) {
             [GCHttpDataTool getBusListWithDict:dict success:^(id responseObject) {
                 [SVProgressHUD dismiss];
-                [SVProgressHUD showSuccessWithStatus:@"获取公交车列表成功！"];
+//                [SVProgressHUD showSuccessWithStatus:@"获取公交车列表成功！"];
             } failure:^(MQError *error) {
                 [SVProgressHUD showErrorWithStatus:error.msg];
             }];
         }else{
             [GCHttpDataTool getBusListWithDict:nil success:^(id responseObject) {
                 [SVProgressHUD dismiss];
-                [SVProgressHUD showSuccessWithStatus:@"获取公交车列表成功！"];
+//                [SVProgressHUD showSuccessWithStatus:@"获取公交车列表成功！"];
             } failure:^(MQError *error) {
                 [SVProgressHUD showErrorWithStatus:error.msg];
             }];
