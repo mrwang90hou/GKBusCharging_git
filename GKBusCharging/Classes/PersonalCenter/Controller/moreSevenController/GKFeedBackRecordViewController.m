@@ -136,7 +136,7 @@
                           };
         [GCHttpDataTool getFaultListWithDict:dict success:^(id responseObject) {
             [SVProgressHUD dismiss];
-            [SVProgressHUD showSuccessWithStatus:@"获取故障历史信息、报障历史列表成功！"];
+//            [SVProgressHUD showSuccessWithStatus:@"获取故障历史信息、报障历史列表成功！"];
             
         } failure:^(MQError *error) {
             [SVProgressHUD showErrorWithStatus:error.msg];

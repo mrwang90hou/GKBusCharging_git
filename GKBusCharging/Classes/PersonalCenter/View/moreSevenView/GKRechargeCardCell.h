@@ -2,7 +2,7 @@
 //  GKRechargeCardCell.h
 //  GKBusCharging
 //
-//  Created by L on 2018/9/28.
+//  Created by L on 2018/10/18.
 //  Copyright © 2018年 goockr. All rights reserved.
 //
 
@@ -10,8 +10,9 @@
 
 
 @interface GKRechargeCardCell : UICollectionViewCell
-/* imageView */
-@property (strong , nonatomic)UIImageView *gridImageView;
+
+/* uibutton */
+@property (strong , nonatomic)UIButton *uiButton;
 /* titleLabel */
 @property (strong , nonatomic)UILabel *titleLabel;
 /* infoLabel */

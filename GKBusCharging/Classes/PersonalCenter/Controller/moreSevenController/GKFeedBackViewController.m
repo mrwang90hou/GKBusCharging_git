@@ -486,20 +486,12 @@
 -(void)reloadDatasAndTable:(NSIndexPath *)indexPath{
     for (int i = 0; i<6; i++) {
         NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:i inSection:0];
-//        GKRechargeStyleCell *cell = [self.tableView cellForRowAtIndexPath:indexPath2];
-        GKPersonalCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath2];
-//        (GKPersonalCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
-//        [cell setBackgroundColor:Main_Color];
+        GKPersonalCell *cell = (GKPersonalCell *)[self.collectionView cellForItemAtIndexPath:indexPath2];
         if (i == indexPath.row) {
             cell.selected = true;
-            //            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//            [cell.backgroundView setBackgroundColor:TABLEVIEW_BG];
             cell.backgroundColor = RGB(212, 245, 234);
         }else{
             cell.selected = false;
-            //            cell.accessoryType = UITableViewCellAccessoryNone;
-//            [cell.backgroundView setBackgroundColor:[UIColor whiteColor]];
-            
             cell.backgroundColor = Main_Color;
         }
     }

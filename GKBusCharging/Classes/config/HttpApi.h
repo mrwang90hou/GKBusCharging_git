@@ -10,11 +10,12 @@
 #define HttpApi_h
 
 
-#define GKMAIN_URL @"https://www.zgzzwl.com.cn"
+//#define GKMAIN_URL @"https://www.zgzzwl.com.cn"
+#define GKMAIN_URL @"https://home.zgzzwl.com.cn"
 #define GKMAIN_URL_TEST @"http://allenryosuke.nat300.top"
 
 //正式发布时需要改成1
-#define RELEASEtoAPPSTORE 0
+#define RELEASEtoAPPSTORE 1
 
 #if RELEASEtoAPPSTORE
 // 1 = YES
@@ -55,7 +56,8 @@
 //客户端数据推送
 #if RELEASEtoAPPSTORE
 // 1 = YES
-#define WebSocketURL @"wss://www.zgzzwl.com.cn/charge/wsk"
+//#define WebSocketURL @"wss://www.zgzzwl.com.cn/charge/wsk"
+#define WebSocketURL @"wss://home.zgzzwl.com.cn/charge/wsk"
 #else
 // 0 = NO
 #define WebSocketURL @"ws://allenryosuke.nat300.top/charge/wsk"

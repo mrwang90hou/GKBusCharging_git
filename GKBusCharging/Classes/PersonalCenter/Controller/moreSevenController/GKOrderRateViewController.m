@@ -341,7 +341,7 @@ static NSString *GKOrderCellID = @"GKOrderCell";
     NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
     if (cookid) {
         [GCHttpDataTool getEvaluateOrderWithDict:nil success:^(id responseObject) {
-            [SVProgressHUD showSuccessWithStatus:@"获取评价账单详细01成功！"];
+//            [SVProgressHUD showSuccessWithStatus:@"获取评价账单详细01成功！"];
         } failure:^(MQError *error) {
             [SVProgressHUD showErrorWithStatus:error.msg];
         }];
@@ -357,7 +357,7 @@ static NSString *GKOrderCellID = @"GKOrderCell";
                              @"ordernum":@"1181012182203000001"
                              };
         [GCHttpDataTool getEvaluateOrder2WithDict:dict success:^(id responseObject) {
-            [SVProgressHUD showSuccessWithStatus:@"获取评价账单详细02成功！"];
+//            [SVProgressHUD showSuccessWithStatus:@"获取评价账单详细02成功！"];
         } failure:^(MQError *error) {
             [SVProgressHUD showErrorWithStatus:error.msg];
         }];

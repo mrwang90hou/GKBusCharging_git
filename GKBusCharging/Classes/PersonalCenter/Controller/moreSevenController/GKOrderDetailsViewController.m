@@ -47,7 +47,7 @@
                              };
         [GCHttpDataTool cxUserBillDetailWithDict:dict success:^(id responseObject) {
             [SVProgressHUD dismiss];
-            [SVProgressHUD showSuccessWithStatus:@"查询账单详细成功！"];
+//            [SVProgressHUD showSuccessWithStatus:@"查询账单详细成功！"];
         } failure:^(MQError *error) {
             [SVProgressHUD showErrorWithStatus:error.msg];
         }];

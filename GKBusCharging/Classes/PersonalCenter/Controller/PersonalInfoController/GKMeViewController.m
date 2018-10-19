@@ -152,7 +152,7 @@
         //                             };
         [GCHttpDataTool getUserInfoWithDict:nil success:^(id responseObject) {
             [SVProgressHUD dismiss];
-            [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
+//            [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
             //            [responseObject[@"type"] intValue];
             //            [responseObject[@"userid"] string];
         } failure:^(MQError *error) {

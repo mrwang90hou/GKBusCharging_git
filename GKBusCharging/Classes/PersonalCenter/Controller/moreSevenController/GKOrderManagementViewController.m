@@ -163,7 +163,7 @@ static NSString *GKOrderCellID = @"GKOrderCell";
                              };
         [GCHttpDataTool cxUserBillListWithDict:dict success:^(id responseObject) {
             [SVProgressHUD dismiss];
-            [SVProgressHUD showSuccessWithStatus:@"查询用户未完成订单列表成功！"];
+//            [SVProgressHUD showSuccessWithStatus:@"查询用户未完成订单列表成功！"];
             //            [responseObject[@"type"] intValue];
             //            [responseObject[@"userid"] string];
         } failure:^(MQError *error) {
@@ -187,7 +187,7 @@ static NSString *GKOrderCellID = @"GKOrderCell";
                              };
         [GCHttpDataTool cxUserBillListWithDict:dict success:^(id responseObject) {
             [SVProgressHUD dismiss];
-            [SVProgressHUD showSuccessWithStatus:@"查询用户已完成订单列表成功！"];
+//            [SVProgressHUD showSuccessWithStatus:@"查询用户已完成订单列表成功！"];
             //            [responseObject[@"type"] intValue];
             //            [responseObject[@"userid"] string];
         } failure:^(MQError *error) {
