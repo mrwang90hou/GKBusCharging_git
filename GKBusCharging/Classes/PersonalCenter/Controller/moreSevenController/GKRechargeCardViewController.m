@@ -55,13 +55,15 @@
 
 @property (nonatomic,strong) NSMutableArray *titleListArray;
 
-@property (nonatomic,strong) NSMutableArray *imagesListArray;
+@property (nonatomic,strong) NSMutableArray *amountListMuArray;
 
 @property (retain, strong) GKPersonalHeaderView *headerView;
 
 @property (retain, strong) UILabel *headTitleLabel;
 
 @property (nonatomic,strong) UICollectionView *collectionView;
+
+@property (nonatomic ,strong) UIButton *endingBtn;
 @end
 
 @implementation GKRechargeCardViewController
@@ -76,12 +78,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"个人中心";
+    self.title = @"充电卡";
     [self getUI];
     [self getData];
     [self addObserver];
-    //    self.view.backgroundColor = [UIColor redColor];
-    //    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = TABLEVIEW_BG;
+    
+    
+    //设置你想选中的某一行,我这里是第一行
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//    //执行此方法,表明表视图要选中这一行
+//    [self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+//    //调用此方法,显示我们自定义的选中颜色
+//    [self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
+    
+    
 }
 
 - (void)dealloc
@@ -101,9 +112,9 @@
 -(void)updatas{
     //登录成功
     if ([[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
-        [self requestData];
+//        [self requestData];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self requestData2];
+//            [self requestData2];
         });
     } else {
         return;
@@ -119,9 +130,6 @@
         //                             };
         [GCHttpDataTool cxChargingLineStatusWithDict:nil success:^(id responseObject) {
             [SVProgressHUD dismiss];
-            //            [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
-            //            [responseObject[@"type"] intValue];
-            //            [responseObject[@"userid"] string];
             
         } failure:^(MQError *error) {
             [SVProgressHUD showErrorWithStatus:error.msg];
@@ -143,7 +151,7 @@
         //                             };
         [GCHttpDataTool getUserInfoWithDict:nil success:^(id responseObject) {
             [SVProgressHUD dismiss];
-            [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
+//            [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
             //            [responseObject[@"type"] intValue];
             //            [responseObject[@"userid"] string];
         } failure:^(MQError *error) {
@@ -160,18 +168,25 @@
 - (void)getUI{
     //    [SVProgressHUD showInfoWithStatus:@"getUI"];
     //    NSLog(@"viewDidLoad");
-    GKPersonalHeaderView * headerView = [[GKPersonalHeaderView alloc] initWithFrame:CGRectZero];
-    [self.view addSubview:headerView];
-    [headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+    
+    UIView * headerTitleView = [[UIView alloc]init];
+    [self.view addSubview:headerTitleView];
+    [headerTitleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view).with.offset(K_HEIGHT_NAVBAR);
-        make.left.equalTo(self.view);
-        make.height.mas_equalTo((ScreenH-K_HEIGHT_NAVBAR)/4);
-        make.width.mas_equalTo(SCREEN_WIDTH);
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(K_HEIGHT_NAVBAR/2);
     }];
-    [headerView.iconImageViewBtn addTarget:self action:@selector(turnToGKMeViewController) forControlEvents:UIControlEventTouchUpInside];
-    [headerView.phoneBtn addTarget:self action:@selector(turnToGKBindingPhoneController) forControlEvents:UIControlEventTouchUpInside];
-    self.headerView = headerView;
-    self.headTitleLabel = headerView.headTitleLabel;
+    [headerTitleView setBackgroundColor:TABLEVIEW_BG];
+    
+    UILabel *titleLabel = [[UILabel alloc]init];
+    [headerTitleView addSubview:titleLabel];
+    [titleLabel setTextColor:TEXTMAINCOLOR];
+    [titleLabel setText:@"充值月卡"];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(headerTitleView);
+        make.left.mas_equalTo(20);
+        make.size.mas_equalTo(CGSizeMake(120, 22));
+    }];
     
     //1.初始化layout
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -186,7 +201,7 @@
     //    collectionView.backgroundColor = [UIColor lightGrayColor];
     //    [collectionView setBackgroundColor:TABLEVIEW_BG];
     //    [collectionView setBackgroundColor:[UIColor whiteColor]];
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, K_HEIGHT_NAVBAR+(ScreenH-K_HEIGHT_NAVBAR)/4+DCMargin, ScreenW, ScreenH-(K_HEIGHT_NAVBAR+(ScreenH-K_HEIGHT_NAVBAR)/4+DCMargin)) collectionViewLayout:layout];
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, K_HEIGHT_NAVBAR*3/2+DCMargin, ScreenW, ScreenH-(K_HEIGHT_NAVBAR+(ScreenH-K_HEIGHT_NAVBAR)/4+DCMargin)) collectionViewLayout:layout];
     [self.view addSubview:collectionView];
     collectionView.backgroundColor = RGB(248, 248, 248);
     //3.注册collectionViewCell
@@ -196,6 +211,20 @@
     collectionView.delegate = self;
     collectionView.dataSource = self;
     self.collectionView = collectionView;
+    UIButton *endingBtn = [[UIButton alloc]init];
+    [self.view addSubview:endingBtn];
+    [endingBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset(-8);
+        make.centerX.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(307, 44));
+    }];
+    [endingBtn addTarget:self action:@selector(endingBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [endingBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];//0xFCE9B
+    [endingBtn setTitle:@"立即购买" forState:UIControlStateNormal];
+    [endingBtn setBackgroundImage:SETIMAGE(@"btn_5_disabled") forState:UIControlStateDisabled];
+    [endingBtn setBackgroundImage:SETIMAGE(@"btn_5_normal") forState:UIControlStateNormal];
+    endingBtn.enabled = NO;
+    self.endingBtn = endingBtn;
 }
 
 -(void)updateUIReload{
@@ -224,7 +253,7 @@
 }
 
 - (void)getDataFromPlist{
-    NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"PersonalCenterMenu" ofType:@"plist"];
+    NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"RechargeCardPriceMenu" ofType:@"plist"];
     
     // [NSBundle mainBundle] 关联的就是项目的主资源包
     //    NSBundle *bundle = [NSBundle mainBundle];
@@ -234,18 +263,15 @@
     NSArray *datasArray = [NSArray arrayWithContentsOfFile:plistPath];
     
     NSMutableArray *titleListMuArray = [NSMutableArray new];
-    NSMutableArray *imagesListMuArray = [NSMutableArray new];
+    NSMutableArray *amountListMuArray = [NSMutableArray new];
     
     
     for (NSMutableDictionary *dic in datasArray) {
         [titleListMuArray addObject:dic[@"titleName"]];
-        [imagesListMuArray addObject:dic[@"imageName"]];
-        //        NSLog(@"dic[@'titleName'] = %@,dic[@'imageName‘] = %@",dic[@"titleName"],dic[@"imageName"]);
+        [amountListMuArray addObject:dic[@"priceName"]];
     }
     self.titleListArray = [titleListMuArray copy];
-    self.imagesListArray = [imagesListMuArray copy];
-    
-    //    [self.collectionView reloadData];
+    self.amountListMuArray = [amountListMuArray copy];
 }
 
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
@@ -259,7 +285,7 @@
 //每个section的item个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 6;
+    return [self.titleListArray count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -268,18 +294,9 @@
     GKRechargeCardCell *cell = (GKRechargeCardCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
     cell.titleLabel.text = [self.titleListArray objectAtIndex:indexPath.row];
     //    NSLog(@"cell.titleLabel.text = %@",[self.titleListArray objectAtIndex:indexPath.row]);
-    [cell.gridImageView setImage:[UIImage imageNamed:[self.imagesListArray objectAtIndex:indexPath.row]]];
-    cell.backgroundColor = [UIColor whiteColor];
-    
-    if (indexPath.row == 0) {
-        //        cell.infoLabel = [NSUserDefaults ];
-        cell.infoLabel.text = @"120元";
-        [cell.infoLabel setHidden:false];
-    }else{
-        cell.infoLabel.text = @"";
-        [cell.infoLabel setHidden:true];
-    }
-    
+//    [cell.gridImageView setImage:[UIImage imageNamed:[self.amountListMuArray objectAtIndex:indexPath.row]]];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.infoLabel.text = [self.amountListMuArray objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -310,54 +327,47 @@
 //点击item方法
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self checkLoginStatus]) {
-        return;
-    }
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    //    GKBaseSetViewController *vc = [[GKBaseSetViewController alloc]init];
-    GKBaseSetViewController *nextVC;
-    switch (indexPath.row) {
-        case 0://余额
-            nextVC = [[GKBalanceViewController alloc] init];
-            break;
-        case 1://订单管理
-            nextVC = [[GKOrderManagementViewController alloc] init];
-            break;
-        case 2://使用帮助
-            nextVC = [[GKUseingHelpViewController alloc] init];
-            break;
-        case 3://关于我们
-            nextVC = [[GKAboutUsViewController alloc] init];
-            break;
-            //        case 4:
-            //            nextVC = [[GFMyTradeViewController alloc] init];
-            //            break;
-            //        case 4://更新APP
-            //            nextVC = [[GKBaseSetViewController alloc] init];
-            //            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
-            //            return;
-            //            break;
-        case 4://紧急报警
-            nextVC = [[GKStartChargingViewController alloc] init];
-            //            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
-            [SVProgressHUD showErrorWithStatus:@"暂用于GKStartChargingViewController测试页面！"];
-            //            return;
-            break;
-        case 5://意见反馈
-            nextVC = [[GKFeedBackViewController alloc] init];
-            break;
-            //        case 8:
-            //            //弹出框
-            //            [self initAlertView];
-            //            break;
-        default:
-            break;
-    }
-    if (indexPath.row != 8) {
-        //        [nextVC setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:nextVC animated:YES];
-    }
+//    [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"点击了第%ld个",(long)indexPath.row]];
+    [self reloadDatasAndCollection:indexPath];
+//    [self reloadDatasAndTable:indexPath];
 }
+//刷新 tabView 的选择状态
+-(void)reloadDatasAndCollection:(NSIndexPath *)indexPath{
+    for (int i = 0; i<3; i++) {
+        NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:i inSection:0];
+        GKRechargeCardCell *cell = (GKRechargeCardCell *)[self.collectionView cellForItemAtIndexPath:indexPath2];
+        if (i == indexPath.row) {
+            [cell.uiButton setImage:[UIImage imageNamed:@"recharge_amount_bg_selected"] forState:UIControlStateNormal];
+            [cell.titleLabel setTextColor:[UIColor whiteColor]];
+            [cell.infoLabel setTextColor:[UIColor whiteColor]];
+        }else{
+            [cell.uiButton setImage:[UIImage imageNamed:@"recharge_amount_bg_normal"] forState:UIControlStateNormal];
+            [cell.titleLabel setTextColor:TEXTMAINCOLOR];
+            [cell.infoLabel setTextColor:TEXTMAINCOLOR];
+        }
+//        cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.bounds];
+//        cell.selectedBackgroundView.backgroundColor = TABLEVIEW_BG;
+    }
+    self.endingBtn.enabled = YES;
+}
+
+#pragma mark - collectionViewCell点击高亮
+//- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
+//
+//    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+//    cell.backgroundColor = RGB(238, 238, 238);
+//
+//}
+//- (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath{
+//
+//    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+//    cell.backgroundColor = [UIColor whiteColor];
+//}
+//- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
+//
+//    return YES;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -403,5 +413,11 @@
         return false;
     }
 }
-
+-(void)endingBtnAction{
+    [SVProgressHUD showWithStatus:@"立即购买！"];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showSuccessWithStatus:@"购买成功！"];
+    });
+}
 @end

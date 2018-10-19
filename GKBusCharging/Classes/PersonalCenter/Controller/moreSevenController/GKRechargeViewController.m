@@ -24,6 +24,7 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
 @property (nonatomic,strong)NSArray * detailsListArray;
 @property (nonatomic,strong)NSArray * imagesListArray;
 
+@property (nonatomic,assign) Boolean tableViewCellSelectedState;
 
 @end
 
@@ -66,6 +67,16 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
     self.title = @"充值余额";
     [self setUI];
     [self getDataFromPlist];
+    self.tableViewCellSelectedState = false;
+    
+    //设置你想选中的某一行,我这里是第一行
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    //执行此方法,表明表视图要选中这一行
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+    //调用此方法,显示我们自定义的选中颜色
+    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+    
+    self.rechargeMoneyBtn01.selected = true;
 }
 
 - (void)getDataFromPlist{
@@ -258,8 +269,6 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
 //
 //    }
     [self reloadDatasAndTable:indexPath];
-    
-    
 }
 
 //刷新 tabView 的选择状态
@@ -269,18 +278,25 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
         GKRechargeStyleCell *cell = [self.tableView cellForRowAtIndexPath:indexPath2];
         if (i == indexPath.row) {
             //请求设置分辨率
-            cell.selectedOrNotImage.highlighted = true;
+//            cell.selectedOrNotImage.highlighted = true;
 //            [SVProgressHUD showInfoWithStatus:@"选择"];
             [cell.selectedOrNotImage setImage:[UIImage imageNamed:@"btn_payment_selected"]];
             cell.selected = true;
 //            cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }else{
 //            [SVProgressHUD showInfoWithStatus:@"不选择"];
-            cell.selectedOrNotImage.highlighted = false;
+//            cell.selectedOrNotImage.highlighted = false;
             [cell.selectedOrNotImage setImage:[UIImage imageNamed:@"btn_payment_normal"]];
             cell.selected = false;
-//            cell.accessoryType = UITableViewCellAccessoryNone;
         }
+        cell.selectedBackgroundView = [[UIView alloc]initWithFrame:cell.bounds];
+        cell.selectedBackgroundView.backgroundColor = TABLEVIEW_BG;
+    }
+    
+    self.tableViewCellSelectedState = true;
+    Boolean bl = self.rechargeMoneyBtn01.selected||self.rechargeMoneyBtn02.selected;
+    if (bl) {
+        [self.rechargeNowBtn setEnabled:true];
     }
 }
 
@@ -297,12 +313,13 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
 }
 //立即充值
 - (void)rechargeNowBtnClick{
-    
     for (int i = 0; i<2; i++) {
         NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:i inSection:0];
         GKRechargeStyleCell *cell = [self.tableView cellForRowAtIndexPath:indexPath2];
+        
+        Boolean bl = self.rechargeMoneyBtn01.selected||self.rechargeMoneyBtn02.selected;
         //判断只要选择
-        if (cell.selected) {
+        if (cell.selected && bl) {
             [SVProgressHUD showWithStatus:@"正在充值..."];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismiss];
@@ -311,6 +328,7 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
         }
     }
 }
+
 -(void)rechargeMoneyBtnSelected:(UIButton *)bt{
     if (bt.selected) {
         return;
@@ -321,6 +339,9 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
             self.rechargeMoneyBtn01.selected = false;
         }
         bt.selected=!bt.selected;
+    }
+    if (self.tableViewCellSelectedState) {
+        [self.rechargeNowBtn setEnabled:true];
     }
 }
 
