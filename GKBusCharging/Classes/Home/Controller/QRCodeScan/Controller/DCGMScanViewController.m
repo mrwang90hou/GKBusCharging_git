@@ -43,9 +43,9 @@ static NSString *saomapandingUrl = @"https://www.zgzzwl.com.cn/";
 {
     [super viewWillAppear:animated];
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
-    
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -59,14 +59,33 @@ static NSString *saomapandingUrl = @"https://www.zgzzwl.com.cn/";
     [super viewDidLoad];
     self.title = @"二维码/条码";
 //    self.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
-    
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    [self setUpBase];
-    
-    [self setUpTopView];
-    
+//    [self setUpBase];
+//    [self setUpTopView];
+//    UIButton * photosBtn = [[UIButton alloc]initWithFrame:CGRectMake(0,0,50,30)];
+//    [photosBtn setTitle:@"相册" forState:UIControlStateNormal];
+//    [photosBtn addTarget:self action:@selector(photosMethod) forControlEvents:UIControlEventTouchUpInside];
+//    //    photosBtn.titleLabel.font = GKMediumFont(17);
+//    UIBarButtonItem * rightItem = [[UIBarButtonItem alloc] initWithCustomView:photosBtn];
+//    self.navigationItem.rightBarButtonItem = rightItem;
+//方法二：
+//    UIBarButtonItem *qrCodeBtn01 = [[UIBarButtonItem alloc]initWithTitle:@"发布" style:UITabBarSystemItemContacts target:self action:@selector(add:)];
+    UIBarButtonItem *qrCodeBtn = [[UIBarButtonItem alloc]initWithTitle:@"相册" style:UIBarButtonItemStyleDone target:self action:@selector(photosMethod)];
+    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: qrCodeBtn,nil]];
     [self setUpBottomView];
 }
+-(void)photosMethod{
+    WEAKSELF
+//    _cameraTopView.rightItemClickBlock = ^{
+//        [weakSelf flashButtonClick:weakSelf.flashButton];
+//    };
+//
+//    _cameraTopView.rightRItemClickBlock = ^{
+//        [weakSelf jumpPhotoAlbum];
+//    };
+    [weakSelf jumpPhotoAlbum];
+}
+
 
 #pragma mark - initialize
 - (void)setUpBase
@@ -78,10 +97,18 @@ static NSString *saomapandingUrl = @"https://www.zgzzwl.com.cn/";
 #pragma mark - 导航栏处理
 - (void)setUpTopView
 {
-    _cameraTopView = [[DCCameraTopView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, K_HEIGHT_NAVBAR)];
+    _cameraTopView = [[DCCameraTopView alloc] initWithFrame:CGRectMake(0, K_HEIGHT_STATUSBAR, ScreenW, K_HEIGHT_NAVBAR-K_HEIGHT_STATUSBAR)];
     WEAKSELF
     _cameraTopView.leftItemClickBlock = ^{
-        [weakSelf.navigationController popViewControllerAnimated:YES];
+        //返回主视图
+        if ([[weakSelf.navigationController viewControllers] count] <= 1) {
+            // 处于根ViewControllers，仅显示Logo
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+//            [SVProgressHUD showInfoWithStatus:@"dismissVC"];
+        } else {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+//            [SVProgressHUD showInfoWithStatus:@"popVC"];
+        }
     };
     
     _cameraTopView.rightItemClickBlock = ^{
@@ -94,6 +121,7 @@ static NSString *saomapandingUrl = @"https://www.zgzzwl.com.cn/";
     
     _cameraTopView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_cameraTopView];
+    
 }
 
 - (void)setUpBottomView
@@ -101,7 +129,6 @@ static NSString *saomapandingUrl = @"https://www.zgzzwl.com.cn/";
     UIView *bottomView = [UIView new];
     bottomView.frame = CGRectMake(0, ScreenH - 65, ScreenW, 50);
     UILabel *supLabel = [UILabel new];
-    
     supLabel.text = @"支持扫描";
     supLabel.font = self.tipLabel.font;
     supLabel.textAlignment = NSTextAlignmentCenter;
@@ -159,6 +186,18 @@ static NSString *saomapandingUrl = @"https://www.zgzzwl.com.cn/";
 //            [SVProgressHUD showSuccessWithStatus:@"扫码二维码成功！"];
             
             NSLog(@"正确的二维码");
+            // 设置导航栏左侧图标
+//            if ([[self.navigationController viewControllers] count] <= 1) {
+//
+//                // 处于根ViewControllers，仅显示Logo
+//                UIImageView *leftIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+//                [leftIcon setImage:[UIImage imageNamed:@"ic_logo"]];
+//                [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:leftIcon]];
+//
+//            } else {
+//
+//            }
+            [self dismissViewControllerAnimated:YES completion:NULL];
             [self.navigationController popViewControllerAnimated:YES];
             NSDictionary *result = responseObject;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"QRCodeSuccess" object:nil userInfo:result];

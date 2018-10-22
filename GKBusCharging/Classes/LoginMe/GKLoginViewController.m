@@ -81,7 +81,6 @@
 {
     [[NSNotificationCenter defaultCenter]addObserverForName:LOGINSELECTCENTERINDEX object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         [self close];
-        
         [self.view endEditing:YES];
         //返回主视图
         [self dismissViewControllerAnimated:YES completion:nil];

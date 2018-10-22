@@ -12,6 +12,8 @@
 // Controllers
 
 #import "GKServiceTermsViewController.h"
+
+#import "GKUseGuideViewController.h"
 // Models
 
 // Views
@@ -210,8 +212,8 @@
 - (IBAction)endBtnAction:(id)sender {
     
     if (!_chargingStatusBool) {
-        //返回根视图
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        //打开使用指南
+        [self.navigationController pushViewController:[GKUseGuideViewController new] animated:YES];
     }else{
         //结束充电
         [self requestData2];

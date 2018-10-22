@@ -153,7 +153,7 @@
                         <constraint firstAttribute="height" constant="44" id="Ecw-D6-mlb"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="返回首页" backgroundImage="btn_4">
+                    <state key="normal" title="使用指南" backgroundImage="btn_4">
                         <color key="titleColor" red="0.12156862745098039" green="0.80784313725490198" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
