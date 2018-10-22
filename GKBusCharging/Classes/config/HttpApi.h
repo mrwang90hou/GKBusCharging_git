@@ -133,7 +133,7 @@
 
 //获取城市列表
 //#define cityListURL GKMAIN_URL @"/charge/bus/location_list";
-#define GETCityListURL GK_URL @"/charge/smallrount/bus/location _list"
+#define GETCityListURL GK_URL @"/charge/smallrount/bus/location_list"
 
 //获取支付下单信息
 //#define wxpayURL GKMAIN_URL @"/charge/pay_order";

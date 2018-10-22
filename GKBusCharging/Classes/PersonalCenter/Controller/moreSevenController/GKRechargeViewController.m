@@ -300,12 +300,7 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
     }
 }
 
-//扫码充电
-- (void)qrCodeBtnClick{
-//    [SVProgressHUD showSuccessWithStatus:@"扫码充电！"];
-    DCGMScanViewController * popVC = [DCGMScanViewController new];
-    [self.navigationController popToViewController:popVC animated:YES];
-}
+
 //充值协议
 - (void)getprotocolBtnClick{
 //    [SVProgressHUD showSuccessWithStatus:@"《充值协议》"];

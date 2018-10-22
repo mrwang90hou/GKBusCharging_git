@@ -32,6 +32,7 @@
 #define TEXTCOLOR   DDRGBColor(57, 57, 57, 1)
 #define TEXTMAINCOLOR   DDRGBColor(88, 79, 96, 1)
 #define TEXTGRAYCOLOR   DDRGBColor(153, 153, 153, 1)
+#define BUTTONMAINCOLOR   DDRGBColor(31, 206, 155, 1)
 
 //浅色字体
 #define TEXTCOLOR_LIGHT   DDRGBColor(124, 124, 124, 1)

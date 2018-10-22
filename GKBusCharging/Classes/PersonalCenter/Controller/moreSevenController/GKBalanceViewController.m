@@ -10,7 +10,9 @@
 #import "DCGMScanViewController.h"
 #import "GKRechargeViewController.h"
 #import "GKRechargeCardViewController.h"
+#import "GKTransactionDetailsViewController.h"
 @interface GKBalanceViewController ()
+@property (nonatomic,strong) UIButton *transactionDetailsBtn;
 
 @end
 
@@ -277,13 +279,35 @@
     [getCashBtn setBackgroundImage:[UIImage imageNamed:@"btn_5_disabled"] forState:UIControlStateNormal];
     [getCashBtn addTarget:self action:@selector(getCashBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.getCashBtn = getCashBtn;
-    
+    //查看交易明细
+    UIButton *transactionDetailsBtn = [[UIButton alloc]init];
+    [transactionDetailsBtn setTitle:@"查看交易明细" forState:UIControlStateNormal];
+    [transactionDetailsBtn setTitleColor:TEXTMAINCOLOR forState:UIControlStateNormal];
+    transactionDetailsBtn.titleLabel.font = GKFont(14);
+    [transactionDetailsBtn addTarget:self action:@selector(transactionDetailsBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:transactionDetailsBtn];
+    [transactionDetailsBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(getCashBtn.mas_top).with.offset(-33);
+        make.centerX.equalTo(self.view);
+        make.height.mas_equalTo(20);
+    }];
+    self.transactionDetailsBtn = transactionDetailsBtn;
 }
 //扫码充电
 - (void)qrCodeBtnClick{
-    [SVProgressHUD showSuccessWithStatus:@"扫码充电！"];
-//    DCGMScanViewController * popVC = [[DCGMScanViewController alloc]init];
-//    [self.navigationController popToViewController:popVC animated:YES];
+    //    [SVProgressHUD showSuccessWithStatus:@"扫码充电！"];
+//    DCGMScanViewController * vc = [DCGMScanViewController new];
+//    [self.navigationController popToViewController:vc animated:YES];
+//    self.modalPresentationStyle = UIModalPresentationPageSheet;
+//    [self presentViewController:vc animated:YES completion:NULL];
+    
+    DCGMScanViewController * modal = [[DCGMScanViewController alloc] init];
+    //把当前控制器作为背景
+//    self.definesPresentationContext = YES;
+    //设置模态视图弹出样式
+//    modal.modalPresentationStyle = UIModalPresentationOverFullScreen;
+//    [self presentViewController:modal animated:YES completion:nil];
+    [self.navigationController pushViewController:modal animated:YES];
 }
 //充值
 - (void)rechargeBtnClick{
@@ -296,9 +320,12 @@
     [self.navigationController pushViewController:[GKRechargeCardViewController new] animated:YES];
 }
 
-
-
-//提现
+//查看交易明细
+-(void)transactionDetailsBtnAction{
+//    [SVProgressHUD  showInfoWithStatus:@"查看交易明细"];
+    [self.navigationController pushViewController:[GKTransactionDetailsViewController new] animated:YES];
+}
+/* 提现 */
 - (void)getCashBtnClick{
     [SVProgressHUD showWithStatus:@"正在提现..."];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -306,6 +333,4 @@
         [SVProgressHUD showSuccessWithStatus:@"提现成功！"];
     });
 }
-
-
 @end

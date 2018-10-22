@@ -22,6 +22,9 @@
 #import "GKStartChargingViewController.h"
 
 #import "GKLoginViewController.h"
+
+#import "GKUseGuideViewController.h"
+#import "GKReturnGuideViewController.h"
 //#import "DCTabBarController.h"
 //#import "DCRegisteredViewController.h"
 // Models
@@ -97,6 +100,9 @@
 
 @property (nonatomic,strong) UIView *bgHeaderView;
 
+@property (nonatomic,strong) UIView *loginNotiView;
+@property (nonatomic,strong) UIButton *loginBtn;
+
 
 @end
 
@@ -108,6 +114,7 @@
     [self updataUI];
 //    [self addObserver];
     
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(qrCodeSuccessAction) name:@"QRCodeSuccess" object:nil];
 }
 
@@ -123,7 +130,6 @@
     [self getData];
     [self loadSubjectImage];
     [self addObserver];
-    
 }
 
 #pragma mark - 按钮点击
@@ -327,7 +333,7 @@
         make.height.mas_equalTo(DCNaviH/3);
         make.width.equalTo(self.view);
     }];
-    
+    [uiView setHidden:true];
     //信息视图
     UIView *infoBgView = [[UIView alloc]init];
     [infoBgView setBackgroundColor:RGBall(248)];
@@ -340,8 +346,72 @@
         make.height.mas_equalTo(ScreenH - (K_HEIGHT_NAVBAR+DCNaviH+ScreenW/2+DCNaviH/2) - K_HEIGHT_TABBAR);
         make.width.equalTo(self.view);
     }];
+    /*提示登录的信息视图*/
+    UIView *loginNotiView = [[UIView alloc]init];
+    loginNotiView.backgroundColor = [UIColor whiteColor];
+    //设置圆角边框
+    loginNotiView.layer.cornerRadius = 8;
+    loginNotiView.layer.masksToBounds = YES;
+    //设置边框及边框颜色
+//    loginNotiView.layer.borderWidth = 1;
+//    loginNotiView.layer.borderColor =[[UIColor grayColor] CGColor];
+    [self.view addSubview:loginNotiView];
+    [loginNotiView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view);
+        make.top.equalTo(infoBgView);
+        make.left.equalTo(self.view).offset(10);
+        make.right.equalTo(self.view).offset(-10);
+        make.height.mas_equalTo((ScreenH - (K_HEIGHT_NAVBAR+DCNaviH+ScreenW/2+DCNaviH/2) - K_HEIGHT_TABBAR)/3);
+//        make.width.equalTo(self.view);
+    }];
+    //登录按钮
+    UIButton *loginBtn = [[UIButton alloc]init];
+    [loginNotiView addSubview:loginBtn];
+    [loginBtn setBackgroundImage:SETIMAGE(@"btn_6_normal") forState:UIControlStateNormal];
+    [loginBtn setTitle:@"立即登录" forState: UIControlStateNormal];
+    [loginBtn setTitleColor:BUTTONMAINCOLOR forState:UIControlStateNormal];
+//    loginBtn.titleLabel.font = GKMediumFont(16);
+    [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(loginNotiView);
+        make.right.mas_equalTo(loginNotiView.mas_right).offset(-15);
+        make.size.mas_equalTo(CGSizeMake(110, 44));
+    }];
+    [loginBtn addTarget:self action:@selector(checkLoginStatus) forControlEvents:UIControlEventTouchUpInside];
+    
+    UILabel *loginTitleLabel = [[UILabel alloc]init];
+    [loginNotiView addSubview:loginTitleLabel];
+    [loginTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(loginNotiView.mas_left).offset(15);
+        make.centerY.mas_equalTo(loginNotiView.mas_centerY).offset(-15);
+        make.size.mas_equalTo(CGSizeMake(120, 30));
+    }];
+    [loginTitleLabel setText:@"登录提醒"];
+    loginTitleLabel.textAlignment = NSTextAlignmentLeft;
+    [loginTitleLabel setFont:[UIFont fontWithName:PFR size:18]];
+    [loginTitleLabel setTextColor:TEXTMAINCOLOR];
+    
+    UILabel *loginDetailLabel = [[UILabel alloc]init];
+    [loginNotiView addSubview:loginDetailLabel];
+    [loginDetailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(loginTitleLabel);
+        make.centerY.mas_equalTo(loginNotiView.mas_centerY).offset(15);
+        make.size.mas_equalTo(CGSizeMake(220, 22));
+    }];
+    [loginDetailLabel setText:@"需要登录后才能正常使用。"];
+    loginDetailLabel.textAlignment = NSTextAlignmentLeft;
+    [loginDetailLabel setFont:[UIFont fontWithName:PFR size:15]];
+    [loginDetailLabel setTextColor:RGBall(153)];
+    
+    
+    //判断是否登录状态
+    if (![[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
+        [loginNotiView setHidden:NO];
+    } else {
+        [loginNotiView setHidden:YES];
+    }
+    self.loginNotiView = loginNotiView;
     /**
-        *隐藏加载是视图内容
+        *隐藏加载视图内容
         */
     UIView *infoView = [[UIView alloc]init];
     [infoView setBackgroundColor:[UIColor whiteColor]];
@@ -916,6 +986,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cheackDetailsAction) name:@"cheackDetails" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(qrCodeSuccessAction:) name:@"QRCodeSuccess" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chargeSuccessAction:) name:@"租电成功" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccessAction:) name:LOGINSELECTCENTERINDEX object:nil];
 }
 
 - (void)starIsChangedAction{
@@ -995,7 +1066,7 @@
     if ([self checkLoginStatus]) {
         return;
     }
-    NSDictionary *totalData = [noti userInfo];
+    NSMutableDictionary *totalData = [noti userInfo];
     [SVProgressHUD showWithStatus:@"正在跳转\n请稍后。。。"];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [SVProgressHUD dismiss];
@@ -1012,6 +1083,14 @@
     [self requestData];
     return;
 }
+-(void)loginSuccessAction:(NSNotification *)noti{
+    //隐藏登录提示窗口
+    [self.loginNotiView setHidden:true];
+    //收到通知，查询用户状态
+    [self requestData];
+    return;
+}
+
 
 -(NSMutableArray *)images{
     if (!_images) {
@@ -1044,6 +1123,13 @@
 }
 
 -(Boolean)checkLoginStatus{
+    
+    
+    //    [self.navigationController pushViewController:[GKUseGuideViewController new] animated:YES];
+    //    return true;
+//    [self.navigationController pushViewController:[GKReturnGuideViewController new] animated:YES];
+//    return true;
+
     //判断是否登录状态
     if (![[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
         GKLoginViewController *VC=[[GKLoginViewController alloc]init];

@@ -20,6 +20,11 @@
 #define K_HEIGHT_TABBAR   ((K_IPHONE_X==YES)?83.0f: 49.0f)
 //判断是否iphoneX
 #define K_IPHONE_X ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+//判断是否iphone5
+#define K_IPHONE_5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+//#define GKCGSizeMake(width,height) K_IPHONE_5 ? CGSizeMake(width, height):CGSizeMake(width, height)
+
+
 
 #define GKAppDelegate (AppDelegate *)[UIApplication sharedApplication].delegate
 /** 弱引用 */
