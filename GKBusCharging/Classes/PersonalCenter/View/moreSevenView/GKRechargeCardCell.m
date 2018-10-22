@@ -57,7 +57,7 @@
     self.titleLabel.numberOfLines = 0;//表示label可以多行显示
 //    self.titleLabel.lineBreakMode = NSLineBreakByCharWrapping;//换行模式，与上面的计算保持一致。
     // 换行的模式我们选择文本自适应
-    self.titleLabel.textColor = [UIColor blackColor];
+    self.titleLabel.textColor = TEXTMAINCOLOR;
     self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     
 //    self.titleLabel.preferredMaxLayoutWidth = ScreenW/4;
@@ -66,7 +66,7 @@
     
     self.infoLabel = [[UILabel alloc] init];
     self.infoLabel.font = [UIFont systemFontOfSize:12];
-    self.infoLabel.textColor = [UIColor blackColor];
+    self.infoLabel.textColor = TEXTMAINCOLOR;
     self.infoLabel.textAlignment = NSTextAlignmentCenter;
     [self.uiButton addSubview:self.infoLabel];
 }
