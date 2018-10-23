@@ -43,6 +43,38 @@
 		0B7C81F6215CE27200A06345 /* DCGMScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C81F2215CE27200A06345 /* DCGMScanViewController.m */; };
 		0B7C81F7215CE27200A06345 /* DCCameraTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C81F5215CE27200A06345 /* DCCameraTopView.m */; };
 		0B809B18215E3BBC001186CA /* PersonalCenterMenu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B809B0E215E3BBC001186CA /* PersonalCenterMenu.plist */; };
+		0B879D8F217EC7A2007169B4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B879D8E217EC7A2007169B4 /* CFNetwork.framework */; };
+		0B879D91217EC7DD007169B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B879D90217EC7DD007169B4 /* Foundation.framework */; };
+		0B879D93217EC7E9007169B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B879D92217EC7E9007169B4 /* UIKit.framework */; };
+		0B879D95217EC7F5007169B4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B879D94217EC7F5007169B4 /* SystemConfiguration.framework */; };
+		0B879D97217EC800007169B4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B879D96217EC7FF007169B4 /* CoreGraphics.framework */; };
+		0B879D99217EC811007169B4 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B879D98217EC811007169B4 /* CoreMotion.framework */; };
+		0B879D9B217EC81C007169B4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B879D9A217EC81B007169B4 /* CoreTelephony.framework */; };
+		0B879D9D217EC827007169B4 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B879D9C217EC827007169B4 /* CoreText.framework */; };
+		0B879DA0217EC876007169B4 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B879D9F217EC876007169B4 /* AlipaySDK.framework */; };
+		0B879E56217EEE77007169B4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B879E55217EEE77007169B4 /* libz.tbd */; };
+		0B879E58217EEEA1007169B4 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B879E57217EEEA1007169B4 /* libc++.tbd */; };
+		0B879E5A217EEEC5007169B4 /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B879E59217EEEC5007169B4 /* libz.1.1.3.tbd */; };
+		0B879E5F217EF151007169B4 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B879E5D217EF150007169B4 /* libssl.a */; };
+		0B879E60217EF151007169B4 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B879E5E217EF151007169B4 /* libcrypto.a */; };
+		0B879F12217F178F007169B4 /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B879EFE217F178F007169B4 /* WXApiManager.m */; };
+		0B879F13217F178F007169B4 /* WXApiRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B879F00217F178F007169B4 /* WXApiRequestHandler.m */; };
+		0B879F14217F178F007169B4 /* WXApiResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B879F02217F178F007169B4 /* WXApiResponseHandler.m */; };
+		0B879F15217F178F007169B4 /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B879F06217F178F007169B4 /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m */; };
+		0B879F16217F178F007169B4 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B879F08217F178F007169B4 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */; };
+		0B879F17217F178F007169B4 /* UIAlertView+WX.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B879F0A217F178F007169B4 /* UIAlertView+WX.m */; };
+		0B879F18217F178F007169B4 /* WXMediaMessage+messageConstruct.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B879F0C217F178F007169B4 /* WXMediaMessage+messageConstruct.m */; };
+		0B879F19217F178F007169B4 /* RespForWeChatViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0B879F0F217F178F007169B4 /* RespForWeChatViewController.mm */; };
+		0B879F1A217F178F007169B4 /* SendMsgToWeChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B879F11217F178F007169B4 /* SendMsgToWeChatViewController.m */; };
+		0B879F21217F18CC007169B4 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B879F1C217F18CC007169B4 /* libWeChatSDK.a */; };
+		0B879F22217F18CC007169B4 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0B879F1D217F18CC007169B4 /* README.txt */; };
+		0B879F42217F1AED007169B4 /* APAuthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B879F34217F1AED007169B4 /* APAuthInfo.m */; };
+		0B879F43217F1AED007169B4 /* APOrderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B879F36217F1AED007169B4 /* APOrderInfo.m */; };
+		0B879F45217F1AED007169B4 /* APViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B879F3A217F1AED007169B4 /* APViewController.m */; };
+		0B879F46217F1AED007169B4 /* APWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B879F3C217F1AED007169B4 /* APWebViewController.m */; };
+		0B879F47217F1AED007169B4 /* APRSASigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B879F3F217F1AED007169B4 /* APRSASigner.m */; };
+		0B879F48217F1AED007169B4 /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B879F41217F1AED007169B4 /* openssl_wrapper.m */; };
+		0B879F4A217F1B30007169B4 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B879F49217F1B30007169B4 /* AlipaySDK.bundle */; };
 		0B8D0DF3215DB97F00030966 /* JFAreaDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8D0DDF215DB97E00030966 /* JFAreaDataManager.m */; };
 		0B8D0DF4215DB97F00030966 /* shop_area.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0B8D0DE1215DB97E00030966 /* shop_area.sqlite */; };
 		0B8D0DF5215DB97F00030966 /* JFButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8D0DE3215DB97E00030966 /* JFButton.m */; };
@@ -282,6 +314,58 @@
 		0B7C81F4215CE27200A06345 /* DCCameraTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCCameraTopView.h; sourceTree = "<group>"; };
 		0B7C81F5215CE27200A06345 /* DCCameraTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCCameraTopView.m; sourceTree = "<group>"; };
 		0B809B0E215E3BBC001186CA /* PersonalCenterMenu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PersonalCenterMenu.plist; sourceTree = "<group>"; };
+		0B879D8E217EC7A2007169B4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0B879D90217EC7DD007169B4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0B879D92217EC7E9007169B4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0B879D94217EC7F5007169B4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0B879D96217EC7FF007169B4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0B879D98217EC811007169B4 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		0B879D9A217EC81B007169B4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		0B879D9C217EC827007169B4 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		0B879D9F217EC876007169B4 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = SOURCE_ROOT; };
+		0B879E55217EEE77007169B4 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		0B879E57217EEEA1007169B4 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		0B879E59217EEEC5007169B4 /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
+		0B879E5B217EF0E3007169B4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0B879E5D217EF150007169B4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		0B879E5E217EF151007169B4 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		0B879EFD217F178F007169B4 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
+		0B879EFE217F178F007169B4 /* WXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiManager.m; sourceTree = "<group>"; };
+		0B879EFF217F178F007169B4 /* WXApiRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiRequestHandler.h; sourceTree = "<group>"; };
+		0B879F00217F178F007169B4 /* WXApiRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiRequestHandler.m; sourceTree = "<group>"; };
+		0B879F01217F178F007169B4 /* WXApiResponseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiResponseHandler.h; sourceTree = "<group>"; };
+		0B879F02217F178F007169B4 /* WXApiResponseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiResponseHandler.m; sourceTree = "<group>"; };
+		0B879F04217F178F007169B4 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		0B879F05217F178F007169B4 /* GetMessageFromWXResp+responseWithTextOrMediaMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GetMessageFromWXResp+responseWithTextOrMediaMessage.h"; sourceTree = "<group>"; };
+		0B879F06217F178F007169B4 /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GetMessageFromWXResp+responseWithTextOrMediaMessage.m"; sourceTree = "<group>"; };
+		0B879F07217F178F007169B4 /* SendMessageToWXReq+requestWithTextOrMediaMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SendMessageToWXReq+requestWithTextOrMediaMessage.h"; sourceTree = "<group>"; };
+		0B879F08217F178F007169B4 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SendMessageToWXReq+requestWithTextOrMediaMessage.m"; sourceTree = "<group>"; };
+		0B879F09217F178F007169B4 /* UIAlertView+WX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+WX.h"; sourceTree = "<group>"; };
+		0B879F0A217F178F007169B4 /* UIAlertView+WX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+WX.m"; sourceTree = "<group>"; };
+		0B879F0B217F178F007169B4 /* WXMediaMessage+messageConstruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXMediaMessage+messageConstruct.h"; sourceTree = "<group>"; };
+		0B879F0C217F178F007169B4 /* WXMediaMessage+messageConstruct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXMediaMessage+messageConstruct.m"; sourceTree = "<group>"; };
+		0B879F0E217F178F007169B4 /* RespForWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RespForWeChatViewController.h; sourceTree = "<group>"; };
+		0B879F0F217F178F007169B4 /* RespForWeChatViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RespForWeChatViewController.mm; sourceTree = "<group>"; };
+		0B879F10217F178F007169B4 /* SendMsgToWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMsgToWeChatViewController.h; sourceTree = "<group>"; };
+		0B879F11217F178F007169B4 /* SendMsgToWeChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMsgToWeChatViewController.m; sourceTree = "<group>"; };
+		0B879F1C217F18CC007169B4 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		0B879F1D217F18CC007169B4 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		0B879F1E217F18CC007169B4 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		0B879F1F217F18CC007169B4 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		0B879F20217F18CC007169B4 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		0B879F33217F1AED007169B4 /* APAuthInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAuthInfo.h; sourceTree = "<group>"; };
+		0B879F34217F1AED007169B4 /* APAuthInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAuthInfo.m; sourceTree = "<group>"; };
+		0B879F35217F1AED007169B4 /* APOrderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APOrderInfo.h; sourceTree = "<group>"; };
+		0B879F36217F1AED007169B4 /* APOrderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APOrderInfo.m; sourceTree = "<group>"; };
+		0B879F39217F1AED007169B4 /* APViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APViewController.h; sourceTree = "<group>"; };
+		0B879F3A217F1AED007169B4 /* APViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APViewController.m; sourceTree = "<group>"; };
+		0B879F3B217F1AED007169B4 /* APWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APWebViewController.h; sourceTree = "<group>"; };
+		0B879F3C217F1AED007169B4 /* APWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APWebViewController.m; sourceTree = "<group>"; };
+		0B879F3E217F1AED007169B4 /* APRSASigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRSASigner.h; sourceTree = "<group>"; };
+		0B879F3F217F1AED007169B4 /* APRSASigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APRSASigner.m; sourceTree = "<group>"; };
+		0B879F40217F1AED007169B4 /* openssl_wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openssl_wrapper.h; sourceTree = "<group>"; };
+		0B879F41217F1AED007169B4 /* openssl_wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openssl_wrapper.m; sourceTree = "<group>"; };
+		0B879F49217F1B30007169B4 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AlipaySDK.bundle; path = GKBusCharging/Classes/Alipay/AlipaySDK.bundle; sourceTree = SOURCE_ROOT; };
 		0B8D0DDE215DB97E00030966 /* JFAreaDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAreaDataManager.h; sourceTree = "<group>"; };
 		0B8D0DDF215DB97E00030966 /* JFAreaDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAreaDataManager.m; sourceTree = "<group>"; };
 		0B8D0DE1215DB97E00030966 /* shop_area.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = shop_area.sqlite; sourceTree = "<group>"; };
@@ -324,21 +408,7 @@
 		0B9CF313215B859400F76671 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = GKBusCharging/main.m; sourceTree = SOURCE_ROOT; };
 		0B9CF314215B859500F76671 /* GKPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GKPrefixHeader.pch; path = GKBusCharging/GKPrefixHeader.pch; sourceTree = SOURCE_ROOT; };
 		0B9CF315215B859500F76671 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = GKBusCharging/Info.plist; sourceTree = SOURCE_ROOT; };
-		0B9CF31C215B867E00F76671 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B9CF31E215B867E00F76671 /* libCDDPagerController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libCDDPagerController.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B9CF320215B867E00F76671 /* libFMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFMDB.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B9CF322215B867E00F76671 /* libGQGesVCTransition.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGQGesVCTransition.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B9CF324215B867E00F76671 /* libHMSegmentedControl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libHMSegmentedControl.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B9CF326215B867E00F76671 /* libIQKeyboardManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libIQKeyboardManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B9CF328215B867E00F76671 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B9CF32A215B867E00F76671 /* libMJExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMJExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B9CF32C215B867E00F76671 /* libMJRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMJRefresh.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9CF32E215B867E00F76671 /* libPods-GKBusCharging.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-GKBusCharging.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B9CF330215B867E00F76671 /* libSDCycleScrollView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDCycleScrollView.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B9CF332215B867E00F76671 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B9CF334215B867E00F76671 /* libSVProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSVProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B9CF336215B867E00F76671 /* libTZImagePickerController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libTZImagePickerController.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B9CF338215B867E00F76671 /* libZYCornerRadius.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libZYCornerRadius.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9CF33C215B8A6C00F76671 /* NSObject+DCNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DCNull.h"; sourceTree = "<group>"; };
 		0B9CF33D215B8A6C00F76671 /* NSObject+DCNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DCNull.m"; sourceTree = "<group>"; };
 		0B9CF33E215B8A6C00F76671 /* NSURL+DCHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DCHook.h"; sourceTree = "<group>"; };
@@ -621,6 +691,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B879E5A217EEEC5007169B4 /* libz.1.1.3.tbd in Frameworks */,
+				0B879E60217EF151007169B4 /* libcrypto.a in Frameworks */,
+				0B879F21217F18CC007169B4 /* libWeChatSDK.a in Frameworks */,
+				0B879E58217EEEA1007169B4 /* libc++.tbd in Frameworks */,
+				0B879E56217EEE77007169B4 /* libz.tbd in Frameworks */,
+				0B879D9D217EC827007169B4 /* CoreText.framework in Frameworks */,
+				0B879E5F217EF151007169B4 /* libssl.a in Frameworks */,
+				0B879DA0217EC876007169B4 /* AlipaySDK.framework in Frameworks */,
+				0B879D9B217EC81C007169B4 /* CoreTelephony.framework in Frameworks */,
+				0B879D99217EC811007169B4 /* CoreMotion.framework in Frameworks */,
+				0B879D97217EC800007169B4 /* CoreGraphics.framework in Frameworks */,
+				0B879D95217EC7F5007169B4 /* SystemConfiguration.framework in Frameworks */,
+				0B879D93217EC7E9007169B4 /* UIKit.framework in Frameworks */,
+				0B879D91217EC7DD007169B4 /* Foundation.framework in Frameworks */,
+				0B879D8F217EC7A2007169B4 /* CFNetwork.framework in Frameworks */,
 				0B9CF32F215B867E00F76671 /* libPods-GKBusCharging.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -831,6 +916,97 @@
 			path = "我的Plist";
 			sourceTree = "<group>";
 		};
+		0B879EFB217F178F007169B4 /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				0B879F1B217F18CC007169B4 /* SDKExport */,
+				0B879EFC217F178F007169B4 /* Control */,
+				0B879F03217F178F007169B4 /* Helper */,
+				0B879F0D217F178F007169B4 /* ViewController */,
+			);
+			path = WeChat;
+			sourceTree = "<group>";
+		};
+		0B879EFC217F178F007169B4 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				0B879EFD217F178F007169B4 /* WXApiManager.h */,
+				0B879EFE217F178F007169B4 /* WXApiManager.m */,
+				0B879EFF217F178F007169B4 /* WXApiRequestHandler.h */,
+				0B879F00217F178F007169B4 /* WXApiRequestHandler.m */,
+				0B879F01217F178F007169B4 /* WXApiResponseHandler.h */,
+				0B879F02217F178F007169B4 /* WXApiResponseHandler.m */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		0B879F03217F178F007169B4 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0B879F04217F178F007169B4 /* Constant.h */,
+				0B879F09217F178F007169B4 /* UIAlertView+WX.h */,
+				0B879F0A217F178F007169B4 /* UIAlertView+WX.m */,
+				0B879F05217F178F007169B4 /* GetMessageFromWXResp+responseWithTextOrMediaMessage.h */,
+				0B879F06217F178F007169B4 /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m */,
+				0B879F07217F178F007169B4 /* SendMessageToWXReq+requestWithTextOrMediaMessage.h */,
+				0B879F08217F178F007169B4 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */,
+				0B879F0B217F178F007169B4 /* WXMediaMessage+messageConstruct.h */,
+				0B879F0C217F178F007169B4 /* WXMediaMessage+messageConstruct.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		0B879F0D217F178F007169B4 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0B879F0E217F178F007169B4 /* RespForWeChatViewController.h */,
+				0B879F0F217F178F007169B4 /* RespForWeChatViewController.mm */,
+				0B879F10217F178F007169B4 /* SendMsgToWeChatViewController.h */,
+				0B879F11217F178F007169B4 /* SendMsgToWeChatViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0B879F1B217F18CC007169B4 /* SDKExport */ = {
+			isa = PBXGroup;
+			children = (
+				0B879F1C217F18CC007169B4 /* libWeChatSDK.a */,
+				0B879F1D217F18CC007169B4 /* README.txt */,
+				0B879F1E217F18CC007169B4 /* WechatAuthSDK.h */,
+				0B879F1F217F18CC007169B4 /* WXApi.h */,
+				0B879F20217F18CC007169B4 /* WXApiObject.h */,
+			);
+			path = SDKExport;
+			sourceTree = "<group>";
+		};
+		0B879F32217F1AED007169B4 /* Alipay */ = {
+			isa = PBXGroup;
+			children = (
+				0B879F33217F1AED007169B4 /* APAuthInfo.h */,
+				0B879F34217F1AED007169B4 /* APAuthInfo.m */,
+				0B879F35217F1AED007169B4 /* APOrderInfo.h */,
+				0B879F36217F1AED007169B4 /* APOrderInfo.m */,
+				0B879F39217F1AED007169B4 /* APViewController.h */,
+				0B879F3A217F1AED007169B4 /* APViewController.m */,
+				0B879F3B217F1AED007169B4 /* APWebViewController.h */,
+				0B879F3C217F1AED007169B4 /* APWebViewController.m */,
+				0B879F3D217F1AED007169B4 /* Utils */,
+				0B879F49217F1B30007169B4 /* AlipaySDK.bundle */,
+			);
+			path = Alipay;
+			sourceTree = "<group>";
+		};
+		0B879F3D217F1AED007169B4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0B879F3E217F1AED007169B4 /* APRSASigner.h */,
+				0B879F3F217F1AED007169B4 /* APRSASigner.m */,
+				0B879F40217F1AED007169B4 /* openssl_wrapper.h */,
+				0B879F41217F1AED007169B4 /* openssl_wrapper.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		0B8D0DDC215DB97E00030966 /* JFCityViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -903,6 +1079,7 @@
 			isa = PBXGroup;
 			children = (
 				0B9CF2FD215B82FE00F76671 /* GKBusCharging.entitlements */,
+				0B879EFB217F178F007169B4 /* WeChat */,
 				0B9CF2EE215B812D00F76671 /* Classes */,
 				0B9CF2C3215B7BFC00F76671 /* ViewController.h */,
 				0B9CF2C4215B7BFC00F76671 /* ViewController.m */,
@@ -937,6 +1114,7 @@
 				0B9CF33A215B8A0B00F76671 /* Expand */,
 				0B9CF354215B8ACE00F76671 /* config */,
 				0BABC036215DCA650085CAC3 /* HTTP */,
+				0B879F32217F1AED007169B4 /* Alipay */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -964,21 +1142,22 @@
 		0B9CF31B215B867D00F76671 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0B9CF31C215B867E00F76671 /* libAFNetworking.a */,
-				0B9CF31E215B867E00F76671 /* libCDDPagerController.a */,
-				0B9CF320215B867E00F76671 /* libFMDB.a */,
-				0B9CF322215B867E00F76671 /* libGQGesVCTransition.a */,
-				0B9CF324215B867E00F76671 /* libHMSegmentedControl.a */,
-				0B9CF326215B867E00F76671 /* libIQKeyboardManager.a */,
-				0B9CF328215B867E00F76671 /* libMasonry.a */,
-				0B9CF32A215B867E00F76671 /* libMJExtension.a */,
-				0B9CF32C215B867E00F76671 /* libMJRefresh.a */,
+				0B879E5E217EF151007169B4 /* libcrypto.a */,
+				0B879E5D217EF150007169B4 /* libssl.a */,
+				0B879E5B217EF0E3007169B4 /* Security.framework */,
+				0B879E59217EEEC5007169B4 /* libz.1.1.3.tbd */,
+				0B879E57217EEEA1007169B4 /* libc++.tbd */,
+				0B879E55217EEE77007169B4 /* libz.tbd */,
+				0B879D9C217EC827007169B4 /* CoreText.framework */,
+				0B879D9A217EC81B007169B4 /* CoreTelephony.framework */,
+				0B879D98217EC811007169B4 /* CoreMotion.framework */,
+				0B879D96217EC7FF007169B4 /* CoreGraphics.framework */,
+				0B879D94217EC7F5007169B4 /* SystemConfiguration.framework */,
+				0B879D92217EC7E9007169B4 /* UIKit.framework */,
+				0B879D90217EC7DD007169B4 /* Foundation.framework */,
+				0B879D8E217EC7A2007169B4 /* CFNetwork.framework */,
+				0B879D9F217EC876007169B4 /* AlipaySDK.framework */,
 				0B9CF32E215B867E00F76671 /* libPods-GKBusCharging.a */,
-				0B9CF330215B867E00F76671 /* libSDCycleScrollView.a */,
-				0B9CF332215B867E00F76671 /* libSDWebImage.a */,
-				0B9CF334215B867E00F76671 /* libSVProgressHUD.a */,
-				0B9CF336215B867E00F76671 /* libTZImagePickerController.a */,
-				0B9CF338215B867E00F76671 /* libZYCornerRadius.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1747,8 +1926,10 @@
 				923AC63C215E93680016CD1C /* FeedBackMenu.plist in Resources */,
 				0B70D29421605F8C00C77DFE /* GKBusInfoCell.xib in Resources */,
 				0B9CF319215B863600F76671 /* LaunchScreen.storyboard in Resources */,
+				0B879F22217F18CC007169B4 /* README.txt in Resources */,
 				0B9CF31A215B863600F76671 /* Main.storyboard in Resources */,
 				92FB06C6216682710001D38B /* GKBalanceViewController.storyboard in Resources */,
+				0B879F4A217F1B30007169B4 /* AlipaySDK.bundle in Resources */,
 				0B70D2A421607CDA00C77DFE /* SIAlertView.bundle in Resources */,
 				0B9CF436215B8D7F00F76671 /* AddressTableViewCell.xib in Resources */,
 				0B9CF434215B8D7F00F76671 /* Cities.json in Resources */,
@@ -1858,13 +2039,17 @@
 				92FB06C4216681910001D38B /* GKRechargeViewController.m in Sources */,
 				0B9CF464215B8D7F00F76671 /* XWFilterAnimator+XWRipple.m in Sources */,
 				0BE6583C2178980F004F6DB3 /* GKRechargeCardCell.m in Sources */,
+				0B879F15217F178F007169B4 /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m in Sources */,
 				0B9CF482215B8F4B00F76671 /* GKUserInfo.m in Sources */,
 				0B9CF45B215B8D7F00F76671 /* XWCoolAnimator.m in Sources */,
 				0B8D0DF7215DB97F00030966 /* JFCityCollectionViewCell.m in Sources */,
 				0B2BF7E6216B60C100A8FE20 /* MoreTableViewCell.m in Sources */,
+				0B879F12217F178F007169B4 /* WXApiManager.m in Sources */,
+				0B879F47217F1AED007169B4 /* APRSASigner.m in Sources */,
 				0B9CF35D215B8ACE00F76671 /* GKButton.m in Sources */,
 				0B9CF2C5215B7BFC00F76671 /* ViewController.m in Sources */,
 				0B9CF429215B8D7F00F76671 /* DCScanningViewController.m in Sources */,
+				0B879F45217F1AED007169B4 /* APViewController.m in Sources */,
 				0B9CF43B215B8D7F00F76671 /* JKDBModel.m in Sources */,
 				0B9CF370215B8C4C00F76671 /* DCKeepNewUserData.m in Sources */,
 				0BFE23DF216C868300C9F915 /* GKFeedBackInfoViewController.m in Sources */,
@@ -1876,21 +2061,27 @@
 				0BABC03D215DFDA10085CAC3 /* GKPersonalCenterViewController.m in Sources */,
 				923AC63A215E8EA40016CD1C /* GKFeedBackViewController.m in Sources */,
 				0B9CF424215B8D7F00F76671 /* AddressPickerView.m in Sources */,
+				0B879F48217F1AED007169B4 /* openssl_wrapper.m in Sources */,
 				0B2BF7D4216B605C00A8FE20 /* GKUseingHelpViewController.m in Sources */,
 				0B4BE5AD2160C99E0043CB30 /* GKMeCell.m in Sources */,
 				0B9CF352215B8A6D00F76671 /* UILabel+DCLabel.m in Sources */,
 				0BD8C7B82175D758006BDDA1 /* XLCircle.m in Sources */,
 				0B9CF451215B8D7F00F76671 /* SDPhotoBrowser.m in Sources */,
 				0B9CF454215B8D7F00F76671 /* XWCoolAnimator+XWExplode.m in Sources */,
+				0B879F16217F178F007169B4 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */,
 				9275D24C2169DAC40004DBFE /* GKOrderCell.m in Sources */,
 				0B9CF43E215B8D7F00F76671 /* JPFPSStatus.m in Sources */,
 				0B2BF7DD216B60A500A8FE20 /* DDSectionModel.m in Sources */,
 				0B9CF460215B8D7F00F76671 /* XWFilterAnimator+XWFlash.m in Sources */,
 				0B4BE5D22160C9AC0043CB30 /* GKBindingPhoneController.m in Sources */,
 				0B9CF465215B8D7F00F76671 /* XWFilterAnimator+XWSwipe.m in Sources */,
+				0B879F1A217F178F007169B4 /* SendMsgToWeChatViewController.m in Sources */,
 				0BBD83FB216EFAB900B47EC3 /* AFNetPackage.m in Sources */,
+				0B879F43217F1AED007169B4 /* APOrderInfo.m in Sources */,
 				0B9CF34F215B8A6D00F76671 /* UIColor+DCColorChange.m in Sources */,
+				0B879F14217F178F007169B4 /* WXApiResponseHandler.m in Sources */,
 				0B9CF469215B8D7F00F76671 /* YBPopupMenu.m in Sources */,
+				0B879F13217F178F007169B4 /* WXApiRequestHandler.m in Sources */,
 				92AAF4ED216A7E0D003559BD /* GKOrderDetailsViewController.m in Sources */,
 				0B9CF463215B8D7F00F76671 /* XWFilterAnimator+XWPageCurl.m in Sources */,
 				0B7C81E0215CCEE800A06345 /* DCCustionButton.m in Sources */,
@@ -1924,7 +2115,9 @@
 				0BC4047C216DA1D200EFC9AC /* GKStartChargingViewController.m in Sources */,
 				0B9CF462215B8D7F00F76671 /* XWFilterAnimator+XWMod.m in Sources */,
 				0B9CF430215B8D7F00F76671 /* UIView+DCRolling.m in Sources */,
+				0B879F42217F1AED007169B4 /* APAuthInfo.m in Sources */,
 				0B9CF428215B8D7F00F76671 /* DCScanIdentifyAreaView.m in Sources */,
+				0B879F46217F1AED007169B4 /* APWebViewController.m in Sources */,
 				0B9CF439215B8D7F00F76671 /* CitiesDataTool.m in Sources */,
 				0B9CF448215B8D7F00F76671 /* UINavigationController+XWTransition.m in Sources */,
 				0BABC042215E00C00085CAC3 /* GKPersonalCell.m in Sources */,
@@ -1947,6 +2140,7 @@
 				0B2BF7D0216B5FF900A8FE20 /* UIScrollView+STAutoHeight.m in Sources */,
 				0B9CF453215B8D7F00F76671 /* XWCircleSpreadAnimator.m in Sources */,
 				0B8E5F1C217DC38A0011B600 /* GKTransactionDetailsViewController.m in Sources */,
+				0B879F17217F178F007169B4 /* UIAlertView+WX.m in Sources */,
 				0B462E1D215F4DFA00AE451F /* GKSignInCodeView.m in Sources */,
 				0B9CF435215B8D7F00F76671 /* AddressTableViewCell.m in Sources */,
 				0B8D0DF6215DB97F00030966 /* JFCityCollectionFlowLayout.m in Sources */,
@@ -1965,6 +2159,7 @@
 				0B9CF47E215B8F4B00F76671 /* GKBaseSetViewController.m in Sources */,
 				0B9CF35E215B8ACE00F76671 /* GKTextField.m in Sources */,
 				0B9CF374215B8C4C00F76671 /* DCSpeedy.m in Sources */,
+				0B879F18217F178F007169B4 /* WXMediaMessage+messageConstruct.m in Sources */,
 				0B9CF433215B8D7F00F76671 /* AddressItem.m in Sources */,
 				0B4BE5AF2160C99E0043CB30 /* GKBindingPhoneView.m in Sources */,
 				0B9CF43F215B8D7F00F76671 /* PPNumberButton.m in Sources */,
@@ -1977,6 +2172,7 @@
 				0B9CF456215B8D7F00F76671 /* XWCoolAnimator+XWLines.m in Sources */,
 				0B7C81EE215CDB3800A06345 /* UIButton+GKUpDownButton.m in Sources */,
 				0B9CF443215B8D7F00F76671 /* PYSearchSuggestionViewController.m in Sources */,
+				0B879F19217F178F007169B4 /* RespForWeChatViewController.mm in Sources */,
 				0B9CF45C215B8D7F00F76671 /* XWDrawerAnimator.m in Sources */,
 				9211939B2168C25B001DEC72 /* GKServiceTermsViewController.m in Sources */,
 				0B8E5F13217DB88D0011B600 /* GKReturnGuideViewController.m in Sources */,
@@ -2052,6 +2248,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2109,6 +2306,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -2131,15 +2329,65 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CJ6W4Z749T;
+				DEVELOPMENT_TEAM = 565RS43LM2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GKBusCharging/GKPrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/CDDPagerController\"",
+					"\"${PODS_ROOT}/Headers/Public/FMDB\"",
+					"\"${PODS_ROOT}/Headers/Public/GQGesVCTransition\"",
+					"\"${PODS_ROOT}/Headers/Public/HMSegmentedControl\"",
+					"\"${PODS_ROOT}/Headers/Public/IQKeyboardManager\"",
+					"\"${PODS_ROOT}/Headers/Public/MJExtension\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/SDCycleScrollView\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/SocketRocket\"",
+					"\"${PODS_ROOT}/Headers/Public/TZImagePickerController\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCSecurityPlugins\"",
+					"\"${PODS_ROOT}/Headers/Public/ZYCornerRadius\"",
+					"$(PROJECT_DIR)/GKBusCharging/openssl",
+					"$(PROJECT_DIR)/GKBusCharging",
+				);
 				INFOPLIST_FILE = GKBusCharging/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CDDPagerController\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FMDB\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GQGesVCTransition\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HMSegmentedControl\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManager\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MJExtension\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MJRefresh\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDCycleScrollView\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SocketRocket\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/TZImagePickerController\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ZYCornerRadius\"",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/GKBusCharging/Classes/Alipay",
+					"$(PROJECT_DIR)/GKBusCharging/WeChat/SDKExport",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.goockr.GKBusCharging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2157,15 +2405,64 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CJ6W4Z749T;
+				DEVELOPMENT_TEAM = 565RS43LM2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GKBusCharging/GKPrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/CDDPagerController\"",
+					"\"${PODS_ROOT}/Headers/Public/FMDB\"",
+					"\"${PODS_ROOT}/Headers/Public/GQGesVCTransition\"",
+					"\"${PODS_ROOT}/Headers/Public/HMSegmentedControl\"",
+					"\"${PODS_ROOT}/Headers/Public/IQKeyboardManager\"",
+					"\"${PODS_ROOT}/Headers/Public/MJExtension\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/SDCycleScrollView\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/SocketRocket\"",
+					"\"${PODS_ROOT}/Headers/Public/TZImagePickerController\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCSecurityPlugins\"",
+					"\"${PODS_ROOT}/Headers/Public/ZYCornerRadius\"",
+					"$(PROJECT_DIR)/GKBusCharging/openssl",
+					"$(PROJECT_DIR)/GKBusCharging",
+				);
 				INFOPLIST_FILE = GKBusCharging/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CDDPagerController\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FMDB\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GQGesVCTransition\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HMSegmentedControl\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManager\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MJExtension\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MJRefresh\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDCycleScrollView\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SocketRocket\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/TZImagePickerController\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ZYCornerRadius\"",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/GKBusCharging/WeChat/SDKExport",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.goockr.GKBusCharging;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -155,7 +155,5 @@
         make.top.mas_equalTo(self.titleLabel03.mas_bottom).offset(-4);
         make.size.mas_equalTo(CGSizeMake(126, 80));
     }];
-    
-    
 }
 @end

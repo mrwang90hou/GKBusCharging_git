@@ -10,6 +10,12 @@
 #import "DCGMScanViewController.h"
 #import "GKRechargeStyleCell.h"
 #import "GKTopUpTermsViewController.h"
+//
+#import <AlipaySDK/AlipaySDK.h>
+#import "APAuthInfo.h"
+#import "APOrderInfo.h"
+#import "APRSASigner.h"
+#import "APWebViewController.h"
 
 static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
 
@@ -311,10 +317,22 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
     for (int i = 0; i<2; i++) {
         NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:i inSection:0];
         GKRechargeStyleCell *cell = [self.tableView cellForRowAtIndexPath:indexPath2];
-        
         Boolean bl = self.rechargeMoneyBtn01.selected||self.rechargeMoneyBtn02.selected;
         //判断只要选择
         if (cell.selected && bl) {
+            switch (i) {
+                case 0://微信
+                    //
+                    [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
+                    return;
+                    break;
+                case 1://支付宝
+                    [self doAPPay];
+                    break;
+                default:
+                    break;
+            }
+            
             [SVProgressHUD showWithStatus:@"正在充值..."];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismiss];
@@ -338,6 +356,130 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
     if (self.tableViewCellSelectedState) {
         [self.rechargeNowBtn setEnabled:true];
     }
+}
+#pragma mark   ==============点击订单模拟支付行为==============
+//
+// 选中商品调用支付宝极简支付
+//
+- (void)doAPPay
+{
+    // 重要说明
+    // 这里只是为了方便直接向商户展示支付宝的整个支付流程；所以Demo中加签过程直接放在客户端完成；
+    // 真实App里，privateKey等数据严禁放在客户端，加签过程务必要放在服务端完成；
+    // 防止商户私密数据泄露，造成不必要的资金损失，及面临各种安全风险；
+    /*============================================================================*/
+    /*=======================需要填写商户app申请的===================================*/
+    /*============================================================================*/
+    NSString *appID = @"2018092961523884";
+    
+    // 如下私钥，rsa2PrivateKey 或者 rsaPrivateKey 只需要填入一个
+    // 如果商户两个都设置了，优先使用 rsa2PrivateKey
+    // rsa2PrivateKey 可以保证商户交易在更加安全的环境下进行，建议使用 rsa2PrivateKey
+    // 获取 rsa2PrivateKey，建议使用支付宝提供的公私钥生成工具生成，
+    // 工具地址：https://doc.open.alipay.com/docs/doc.htm?treeId=291&articleId=106097&docType=1
+    NSString *rsa2PrivateKey = @"MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCqZkZle8BfLg8hUIcYlPsn7DEw+NugHMLX4raE412sk0zV5FKt2MWrlwIFatjXBFCAUP9G783j7jjgeb7dUn21Nbsq30ahWjVZni30hyvZ+kSQ5Ff1ztHXs0leEDrnL+kdmjdXKI8+PigZd7cyu4XmirgDAK1tORlpQgftzxjhAY5QJBLnwRAOEBSjz2knucxkCNh+tu0DOuAw1nWv3jjrM5s72oPEfTB62gIxzxIrH94+rchJHHuoHFDJFOmsUdVm7F03dEXgp1P7c3NiWBwMGhjuX3tUC3jZng3YLgHn1CIaLmYGUO+JrXl8knZhEsNmHSG89oOk3w4+DdkSEchLAgMBAAECggEBAJNiRO9QG3L31rRc/4y+h4HfZCjUhro1Rj4OZQoJ0qMLAQFcLDsb7NVelqvy370SiUKDTFmh3zaPfPiDtRefWwWahNovJts2uEBcdak0JTSzqAyexIniqlPkScgnR5thMEOfeNBVT5hpkKt+haFG2yktwL0wH9EB+z20lEEXyJAMK8OUUsweJzOkBjaYRmC3iy50SWxsRAYl8GrLI6YAbvGA6ogi44IQEwTgMG/axT3oqrr74zlywMIH8MJRcCWsqhhvMUHNlxKD6zRvf6LYNlDlHQye0zwcGh7HDFgal2o/mCOdlM5w83dYxEpRylI9JCkj2JCZ0TeduFfJPDhXVgECgYEA2vdJcR2efA3IT9TVyySfSRJ96JYwoTVI+12RcWZY/fvtLQYYZSr1XbxFvnQkQLMUdQkzUEr40UbxRQZ+A0sDHG7Vt71zZ5B2WbdIVIsp8L7TSvHAtD8WbKjtPJehrX2dstDDRQHAyqYTY+ETNAuf1frMx79PB7SMHqCV6/mkb0sCgYEAxzgsrQPMRuI150Xyf/YiKMl9kd1Ta1SBPCtlXBOiB7nV8hm3I0UKA/UiPRDWHnZZ9m5+ETLEO6u2s25vF5esmNYDNcqTzZbeop+i1vfqEshy9/rAR4XBqCqPvFwNUZam4ICKL1RbK26Cet1LBaLYYbknooqVqNmrysmwN0MbawECgYAGygQM7c4sKoE7eG3ojoohyeD9hSqc1PoeURhhW7sGpPkFnFrFSD+zWFMRRKibGPJZbp+YrbppQrnYWgsuLvU5vHYD7GvXmjMRNQ2ZEXeLb189w6El9Y7Mb7BrYIgyyOJK2Q405YkEv4F6Z1AhHPsnt08CInxg0MhHatM7LdJbYQKBgEGBMgdtoUSJaunxsOvsVY0Nu5EzshMvhRLwvfJJrlRWAYgKdpJNSB7HAowLtivsBGaoLCGhjK6GJpvXKwYZ5DGY5RNR2cmW2vuj+9otSDUG3e6173VVALk3zW1E40g5fgOBoG4xkYy1WIfnrZxb0ERJqkOix9TuRbN3H8777M8BAoGAS7f4C3g/UJ2tpencChNT6op9qzGVe/fMhAC1ILOq3PQMtTyMPgwcCrqUS8p9QepWL5KniHBYLZXwbn1MTuWJCtFxYWaq5+WYT3T1IK48xKimW9rv3Lk7m0UxfdAs+OQj3pfQbkKDNgm2Y0iF70bcGrslE+IBQ2CDwgZe59hI28c=";
+    NSString *rsaPrivateKey = @"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqmZGZXvAXy4PIVCHGJT7J+wxMPjboBzC1+K2hONdrJNM1eRSrdjFq5cCBWrY1wRQgFD/Ru/N4+444Hm+3VJ9tTW7Kt9GoVo1WZ4t9Icr2fpEkORX9c7R17NJXhA65y/pHZo3VyiPPj4oGXe3MruF5oq4AwCtbTkZaUIH7c8Y4QGOUCQS58EQDhAUo89pJ7nMZAjYfrbtAzrgMNZ1r9446zObO9qDxH0wetoCMc8SKx/ePq3ISRx7qBxQyRTprFHVZuxdN3RF4KdT+3NzYlgcDBoY7l97VAt42Z4N2C4B59QiGi5mBlDvia15fJJ2YRLDZh0hvPaDpN8OPg3ZEhHISwIDAQAB";
+    /*============================================================================*/
+    /*============================================================================*/
+    /*============================================================================*/
+    
+    //partner和seller获取失败,提示
+    if ([appID length] == 0 ||
+        ([rsa2PrivateKey length] == 0 && [rsaPrivateKey length] == 0))
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示"
+                                                                       message:@"缺少appId或者私钥,请检查参数设置"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"知道了"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction *action){
+                                                           
+                                                       }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:^{ }];
+        return;
+    }
+    
+    /*
+     *生成订单信息及签名
+     */
+    //将商品信息赋予AlixPayOrder的成员变量
+    APOrderInfo* order = [APOrderInfo new];
+    
+    // NOTE: app_id设置
+    order.app_id = appID;
+    
+    // NOTE: 支付接口名称
+    order.method = @"alipay.trade.app.pay";
+    
+    // NOTE: 参数编码格式
+    order.charset = @"utf-8";
+    
+    // NOTE: 当前时间点
+    NSDateFormatter* formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    order.timestamp = [formatter stringFromDate:[NSDate date]];
+    
+    // NOTE: 支付版本
+    order.version = @"1.0";
+    
+    // NOTE: sign_type 根据商户设置的私钥来决定
+    order.sign_type = (rsa2PrivateKey.length > 1)?@"RSA2":@"RSA";
+    
+    // NOTE: 商品数据
+    order.biz_content = [APBizContent new];
+    order.biz_content.body = @"我是测试数据";
+    order.biz_content.subject = @"1";
+    order.biz_content.out_trade_no = [self generateTradeNO]; //订单ID（由商家自行制定）
+    order.biz_content.timeout_express = @"30m"; //超时时间设置
+    order.biz_content.total_amount = [NSString stringWithFormat:@"%.2f", 0.01]; //商品价格
+    
+    //将商品信息拼接成字符串
+    NSString *orderInfo = [order orderInfoEncoded:NO];
+    NSString *orderInfoEncoded = [order orderInfoEncoded:YES];
+    NSLog(@"orderSpec = %@",orderInfo);
+    
+    // NOTE: 获取私钥并将商户信息签名，外部商户的加签过程请务必放在服务端，防止公私钥数据泄露；
+    //       需要遵循RSA签名规范，并将签名字符串base64编码和UrlEncode
+    NSString *signedString = nil;
+    APRSASigner* signer = [[APRSASigner alloc] initWithPrivateKey:((rsa2PrivateKey.length > 1)?rsa2PrivateKey:rsaPrivateKey)];
+    if ((rsa2PrivateKey.length > 1)) {
+        signedString = [signer signString:orderInfo withRSA2:YES];
+    } else {
+        signedString = [signer signString:orderInfo withRSA2:NO];
+    }
+    
+    // NOTE: 如果加签成功，则继续执行支付
+    if (signedString != nil) {
+        //应用注册scheme,在AliSDKDemo-Info.plist定义URL types
+        NSString *appScheme = @"GKBusCharging";
+        
+        // NOTE: 将签名成功字符串格式化为订单字符串,请严格按照该格式
+        NSString *orderString = [NSString stringWithFormat:@"%@&sign=%@",
+                                 orderInfoEncoded, signedString];
+        
+        // NOTE: 调用支付结果开始支付
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            NSLog(@"reslut = %@",resultDic);
+        }];
+    }
+}
+#pragma mark -
+#pragma mark   ==============产生随机订单号==============
+
+- (NSString *)generateTradeNO
+{
+    static int kNumber = 15;
+    NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    NSMutableString *resultStr = [[NSMutableString alloc] init];
+    srand((unsigned)time(0));
+    for (int i = 0; i < kNumber; i++)
+    {
+        unsigned index = rand() % [sourceStr length];
+        NSString *oneStr = [sourceStr substringWithRange:NSMakeRange(index, 1)];
+        [resultStr appendString:oneStr];
+    }
+    return resultStr;
 }
 
 @end

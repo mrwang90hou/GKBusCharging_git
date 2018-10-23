@@ -220,8 +220,7 @@ static NSString *saomapandingUrl = @"https://www.zgzzwl.com.cn/";
     
     
 //    [DCObjManager dc_saveUserData:@"9999887712345613" forKey:@"deviceID"]; //记录当前扫码获取的设备 deviceID
-    
-    
+
 }
 
 #pragma mark -判断逻辑的自定义方法

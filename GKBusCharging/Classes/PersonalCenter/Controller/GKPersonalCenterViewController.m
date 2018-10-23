@@ -408,9 +408,9 @@
 //            return;
 //            break;
         case 4://紧急报警
-            nextVC = [[GKStartChargingViewController alloc] init];
-//            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
-            [SVProgressHUD showErrorWithStatus:@"暂用于GKStartChargingViewController测试页面！"];
+//            nextVC = [[GKStartChargingViewController alloc] init];
+            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
+//            [SVProgressHUD showErrorWithStatus:@"暂用于GKStartChargingViewController测试页面！"];
 //            return;
             break;
         case 5://意见反馈

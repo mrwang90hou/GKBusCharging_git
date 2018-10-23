@@ -32,10 +32,6 @@ PODS:
   - SocketRocket (0.5.1)
   - SVProgressHUD (2.2.5)
   - TZImagePickerController (3.0.0)
-  - UMCAnalytics (5.5.0):
-    - UMCCommon
-  - UMCCommon (1.5.2)
-  - UMCSecurityPlugins (1.0.6)
   - ZYCornerRadius (1.0.2)
 
 DEPENDENCIES:
@@ -53,9 +49,6 @@ DEPENDENCIES:
   - SocketRocket
   - SVProgressHUD
   - TZImagePickerController
-  - UMCAnalytics
-  - UMCCommon
-  - UMCSecurityPlugins
   - ZYCornerRadius
 
 SPEC REPOS:
@@ -74,9 +67,6 @@ SPEC REPOS:
     - SocketRocket
     - SVProgressHUD
     - TZImagePickerController
-    - UMCAnalytics
-    - UMCCommon
-    - UMCSecurityPlugins
     - ZYCornerRadius
 
 SPEC CHECKSUMS:
@@ -94,11 +84,8 @@ SPEC CHECKSUMS:
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TZImagePickerController: fb2642a6530dc12eb38c14a53972fd6869327677
-  UMCAnalytics: 4667788559a72f2fa5077117d1b8802a3b6eb6bb
-  UMCCommon: 4392868ac47ff1b101663106bb114ba616fabbad
-  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: afaa3840cf4a8f8707ff92527f30c8616308a190
+PODFILE CHECKSUM: 4a9b85e233e010dcd12b7488da7eb809447ca26c
 
 COCOAPODS: 1.5.3
