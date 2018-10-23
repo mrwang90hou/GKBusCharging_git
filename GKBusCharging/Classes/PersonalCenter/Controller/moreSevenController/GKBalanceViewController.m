@@ -90,7 +90,9 @@
     [hoursCardView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(favourableActivityBGView.mas_bottom).offset(5);
         make.left.right.equalTo(favourableActivityBGView);
-        make.height.mas_equalTo(120);
+        //        make.height.mas_equalTo(ScreenH/6);
+        //        make.height.mas_equalTo(120);
+        make.height.mas_equalTo(K_IPHONE_5?105:120);
     }];
     [hoursCardView setImage:[UIImage imageNamed:@"gift_time_bg"]];
     
@@ -163,7 +165,7 @@
     [balanceCardView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(hoursCardView.mas_bottom).offset(5);
         make.left.right.equalTo(favourableActivityBGView);
-        make.height.mas_equalTo(120);
+        make.height.mas_equalTo(hoursCardView);
     }];
     [balanceCardView setImage:[UIImage imageNamed:@"balance_bg"]];
     

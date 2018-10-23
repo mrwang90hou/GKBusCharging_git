@@ -732,7 +732,11 @@
     if ([self checkLoginStatus]) {
         return;
     }
-    WEAKSELF
+    JFCityViewController *cityViewController = [[JFCityViewController alloc] init];
+    cityViewController.title = @"城市";
+    [self.navigationController pushViewController:cityViewController animated:YES];
+    /*
+     WEAKSELF
     //获取城市列表
     NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
     if (cookid) {
@@ -764,6 +768,7 @@
     }else{
         return;
     }
+     */
 }
 
 - (void)turnToBusInfoList{
@@ -802,28 +807,6 @@
         
     }];
 }
-
--(void)popWindowAtBottom{
-    /*      选择操作
-     */
-    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *_Nonnull action) {
-        
-    }];
-    
-    UIAlertAction *telephone = [UIAlertAction actionWithTitle:@"0757-86678686" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
-    }];
-    
-    UIAlertAction *call = [UIAlertAction actionWithTitle:@"呼叫" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
-    }];
-    [alertVc addAction:cancle];
-    [alertVc addAction:telephone];
-    [alertVc addAction:call];
-    [self presentViewController:alertVc animated:YES completion:nil];
-}
-
 
 - (void)initAlertView{
     SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"     " andMessage:@"是否归还充电宝?"];
