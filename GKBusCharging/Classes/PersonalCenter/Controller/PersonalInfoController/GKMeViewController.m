@@ -126,6 +126,7 @@
 //    self.isNeedNav = YES;
 //    [self.navigationController pushViewController:[GKLoginController new] animated:YES];
 }
+
 - (void)getData{
     _statusArray = [[NSMutableArray alloc]init];
     NSArray *arr = @[@1,@1,@0];
