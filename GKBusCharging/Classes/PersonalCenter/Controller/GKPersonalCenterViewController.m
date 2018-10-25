@@ -22,7 +22,7 @@
 #import "GKAboutUsViewController.h"
 #import "GKOrderManagementViewController.h"
 #import "GKUseingHelpViewController.h"
-
+#import "GKEvaluateViewController.h"
 #import "GKStartChargingViewController.h"
 //#import "DCTabBarController.h"
 ////#import "DCRegisteredViewController.h"
@@ -456,8 +456,8 @@
             [self updateApp];
             break;
         case 5://紧急报警
-//            nextVC = [[GKStartChargingViewController alloc] init];
-            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
+            nextVC = [[GKEvaluateViewController alloc] init];
+//            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
 //            [SVProgressHUD showErrorWithStatus:@"暂用于GKStartChargingViewController测试页面！"];
 //            return;
             break;

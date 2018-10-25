@@ -81,7 +81,6 @@
 @property (nonatomic, strong) NSMutableArray *images;
 /* 弹窗评价窗口1 , 2 */
 @property (strong , nonatomic)GKPriceEvaluationView *priceEvaluationView;
-
 @property (strong , nonatomic)GKStarAndLabellingEvaluationView *starAndLabellingEvaluationView;
 
 @property (nonatomic,strong) UIView *infoView;

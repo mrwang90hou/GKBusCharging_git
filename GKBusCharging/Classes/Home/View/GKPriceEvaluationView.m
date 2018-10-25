@@ -26,16 +26,7 @@
 
 // Others
 
-@interface GKPriceEvaluationView ()<UITextFieldDelegate,DidChangedStarDelegate>
-
-/* 用户名 */
-@property (weak, nonatomic) IBOutlet UITextField *userNameField;
-/* 密码 */
-@property (weak, nonatomic) IBOutlet UITextField *userPasswordField;
-/* 登录 */
-@property (weak, nonatomic) IBOutlet UIButton *loginButton;
-
-@property (weak, nonatomic) IBOutlet UILabel *agreementLabel;
+@interface GKPriceEvaluationView ()<DidChangedStarDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *footerView;
 
@@ -43,9 +34,6 @@
 @end
 
 @implementation GKPriceEvaluationView
-{
-    HYBStarEvaluationView * starView;
-}
 #pragma mark - Intial
 - (void)awakeFromNib
 {
@@ -58,129 +46,55 @@
 #pragma mark - initialize
 - (void)setUpBase
 {
-//    _loginButton.enabled = NO;
-//    _loginButton.backgroundColor = [UIColor lightGrayColor];
-//    [_userNameField addTarget:self action:@selector(textFieldDidBeginEditing:) forControlEvents:UIControlEventEditingChanged];
-//    [_userPasswordField addTarget:self action:@selector(textFieldDidBeginEditing:) forControlEvents:UIControlEventEditingChanged];
-//    _userNameField.text = ([DCObjManager dc_readUserDataForKey:@"UserName"] == nil) ? nil : [DCObjManager dc_readUserDataForKey:@"UserName"];
-//
-//    [DCSpeedy dc_setSomeOneChangeColor:_agreementLabel SetSelectArray:@[@"《",@"》",@"服",@"务",@"协",@"议"] SetChangeColor:RGB(56, 152, 181)];
-//
-    
-    
-    starView = [[HYBStarEvaluationView alloc]initWithFrame:CGRectMake(120, 80, 125, 22) numberOfStars:5 isVariable:YES];
-    starView.actualScore = 0;
-    starView.fullScore = 5;
-    starView.delegate = self;
-    [self.footerView addSubview:starView];
-    [starView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _starView = [[HYBStarEvaluationView alloc]initWithFrame:CGRectMake(120, 80, 125, 22) numberOfStars:5 isVariable:YES];
+    _starView.actualScore = 0;
+    _starView.fullScore = 5;
+    _starView.delegate = self;
+    [self.footerView addSubview:_starView];
+    [_starView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.footerView);
         make.top.equalTo(self.footerView.mas_centerY).offset(10);
         make.height.equalTo(@(22));
         make.width.equalTo(@120);
     }];
     self.starIsChanged = false;
+    //已完成评价
+    UILabel *completedEvaluationLabel= [[UILabel alloc]init];
+    [completedEvaluationLabel setText:@"已完成评价"];
+    [completedEvaluationLabel setTextColor:RGBA(255, 204, 35, 1)];
+    [completedEvaluationLabel setFont:GKFont(12)];
+    completedEvaluationLabel.textAlignment = NSTextAlignmentCenter;
+    [self.footerView addSubview:completedEvaluationLabel];
+    [completedEvaluationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.bottom.equalTo(self.footerView);
+//        make.centerX.equalTo(self.starView);
+        make.size.mas_equalTo(CGSizeMake(70, 17));
+    }];
+    [completedEvaluationLabel setHidden:true];
+    self.completedEvaluationLabel = completedEvaluationLabel;
+    
 }
+
 - (IBAction)cheackDetails:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"cheackDetails" object:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"cheackDetails" object:nil];
 }
-
-
-
-
-- (IBAction)loginAccountClick:(UIButton *)sender {
-    
-    [self endEditing:YES];
-    
-    [SVProgressHUD show];
-    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-    WEAKSELF
-    if ([self.userNameField.text isEqualToString:@"test"] && [self.userPasswordField.text isEqualToString:@"test"]) {
-        
-        [DCObjManager dc_saveUserData:@"1" forKey:@"isLogin"]; //1代表登录
-        [DCObjManager dc_saveUserData:self.userNameField.text forKey:@"UserName"]; //记录用户名
-
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-            [weakSelf makeToast:@"登录成功" duration:0.5 position:CSToastPositionCenter];
-//            [weakSelf setUpUserBaseData];
-            AppDelegate *app=(AppDelegate *)[UIApplication sharedApplication].delegate;
-            [app autoLogin];
-            
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.75 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                [[UIApplication sharedApplication].keyWindow.rootViewController dismissViewControllerAnimated:YES completion:^{
-//                    [weakSelf endEditing:YES];
-//                    [SVProgressHUD showInfoWithStatus:@"wangning!!!"];
-//                    NSLog(@"VC:%@  %@",[[DCSpeedy dc_getCurrentVC] class],[DCHandPickViewController class]);
-//                    if ([@[[DCHandPickViewController class],[DCBeautyMessageViewController class],[DCMediaListViewController class],[DCBeautyShopViewController class]] containsObject:[[DCSpeedy dc_getCurrentVC] class]]) { //过滤
-//                    [[NSNotificationCenter defaultCenter]postNotificationName:LOGINSELECTCENTERINDEX object:nil];
-//                    GKNavigationController *navigationController = [[GKNavigationController alloc]initWithRootViewController:[[GKHomeViewController alloc]init]];
-//                    [UIApplication sharedApplication].keyWindow.rootViewController = navigationController;
-//                    }
-//                    AppDelegate *app=(AppDelegate *)[UIApplication sharedApplication].delegate;
-//                    [app autoLogin];
-//                }];
-//            });
-        });
-        
-    }else{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-            [weakSelf makeToast:@"账号密码错误请重新登录" duration:0.5 position:CSToastPositionCenter];
-        });
-    }
-}
-
-
-#pragma mark - <UITextFieldDelegate>
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    if (_userNameField.text.length != 0 && _userPasswordField.text.length != 0) {
-        _loginButton.backgroundColor = RGB(252, 159, 149);
-        _loginButton.enabled = YES;
-    }else{
-        _loginButton.backgroundColor = [UIColor lightGrayColor];
-        _loginButton.enabled = NO;
-    }
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [self endEditing:YES];
-}
-
-
 #pragma mark - 设置初始数据
-//- (void)setUpUserBaseData
-//{
-//    GKUserInfo *userInfo = UserInfoData;
-//    if (userInfo.username.length == 0) { //userName为指定id不可改动用来判断是否有用户数据
-//        GKUserInfo *userInfo = [[GKUserInfo alloc] init];
-//        userInfo.nickname = @"mrwang90hou";
-//        userInfo.sex = @"男";
-//        userInfo.birthDay = @"1996-02-10";
-//        //userInfo.userimage = @"icon";
-//        userInfo.userimage = @"userDefault";
-//        userInfo.username = @"qq-w923740293";
-//        userInfo.defaultAddress = @"中国 上海";
-//        dispatch_async(dispatch_get_global_queue(0, 0), ^{//异步保存
-//            [userInfo saveOrUpdate];
-//        });
-//    }
-//}
-
 
 //- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    NSLog(@"这次星级为 %f",starView.actualScore);
+//    NSLog(@"这次星级为 %f",_starView.actualScore);
 //}
 
 - (void)didChangeStar {
-    NSLog(@"这次星级为 %f",starView.actualScore);
+    NSLog(@"这次星级为 %f",_starView.actualScore);
     //星级评价变动
     self.starIsChanged = true;
-    self.actualScore = starView.actualScore;
+    self.actualScore = _starView.actualScore;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"starIsChanged" object:nil];
 }
+
+
+
+
 
 #pragma mark - Setter Getter Methods
 

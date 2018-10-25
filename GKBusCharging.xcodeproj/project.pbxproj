@@ -211,6 +211,9 @@
 		0BBD8405216EFB2100B47EC3 /* GCHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD8400216EFB2100B47EC3 /* GCHttpTool.m */; };
 		0BBD8406216EFB2100B47EC3 /* MQError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD8403216EFB2100B47EC3 /* MQError.m */; };
 		0BC2F8612181A69A00A88E1C /* UITextView+ZWPlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC2F8602181A69A00A88E1C /* UITextView+ZWPlaceHolder.m */; };
+		0BC2F8642181B52D00A88E1C /* GKEvaluateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC2F8632181B52D00A88E1C /* GKEvaluateViewController.m */; };
+		0BC2F8682181BDC300A88E1C /* GKStarAndLabellingEvaluationView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC2F8652181BDC200A88E1C /* GKStarAndLabellingEvaluationView2.m */; };
+		0BC2F8692181BE0B00A88E1C /* GKStarAndLabellingEvaluationView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BC2F8672181BDC300A88E1C /* GKStarAndLabellingEvaluationView2.xib */; };
 		0BC4047C216DA1D200EFC9AC /* GKStartChargingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4047B216DA1D200EFC9AC /* GKStartChargingViewController.m */; };
 		0BC4047D216DCB6900EFC9AC /* GKStartChargingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BC40479216DA1D200EFC9AC /* GKStartChargingViewController.xib */; };
 		0BC40480216DF61800EFC9AC /* GKTopUpTermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4047F216DF61800EFC9AC /* GKTopUpTermsViewController.m */; };
@@ -632,6 +635,11 @@
 		0BBD8403216EFB2100B47EC3 /* MQError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQError.m; sourceTree = "<group>"; };
 		0BC2F85F2181A69A00A88E1C /* UITextView+ZWPlaceHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+ZWPlaceHolder.h"; sourceTree = "<group>"; };
 		0BC2F8602181A69A00A88E1C /* UITextView+ZWPlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+ZWPlaceHolder.m"; sourceTree = "<group>"; };
+		0BC2F8622181B52200A88E1C /* GKEvaluateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKEvaluateViewController.h; sourceTree = "<group>"; };
+		0BC2F8632181B52D00A88E1C /* GKEvaluateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKEvaluateViewController.m; sourceTree = "<group>"; };
+		0BC2F8652181BDC200A88E1C /* GKStarAndLabellingEvaluationView2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKStarAndLabellingEvaluationView2.m; sourceTree = "<group>"; };
+		0BC2F8662181BDC200A88E1C /* GKStarAndLabellingEvaluationView2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKStarAndLabellingEvaluationView2.h; sourceTree = "<group>"; };
+		0BC2F8672181BDC300A88E1C /* GKStarAndLabellingEvaluationView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GKStarAndLabellingEvaluationView2.xib; sourceTree = "<group>"; };
 		0BC40479216DA1D200EFC9AC /* GKStartChargingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GKStartChargingViewController.xib; sourceTree = "<group>"; };
 		0BC4047A216DA1D200EFC9AC /* GKStartChargingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKStartChargingViewController.h; sourceTree = "<group>"; };
 		0BC4047B216DA1D200EFC9AC /* GKStartChargingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKStartChargingViewController.m; sourceTree = "<group>"; };
@@ -788,6 +796,9 @@
 				0BFCB2FD216B309500B0EFD3 /* GKStarAndLabellingEvaluationView.h */,
 				0BFCB2FF216B309500B0EFD3 /* GKStarAndLabellingEvaluationView.m */,
 				0BFCB2FE216B309500B0EFD3 /* GKStarAndLabellingEvaluationView.xib */,
+				0BC2F8662181BDC200A88E1C /* GKStarAndLabellingEvaluationView2.h */,
+				0BC2F8652181BDC200A88E1C /* GKStarAndLabellingEvaluationView2.m */,
+				0BC2F8672181BDC300A88E1C /* GKStarAndLabellingEvaluationView2.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -811,6 +822,8 @@
 				0B8E5F12217DB88D0011B600 /* GKReturnGuideViewController.m */,
 				0B8E5F10217DB88D0011B600 /* GKReturnGuideViewController.xib */,
 				0B7C81EF215CE27200A06345 /* QRCodeScan */,
+				0BC2F8622181B52200A88E1C /* GKEvaluateViewController.h */,
+				0BC2F8632181B52D00A88E1C /* GKEvaluateViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1951,6 +1964,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BC2F8692181BE0B00A88E1C /* GKStarAndLabellingEvaluationView2.xib in Resources */,
 				0B8E5F19217DC2EB0011B600 /* GKTransactionCell.xib in Resources */,
 				0B8E5F14217DBAC90011B600 /* GKReturnGuideViewController.xib in Resources */,
 				0B8E5F0F217D7C450011B600 /* GKUseGuideViewController.xib in Resources */,
@@ -2108,6 +2122,7 @@
 				0BABC03D215DFDA10085CAC3 /* GKPersonalCenterViewController.m in Sources */,
 				923AC63A215E8EA40016CD1C /* GKFeedBackViewController.m in Sources */,
 				0B9CF424215B8D7F00F76671 /* AddressPickerView.m in Sources */,
+				0BC2F8642181B52D00A88E1C /* GKEvaluateViewController.m in Sources */,
 				0B879F48217F1AED007169B4 /* openssl_wrapper.m in Sources */,
 				0B2BF7D4216B605C00A8FE20 /* GKUseingHelpViewController.m in Sources */,
 				0B4BE5AD2160C99E0043CB30 /* GKMeCell.m in Sources */,
@@ -2116,6 +2131,7 @@
 				0B9CF451215B8D7F00F76671 /* SDPhotoBrowser.m in Sources */,
 				0B9CF454215B8D7F00F76671 /* XWCoolAnimator+XWExplode.m in Sources */,
 				0B879F16217F178F007169B4 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */,
+				0BC2F8682181BDC300A88E1C /* GKStarAndLabellingEvaluationView2.m in Sources */,
 				9275D24C2169DAC40004DBFE /* GKOrderCell.m in Sources */,
 				0B9CF43E215B8D7F00F76671 /* JPFPSStatus.m in Sources */,
 				0B2BF7DD216B60A500A8FE20 /* DDSectionModel.m in Sources */,

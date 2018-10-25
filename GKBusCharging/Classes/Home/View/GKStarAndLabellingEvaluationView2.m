@@ -1,12 +1,12 @@
 //
-//  GKStarAndLabellingEvaluationView.m
+//  GKStarAndLabellingEvaluationView2.m
 //  STOExpressDelivery
 //
 //  Created by mrwang90hou on 2019/10/8.
 //  Copyright © 2018年 goockr. All rights reserved.
 //
 
-#import "GKStarAndLabellingEvaluationView.h"
+#import "GKStarAndLabellingEvaluationView2.h"
 #import "AppDelegate.h"
 // Controllers
 //#import "DCHandPickViewController.h"
@@ -26,7 +26,7 @@
 
 // Others
 
-@interface GKStarAndLabellingEvaluationView ()<UITextFieldDelegate,DidChangedStarDelegate>
+@interface GKStarAndLabellingEvaluationView2 ()<UITextFieldDelegate,DidChangedStarDelegate>
 
 /* 用户名 */
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
@@ -46,13 +46,9 @@
 
 @property (strong, nonatomic) IBOutlet UIView *endView;
 
-
-
-
-
 @end
 
-@implementation GKStarAndLabellingEvaluationView
+@implementation GKStarAndLabellingEvaluationView2
 //{
 //    HYBStarEvaluationView * starView;
 //}
@@ -122,6 +118,7 @@
     }
     btn.selected = !btn.selected;
 }
+
 - (IBAction)endingBtnAction:(UIButton *)sender{
     [SVProgressHUD showWithStatus:@"正在提交中，请稍后..."];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -156,8 +153,8 @@
 //        [self.navigationController popToRootViewControllerAnimated:YES];
 //        [[NSNotificationCenter defaultCenter] postNotificationName:@"close" object:nil];
         //显示【感谢评价】
-        [self.footerView setHidden:true];
-        [self.endView setHidden:false];
+//        [self.footerView setHidden:true];
+//        [self.endView setHidden:false];
     });
 }
 
