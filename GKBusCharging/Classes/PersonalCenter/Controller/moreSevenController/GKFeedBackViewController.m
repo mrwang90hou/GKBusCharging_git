@@ -25,7 +25,7 @@
 ////#import "DCVerificationView.h" //验证码登录
 #import "GKPersonalHeaderView.h"
 #import "GKCustomFlowLayout.h"
-#import "GKPersonalCell.h"
+#import "GKFeedbackCell.h"
 
 // Vendors
 
@@ -36,6 +36,9 @@
 #import "DCLIRLButton.h"
 // Others
 //#import "AFNetPackage.h"
+
+#import "UITextView+ZWPlaceHolder.h"
+#import <ZWLimitCounter/UITextView+ZWLimitCounter.h>
 
 #define HeaderImageHeight ScreenW/2
 
@@ -91,7 +94,7 @@
     /**
      注册item和区头视图、区尾视图
      */
-    [collectionView registerClass:[GKPersonalCell class] forCellWithReuseIdentifier:@"GKPersonalCell"];
+    [collectionView registerClass:[GKFeedbackCell class] forCellWithReuseIdentifier:@"GKFeedbackCell"];
     //    [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"MyCollectionViewHeaderView"];
     //    [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"MyCollectionViewFooterView"];
     [self.view addSubview:collectionView];
@@ -112,7 +115,7 @@
     //    [self.view addSubview:_collectionView];
     //
     // 注册cell、sectionHeader、sectionFooter
-    //    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:GKPersonalCell];
+    //    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:GKFeedbackCell];
     //    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerId];
     //    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerId];
 }
@@ -132,7 +135,7 @@
     collectionView.backgroundColor = [UIColor redColor];
     //3.注册collectionViewCell
     //注意，此处的ReuseIdentifier 必须和 cellForItemAtIndexPath 方法中 一致 均为 cellId
-    [collectionView registerClass:[GKPersonalCell class] forCellWithReuseIdentifier:@"cellId"];
+    [collectionView registerClass:[GKFeedbackCell class] forCellWithReuseIdentifier:@"cellId"];
     
     //4.设置代理
     collectionView.delegate = self;
@@ -171,7 +174,7 @@
     collectionView.backgroundColor = RGB(248, 248, 248);
     //3.注册collectionViewCell
     //注意，此处的ReuseIdentifier 必须和 cellForItemAtIndexPath 方法中 一致 均为 cellId
-    [collectionView registerClass:[GKPersonalCell class] forCellWithReuseIdentifier:@"cellId"];
+    [collectionView registerClass:[GKFeedbackCell class] forCellWithReuseIdentifier:@"cellId"];
     
     // 注册头视图
     [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
@@ -208,11 +211,16 @@
     opinionContentTV.dataDetectorTypes = UIDataDetectorTypePhoneNumber | UIDataDetectorTypeLink;
     opinionContentTV.backgroundColor = TABLEVIEW_BG;
     opinionContentTV.textColor = [UIColor darkGrayColor];
-    opinionContentTV.text = @"请输入您宝贵的意见.....";
+//    opinionContentTV.text = @"请输入您宝贵的意见.....";
     opinionContentTV.font = [UIFont systemFontOfSize:15.0];
     opinionContentTV.layer.cornerRadius = 6.0;
     opinionContentTV.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     opinionContentTV.layer.borderWidth = 1 / ([UIScreen mainScreen].scale);
+    //提示文字及字数统计
+    opinionContentTV.zw_placeHolder = @"请输入您宝贵的意见.....";
+    opinionContentTV.zw_limitCount = 60;
+    opinionContentTV.zw_placeHolderColor = RGBall(204);
+    [opinionContentTV.zw_inputLimitLabel setHidden:true];
     self.opinionContentTV = opinionContentTV;
     
     //////
@@ -383,15 +391,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    GKPersonalCell *cell = (GKPersonalCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
-    cell.titleLabel.text = [self.titleListArray objectAtIndex:indexPath.row];
-    
-    //自动折行设置
-//    cell.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
-//    cell.titleLabel.numberOfLines = 0;
-    [cell.infoLabel setHidden:true];
-    
-//    NSLog(@"cell.titleLabel.text = %@",[self.titleListArray objectAtIndex:indexPath.row]);
+    GKFeedbackCell *cell = (GKFeedbackCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
+    cell.titleTV.text = [self.titleListArray objectAtIndex:indexPath.row];
     [cell.gridImageView setImage:[UIImage imageNamed:[self.imagesListArray objectAtIndex:indexPath.row]]];
     cell.backgroundColor = [UIColor whiteColor];
     return cell;
@@ -486,21 +487,25 @@
 -(void)reloadDatasAndTable:(NSIndexPath *)indexPath{
     for (int i = 0; i<6; i++) {
         NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:i inSection:0];
-        GKPersonalCell *cell = (GKPersonalCell *)[self.collectionView cellForItemAtIndexPath:indexPath2];
+        GKFeedbackCell *cell = (GKFeedbackCell *)[self.collectionView cellForItemAtIndexPath:indexPath2];
         if (i == indexPath.row) {
             cell.selected = true;
             cell.backgroundColor = RGB(212, 245, 234);
+            cell.titleTV.backgroundColor = RGB(212, 245, 234);
         }else{
             cell.selected = false;
             cell.backgroundColor = Main_Color;
+            cell.titleTV.backgroundColor = Main_Color;
         }
     }
     //点击collectionView 后 writeToInfoview 的显示
     [self.writeToInfoview setHidden:false];
     if (indexPath.row != 4) {
         [self.opinionContentTV setHidden:true];
+        [self.opinionContentTV.zw_inputLimitLabel setHidden:true];
     }else{
         [self.opinionContentTV setHidden:false];
+        [self.opinionContentTV.zw_inputLimitLabel setHidden:false];
     }
 }
 
