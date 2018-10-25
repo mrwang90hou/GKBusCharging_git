@@ -36,6 +36,9 @@
 // Others
 //#import "AFNetPackage.h"
 
+#import "UITextView+ZWPlaceHolder.h"
+#import <ZWLimitCounter/UITextView+ZWLimitCounter.h>
+
 #define HeaderImageHeight ScreenW/2
 
 #define kLineSpacing DCMargin/2
@@ -216,11 +219,14 @@ static NSString *GKOrderCellID = @"GKOrderCell";
     evaluationContentTF.dataDetectorTypes = UIDataDetectorTypePhoneNumber | UIDataDetectorTypeLink;
     evaluationContentTF.backgroundColor = TABLEVIEW_BG;
     evaluationContentTF.textColor = [UIColor darkGrayColor];
-    evaluationContentTF.text = @"请输入评价内容";
     evaluationContentTF.font = [UIFont systemFontOfSize:15.0];
     evaluationContentTF.layer.cornerRadius = 6.0;
     evaluationContentTF.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     evaluationContentTF.layer.borderWidth = 1 / ([UIScreen mainScreen].scale);
+    //提示文字及字数统计
+    evaluationContentTF.zw_placeHolder = @"请输入评价内容";
+    evaluationContentTF.zw_limitCount = 60;
+    evaluationContentTF.zw_placeHolderColor = RGBall(204);
     self.evaluationContentTF = evaluationContentTF;
     
     //三个标签Btn   labellingBtn01

@@ -452,12 +452,7 @@
         case 3://关于我们
             nextVC = [[GKAboutUsViewController alloc] init];
             break;
-            //        case 4:
-            //            nextVC = [[GFMyTradeViewController alloc] init];
-            //            break;
         case 4://更新APP
-//            nextVC = [[GKBaseSetViewController alloc] init];
-//            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
             [self updateApp];
             break;
         case 5://紧急报警

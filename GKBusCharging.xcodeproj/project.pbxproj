@@ -210,6 +210,7 @@
 		0BBD8404216EFB2100B47EC3 /* GCHttpDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD83FE216EFB2100B47EC3 /* GCHttpDataTool.m */; };
 		0BBD8405216EFB2100B47EC3 /* GCHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD8400216EFB2100B47EC3 /* GCHttpTool.m */; };
 		0BBD8406216EFB2100B47EC3 /* MQError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD8403216EFB2100B47EC3 /* MQError.m */; };
+		0BC2F8612181A69A00A88E1C /* UITextView+ZWPlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC2F8602181A69A00A88E1C /* UITextView+ZWPlaceHolder.m */; };
 		0BC4047C216DA1D200EFC9AC /* GKStartChargingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4047B216DA1D200EFC9AC /* GKStartChargingViewController.m */; };
 		0BC4047D216DCB6900EFC9AC /* GKStartChargingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BC40479216DA1D200EFC9AC /* GKStartChargingViewController.xib */; };
 		0BC40480216DF61800EFC9AC /* GKTopUpTermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4047F216DF61800EFC9AC /* GKTopUpTermsViewController.m */; };
@@ -629,6 +630,8 @@
 		0BBD8401216EFB2100B47EC3 /* HttpCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpCommon.h; sourceTree = "<group>"; };
 		0BBD8402216EFB2100B47EC3 /* MQError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQError.h; sourceTree = "<group>"; };
 		0BBD8403216EFB2100B47EC3 /* MQError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQError.m; sourceTree = "<group>"; };
+		0BC2F85F2181A69A00A88E1C /* UITextView+ZWPlaceHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+ZWPlaceHolder.h"; sourceTree = "<group>"; };
+		0BC2F8602181A69A00A88E1C /* UITextView+ZWPlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+ZWPlaceHolder.m"; sourceTree = "<group>"; };
 		0BC40479216DA1D200EFC9AC /* GKStartChargingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GKStartChargingViewController.xib; sourceTree = "<group>"; };
 		0BC4047A216DA1D200EFC9AC /* GKStartChargingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKStartChargingViewController.h; sourceTree = "<group>"; };
 		0BC4047B216DA1D200EFC9AC /* GKStartChargingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKStartChargingViewController.m; sourceTree = "<group>"; };
@@ -1269,6 +1272,7 @@
 		0B9CF37B215B8D7F00F76671 /* Vendors(第三方) */ = {
 			isa = PBXGroup;
 			children = (
+				0BC2F85E2181A69A00A88E1C /* ZWPlaceHolder */,
 				0BAB871F21816315005DCD84 /* IFMShare */,
 				0B8D0DDC215DB97E00030966 /* JFCityViewController */,
 				0B2BF7CB216B5FF900A8FE20 /* STAutoHeightTextView */,
@@ -1767,6 +1771,15 @@
 			path = Http;
 			sourceTree = "<group>";
 		};
+		0BC2F85E2181A69A00A88E1C /* ZWPlaceHolder */ = {
+			isa = PBXGroup;
+			children = (
+				0BC2F85F2181A69A00A88E1C /* UITextView+ZWPlaceHolder.h */,
+				0BC2F8602181A69A00A88E1C /* UITextView+ZWPlaceHolder.m */,
+			);
+			path = ZWPlaceHolder;
+			sourceTree = "<group>";
+		};
 		0BD8C7AF2175B831006BDDA1 /* WebSocket */ = {
 			isa = PBXGroup;
 			children = (
@@ -2039,6 +2052,7 @@
 			files = (
 				0BD8C7B22175C3D5006BDDA1 /* SocketRocketUtility.m in Sources */,
 				92FB06CB21669DD20001D38B /* GKBalanceView.m in Sources */,
+				0BC2F8612181A69A00A88E1C /* UITextView+ZWPlaceHolder.m in Sources */,
 				0B9CF447215B8D7F00F76671 /* UIView+Toast.m in Sources */,
 				0B4BE5B22160C99E0043CB30 /* GKMeHeaderView.m in Sources */,
 				0B9CF373215B8C4C00F76671 /* DCSelPhotos.m in Sources */,

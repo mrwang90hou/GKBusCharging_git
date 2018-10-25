@@ -22,5 +22,6 @@ pod 'GQGesVCTransition'
 #pod 'UMCSecurityPlugins'
 pod 'SocketRocket'
 #pod 'WechatOpenSDK'
+pod 'ZWLimitCounter','~> 0.0.4'
 target 'GKBusCharging' do
 end
