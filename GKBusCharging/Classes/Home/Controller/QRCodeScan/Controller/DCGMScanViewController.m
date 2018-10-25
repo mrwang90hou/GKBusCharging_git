@@ -74,6 +74,7 @@ static NSString *saomapandingUrl = @"https://www.zgzzwl.com.cn/";
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: qrCodeBtn,nil]];
     [self setUpBottomView];
 }
+
 -(void)photosMethod{
     WEAKSELF
 //    _cameraTopView.rightItemClickBlock = ^{
