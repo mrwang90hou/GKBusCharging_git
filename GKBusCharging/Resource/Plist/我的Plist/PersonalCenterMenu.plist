@@ -28,6 +28,12 @@
 	</dict>
 	<dict>
 		<key>titleName</key>
+		<string>检查更新</string>
+		<key>imageName</key>
+		<string>icon_personal_center_update</string>
+	</dict>
+	<dict>
+		<key>titleName</key>
 		<string>紧急报警</string>
 		<key>imageName</key>
 		<string>icon_personal_center_sos</string>

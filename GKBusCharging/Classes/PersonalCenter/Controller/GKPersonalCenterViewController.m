@@ -70,7 +70,10 @@
  */
 @property(nonatomic, strong) NSMutableArray *shareArray;
 @property(nonatomic, strong) NSMutableArray *functionArray;
-
+/**
+ 应用更新
+ */
+@property (nonatomic,strong) NSString *trackViewUrl;
 @end
 
 @implementation GKPersonalCenterViewController
@@ -379,7 +382,7 @@
 //每个section的item个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 6;
+    return 7;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -452,18 +455,18 @@
             //        case 4:
             //            nextVC = [[GFMyTradeViewController alloc] init];
             //            break;
-//        case 4://更新APP
+        case 4://更新APP
 //            nextVC = [[GKBaseSetViewController alloc] init];
 //            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
-//            return;
-//            break;
-        case 4://紧急报警
+            [self updateApp];
+            break;
+        case 5://紧急报警
 //            nextVC = [[GKStartChargingViewController alloc] init];
             [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
 //            [SVProgressHUD showErrorWithStatus:@"暂用于GKStartChargingViewController测试页面！"];
 //            return;
             break;
-        case 5://意见反馈
+        case 6://意见反馈
             nextVC = [[GKFeedBackViewController alloc] init];
             break;
 //        case 8:
@@ -537,6 +540,157 @@
         return true;
     } else {
         return false;
+    }
+}
+
+
+#pragma mark -更新 APP 的方法
+////1. 在application中调用
+//-(void)checkVersionUpdata{
+//    NSString *urlStr    = @"http://itunes.apple.com/lookup?id=1438435188";//id替换即可
+//    NSURL *url          = [NSURL URLWithString:urlStr];
+//    NSURLRequest *req   = [NSURLRequest requestWithURL:url];
+//    [NSURLConnection connectionWithRequest:req delegate:self];
+//}
+////2. 网络连接
+//-(void)connection:(NSURLConnection *)connection didReceiveData:(nonnull NSData *)data
+//{
+//    NSError *error;
+//    id jsonObject           = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+//    [XKCEHint disMissLoading];
+//    NSDictionary *appInfo   = (NSDictionary*)jsonObject;
+//    NSArray *infoContent    = [appInfo objectForKey:@"results"];
+//    NSString * version      = [[infoContent objectAtIndex:0]objectForKey:@"version"];//线上最新版本
+//    // 获取当前版本
+//    NSString *currentVersion    = [self version];//当前用户版本
+//    BOOL result          = [currentVersion compare:version] == NSOrderedAscending;
+//    if (result) {//需要更新
+//        [XKCEGlobleData sharedData].version = @"1";
+//        NSLog(@"不是最新版本需要更新");
+//        NSString *updateStr = [NSString stringWithFormat:@"发现新版本V%@\n为保证软件的正常运行\n请及时更新到最新版本",version];
+//        [self creatAlterView:updateStr];
+//    } else {//已经是最新版；
+//        NSLog(@"最新版本不需要更新");
+//    }
+//}
+//3. 弹框提示
+//-(void)creatAlterView:(NSString *)msg{
+//    UIAlertController *alertText = [UIAlertController alertControllerWithTitle:@"更新提醒" message:msg preferredStyle:UIAlertControllerStyleAlert];
+//    //增加按钮
+//    [alertText addAction:[UIAlertAction actionWithTitle:@"我再想想" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+//    }]];
+//    [alertText addAction:[UIAlertAction actionWithTitle:@"立即更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//        NSString *str = @"itms-apps://itunes.apple.com/cn/app/id1329918420?mt=8"; //更换id即可
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+//    }]];
+////    [self.window.rootViewController presentViewController:alertText animated:YES completion:nil];
+//}
+////版本
+//-(NSString *)version
+//{
+//    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+//    NSString *app_Version       = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+//    return app_Version;
+//}
+- (void)updateApp
+{
+    // kAPP_URL : @"http://itunes.apple.com/lookup?id=";
+    //    kAppID : 在iTunes connect上申请的APP ID;
+//    NSString *urlStr = @"http://itunes.apple.com/lookup?id=1438435188";//id替换即可
+    NSString *kAPP_URL = @"http://itunes.apple.com/lookup?id=";
+    NSString *kAppID = @"1438435188";
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@", kAPP_URL, kAppID];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    //网络请求
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSError *err;
+        //NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        NSDictionary *appInfoDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&err];
+        
+        if (err) {
+            NSLog(@"%@", err.description);
+            return;
+        }
+        
+        NSArray *resultArray = [appInfoDict objectForKey:@"results"];
+        if (![resultArray count]) {
+            NSLog(@"error : resultArray == nil");
+            return;
+        }
+        
+        NSDictionary *infoDict = [resultArray objectAtIndex:0];
+//        NSLog(@"获取服务器上应用的基本信息\n infoDict = %@",infoDict);
+        //获取服务器上应用的最新版本号
+        NSString *updateVersion = infoDict[@"version"];
+        NSString *trackName = infoDict[@"trackName"];
+        
+        //_trackViewUrl : 更新的时候用到的地址
+        self.trackViewUrl = infoDict[@"trackViewUrl"];
+        
+        //获取当前设备中应用的版本号
+        NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+        NSString *currentVersion = [infoDic objectForKey:@"CFBundleShortVersionString"];
+//        NSLog(@"当前版本信息\ninfoDic = %@",infoDic);
+//        NSLog(@"┗( ´・∧・｀)┛currentVersion = %@，┗( ´・∧・｀)┛updateVersion = %@",currentVersion,updateVersion);
+        //判断两个版本是否相同
+        if ([[currentVersion stringByReplacingOccurrencesOfString:@"." withString:@""] intValue] < [[updateVersion stringByReplacingOccurrencesOfString:@"." withString:@""] intValue]) {
+//        if ([currentVersion doubleValue]*100 < [updateVersion doubleValue]*100) {
+            NSString *titleStr = [NSString stringWithFormat:@"检查更新：%@", trackName];
+            NSString *messageStr = [NSString stringWithFormat:@"检测到有新版本（V%@）\n是否进行下载?", updateVersion];
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:titleStr message:messageStr delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"升级", nil];
+            // 1.NSThread
+//            [self performSelectorOnMainThread:@selector(initAlertView:vlue02:) withObject:nil waitUntilDone:NO];
+//            [self initAlertView:titleStr vlue02:messageStr];
+            // 3.GCD转主线程进行该操作
+            dispatch_async(dispatch_get_main_queue(), ^{
+                 [self initAlertView:titleStr vlue02:messageStr];
+            });
+//            alert.tag = [kAppID intValue];
+//            [alert show];
+            
+        } else {  //版本号和app store上的一致
+//            NSString *titleStr = [NSString stringWithFormat:@"检查更新：%@", trackName];
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:titleStr message:@"暂无新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//            [self initAlertView2];
+//            alert.tag = [kAppID intValue] + 1;
+//            [alert show];
+            [SVProgressHUD showInfoWithStatus:@"已是最新版本！"];
+        }
+    }];
+    [task resume];
+}
+- (void)initAlertView:(NSString *)str vlue02:(NSString *)str2{
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"" andMessage:str2];
+    [alertView addButtonWithTitle:@"稍后"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alertView) {
+                              [alertView dismissAnimated:NO];
+                              
+                          }];
+    
+    [alertView addButtonWithTitle:@"立即下载"
+                             type:SIAlertViewButtonTypeDestructive
+                          handler:^(SIAlertView *alertView) {
+                              
+                              [self againAndOfTheCharging];
+                              [alertView dismissAnimated:NO];
+                              
+                          }];
+    
+    [alertView show];
+}
+-(void)againAndOfTheCharging{
+    //点击”升级“按钮，就从打开app store上应用的详情页面
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.trackViewUrl]];
+    if (@available(iOS 10.0, *)) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.trackViewUrl] options:@{} completionHandler:^(BOOL success) {
+            NSLog(@"给个好评");
+        }];
+    } else {
+        // Fallback on earlier versions
     }
 }
 

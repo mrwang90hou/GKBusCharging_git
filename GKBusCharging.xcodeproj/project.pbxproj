@@ -199,6 +199,7 @@
 		0BAB872821816315005DCD84 /* IFMShareItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB872221816315005DCD84 /* IFMShareItem.m */; };
 		0BAB872921816315005DCD84 /* IFMShareItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB872421816315005DCD84 /* IFMShareItemCell.m */; };
 		0BAB872A21816315005DCD84 /* IFMShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB872621816315005DCD84 /* IFMShareView.m */; };
+		0BAB872D218170DC005DCD84 /* GKFeedbackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB872B218170DC005DCD84 /* GKFeedbackCell.m */; };
 		0BABC03D215DFDA10085CAC3 /* GKPersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC03C215DFDA10085CAC3 /* GKPersonalCenterViewController.m */; };
 		0BABC042215E00C00085CAC3 /* GKPersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC041215E00C00085CAC3 /* GKPersonalCell.m */; };
 		0BABC045215E01010085CAC3 /* GKPersonalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC044215E01010085CAC3 /* GKPersonalHeaderView.m */; };
@@ -606,6 +607,8 @@
 		0BAB872421816315005DCD84 /* IFMShareItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFMShareItemCell.m; sourceTree = "<group>"; };
 		0BAB872521816315005DCD84 /* IFMShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFMShareView.h; sourceTree = "<group>"; };
 		0BAB872621816315005DCD84 /* IFMShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFMShareView.m; sourceTree = "<group>"; };
+		0BAB872B218170DC005DCD84 /* GKFeedbackCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKFeedbackCell.m; sourceTree = "<group>"; };
+		0BAB872C218170DC005DCD84 /* GKFeedbackCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKFeedbackCell.h; sourceTree = "<group>"; };
 		0BABC03B215DFD970085CAC3 /* GKPersonalCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKPersonalCenterViewController.h; sourceTree = "<group>"; };
 		0BABC03C215DFDA10085CAC3 /* GKPersonalCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKPersonalCenterViewController.m; sourceTree = "<group>"; };
 		0BABC040215E00B50085CAC3 /* GKPersonalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKPersonalCell.h; sourceTree = "<group>"; };
@@ -1854,6 +1857,8 @@
 				0B2BF7E2216B60C100A8FE20 /* DDTableViewHeader.m */,
 				0B2BF7E4216B60C100A8FE20 /* MoreTableViewCell.h */,
 				0B2BF7E3216B60C100A8FE20 /* MoreTableViewCell.m */,
+				0BAB872C218170DC005DCD84 /* GKFeedbackCell.h */,
+				0BAB872B218170DC005DCD84 /* GKFeedbackCell.m */,
 			);
 			path = moreSevenView;
 			sourceTree = "<group>";
@@ -2201,6 +2206,7 @@
 				0B9CF437215B8D7F00F76671 /* AddressView.m in Sources */,
 				0B9CF456215B8D7F00F76671 /* XWCoolAnimator+XWLines.m in Sources */,
 				0B7C81EE215CDB3800A06345 /* UIButton+GKUpDownButton.m in Sources */,
+				0BAB872D218170DC005DCD84 /* GKFeedbackCell.m in Sources */,
 				0B9CF443215B8D7F00F76671 /* PYSearchSuggestionViewController.m in Sources */,
 				0B879F19217F178F007169B4 /* RespForWeChatViewController.mm in Sources */,
 				0B9CF45C215B8D7F00F76671 /* XWDrawerAnimator.m in Sources */,
