@@ -195,6 +195,10 @@
 		0B9CF482215B8F4B00F76671 /* GKUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF47A215B8F4B00F76671 /* GKUserInfo.m */; };
 		0B9CF49E215B91C600F76671 /* DCConsts.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF49B215B91C600F76671 /* DCConsts.m */; };
 		0B9CF49F215B91C600F76671 /* DCNotificationCenterName.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF49D215B91C600F76671 /* DCNotificationCenterName.m */; };
+		0BAB872721816315005DCD84 /* IFMShareImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0BAB872021816315005DCD84 /* IFMShareImage.bundle */; };
+		0BAB872821816315005DCD84 /* IFMShareItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB872221816315005DCD84 /* IFMShareItem.m */; };
+		0BAB872921816315005DCD84 /* IFMShareItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB872421816315005DCD84 /* IFMShareItemCell.m */; };
+		0BAB872A21816315005DCD84 /* IFMShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB872621816315005DCD84 /* IFMShareView.m */; };
 		0BABC03D215DFDA10085CAC3 /* GKPersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC03C215DFDA10085CAC3 /* GKPersonalCenterViewController.m */; };
 		0BABC042215E00C00085CAC3 /* GKPersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC041215E00C00085CAC3 /* GKPersonalCell.m */; };
 		0BABC045215E01010085CAC3 /* GKPersonalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC044215E01010085CAC3 /* GKPersonalHeaderView.m */; };
@@ -595,6 +599,13 @@
 		0B9CF49B215B91C600F76671 /* DCConsts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCConsts.m; sourceTree = "<group>"; };
 		0B9CF49C215B91C600F76671 /* DCNotificationCenterName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCNotificationCenterName.h; sourceTree = "<group>"; };
 		0B9CF49D215B91C600F76671 /* DCNotificationCenterName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCNotificationCenterName.m; sourceTree = "<group>"; };
+		0BAB872021816315005DCD84 /* IFMShareImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IFMShareImage.bundle; sourceTree = "<group>"; };
+		0BAB872121816315005DCD84 /* IFMShareItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFMShareItem.h; sourceTree = "<group>"; };
+		0BAB872221816315005DCD84 /* IFMShareItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFMShareItem.m; sourceTree = "<group>"; };
+		0BAB872321816315005DCD84 /* IFMShareItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFMShareItemCell.h; sourceTree = "<group>"; };
+		0BAB872421816315005DCD84 /* IFMShareItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFMShareItemCell.m; sourceTree = "<group>"; };
+		0BAB872521816315005DCD84 /* IFMShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFMShareView.h; sourceTree = "<group>"; };
+		0BAB872621816315005DCD84 /* IFMShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFMShareView.m; sourceTree = "<group>"; };
 		0BABC03B215DFD970085CAC3 /* GKPersonalCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKPersonalCenterViewController.h; sourceTree = "<group>"; };
 		0BABC03C215DFDA10085CAC3 /* GKPersonalCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKPersonalCenterViewController.m; sourceTree = "<group>"; };
 		0BABC040215E00B50085CAC3 /* GKPersonalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKPersonalCell.h; sourceTree = "<group>"; };
@@ -1255,6 +1266,7 @@
 		0B9CF37B215B8D7F00F76671 /* Vendors(第三方) */ = {
 			isa = PBXGroup;
 			children = (
+				0BAB871F21816315005DCD84 /* IFMShare */,
 				0B8D0DDC215DB97E00030966 /* JFCityViewController */,
 				0B2BF7CB216B5FF900A8FE20 /* STAutoHeightTextView */,
 				92DE8679216A4018003B23F4 /* HYBStarEvaluationView */,
@@ -1677,6 +1689,20 @@
 			path = "Const(常量)";
 			sourceTree = "<group>";
 		};
+		0BAB871F21816315005DCD84 /* IFMShare */ = {
+			isa = PBXGroup;
+			children = (
+				0BAB872021816315005DCD84 /* IFMShareImage.bundle */,
+				0BAB872121816315005DCD84 /* IFMShareItem.h */,
+				0BAB872221816315005DCD84 /* IFMShareItem.m */,
+				0BAB872321816315005DCD84 /* IFMShareItemCell.h */,
+				0BAB872421816315005DCD84 /* IFMShareItemCell.m */,
+				0BAB872521816315005DCD84 /* IFMShareView.h */,
+				0BAB872621816315005DCD84 /* IFMShareView.m */,
+			);
+			path = IFMShare;
+			sourceTree = "<group>";
+		};
 		0BABC036215DCA650085CAC3 /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
@@ -1941,6 +1967,7 @@
 				0B9CF44E215B8D7F00F76671 /* mask.jpg in Resources */,
 				0B9CF2CA215B7BFD00F76671 /* Assets.xcassets in Resources */,
 				92DE867F216A4019003B23F4 /* star_yellow.png in Resources */,
+				0BAB872721816315005DCD84 /* IFMShareImage.bundle in Resources */,
 				0B9CF423215B8D7F00F76671 /* addressData.plist in Resources */,
 				0B8D0DF4215DB97F00030966 /* shop_area.sqlite in Resources */,
 				0B9CF42D215B8D7F00F76671 /* navigationbarScanBg.png in Resources */,
@@ -2012,6 +2039,7 @@
 				0B9CF373215B8C4C00F76671 /* DCSelPhotos.m in Sources */,
 				0B9CF481215B8F4B00F76671 /* GKAppVersionTool.m in Sources */,
 				0B9CF36F215B8C4C00F76671 /* DCCheckRegular.m in Sources */,
+				0BAB872821816315005DCD84 /* IFMShareItem.m in Sources */,
 				0BBD8406216EFB2100B47EC3 /* MQError.m in Sources */,
 				0B7C81E1215CCEE800A06345 /* DCLIRLButton.m in Sources */,
 				0B8D0DFA215DB97F00030966 /* JFCityViewController.m in Sources */,
@@ -2168,6 +2196,8 @@
 				0B9CF461215B8D7F00F76671 /* XWFilterAnimator+XWMask.m in Sources */,
 				92DE8680216A4019003B23F4 /* HYBStarEvaluationView.m in Sources */,
 				0B9CF351215B8A6D00F76671 /* UIImageView+DCExtension.m in Sources */,
+				0BAB872921816315005DCD84 /* IFMShareItemCell.m in Sources */,
+				0BAB872A21816315005DCD84 /* IFMShareView.m in Sources */,
 				0B9CF437215B8D7F00F76671 /* AddressView.m in Sources */,
 				0B9CF456215B8D7F00F76671 /* XWCoolAnimator+XWLines.m in Sources */,
 				0B7C81EE215CDB3800A06345 /* UIButton+GKUpDownButton.m in Sources */,

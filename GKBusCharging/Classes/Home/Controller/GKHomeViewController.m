@@ -183,7 +183,6 @@
     self.cityNameBtn = cityNameBtn;
     
     
-    
     UIButton *busListBtn = [[UIButton alloc]init];
     [busListBtn setImage:[UIImage imageNamed:@"btn_bus_list"] forState:UIControlStateNormal];
     [topView addSubview:busListBtn];

@@ -34,7 +34,7 @@
 #import "GKPersonalHeaderView.h"
 #import "GKCustomFlowLayout.h"
 #import "GKPersonalCell.h"
-
+#import "IFMShareView.h"
 // Vendors
 
 // Categories
@@ -65,6 +65,12 @@
 @property (retain, strong) UILabel *headTitleLabel;
 
 @property (nonatomic,strong) UICollectionView *collectionView;
+/**
+ 分享 View
+ */
+@property(nonatomic, strong) NSMutableArray *shareArray;
+@property(nonatomic, strong) NSMutableArray *functionArray;
+
 @end
 
 @implementation GKPersonalCenterViewController
@@ -135,6 +141,46 @@
     collectionView.dataSource = self;
 
 }
+
+- (NSMutableArray *)shareArray{
+    if (!_shareArray) {
+        _shareArray = [NSMutableArray array];
+        
+        [_shareArray addObject:IFMPlatformNameWechat];
+        [_shareArray addObject:IFMPlatformNameWechatFriend];
+        [_shareArray addObject:IFMPlatformNameSina];
+        [_shareArray addObject:IFMPlatformNameQQ];
+        [_shareArray addObject:IFMPlatformNameQQSpace];
+        
+    }
+    return _shareArray;
+}
+
+- (NSMutableArray *)functionArray{
+    if (!_functionArray) {
+        _functionArray = [NSMutableArray array];
+        [_functionArray addObject:[[IFMShareItem alloc] initWithImage:[UIImage imageNamed:@"function_collection"] title:@"收藏" action:^(IFMShareItem *item) {
+            ALERT_MSG(@"提示",@"点击了收藏",self);
+        }]];
+        [_functionArray addObject:[[IFMShareItem alloc] initWithImage:[UIImage imageNamed:@"function_copy"] title:@"复制" action:^(IFMShareItem *item) {
+            ALERT_MSG(@"提示",@"点击了复制",self);
+        }]];
+        [_functionArray addObject:[[IFMShareItem alloc] initWithImage:[UIImage imageNamed:@"function_expose"] title:@"举报" action:^(IFMShareItem *item) {
+            ALERT_MSG(@"提示",@"点击了举报",self);
+        }]];
+        [_functionArray addObject:[[IFMShareItem alloc] initWithImage:[UIImage imageNamed:@"function_font"] title:@"调整字体" action:^(IFMShareItem *item) {
+            ALERT_MSG(@"提示",@"点击了调整字体",self);
+        }]];
+        [_functionArray addObject:[[IFMShareItem alloc] initWithImage:[UIImage imageNamed:@"function_link"] title:@"复制链接" action:^(IFMShareItem *item) {
+            ALERT_MSG(@"提示",@"点击了复制链接",self);
+        }]];
+        [_functionArray addObject:[[IFMShareItem alloc] initWithImage:[UIImage imageNamed:@"function_refresh"] title:@"刷新" action:^(IFMShareItem *item) {
+            ALERT_MSG(@"提示",@"点击了刷新",self);
+        }]];
+    }
+    return _functionArray;
+}
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -229,6 +275,10 @@
 - (void)getUI{
 //    [SVProgressHUD showInfoWithStatus:@"getUI"];
 //    NSLog(@"viewDidLoad");
+    
+    UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc]initWithImage:SETIMAGE(@"share_btn") style:UIBarButtonItemStyleDone target:self action:@selector(shareBtnAction)];
+    [self.navigationItem setRightBarButtonItem:rightBtnItem];
+    
     GKPersonalHeaderView * headerView = [[GKPersonalHeaderView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:headerView];
     [headerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -460,6 +510,22 @@
     }
     GKBindingPhoneController * vc = [[GKBindingPhoneController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)shareBtnAction{
+//    [SVProgressHUD showInfoWithStatus:@"shareBtnAction"];
+    IFMShareView *shareView = [[IFMShareView alloc] initWithItems:self.shareArray itemSize:CGSizeMake(80,100) DisplayLine:YES];
+    shareView = [self addShareContent:shareView];
+    shareView.itemSpace = 10;
+    [shareView showFromControlle:self];
+}
+//添加分享的内容
+- (IFMShareView *)addShareContent:(IFMShareView *)shareView{
+    [shareView addText:@"分享测试"];
+    [shareView addURL:[NSURL URLWithString:@"http://www.baidu.com"]];
+    [shareView addImage:[UIImage imageNamed:@"icon_share_qq_space"]];
+    
+    return shareView;
 }
 
 -(Boolean)checkLoginStatus{
