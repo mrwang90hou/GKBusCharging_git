@@ -26,6 +26,7 @@
 #import "GKBusInfoCell.h"
 #import "GKOrderCell.h"
 #import "HYBStarEvaluationView.h"
+#import "GKOrderEvaluationView.h"
 // Vendors
 
 // Categories
@@ -47,13 +48,13 @@ static NSString *GKOrderCellID = @"GKOrderCell";
 
 @interface GKOrderRateViewController ()<UITableViewDelegate,UITableViewDataSource,DidChangedStarDelegate,UITextViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic,strong) GKOrderEvaluationView *orderEvaluationView;
+
 @property (nonatomic, strong) NSMutableArray *evaluations;
 @property (nonatomic, strong) UILabel *costLabel;
 //@property (nonatomic, strong) UIButton *detailsCheckBtn;
 @property (nonatomic, strong) DCZuoWenRightButton *detailsCheckBtn;
-
-
-
 
 //三个标签Btn
 @property (nonatomic, strong) UIButton *labellingBtn01;
@@ -68,10 +69,10 @@ static NSString *GKOrderCellID = @"GKOrderCell";
 @property (nonatomic, assign) Boolean isCommitOrNot;
 @property (nonatomic ,strong) UIButton *endingBtn;
 
-
 @property(nonatomic,strong)UITextView *textView;
 @property(nonatomic,strong)UILabel *placeHolderLabel;
 @property(nonatomic,strong)UILabel *residueLabel;// 输入文本时剩余字数
+
 
 
 @end
@@ -92,15 +93,25 @@ static NSString *GKOrderCellID = @"GKOrderCell";
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.edges.equalTo(self.view);
+//        make.top.equalTo();
         make.top.left.right.equalTo(self.view);
-//        make.bottom.mas_equalTo(K_HEIGHT_NAVBAR+120);
-        make.height.mas_equalTo(K_HEIGHT_NAVBAR+90);
+//        make.height.mas_equalTo(K_HEIGHT_NAVBAR+95);
+        make.height.mas_equalTo(0);
+    }];
+    //更新 BusView:GKOrderEvaluationView（订单管理->详情->订单评价）
+    _orderEvaluationView = [[GKOrderEvaluationView alloc]init];
+    [self.view addSubview:_orderEvaluationView];
+    _orderEvaluationView.starCanChange = false;
+    [_orderEvaluationView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.view).offset(K_HEIGHT_NAVBAR+10);
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(94);
     }];
     /* 消费详情view */
     UIView *consumeView = [[UIView alloc]init];
     [self.view addSubview:consumeView];
     [consumeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.tableView.mas_bottom).offset(0);
+        make.top.mas_equalTo(self.orderEvaluationView.mas_bottom).offset(1);
         make.left.right.equalTo(self.view);
         make.height.equalTo(@(100));
     }];

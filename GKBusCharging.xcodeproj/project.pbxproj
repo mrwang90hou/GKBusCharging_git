@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0ADA6821831A060005462D /* GKOrderEvaluationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0ADA6521831A060005462D /* GKOrderEvaluationView.m */; };
+		0B0ADA6921831CBA0005462D /* GKOrderEvaluationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B0ADA6621831A060005462D /* GKOrderEvaluationView.xib */; };
 		0B2BF7D0216B5FF900A8FE20 /* UIScrollView+STAutoHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2BF7CD216B5FF900A8FE20 /* UIScrollView+STAutoHeight.m */; };
 		0B2BF7D1216B5FF900A8FE20 /* UITextView+STAutoHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2BF7CF216B5FF900A8FE20 /* UITextView+STAutoHeight.m */; };
 		0B2BF7D4216B605C00A8FE20 /* GKUseingHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2BF7D3216B605B00A8FE20 /* GKUseingHelpViewController.m */; };
@@ -260,6 +262,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B0ADA6521831A060005462D /* GKOrderEvaluationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKOrderEvaluationView.m; sourceTree = "<group>"; };
+		0B0ADA6621831A060005462D /* GKOrderEvaluationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GKOrderEvaluationView.xib; sourceTree = "<group>"; };
+		0B0ADA6721831A060005462D /* GKOrderEvaluationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKOrderEvaluationView.h; sourceTree = "<group>"; };
 		0B2BF7CC216B5FF900A8FE20 /* UIScrollView+STAutoHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+STAutoHeight.h"; sourceTree = "<group>"; };
 		0B2BF7CD216B5FF900A8FE20 /* UIScrollView+STAutoHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+STAutoHeight.m"; sourceTree = "<group>"; };
 		0B2BF7CE216B5FF900A8FE20 /* UITextView+STAutoHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+STAutoHeight.h"; sourceTree = "<group>"; };
@@ -746,6 +751,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B0ADA632183175E0005462D /* useless */ = {
+			isa = PBXGroup;
+			children = (
+				0BA680522182E537002B9113 /* GKReturnGuideView01.h */,
+				0BA680502182E537002B9113 /* GKReturnGuideView01.m */,
+				0BA680492182E14E002B9113 /* GKReturnGuideView02.h */,
+				0BA6804A2182E15B002B9113 /* GKReturnGuideView02.m */,
+				0BA6804E2182E1E5002B9113 /* GKReturnGuideView02.xib */,
+			);
+			path = useless;
+			sourceTree = "<group>";
+		};
+		0B0ADA64218317910005462D /* useless */ = {
+			isa = PBXGroup;
+			children = (
+				0B8E5F11217DB88D0011B600 /* GKReturnGuideViewController.h */,
+				0B8E5F12217DB88D0011B600 /* GKReturnGuideViewController.m */,
+				0B8E5F10217DB88D0011B600 /* GKReturnGuideViewController.xib */,
+			);
+			path = useless;
+			sourceTree = "<group>";
+		};
 		0B2BF7CB216B5FF900A8FE20 /* STAutoHeightTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -811,11 +838,7 @@
 				0BA680582182EC3D002B9113 /* DCNewFeatureCell.m */,
 				0BA680552182EC3C002B9113 /* DCNewFeatureCell2.h */,
 				0BA680572182EC3D002B9113 /* DCNewFeatureCell2.m */,
-				0BA680522182E537002B9113 /* GKReturnGuideView01.h */,
-				0BA680502182E537002B9113 /* GKReturnGuideView01.m */,
-				0BA680492182E14E002B9113 /* GKReturnGuideView02.h */,
-				0BA6804A2182E15B002B9113 /* GKReturnGuideView02.m */,
-				0BA6804E2182E1E5002B9113 /* GKReturnGuideView02.xib */,
+				0B0ADA632183175E0005462D /* useless */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -823,6 +846,7 @@
 		0B4B111E215B971500056DD6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0B0ADA64218317910005462D /* useless */,
 				0B4B111F215B973B00056DD6 /* GKHomeViewController.h */,
 				0B4B1120215B974500056DD6 /* GKHomeViewController.m */,
 				0B462E36215F8AC100AE451F /* GKBusInfoListViewController.h */,
@@ -835,9 +859,6 @@
 				0B8E5F0C217D75970011B600 /* GKUseGuideViewController.h */,
 				0B8E5F0B217D75970011B600 /* GKUseGuideViewController.m */,
 				0B8E5F0E217D7B920011B600 /* GKUseGuideViewController.xib */,
-				0B8E5F11217DB88D0011B600 /* GKReturnGuideViewController.h */,
-				0B8E5F12217DB88D0011B600 /* GKReturnGuideViewController.m */,
-				0B8E5F10217DB88D0011B600 /* GKReturnGuideViewController.xib */,
 				0B7C81EF215CE27200A06345 /* QRCodeScan */,
 				0BC2F8622181B52200A88E1C /* GKEvaluateViewController.h */,
 				0BC2F8632181B52D00A88E1C /* GKEvaluateViewController.m */,
@@ -1884,6 +1905,9 @@
 				9275D24B2169DAC40004DBFE /* GKOrderCell.h */,
 				9275D2492169DAC30004DBFE /* GKOrderCell.m */,
 				9275D24A2169DAC30004DBFE /* GKOrderCell.xib */,
+				0B0ADA6721831A060005462D /* GKOrderEvaluationView.h */,
+				0B0ADA6521831A060005462D /* GKOrderEvaluationView.m */,
+				0B0ADA6621831A060005462D /* GKOrderEvaluationView.xib */,
 				0B8E5F16217DC1F70011B600 /* GKTransactionCell.h */,
 				0B8E5F17217DC1F70011B600 /* GKTransactionCell.m */,
 				0B8E5F15217DC1F60011B600 /* GKTransactionCell.xib */,
@@ -1977,6 +2001,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B0ADA6921831CBA0005462D /* GKOrderEvaluationView.xib in Resources */,
 				0BA6804F2182E3AD002B9113 /* GKReturnGuideView02.xib in Resources */,
 				0BC2F8692181BE0B00A88E1C /* GKStarAndLabellingEvaluationView2.xib in Resources */,
 				0B8E5F19217DC2EB0011B600 /* GKTransactionCell.xib in Resources */,
@@ -2138,6 +2163,7 @@
 				0BABC03D215DFDA10085CAC3 /* GKPersonalCenterViewController.m in Sources */,
 				923AC63A215E8EA40016CD1C /* GKFeedBackViewController.m in Sources */,
 				0B9CF424215B8D7F00F76671 /* AddressPickerView.m in Sources */,
+				0B0ADA6821831A060005462D /* GKOrderEvaluationView.m in Sources */,
 				0BC2F8642181B52D00A88E1C /* GKEvaluateViewController.m in Sources */,
 				0B879F48217F1AED007169B4 /* openssl_wrapper.m in Sources */,
 				0B2BF7D4216B605C00A8FE20 /* GKUseingHelpViewController.m in Sources */,
