@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -105,18 +106,18 @@
             <point key="canvasLocation" x="-142.5" y="-173"/>
         </view>
         <view hidden="YES" contentMode="scaleToFill" id="Zcy-R6-dgN" userLabel="EndView">
-            <rect key="frame" x="0.0" y="0.0" width="439" height="250"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_thanks_evaluate" translatesAutoresizingMaskIntoConstraints="NO" id="4OY-it-zyc">
-                    <rect key="frame" x="193.5" y="82" width="52" height="52"/>
+                    <rect key="frame" x="161.5" y="290.5" width="52" height="52"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="52" id="FXa-mv-2Jg"/>
                         <constraint firstAttribute="width" constant="52" id="vLv-RL-eWz"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="感谢评价" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1F-cu-VI1">
-                    <rect key="frame" x="184.5" y="142" width="70" height="20"/>
+                    <rect key="frame" x="152.5" y="350.5" width="70" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="6Vc-zi-eF8"/>
                         <constraint firstAttribute="height" constant="20" id="97r-YW-9op"/>
@@ -133,7 +134,7 @@
                 <constraint firstItem="y1F-cu-VI1" firstAttribute="centerX" secondItem="Zcy-R6-dgN" secondAttribute="centerX" id="nP0-pk-d4D"/>
                 <constraint firstItem="4OY-it-zyc" firstAttribute="centerY" secondItem="Zcy-R6-dgN" secondAttribute="centerY" constant="-17" id="yiR-ds-hlA"/>
             </constraints>
-            <point key="canvasLocation" x="-143" y="116"/>
+            <point key="canvasLocation" x="-151" y="334"/>
         </view>
     </objects>
     <resources>
