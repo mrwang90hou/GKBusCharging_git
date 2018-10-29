@@ -53,7 +53,11 @@
     [self.footerView addSubview:_starView];
     [_starView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.footerView);
-        make.top.equalTo(self.footerView.mas_centerY).offset(10);
+        if (K_IPHONE_5) {
+            make.centerY.equalTo(self.footerView.mas_centerY).offset(10);
+        }else{
+            make.top.equalTo(self.footerView.mas_centerY).offset(10);
+        }
         make.height.equalTo(@(22));
         make.width.equalTo(@120);
     }];

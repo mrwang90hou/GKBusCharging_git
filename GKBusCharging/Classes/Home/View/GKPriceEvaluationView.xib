@@ -67,6 +67,18 @@
                                 <constraint firstItem="u0G-TX-vFr" firstAttribute="centerY" secondItem="juF-27-Skk" secondAttribute="centerY" id="gGq-Rs-FNJ"/>
                                 <constraint firstAttribute="width" constant="81" id="tc7-NB-GyF"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <real key="value" value="0.5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer. borderColorFromUIColor">
+                                    <color key="value" red="0.77647058820000003" green="0.7725490196" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                            </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="综合评分" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9TX-h0-ov8" userLabel="综合评分">
                             <rect key="frame" x="366" y="16" width="60" height="20"/>

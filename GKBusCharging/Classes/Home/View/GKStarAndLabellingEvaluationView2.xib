@@ -97,7 +97,6 @@
             <connections>
                 <outlet property="commitBtn" destination="hLZ-aI-Ia0" id="gLb-VB-QN2"/>
                 <outlet property="commitButton" destination="hLZ-aI-Ia0" id="ySw-N0-d7S"/>
-                <outlet property="endView" destination="Zcy-R6-dgN" id="14K-Ka-AgY"/>
                 <outlet property="footerView" destination="CSr-gc-0Oy" id="ZdZ-Hj-UQD"/>
                 <outlet property="labellingBtn01" destination="sYO-8H-7cv" id="jVL-0r-OMj"/>
                 <outlet property="labellingBtn02" destination="YCk-hw-IvZ" id="M04-Ld-rz9"/>
