@@ -11,6 +11,7 @@
 #import "GKRechargeViewController.h"
 #import "GKRechargeCardViewController.h"
 #import "GKTransactionDetailsViewController.h"
+#import "GKWithdrawalViewController.h"
 @interface GKBalanceViewController ()
 @property (nonatomic,strong) UIButton *transactionDetailsBtn;
 
@@ -333,6 +334,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [SVProgressHUD dismiss];
         [SVProgressHUD showSuccessWithStatus:@"提现成功！"];
+        [self.navigationController pushViewController:[GKWhithdrawalViewController new] animated:YES];
     });
 }
 @end

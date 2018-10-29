@@ -577,6 +577,7 @@
     [GCHttpDataTool uploadFaultInfoWithDict:dict success:^(id responseObject) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [SVProgressHUD showSuccessWithStatus:@"提交成功！"];
+            
         });
     } failure:^(MQError *error) {
         [SVProgressHUD showErrorWithStatus:error.msg];

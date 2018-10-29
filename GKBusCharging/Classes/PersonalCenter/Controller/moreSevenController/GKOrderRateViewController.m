@@ -74,7 +74,12 @@ static NSString *GKOrderCellID = @"GKOrderCell";
 @property(nonatomic,strong)UILabel *residueLabel;// 输入文本时剩余字数
 
 
-
+//是否已经评价
+@property (nonatomic,assign) Boolean starCanChanging;
+//完成评价的标签
+@property (nonatomic,strong) UILabel *completedEvaluationLabel;
+//【感谢评价】的 view
+@property (nonatomic,strong) UIView *bgView;
 @end
 
 @implementation GKOrderRateViewController
@@ -84,6 +89,7 @@ static NSString *GKOrderCellID = @"GKOrderCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.starCanChanging = false;
 //    self.title = @"订单评价";
     [self.view setBackgroundColor:TABLEVIEW_BG];
     [self setupUI];
@@ -99,9 +105,10 @@ static NSString *GKOrderCellID = @"GKOrderCell";
         make.height.mas_equalTo(0);
     }];
     //更新 BusView:GKOrderEvaluationView（订单管理->详情->订单评价）
-    _orderEvaluationView = [[GKOrderEvaluationView alloc]init];
+    _orderEvaluationView = [GKOrderEvaluationView dc_viewFromXib];
     [self.view addSubview:_orderEvaluationView];
-    _orderEvaluationView.starCanChange = false;
+//    _orderEvaluationView = [[GKOrderEvaluationView alloc]init];
+//    [self.view addSubview:_orderEvaluationView];
     [_orderEvaluationView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view).offset(K_HEIGHT_NAVBAR+10);
         make.left.right.equalTo(self.view);
@@ -117,7 +124,7 @@ static NSString *GKOrderCellID = @"GKOrderCell";
     }];
     [consumeView setBackgroundColor:[UIColor whiteColor]];
     
-    //设置定位按钮
+    //设置【查看明细】按钮
     DCZuoWenRightButton *detailsCheckBtn = [DCZuoWenRightButton buttonWithType:UIButtonTypeCustom];
 //    UIButton *detailsCheckBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
@@ -186,7 +193,7 @@ static NSString *GKOrderCellID = @"GKOrderCell";
     [titleLabel setTextColor:TEXTGRAYCOLOR];
     [titleLabel setText:@"匿名评价司机"];
     
-    starView = [[HYBStarEvaluationView alloc]initWithFrame:CGRectMake(120, 80, 125, 22) numberOfStars:5 isVariable:YES];
+    starView = [[HYBStarEvaluationView alloc]initWithFrame:CGRectMake(120, 80, 125, 22) numberOfStars:5 isVariable:self.starCanChanging];
     starView.actualScore = 0;
     starView.fullScore = 5;
     starView.delegate = self;
@@ -226,6 +233,23 @@ static NSString *GKOrderCellID = @"GKOrderCell";
 //        make.height.mas_equalTo(evaluateFooterView.bounds.size.height/2);
         make.height.mas_equalTo(120);
     }];
+    //已完成评价
+    UILabel *completedEvaluationLabel= [[UILabel alloc]init];
+    [completedEvaluationLabel setText:@"已完成评价"];
+    [completedEvaluationLabel setTextColor:RGBA(255, 204, 35, 1)];
+    [completedEvaluationLabel setFont:GKFont(12)];
+    completedEvaluationLabel.textAlignment = NSTextAlignmentCenter;
+    [evaluateFooterView addSubview:completedEvaluationLabel];
+    [completedEvaluationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.bottom.equalTo(evaluateFooterView);
+        //        make.centerX.equalTo(self.starView);
+        make.size.mas_equalTo(CGSizeMake(70, 17));
+    }];
+    [completedEvaluationLabel setHidden:!self.starCanChanging?false:true];
+    self.completedEvaluationLabel = completedEvaluationLabel;
+    
+    
+    
     evaluationContentTF.dataDetectorTypes = UIDataDetectorTypePhoneNumber | UIDataDetectorTypeLink;
     evaluationContentTF.backgroundColor = TABLEVIEW_BG;
     evaluationContentTF.textColor = [UIColor darkGrayColor];
@@ -318,32 +342,6 @@ static NSString *GKOrderCellID = @"GKOrderCell";
     [endingBtn setTitle:@"匿名提交" forState:UIControlStateNormal];
     [endingBtn setBackgroundImage:SETIMAGE(@"btn_5_normal") forState:UIControlStateNormal];
     self.endingBtn = endingBtn;
-    
-    
-//    self.textView = [[UITextView alloc]initWithFrame:CGRectMake(5,50,300,170)];
-//    self.textView = evaluationContentTF;
-//    self.textView.delegate = self;
-//    self.textView.layer.borderWidth = 1.0;//边宽
-//    self.textView.layer.cornerRadius = 5.0;//设置圆角
-////    self.textView.layer.borderColor =[[UIColor grayColor]colorWithAlphaComponet:0.5];
-//    self.textView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-//    //再创建个可以放置默认字的lable
-//    self.placeHolderLabel = [[UILabel alloc]initWithFrame:CGRectMake(5,-5,290,60)];
-//    self.placeHolderLabel.numberOfLines = 0;
-//    self.placeHolderLabel.text = @"请输入你的意见最多140字";
-//    self.placeHolderLabel.backgroundColor =[UIColor clearColor];
-//    //多余的一步不需要的可以不写  计算textview的输入字数
-//    self.residueLabel = [[UILabel alloc]init];
-////    [[UILabel alloc]initWithFrame:CGReactMake:(240,140,60,20)];
-//
-//    self.residueLabel.backgroundColor = [UIColor clearColor];
-//    self.residueLabel.font = [UIFont fontWithName:@"Arial" size:12.0f];
-//    self.residueLabel.text =[NSString stringWithFormat:@"140/140"];
-//    self.residueLabel.textColor = [[UIColor grayColor]colorWithAlphaComponent:0.5];
-//    //最后添加上即可
-//    [self.view addSubview :self.textView];
-//    [self.textView addSubview:self.placeHolderLabel];
-//    self.evaluationContentTF = evaluationContentTF;
 }
 
 -(void)getData{
