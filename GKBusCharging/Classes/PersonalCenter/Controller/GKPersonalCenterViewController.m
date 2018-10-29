@@ -647,7 +647,9 @@
 //            [self initAlertView:titleStr vlue02:messageStr];
             // 3.GCD转主线程进行该操作
             dispatch_async(dispatch_get_main_queue(), ^{
-                 [self initAlertView:titleStr vlue02:messageStr];
+                if (titleStr != nil && messageStr != nil) {
+                    [self initAlertView:titleStr vlue02:messageStr];
+                }
             });
 //            alert.tag = [kAppID intValue];
 //            [alert show];
@@ -663,6 +665,7 @@
     }];
     [task resume];
 }
+
 - (void)initAlertView:(NSString *)str vlue02:(NSString *)str2{
     SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"" andMessage:str2];
     [alertView addButtonWithTitle:@"稍后"
@@ -683,6 +686,7 @@
     
     [alertView show];
 }
+
 -(void)againAndOfTheCharging{
     //点击”升级“按钮，就从打开app store上应用的详情页面
 //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.trackViewUrl]];

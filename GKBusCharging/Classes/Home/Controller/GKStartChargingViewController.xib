@@ -184,7 +184,7 @@
                 <constraint firstItem="OZT-xk-dnv" firstAttribute="bottom" secondItem="rM1-UF-1gG" secondAttribute="bottom" constant="30" id="xNE-Tt-G4m"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-352.5" y="-88"/>
+            <point key="canvasLocation" x="-375" y="-78"/>
         </view>
     </objects>
     <resources>

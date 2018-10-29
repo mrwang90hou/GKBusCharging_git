@@ -15,7 +15,7 @@
 #define GKMAIN_URL_TEST @"http://allenryosuke.nat300.top"
 
 //正式发布时需要改成1
-#define RELEASEtoAPPSTORE 0
+#define RELEASEtoAPPSTORE 1
 
 #if RELEASEtoAPPSTORE
 // 1 = YES
