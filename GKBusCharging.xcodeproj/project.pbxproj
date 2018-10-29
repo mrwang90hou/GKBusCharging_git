@@ -36,6 +36,8 @@
 		0B70D2A421607CDA00C77DFE /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B70D29F21607CDA00C77DFE /* SIAlertView.bundle */; };
 		0B70D2A521607CDA00C77DFE /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B70D2A121607CDA00C77DFE /* SIAlertView.m */; };
 		0B70D2A621607CDA00C77DFE /* UIWindow+SIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B70D2A321607CDA00C77DFE /* UIWindow+SIUtils.m */; };
+		0B7246A32186D60E00DAB8F9 /* GKWithdrawalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7246A22186D60E00DAB8F9 /* GKWithdrawalViewController.m */; };
+		0B7246A62186FD7D00DAB8F9 /* CALayer+LayerColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7246A52186FD7D00DAB8F9 /* CALayer+LayerColor.m */; };
 		0B7C81E2215CCEE800A06345 /* GKUpDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C81DD215CCEE700A06345 /* GKUpDownButton.m */; };
 		0B7C81E3215CCEE800A06345 /* DCZuoWenRightButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C81DF215CCEE700A06345 /* DCZuoWenRightButton.m */; };
 		0B7C81EB215CDAFD00A06345 /* UIButton+GKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C81EA215CDAFD00A06345 /* UIButton+GKButton.m */; };
@@ -314,6 +316,10 @@
 		0B70D2A121607CDA00C77DFE /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
 		0B70D2A221607CDA00C77DFE /* UIWindow+SIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SIUtils.h"; sourceTree = "<group>"; };
 		0B70D2A321607CDA00C77DFE /* UIWindow+SIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+SIUtils.m"; sourceTree = "<group>"; };
+		0B7246A12186D60500DAB8F9 /* GKWithdrawalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKWithdrawalViewController.h; sourceTree = "<group>"; };
+		0B7246A22186D60E00DAB8F9 /* GKWithdrawalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKWithdrawalViewController.m; sourceTree = "<group>"; };
+		0B7246A42186FD7D00DAB8F9 /* CALayer+LayerColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+LayerColor.h"; sourceTree = "<group>"; };
+		0B7246A52186FD7D00DAB8F9 /* CALayer+LayerColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+LayerColor.m"; sourceTree = "<group>"; };
 		0B7C81DC215CCEE700A06345 /* GKUpDownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKUpDownButton.h; sourceTree = "<group>"; };
 		0B7C81DD215CCEE700A06345 /* GKUpDownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKUpDownButton.m; sourceTree = "<group>"; };
 		0B7C81DE215CCEE700A06345 /* DCZuoWenRightButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCZuoWenRightButton.h; sourceTree = "<group>"; };
@@ -1258,6 +1264,8 @@
 				0B9CF349215B8A6C00F76671 /* UILabel+DCLabel.m */,
 				0B9CF34A215B8A6C00F76671 /* UIView+DCExtension.h */,
 				0B9CF34B215B8A6C00F76671 /* UIView+DCExtension.m */,
+				0B7246A42186FD7D00DAB8F9 /* CALayer+LayerColor.h */,
+				0B7246A52186FD7D00DAB8F9 /* CALayer+LayerColor.m */,
 			);
 			path = "Category(分类)";
 			sourceTree = "<group>";
@@ -1870,6 +1878,8 @@
 				0BC4047F216DF61800EFC9AC /* GKTopUpTermsViewController.m */,
 				0B8E5F1B217DC38A0011B600 /* GKTransactionDetailsViewController.h */,
 				0B8E5F1A217DC38A0011B600 /* GKTransactionDetailsViewController.m */,
+				0B7246A12186D60500DAB8F9 /* GKWithdrawalViewController.h */,
+				0B7246A22186D60E00DAB8F9 /* GKWithdrawalViewController.m */,
 				9275D2472169D9CF0004DBFE /* GKOrderManagementViewController.h */,
 				9275D2462169D9CE0004DBFE /* GKOrderManagementViewController.m */,
 				9275D24E216A11620004DBFE /* GKOrderRateViewController.h */,
@@ -2138,6 +2148,7 @@
 				0B9CF449215B8D7F00F76671 /* UIView+Snapshot.m in Sources */,
 				0B8D0DFC215DB97F00030966 /* JFLocation.m in Sources */,
 				92FB06C4216681910001D38B /* GKRechargeViewController.m in Sources */,
+				0B7246A32186D60E00DAB8F9 /* GKWithdrawalViewController.m in Sources */,
 				0B9CF464215B8D7F00F76671 /* XWFilterAnimator+XWRipple.m in Sources */,
 				0BE6583C2178980F004F6DB3 /* GKRechargeCardCell.m in Sources */,
 				0B879F15217F178F007169B4 /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m in Sources */,
@@ -2280,6 +2291,7 @@
 				0B7C81EE215CDB3800A06345 /* UIButton+GKUpDownButton.m in Sources */,
 				0BAB872D218170DC005DCD84 /* GKFeedbackCell.m in Sources */,
 				0B9CF443215B8D7F00F76671 /* PYSearchSuggestionViewController.m in Sources */,
+				0B7246A62186FD7D00DAB8F9 /* CALayer+LayerColor.m in Sources */,
 				0B879F19217F178F007169B4 /* RespForWeChatViewController.mm in Sources */,
 				0B9CF45C215B8D7F00F76671 /* XWDrawerAnimator.m in Sources */,
 				9211939B2168C25B001DEC72 /* GKServiceTermsViewController.m in Sources */,

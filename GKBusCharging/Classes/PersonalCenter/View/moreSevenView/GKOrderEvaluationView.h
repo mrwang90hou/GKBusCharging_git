@@ -11,12 +11,9 @@
 
 @interface GKOrderEvaluationView : UIView
 
-@property (nonatomic,assign) Boolean starCanChange;
-@property (nonatomic,assign) CGFloat actualScore;
-@property (nonatomic,strong) HYBStarEvaluationView *starView;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UILabel *busNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *busCardNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *starScoreLabel;
 
-@property (nonatomic,strong) UILabel *completedEvaluationLabel;
 @end

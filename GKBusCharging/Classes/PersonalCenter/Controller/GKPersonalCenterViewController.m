@@ -456,7 +456,7 @@
             break;
         case 5://紧急报警
 //            GKEvaluateViewController *dcFVc = [[GKEvaluateViewController alloc] init];
-            nextVC = [[GKEvaluateViewController alloc] init];
+//            nextVC = [[GKEvaluateViewController alloc] init];
 //            [nextVC setUpFeatureAttribute:^(NSArray *__autoreleasing *imageArray, UIColor *__autoreleasing *selColor, BOOL *showSkip, BOOL *showPageCount) {
 //                *imageArray = @[@"guide1",@"guide2",@"guide3",@"guide4"];
 //                *showPageCount = YES;
@@ -464,7 +464,8 @@
 //            }];
 //            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
 //            [SVProgressHUD showErrorWithStatus:@"暂用于GKStartChargingViewController测试页面！"];
-//            return;
+//            return
+            nextVC = [[GKStartChargingViewController alloc]init];
             break;
         case 6://意见反馈
             nextVC = [[GKFeedBackViewController alloc] init];

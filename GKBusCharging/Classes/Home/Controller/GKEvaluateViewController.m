@@ -41,6 +41,8 @@
 @property (nonatomic,strong) GKReturnGuideView01 *returnGuideView01;
 @property (nonatomic,strong) GKReturnGuideView02 *returnGuideView02;
 
+//【感谢评价】的 view
+@property (nonatomic,strong) UIView *bgView;
 @end
 static NSString *const DCNewFeatureCellID = @"DCNewFeatureCell";
 static NSString *const DCNewFeatureCellID2 = @"DCNewFeatureCell2";
@@ -239,7 +241,82 @@ static NSString *const DCNewFeatureCellID2 = @"DCNewFeatureCell2";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+//感谢评价的 View
+-(void)setUIEndView{
+    
+    // 大背景
+    UIView *bgView = [[UIView alloc] init];
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:bgView];
+    bgView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+    [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+    self.bgView = bgView;
+    [self setKeyBoardListener];
+    //整体的布局view
+    UIView *mainView = [UIView new];
+    [bgView addSubview:mainView];
+    [mainView setBackgroundColor:[UIColor whiteColor]];
+    [mainView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(bgView);
+        make.centerY.mas_equalTo(bgView).mas_offset(0);
+        make.left.mas_equalTo(bgView.mas_left).with.offset(ScreenW/10);
+        make.right.mas_equalTo(bgView.mas_right).with.offset(-ScreenW/10);
+        //        make.height.mas_equalTo(mainView.mas_width);
+        make.height.mas_equalTo(ScreenH/4);
+        //make.width.mas_equalTo(200);
+    }];
+    mainView.layer.masksToBounds = YES;
+    mainView.layer.cornerRadius = 8;
+    mainView.userInteractionEnabled = NO;
+    //image
+    UIImageView *imageView = [[UIImageView alloc]initWithImage:SETIMAGE(@"icon_thanks_evaluate")];
+    [mainView addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(mainView);
+        make.centerY.equalTo(mainView).offset(-10);
+        make.size.mas_equalTo(CGSizeMake(52, 52));
+    }];
+    //label
+    UILabel *textLabel = [[UILabel alloc]init];
+    [textLabel setText:@"感谢评价"];
+    [textLabel setFont:GKFont(14)];
+    textLabel.textAlignment = NSTextAlignmentCenter;
+    [textLabel setTextColor:TEXTGRAYCOLOR];
+    [mainView addSubview:textLabel];
+    [textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(mainView.mas_centerY).offset(30);
+        make.centerX.equalTo(mainView);
+        make.size.mas_equalTo(CGSizeMake(88, 20));
+    }];
+    
+    
+}
 
+-(void)close{
+    [self.bgView removeFromSuperview];
+}
+//点击空白处的点击事件
+/**
+ *  @author 洛忆, 18-10-12 18:09:58
+ *
+ *  给当前view添加手势识别
+ */
+- (void)setKeyBoardListener
+{
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(screenClick)];
+    [self.bgView addGestureRecognizer:recognizer];
+}
+
+/**
+ *  @author 洛忆, 18-10-12 18:09:32
+ *
+ *  点击屏幕预备 removeFromSuperview
+ */
+- (void)screenClick
+{
+    [self close];
+}
 
 #pragma mark - LifeCyle
 
@@ -351,7 +428,8 @@ static NSString *const DCNewFeatureCellID2 = @"DCNewFeatureCell2";
     [SVProgressHUD showWithStatus:@"正在提交中，请稍后..."];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [SVProgressHUD dismiss];
-        [SVProgressHUD showSuccessWithStatus:@"提交成功！"];
+//        [SVProgressHUD showSuccessWithStatus:@"提交成功！"];
+        [self setUIEndView];
         [self updateUI];
     });
 }

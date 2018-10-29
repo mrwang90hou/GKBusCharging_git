@@ -60,7 +60,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="u0G-TX-vFr" firstAttribute="centerX" secondItem="juF-27-Skk" secondAttribute="centerX" id="51f-Hm-eht"/>
                                 <constraint firstAttribute="height" constant="22" id="PPU-88-GRZ"/>
@@ -69,15 +69,15 @@
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="12"/>
+                                    <integer key="value" value="4"/>
                                 </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="2"/>
-                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                    <color key="value" red="1" green="0.86666666670000003" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <real key="value" value="0.5"/>
                                 </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="layer.masksToBounds">
-                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer. borderColorFromUIColor">
+                                    <color key="value" red="0.77647058823529413" green="0.77254901960784317" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="综合评分" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9TX-h0-ov8" userLabel="综合评分">
@@ -134,6 +134,7 @@
                 <outlet property="busCardNumberLabel" destination="u0G-TX-vFr" id="Aar-Xz-FK0"/>
                 <outlet property="busNumberLabel" destination="vmZ-2a-4MW" id="l5t-W1-VVA"/>
                 <outlet property="headerView" destination="P81-Fh-uD1" id="BM7-Tu-dt2"/>
+                <outlet property="starScoreLabel" destination="anl-A6-pNi" id="1aJ-vJ-5mv"/>
             </connections>
             <point key="canvasLocation" x="-142.5" y="-173"/>
         </view>

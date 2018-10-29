@@ -198,7 +198,6 @@
 
 -(void)setUILoginByPhoneView{
     
-    
     // 大背景
     UIView *bgView = [[UIView alloc] init];
     [[[[UIApplication sharedApplication] delegate] window] addSubview:bgView];
@@ -228,7 +227,6 @@
 
 -(void)close{
     [self.bgView removeFromSuperview];
-    
 }
 
 - (IBAction)serviceContractAction:(id)sender {

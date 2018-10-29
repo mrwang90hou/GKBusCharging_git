@@ -48,7 +48,7 @@
     [self setTitle:@"打开手电筒" forState:UIControlStateNormal];
     [self setTitle:@"关闭手电筒" forState:UIControlStateSelected];
     [self setImage:[UIImage imageNamed:@"btn_flashlight"] forState:UIControlStateNormal];
-    [self setImage:[UIImage imageNamed:@"btn_flashlight"] forState:UIControlStateSelected];
+    [self setImage:[UIImage imageNamed:@"btn_flashlight_selected"] forState:UIControlStateSelected];
 //    [self setImage:[UIImage imageNamed:@"btn_flashlight"] forState:UIControlStateNormal];
 //    [self setImage:[UIImage imageNamed:@"flash_select"] forState:UIControlStateSelected];
     

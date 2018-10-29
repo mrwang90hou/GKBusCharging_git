@@ -75,7 +75,9 @@
 
 @property (nonatomic,strong) UIButton *busListBtn;
 
-@property (nonatomic,strong) GKUpDownButton *plusButton;
+//@property (nonatomic,strong) GKUpDownButton *plusButton;
+
+@property (nonatomic,strong) UIButton *plusButton;
 
 @property (nonatomic, strong) NSMutableArray *images;
 /* 弹窗评价窗口1 , 2 */
@@ -247,25 +249,42 @@
         make.size.mas_equalTo(tabBarView);
     }];
     //扫码按钮
-    GKUpDownButton *plusButton = [[GKUpDownButton alloc] init];
+//    GKUpDownButton *plusButton = [[GKUpDownButton alloc] init];
+    UIButton *plusButton = [[UIButton alloc] init];
     [plusButton setImage:SETIMAGE(@"nav_btn_scavenging_charging_normal") forState:UIControlStateNormal];
     [plusButton setImage:SETIMAGE(@"nav_btn_scavenging_charging_normal_2") forState:UIControlStateSelected];
     [plusButton setImage:SETIMAGE(@"nav_btn_scavenging_charging_normal_2") forState:UIControlStateHighlighted];
     // 设置图标
-    [plusButton setTitle:@"扫码充电" forState:UIControlStateNormal];
-    [plusButton setTitleColor:TEXTCOLOR_LIGHT forState:0];
-    [plusButton setTitleEdgeInsets:UIEdgeInsetsMake(80, AUTO(40),0, AUTO(40))];
-    plusButton.titleLabel.font = FONT(AUTO(13));
+//    [plusButton setTitle:@"扫码充电" forState:UIControlStateNormal];
+//    [plusButton setTitleColor:TEXTCOLOR_LIGHT forState:0];
+//    [plusButton setTitleEdgeInsets:UIEdgeInsetsMake(80, AUTO(40),0, AUTO(40))];
+//    [plusButton setTitleEdgeInsets:UIEdgeInsetsMake(80, AUTO(40),0, AUTO(40))];
+//    plusButton.titleLabel.font = FONT(AUTO(13));
     [plusButton addTarget:self action:@selector(scanQRCode) forControlEvents:UIControlEventTouchUpInside];
 //    plusButton.userInteractionEnabled = YES;
     [self.view addSubview:plusButton];
     [plusButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(imageView);
-        make.top.mas_equalTo(imageView).with.offset(-K_HEIGHT_TABBAR/2);
-        make.height.mas_equalTo(K_HEIGHT_TABBAR/2*3);
-        make.width.mas_equalTo(K_HEIGHT_TABBAR/2*3);
+//        make.top.mas_equalTo(imageView).with.offset(-K_HEIGHT_TABBAR/3*2);
+//        make.top.mas_equalTo(imageView).with.offset(-K_HEIGHT_TABBAR/2);
+//        make.height.mas_equalTo(K_HEIGHT_TABBAR/2*3);
+//        make.width.mas_equalTo(K_HEIGHT_TABBAR/2*3);
+        make.centerY.mas_equalTo(imageView.mas_top);
+        make.size.mas_equalTo(CGSizeMake(120, 120));
     }];
     self.plusButton = plusButton;
+    /*新增 button中的 label*/
+    UILabel *textLabel = [[UILabel alloc]init];
+    [plusButton addSubview:textLabel];
+    [textLabel setText:@"扫码充电"];
+    [textLabel setFont:GKFont(14)];
+    [textLabel setTextColor:RGBall(255)];
+    [textLabel setUserInteractionEnabled:NO];
+    [textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(plusButton);
+        make.bottom.mas_equalTo(plusButton.mas_top).offset(90);
+        make.size.mas_equalTo(CGSizeMake(60, 22));
+    }];
     //个人中心
     GKUpDownButton * personCenterBtn = [[GKUpDownButton alloc] init];
     [personCenterBtn setImage:SETIMAGE(@"nav_btn_personal_center_normal") forState:0];
@@ -678,7 +697,8 @@
 //    }];
     
     for (NSInteger i = 1; i <= 1; ++i) {
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"chonhaha_banner%ld",(long)i]];
+//        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"chonhaha_banner%ld",(long)i]];
+        UIImage *image = [UIImage imageNamed:@"banner_first_charge"];
         [self.images addObject:image];
     }
     self.advertiseView.localizationImageNamesGroup = self.images;
@@ -789,17 +809,32 @@
 
 
 -(void)clickContactPhone{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"拨打客服电话" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:TelePhoneNumber message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        return;
     }];
-    UIAlertAction *tel = [UIAlertAction actionWithTitle:TelePhoneNumber style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *tel = [UIAlertAction actionWithTitle:@"呼叫" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSMutableString * telUrl = [[NSMutableString alloc] initWithFormat:@"telprompt://%@",TelePhoneNumber];
+        
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telUrl]];
     }];
+    //修改title字体及颜色
+    NSMutableAttributedString *titleStr = [[NSMutableAttributedString alloc] initWithString:TelePhoneNumber];
+    [titleStr addAttribute:NSForegroundColorAttributeName value:TEXTMAINCOLOR range:NSMakeRange(0, titleStr.length)];
+    [titleStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:NSMakeRange(0, titleStr.length)];
+    [alert setValue:titleStr forKey:@"attributedTitle"];
+    // 修改message字体及颜色
+//    NSMutableAttributedString *messageStr = [[NSMutableAttributedString alloc] initWithString:@"此处展示提示消息"];
+//    NSMutableAttributedString *messageStr = [[NSMutableAttributedString alloc] initWithString:@""];
+//    [messageStr addAttribute:NSForegroundColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(0, messageStr.length)];
+//    [messageStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, messageStr.length)];
+//    [alert setValue:messageStr forKey:@"attributedMessage"];
     
+//    [alert setValue:TEXTMAINCOLOR forKey:@"_titleTextColor"];
+    [cancle setValue:BUTTONMAINCOLOR forKey:@"_titleTextColor"];
+    [tel setValue:BUTTONMAINCOLOR forKey:@"_titleTextColor"];
     [alert addAction:tel];
-    [alert addAction:cancel];
+    [alert addAction:cancle];
     [self presentViewController:alert animated:YES completion:^{
         
     }];
