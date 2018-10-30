@@ -50,7 +50,7 @@
         [SVProgressHUD dismiss];
         [DCObjManager dc_saveUserData:self.nameTF.text forKey:@"UserName"];
         [SVProgressHUD showSuccessWithStatus:@"保存成功！"];
-        [[NSNotificationCenter defaultCenter] postNotificationName:KNotiUserNameChange object:nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:KNotiUserNameChange object:nil];
         //                    [self dismissViewControllerAnimated:YES completion:nil];
         [self.navigationController popViewControllerAnimated:YES];
     });

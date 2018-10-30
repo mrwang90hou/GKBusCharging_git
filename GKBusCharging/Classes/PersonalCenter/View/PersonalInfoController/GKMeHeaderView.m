@@ -63,11 +63,11 @@
         nameLabel.textAlignment = NSTextAlignmentCenter;
         [nameLabel setTextColor:RGBA(88, 79, 96, 0.9)];
         [nameLabel setText:@""];
-        if ([DCObjManager dc_readUserDataForKey:@"UserName"] != nil) {
-            [nameLabel setText:[DCObjManager dc_readUserDataForKey:@"UserName"]];
-        }else{
-            [nameLabel setText:@"昵称"];
-        }
+//        if ([DCObjManager dc_readUserDataForKey:@"UserName"] != nil) {
+//            [nameLabel setText:[DCObjManager dc_readUserDataForKey:@"UserName"]];
+//        }else{
+//            [nameLabel setText:@"昵称"];
+//        }
         self.nameLabel = nameLabel;
         
         UIButton * changeNameBtn = [UIButton new];

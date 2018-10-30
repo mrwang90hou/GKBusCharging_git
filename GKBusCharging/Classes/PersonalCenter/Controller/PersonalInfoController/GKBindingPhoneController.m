@@ -106,7 +106,7 @@
                     [SVProgressHUD showSuccessWithStatus:@"绑定成功！"];
 //                    [self dismissViewControllerAnimated:YES completion:nil];
                     [self.navigationController popViewControllerAnimated:YES];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:KNotiPhoneNumberChange object:nil];
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:KNotiPhoneNumberChange object:nil];
 //                    [self dismissViewControllerAnimated:YES completion:^{
 //                         [SVProgressHUD showSuccessWithStatus:@"绑定成功！"];
 //                    }];

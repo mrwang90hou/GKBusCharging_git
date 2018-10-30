@@ -26,6 +26,7 @@
 @property (nonatomic,assign) NSInteger indexPath;
 @property (nonatomic,strong) NSIndexPath *nsIndexPath;
 @property (nonatomic,strong) GKMeHeaderView *headerView;
+@property (nonatomic,strong) NSString *phoneStr;
 
 @end
 
@@ -63,10 +64,10 @@
     self.title = @"个人中心";
 //    [SVProgressHUD showInfoWithStatus:@"验证码发送成功"];
     self.view.backgroundColor = TABLEVIEW_BG;
+    [self requestData];
     [self getData];
     [self getUI];
-    [self addObserver];
-    [self requestData];
+//    [self addObserver];
 }
 
 
@@ -129,7 +130,7 @@
 
 - (void)getData{
     _statusArray = [[NSMutableArray alloc]init];
-    NSArray *arr = @[@1,@1,@0];
+    NSArray *arr = @[@1,@0,@0];
 //    _statusArray = [NSMutableArray arrayWithCapacity:arr];
     
 //    _statusArray = [arr mutableCopy];
@@ -153,9 +154,10 @@
         //                             };
         [GCHttpDataTool getUserInfoWithDict:nil success:^(id responseObject) {
             [SVProgressHUD dismiss];
-//            [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
-            //            [responseObject[@"type"] intValue];
-            //            [responseObject[@"userid"] string];
+            [self.headerView.nameLabel setText:responseObject[@"nickName"]];
+            [self.headerView.nameLabel setText:responseObject[@"cname"]];
+            self.phoneStr = responseObject[@"phone"];
+//            NSLog(@"phoneStr = %@",self.phoneStr);
         } failure:^(MQError *error) {
             [SVProgressHUD showErrorWithStatus:error.msg];
         }];
@@ -189,23 +191,20 @@
             cell.endLabel.text =  [_statusArray objectAtIndex:2];
             cell.accessoryType = [[_statusArray objectAtIndex:0] length]==4 ? UITableViewCellAccessoryDisclosureIndicator:UITableViewCellAccessoryNone;
         }
-        
         cell.textLabel.text = cell.desLabel.text;
         cell.detailTextLabel.text = [_statusArray objectAtIndex: indexPath.row];
 //        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.accessoryType = [[_statusArray objectAtIndex:indexPath.row] length]==4 ? UITableViewCellAccessoryDisclosureIndicator:UITableViewCellAccessoryNone;
-//        cell.userInteractionEnabled = [[_statusArray objectAtIndex:indexPath.row] length]==4 ? YES:NO;
+        cell.accessoryType = [[_statusArray objectAtIndex:indexPath.row] length]==4||indexPath.row == 0 ? UITableViewCellAccessoryDisclosureIndicator:UITableViewCellAccessoryNone;
+        cell.userInteractionEnabled = [[_statusArray objectAtIndex:indexPath.row] length]==4||indexPath.row == 0 ? YES:NO;
 //        cell.accessoryType = UITableViewCellAccessoryNone;
 //        cell.detailTextLabel.text = @"wangning";
 //        cell.textLabel.text = @"textLabel";
-//        cell.l
 //        NSLog(@"[_statusArray objectAtIndex:0] containsObject:@‘已’] = %d\n[_statusArray objectAtIndex:0] count]= %lu",[[_statusArray objectAtIndex:0] containsObject:@"已"],(unsigned long)[[_statusArray objectAtIndex:0] count]);
     }else{
         UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"LYChatGroupSettingDefault"];
         cell.backgroundColor = [UIColor clearColor];
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
         GKButton * logoutBtn = [GKButton new];
         [cell.contentView addSubview:logoutBtn];
         [logoutBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -252,10 +251,11 @@
                      [self.navigationController pushViewController:[GKBindingPhoneController new] animated:YES];
                 }else{
                     //更换手机号
-                     [self.navigationController pushViewController:[GKChangeIPhoneController new] animated:YES];
+                    GKChangeIPhoneController *vc = [[GKChangeIPhoneController alloc]init];
+                    vc.phoneNumber = self.phoneStr;
+                     [self.navigationController pushViewController:vc animated:YES];
                 }
-                
-                [[_statusArray objectAtIndex:indexPath.row] length]==4 ? UITableViewCellAccessoryDisclosureIndicator:UITableViewCellAccessoryNone;
+//                [[_statusArray objectAtIndex:indexPath.row] length]==4 ? UITableViewCellAccessoryDisclosureIndicator:UITableViewCellAccessoryNone;
                 break;
             case 1:
                 
@@ -359,13 +359,9 @@
     });
 }
 
-
-
-
-
 #pragma mark -(注销)退出登录操作
 - (void)logoutBtnClick{
-    UIAlertController *alert    = [UIAlertController alertControllerWithTitle:@"确认退出?" message:@"退出登录将无法查看个人信息,重新登录后即可查看" preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确认退出?" message:@"退出登录将无法查看个人信息,重新登录后即可查看" preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *logoutAction     = [UIAlertAction actionWithTitle:@"确认" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         //执行注销
         [self logoutSure];

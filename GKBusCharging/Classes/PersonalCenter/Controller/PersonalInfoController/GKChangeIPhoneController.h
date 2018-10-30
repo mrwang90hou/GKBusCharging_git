@@ -10,4 +10,5 @@
 
 @interface GKChangeIPhoneController : GKBaseSetViewController
 
+@property (nonatomic,strong) NSString *phoneNumber;
 @end

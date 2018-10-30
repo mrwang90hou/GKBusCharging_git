@@ -59,7 +59,7 @@
     [self addSubview:self.titleLabel];
     
     self.infoLabel = [[UILabel alloc] init];
-    self.infoLabel.font = [UIFont systemFontOfSize:10];
+    self.infoLabel.font = [UIFont systemFontOfSize:15];
     self.infoLabel.backgroundColor = [UIColor whiteColor];
 //    self.infoLabel.textAlignment = NSTextAlignmentCenter;
     self.infoLabel.textColor = RGB(31, 206, 155);
@@ -86,8 +86,14 @@
         make.size.mas_equalTo(CGSizeMake(ScreenW/4, 15));
     }];
 
+//    [self.infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(self.titleLabel);
+//        make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(6);
+//        make.size.mas_equalTo(CGSizeMake(ScreenW/3, 15));
+//    }];
+
     [self.infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.titleLabel);
+        make.left.mas_equalTo(self.titleLabel.mas_right).offset(3);
         make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(6);
         make.size.mas_equalTo(CGSizeMake(ScreenW/3, 15));
     }];

@@ -47,10 +47,12 @@
     [headerBGView setBackgroundColor:RGBall(247)];
     [self.view addSubview:headerBGView];
     
-    
-    
     UILabel *phoneLabel = [[UILabel alloc]init];
-    [phoneLabel setText:@"138***38000"];
+//    [phoneLabel setText:@"138***38000"];
+//    NSLog(@"self.phoneNumber = %@",self.phoneNumber);
+    NSString *bStr = [self.phoneNumber substringWithRange:NSMakeRange(3,3)];
+    NSString *newStr = [self.phoneNumber stringByReplacingOccurrencesOfString:bStr withString:@"***"];
+    [phoneLabel setText:newStr];
     [phoneLabel setFont:[UIFont fontWithName:PFR size:18]];
     phoneLabel.textAlignment = NSTextAlignmentCenter;
     [headerBGView addSubview:phoneLabel];
@@ -59,8 +61,7 @@
         make.centerX.equalTo(headerBGView);
         make.size.mas_equalTo(CGSizeMake(200, 18));
     }];
-    
-    
+
     UILabel *titleLabel = [[UILabel alloc]init];
     [titleLabel setText:@"当前手机号"];
     [titleLabel setFont:[UIFont fontWithName:PFR size:16]];
@@ -101,7 +102,7 @@
                     [SVProgressHUD showSuccessWithStatus:@"绑定成功！"];
 //                    [self dismissViewControllerAnimated:YES completion:nil];
                     [self.navigationController popViewControllerAnimated:YES];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:KNotiPhoneNumberChange object:nil];
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:KNotiPhoneNumberChange object:nil];
 //                    [self dismissViewControllerAnimated:YES completion:^{
 //                         [SVProgressHUD showSuccessWithStatus:@"绑定成功！"];
 //                    }];

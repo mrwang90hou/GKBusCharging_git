@@ -43,8 +43,25 @@
     self.view.backgroundColor = TABLEVIEW_BG;
     self.title = @"余额";
     [self setUI];
+    [self requestData];
 }
-
+//用户信息查询
+-(void)requestData{
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+    if (cookid) {
+        [GCHttpDataTool getUserInfoWithDict:nil success:^(id responseObject) {
+            [SVProgressHUD dismiss];
+            self.balanceLabel.text = [NSString stringWithFormat:@"%@元",[responseObject[@"balance"] stringValue]];
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+        }];
+        NSLog(@"《冲哈哈》获取用户cookid成功");
+    }else{
+        //        [SVProgressHUD showErrorWithStatus:@"cookid is null"];
+        NSLog(@"❌❌获取用户cookid失败❌❌");
+        return;
+    }
+}
 -(void)setUI{
 //    UIImageView *favourableActivityBGView = [[UIImageView alloc]initWithFrame:CGRectMake(5, K_HEIGHT_NAVBAR+5, ScreenW-10, 56)];
     UIImageView *favourableActivityBGView = [[UIImageView alloc]init];
@@ -285,7 +302,7 @@
     //查看交易明细
     UIButton *transactionDetailsBtn = [[UIButton alloc]init];
     [transactionDetailsBtn setTitle:@"查看交易明细" forState:UIControlStateNormal];
-    [transactionDetailsBtn setTitleColor:TEXTMAINCOLOR forState:UIControlStateNormal];
+    [transactionDetailsBtn setTitleColor:BUTTONMAINCOLOR forState:UIControlStateNormal];
     transactionDetailsBtn.titleLabel.font = GKFont(14);
     [transactionDetailsBtn addTarget:self action:@selector(transactionDetailsBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:transactionDetailsBtn];

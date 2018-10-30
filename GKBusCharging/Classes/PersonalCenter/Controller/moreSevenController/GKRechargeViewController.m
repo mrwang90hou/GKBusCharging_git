@@ -322,9 +322,10 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
         if (cell.selected && bl) {
             switch (i) {
                 case 0://微信
-                    //
-                    [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
-                    return;
+                    //[SVProgressHUD showErrorWithStatus:@"暂未开通！"];
+                    //获取微信支付下单信息
+                    [self doWXPay];
+//                    return;
                     break;
                 case 1://支付宝
                     [self doAPPay];
@@ -480,6 +481,12 @@ static NSString *GKRechargeStyleCellID = @"GKRechargeStyleCell";
         [resultStr appendString:oneStr];
     }
     return resultStr;
+}
+
+
+#pragma mark - 微信支付：WXPay
+-(void)doWXPay{
+//    【微信支付】待接入完成
 }
 
 @end
