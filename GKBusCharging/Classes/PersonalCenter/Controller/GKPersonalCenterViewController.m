@@ -59,9 +59,9 @@
 
 @property (nonatomic,strong) NSMutableArray *imagesListArray;
 
-@property (retain, strong) GKPersonalHeaderView *headerView;
+@property (nonatomic, strong) GKPersonalHeaderView *headerView;
 
-@property (retain, strong) UILabel *headTitleLabel;
+@property (nonatomic, strong) UILabel *headTitleLabel;
 
 @property (nonatomic,strong) UICollectionView *collectionView;
 /**
@@ -73,6 +73,9 @@
  应用更新
  */
 @property (nonatomic,strong) NSString *trackViewUrl;
+
+//金额
+@property (nonatomic,strong) NSString *balancePrice;
 @end
 
 @implementation GKPersonalCenterViewController
@@ -196,7 +199,7 @@
     self.title = @"个人中心";
     [self getUI];
     [self getData];
-    [self addObserver];
+//    [self addObserver];
 //    self.view.backgroundColor = [UIColor redColor];
 //    self.collectionView.backgroundColor = [UIColor whiteColor];
 }
@@ -219,9 +222,9 @@
     //登录成功
     if ([[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
         [self requestData];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self requestData2];
-        });
+//        });
     } else {
         return;
     }
@@ -263,8 +266,40 @@
 //            [SVProgressHUD showSuccessWithStatus:@"查询用户状态成功！"];
             //            [responseObject[@"type"] intValue];
             //            [responseObject[@"userid"] string];
+            
+            [self.headTitleLabel setText:responseObject[@"nickName"]];
+            [self.headerView.headTitleLabel setText:responseObject[@"cname"]];
+//            [self.headerView.headTitleLabel setText:responseObject[@"phone"]];
+            [self.headerView.phoneBtn setTitle:responseObject[@"phone"] forState:UIControlStateNormal];
+            int monkey = [responseObject[@"balance"] intValue];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            GKPersonalCell *cell = (GKPersonalCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+            
+            
+//            UILabel *label = [[UILabel alloc] initWithFrame:(CGRectMake(0, 100, 375, 30))];
+//            [self.view addSubview:label];
+//            NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"addAttribute:NSForegroundColorAttributeName"];
+            NSString *newStr = [NSString stringWithFormat:@"余额: %@元",[NSString stringWithFormat:@"%d",monkey]];
+            
+            NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:newStr];
+            [string addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, 3)];
+            [string addAttribute:NSForegroundColorAttributeName value:BUTTONMAINCOLOR range:NSMakeRange(3, [newStr length]-3)];
+//            [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.692 green:0.439 blue:1.000 alpha:1.000] range:NSMakeRange(30, 13)];
+//            [string addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold"size:14.0] range:NSMakeRange(0, 3)];
+            [string addAttribute:NSFontAttributeName value:GKFont(15) range:NSMakeRange(0, 3)];
+            [string addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial-BoldItalicMT"size:14.0] range:NSMakeRange(3, [newStr length]-3)];
+//            [string addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial-BoldItalicMT"size:14.0] range:NSMakeRange(3, [string accessibilityElementCount])];
+//            [string addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Courier-BoldOblique"size:14.0] range:NSMakeRange(30, 13)];
+//            label.attributedText = string;
+            
+//            cell.infoLabel.text = [NSString stringWithFormat:@"余额：%d",monkey];
+            
+            cell.titleLabel.attributedText = string;
+//            cell.infoLabel.text = [NSString stringWithFormat:@"%d",monkey];
         } failure:^(MQError *error) {
             [SVProgressHUD showErrorWithStatus:error.msg];
+            [self.headerView.headTitleLabel setText:@"昵称"];
+            [self.headerView.phoneBtn setTitle:@"绑定手机号码" forState:UIControlStateNormal];
         }];
         NSLog(@"《冲哈哈》获取用户cookid成功");
     }else{
@@ -292,9 +327,11 @@
 //    [headerView.phoneBtn setTitle:[DCObjManager dc_getObjectByFileName:@"手机号"] forState:UIControlStateNormal];
     [headerView.iconImageViewBtn addTarget:self action:@selector(turnToGKMeViewController) forControlEvents:UIControlEventTouchUpInside];
     [headerView.phoneBtn addTarget:self action:@selector(turnToGKBindingPhoneController) forControlEvents:UIControlEventTouchUpInside];
+//    [headerView.headTitleLabel setText:@"nicnag"];
     self.headerView = headerView;
     self.headTitleLabel = headerView.headTitleLabel;
-    
+//    [self.headerView.headTitleLabel setText:@"nicnag"];
+//    [self updateUIReload];
     //1.初始化layout
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.collectionView.backgroundColor = TABLEVIEW_BG;
@@ -323,7 +360,6 @@
 -(void)updateUIReload{
 //    [SVProgressHUD showInfoWithStatus:@"updateUIReload"];
 //    [self.headTitleLabel setText:[DCObjManager dc_readUserDataForKey:@"UserName"]];
-    
 //    NSLog(@"updateUIReload");
     if ([DCObjManager dc_readUserDataForKey:@"UserName"] != nil) {
         [self.headerView.headTitleLabel setText:[DCObjManager dc_readUserDataForKey:@"UserName"]];
@@ -394,9 +430,11 @@
     cell.backgroundColor = [UIColor whiteColor];
     
     if (indexPath.row == 0) {
+//        [cell.titleLabel setDc_size:CGSizeMake(40, 21)];
 //        cell.infoLabel = [NSUserDefaults ];
-        cell.infoLabel.text = @"120元";
-        [cell.infoLabel setHidden:false];
+        cell.infoLabel.text = @"";
+//        cell.infoLabel.text = self.balancePrice;
+        [cell.infoLabel setHidden:true];
     }else{
         cell.infoLabel.text = @"";
         [cell.infoLabel setHidden:true];
@@ -462,10 +500,10 @@
 //                *showPageCount = YES;
 //                *showSkip = YES;
 //            }];
-//            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
+            [SVProgressHUD showErrorWithStatus:@"暂未开通！"];
 //            [SVProgressHUD showErrorWithStatus:@"暂用于GKStartChargingViewController测试页面！"];
-//            return
-            nextVC = [[GKStartChargingViewController alloc]init];
+            return;
+//            nextVC = [[GKStartChargingViewController alloc]init];
             break;
         case 6://意见反馈
             nextVC = [[GKFeedBackViewController alloc] init];
@@ -545,54 +583,7 @@
 }
 
 
-#pragma mark -更新 APP 的方法
-////1. 在application中调用
-//-(void)checkVersionUpdata{
-//    NSString *urlStr    = @"http://itunes.apple.com/lookup?id=1438435188";//id替换即可
-//    NSURL *url          = [NSURL URLWithString:urlStr];
-//    NSURLRequest *req   = [NSURLRequest requestWithURL:url];
-//    [NSURLConnection connectionWithRequest:req delegate:self];
-//}
-////2. 网络连接
-//-(void)connection:(NSURLConnection *)connection didReceiveData:(nonnull NSData *)data
-//{
-//    NSError *error;
-//    id jsonObject           = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-//    [XKCEHint disMissLoading];
-//    NSDictionary *appInfo   = (NSDictionary*)jsonObject;
-//    NSArray *infoContent    = [appInfo objectForKey:@"results"];
-//    NSString * version      = [[infoContent objectAtIndex:0]objectForKey:@"version"];//线上最新版本
-//    // 获取当前版本
-//    NSString *currentVersion    = [self version];//当前用户版本
-//    BOOL result          = [currentVersion compare:version] == NSOrderedAscending;
-//    if (result) {//需要更新
-//        [XKCEGlobleData sharedData].version = @"1";
-//        NSLog(@"不是最新版本需要更新");
-//        NSString *updateStr = [NSString stringWithFormat:@"发现新版本V%@\n为保证软件的正常运行\n请及时更新到最新版本",version];
-//        [self creatAlterView:updateStr];
-//    } else {//已经是最新版；
-//        NSLog(@"最新版本不需要更新");
-//    }
-//}
-//3. 弹框提示
-//-(void)creatAlterView:(NSString *)msg{
-//    UIAlertController *alertText = [UIAlertController alertControllerWithTitle:@"更新提醒" message:msg preferredStyle:UIAlertControllerStyleAlert];
-//    //增加按钮
-//    [alertText addAction:[UIAlertAction actionWithTitle:@"我再想想" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-//    }]];
-//    [alertText addAction:[UIAlertAction actionWithTitle:@"立即更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//        NSString *str = @"itms-apps://itunes.apple.com/cn/app/id1329918420?mt=8"; //更换id即可
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-//    }]];
-////    [self.window.rootViewController presentViewController:alertText animated:YES completion:nil];
-//}
-////版本
-//-(NSString *)version
-//{
-//    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-//    NSString *app_Version       = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-//    return app_Version;
-//}
+
 - (void)updateApp
 {
     // kAPP_URL : @"http://itunes.apple.com/lookup?id=";

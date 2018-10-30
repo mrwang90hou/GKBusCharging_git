@@ -142,4 +142,68 @@
 //上传个人头像名字
 #define UPLOADPersonalHeaderImageURL GK_URL @"/charge/app/updateinfo"
 
+/**
+ *  上传用户头像名字
+ *  文件提交方式
+ *  请求头: cookid:账号唯一id
+ *  参数: name:名字 file:图片文件,可参考本请求方式
+ */
+//public static String sctxmzUrl = "http://www.zgzzwl.com.cn/charge/app/updateinfo";
+//public static String sctxmzUrl = isCS ? "http://allenryosuke.nat300.top/charge/app/updateinfo"
+//: "http://home.zgzzwl.com.cn/charge/app/updateinfo";
+//public static String sctxmzUrl = "http://allenryosuke.nat300.top/charge/app/updateinfo";
+
+
+/**
+ *  获取微信支付下单信息
+ *  请求头: cookid:账号唯一id
+ *  参数: moeny:金额,分为单位 types:类型码,暂定1
+ */
+#define GETWXPayOrderInfo GK_URL @"/charge/app/pay_order"
+
+//public static String wxpayUrl = "https://www.zgzzwl.com.cn/charge/app/pay_order";
+//public static String wxpayUrl = isCS ? "http://allenryosuke.nat300.top/charge/app/pay_order"
+//: "https://home.zgzzwl.com.cn/charge/app/pay_order";
+//public static String wxpayUrl = "http://allenryosuke.nat300.top/charge/app/pay_order";
+//用不到
+//public static String wxpayUrl = "http://allenryosuke.nat300.top/charge/smallrount/pay_order";
+
+/**
+ *  微信退款
+ *  请求头: cookid:账号唯一id
+ *  参数: moeny:退款金额,分为单位
+ */
+//public static String wxtkUrl = isCS ? "http://allenryosuke.nat300.top/charge/app/pay_return"
+//: "http://home.zgzzwl.com.cn/charge/app/pay_return";
+//public static String wxtkUrl = "http://www.zgzzwl.com.cn/charge/app/pay_return";
+//public static String wxtkUrl = "http://allenryosuke.nat300.top/charge/app/pay_return";
+
+
+/**
+ *  获取短信验证码
+ *  参数: phone:手机号码 token:识别码,暂定PK1ET0sXJatywLfN
+ */
+//public static String dxfsUrl = "http://www.zgzzwl.com.cn/charge/smallrount/sendcode";
+//public static String dxfsUrl = isCS ? "http://allenryosuke.nat300.top/charge/smallrount/sendcode"
+//: "http://home.zgzzwl.com.cn/charge/smallrount/sendcode";
+//public static String dxfsUrl = "http://allenryosuke.nat300.top/charge/smallrount/sendcode";
+
+/**
+ *  购买月卡
+ *  请求头: cookid:账号唯一id
+ *  参数: cardtype:月卡类型 5:7天 10:14天 20:60天免费
+ */
+//public static String gmykUrl = isCS ? "http://allenryosuke.nat300.top/charge/smallrount/recharge/buycard"
+//: "http://home.zgzzwl.com.cn/charge/smallrount/recharge/buycard";
+
+//返回客户端数据推送地址
+//public static String getWebSocketUrl() {
+//    MLog.v(webSocketUrl + "?type=selectcharge&userId=" + userId + "&socketId=" + socketId);
+    //MLog.v(webSocketUrl + "?type=selectcharge&userId=" + userId + "&socketId=9999887712345612");
+//    return webSocketUrl + "?type=selectcharge&userId=" + userId + "&socketId=" + socketId;
+    //return webSocketUrl + "?type=selectcharge&userId=03f194e58a16437fa8fc857a5dcabc45&socketId=9999887712345605";
+    //return webSocketUrl + "?type=selectcharge&userId=" + userId + "&socketId=9999887712345612";
+//}
+
+
 #endif

@@ -460,6 +460,22 @@
         
     }];
 }
++ (void)getWXPayOrderInfo:(NSDictionary *)dict success:(void (^)(id))success failure:(void (^)(MQError *))failure
+{
+    NSString *urlString=[NSString stringWithFormat:@"%@",GETWXPayOrderInfo];
+    
+    NSLog(@"当前URL请求【获取微信支付下单信息】为：%@",urlString);
+    NSLog(@"parameters参数为：%@",dict);
+    [GCHttpTool Post:urlString parameters:dict success:^(id responseObject) {
+        
+        success(responseObject);
+        
+    } failure:^(MQError *error) {
+        
+        failure(error);
+        
+    }];
+}
 
 
 

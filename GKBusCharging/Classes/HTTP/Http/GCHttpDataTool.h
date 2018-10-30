@@ -200,7 +200,12 @@
 + (void)getCityListWithDict:(NSDictionary *)dict success:(void (^)(id))success failure:(void (^)(MQError *))failure;
 
 
-
+/** WX【01】
+ *  获取微信支付下单信息
+ *  请求头: cookid:账号唯一id
+ *  参数: moeny:金额,分为单位 types:类型码,暂定1
+ */
++ (void)getWXPayOrderInfo:(NSDictionary *)dict success:(void (^)(id))success failure:(void (^)(MQError *))failure;
 
 
 
