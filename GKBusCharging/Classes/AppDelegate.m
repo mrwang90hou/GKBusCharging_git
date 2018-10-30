@@ -286,6 +286,7 @@
                 }
             }
             NSLog(@"授权结果 authCode = %@", authCode?:@"");
+            authCode?[SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"授权成功！authCode：%@",authCode]]:[SVProgressHUD showErrorWithStatus:@"授权失败！"];
         }];
     }else{
         return  [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];

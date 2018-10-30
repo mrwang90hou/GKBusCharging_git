@@ -34,11 +34,15 @@
 
 
 #import "WXApiRequestHandler.h"
+#import "WXApiManager.h"
+#import "RespForWeChatViewController.h"
+#import "Constant.h"
+#import "WechatAuthSDK.h"
+#import "UIAlertView+WX.h"
 
 
 
-
-@interface GKLoginViewController ()
+@interface GKLoginViewController ()<WXApiManagerDelegate,UITextViewDelegate, WechatAuthAPIDelegate>
 
 /* 上一次选中的按钮 */
 @property (strong , nonatomic)UIButton *selectBtn;
@@ -324,23 +328,24 @@
     if (signedString.length > 0) {
         authInfoStr = [NSString stringWithFormat:@"%@&sign=%@&sign_type=%@", authInfoStr, signedString, ((rsa2PrivateKey.length > 1)?@"RSA2":@"RSA")];
         [[AlipaySDK defaultService] auth_V2WithInfo:authInfoStr
-                                         fromScheme:appScheme
-                                           callback:^(NSDictionary *resultDic) {
-                                               NSLog(@"result = %@",resultDic);
-                                               // 解析 auth code
-                                               NSString *result = resultDic[@"result"];
-                                               NSString *authCode = nil;
-                                               if (result.length>0) {
-                                                   NSArray *resultArr = [result componentsSeparatedByString:@"&"];
-                                                   for (NSString *subResult in resultArr) {
-                                                       if (subResult.length > 10 && [subResult hasPrefix:@"auth_code="]) {
-                                                           authCode = [subResult substringFromIndex:10];
-                                                           break;
-                                                       }
+                                     fromScheme:appScheme
+                                       callback:^(NSDictionary *resultDic) {
+                                           NSLog(@"result = %@",resultDic);
+                                           // 解析 auth code
+                                           NSString *result = resultDic[@"result"];
+                                           NSString *authCode = nil;
+                                           if (result.length>0) {
+                                               NSArray *resultArr = [result componentsSeparatedByString:@"&"];
+                                               for (NSString *subResult in resultArr) {
+                                                   if (subResult.length > 10 && [subResult hasPrefix:@"auth_code="]) {
+                                                       authCode = [subResult substringFromIndex:10];
+                                                       break;
                                                    }
                                                }
-                                               NSLog(@"授权结果 authCode = %@", authCode?:@"");
-                                           }];
+                                           }
+                                           NSLog(@"授权结果 authCode = %@", authCode?:@"");
+//                                           authCode?[SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"授权成功！authCode：%@",authCode]]:[SVProgressHUD showErrorWithStatus:@"授权失败！"];
+                                       }];
     }
 }
 #pragma mark +++++++++++++++微信授权登录++++++++++++++++++
@@ -350,4 +355,185 @@
                                        OpenID:kAuthOpenID
                              InViewController:self];
 }
+#pragma mark -WechatAuthAPIDelegate
+/*#pragma mark -WechatAuthAPIDelegate
+#pragma mark -WechatAuthAPIDelegate
+//得到二维码
+- (void)onAuthGotQrcode:(UIImage *)image
+{
+    NSLog(@"onAuthGotQrcode");
+}
+
+//二维码被扫描
+- (void)onQrcodeScanned
+{
+    NSLog(@"onQrcodeScanned");
+}
+
+//成功登录
+- (void)onAuthFinish:(int)errCode AuthCode:(NSString *)authCode
+{
+    NSLog(@"onAuthFinish");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"onAuthFinish"
+                                                    message:[NSString stringWithFormat:@"authCode:%@ errCode:%d", authCode, errCode]
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+#pragma mark - WXApiManagerDelegate
+- (void)managerDidRecvGetMessageReq:(GetMessageFromWXReq *)req {
+    // 微信请求App提供内容， 需要app提供内容后使用sendRsp返回
+    NSString *strTitle = [NSString stringWithFormat:@"微信请求App提供内容"];
+    NSString *strMsg = [NSString stringWithFormat:@"openID: %@", req.openID];
+    [UIAlertView showWithTitle:strTitle message:strMsg sure:^(UIAlertView *alertView, NSString *text) {
+        RespForWeChatViewController* controller = [[RespForWeChatViewController alloc] init];
+        [self presentViewController:controller animated:YES completion:nil];
+    }];
+}
+
+- (void)managerDidRecvShowMessageReq:(ShowMessageFromWXReq *)req {
+    WXMediaMessage *msg = req.message;
+    
+    //显示微信传过来的内容
+    NSString *strTitle = [NSString stringWithFormat:@"微信请求App显示内容"];
+    NSString *strMsg = nil;
+    
+    if ([msg.mediaObject isKindOfClass:[WXAppExtendObject class]]) {
+        WXAppExtendObject *obj = msg.mediaObject;
+        strMsg = [NSString stringWithFormat:@"openID: %@, 标题：%@ \n描述：%@ \n附带信息：%@ \n文件大小:%lu bytes\n附加消息:%@\n", req.openID, msg.title, msg.description, obj.extInfo, (unsigned long)obj.fileData.length, msg.messageExt];
+    }
+    else if ([msg.mediaObject isKindOfClass:[WXTextObject class]]) {
+        WXTextObject *obj = msg.mediaObject;
+        strMsg = [NSString stringWithFormat:@"openID: %@, 标题：%@ \n描述：%@ \n内容：%@\n", req.openID, msg.title, msg.description, obj.contentText];
+    }
+    else if ([msg.mediaObject isKindOfClass:[WXImageObject class]]) {
+        WXImageObject *obj = msg.mediaObject;
+        strMsg = [NSString stringWithFormat:@"openID: %@, 标题：%@ \n描述：%@ \n图片大小:%lu bytes\n", req.openID, msg.title, msg.description, (unsigned long)obj.imageData.length];
+    }
+    else if ([msg.mediaObject isKindOfClass:[WXLocationObject class]]) {
+        WXLocationObject *obj = msg.mediaObject;
+        strMsg = [NSString stringWithFormat:@"openID: %@, 标题：%@ \n描述：%@ \n经纬度：lng:%f_lat:%f\n", req.openID, msg.title, msg.description, obj.lng, obj.lat];
+    }
+    else if ([msg.mediaObject isKindOfClass:[WXFileObject class]]) {
+        WXFileObject *obj = msg.mediaObject;
+        strMsg = [NSString stringWithFormat:@"openID: %@, 标题：%@ \n描述：%@ \n文件类型：%@ 文件大小:%lu\n", req.openID, msg.title, msg.description, obj.fileExtension, (unsigned long)obj.fileData.length];
+    }
+    else if ([msg.mediaObject isKindOfClass:[WXWebpageObject class]]) {
+        WXWebpageObject *obj = msg.mediaObject;
+        strMsg = [NSString stringWithFormat:@"openID: %@, 标题：%@ \n描述：%@ \n网页地址：%@\n", req.openID, msg.title, msg.description, obj.webpageUrl];
+    }
+    [UIAlertView showWithTitle:strTitle message:strMsg sure:nil];
+}
+
+- (void)managerDidRecvLaunchFromWXReq:(LaunchFromWXReq *)req {
+    WXMediaMessage *msg = req.message;
+    
+    //从微信启动App
+    NSString *strTitle = [NSString stringWithFormat:@"从微信启动"];
+    NSString *strMsg = [NSString stringWithFormat:@"openID: %@, messageExt:%@", req.openID, msg.messageExt];
+    [UIAlertView showWithTitle:strTitle message:strMsg sure:nil];
+}
+
+- (void)managerDidRecvMessageResponse:(SendMessageToWXResp *)response {
+    NSString *strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
+    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", response.errCode];
+    [UIAlertView showWithTitle:strTitle message:strMsg sure:nil];
+}
+
+- (void)managerDidRecvAddCardResponse:(AddCardToWXCardPackageResp *)response {
+    NSMutableString* cardStr = [[NSMutableString alloc] init];
+    for (WXCardItem* cardItem in response.cardAry) {
+        [cardStr appendString:[NSString stringWithFormat:@"code:%@ cardid:%@ cardext:%@ cardstate:%u\n",cardItem.encryptCode,cardItem.cardId,cardItem.extMsg,(unsigned int)cardItem.cardState]];
+    }
+    [UIAlertView showWithTitle:@"add card resp" message:cardStr sure:nil];
+}
+
+- (void)managerDidRecvChooseCardResponse:(WXChooseCardResp *)response {
+    NSMutableString* cardStr = [[NSMutableString alloc] init];
+    for (WXCardItem* cardItem in response.cardAry) {
+        [cardStr appendString:[NSString stringWithFormat:@"cardid:%@, encryptCode:%@, appId:%@\n",cardItem.cardId,cardItem.encryptCode,cardItem.appID]];
+    }
+    [UIAlertView showWithTitle:@"choose card resp" message:cardStr sure:nil];
+}
+
+- (void)managerDidRecvChooseInvoiceResponse:(WXChooseInvoiceResp *)response {
+    NSMutableString* cardStr = [[NSMutableString alloc] init];
+    for (WXInvoiceItem* cardItem in response.cardAry) {
+        [cardStr appendString:[NSString stringWithFormat:@"cardid:%@, encryptCode:%@, appId:%@\n",cardItem.cardId,cardItem.encryptCode,cardItem.appID]];
+    }
+    [UIAlertView showWithTitle:@"choose invoice resp" message:cardStr sure:nil];
+}
+
+- (void)managerDidRecvAuthResponse:(SendAuthResp *)response {
+    NSString *strTitle = [NSString stringWithFormat:@"Auth结果"];
+    NSString *strMsg = [NSString stringWithFormat:@"code:%@,state:%@,errcode:%d", response.code, response.state, response.errCode];
+    
+    [UIAlertView showWithTitle:strTitle message:strMsg sure:nil];
+}
+
+- (void)managerDidRecvSubscribeMsgResponse:(WXSubscribeMsgResp *)response
+{
+    NSString *title = [NSString stringWithFormat:@"templateId:%@,scene:%@,action:%@,reserved:%@,openId:%@",response.templateId,[NSNumber numberWithInteger:response.scene],response.action,response.reserved,response.openId];
+    [UIAlertView showWithTitle:title message:nil sure:nil];
+}
+
+- (void)managerDidRecvLaunchMiniProgram:(WXLaunchMiniProgramResp *)response
+{
+    NSString *strTitle = [NSString stringWithFormat:@"LaunchMiniProgram结果"];
+    NSString *strMsg = [NSString stringWithFormat:@"errMsg:%@,errcode:%d", response.extMsg, response.errCode];
+    [UIAlertView showWithTitle:strTitle message:strMsg sure:nil];
+}
+
+- (void)managerDidRecvInvoiceAuthInsertResponse:(WXInvoiceAuthInsertResp *)response
+{
+    NSString *strTitle = [NSString stringWithFormat:@"电子发票授权开票"];
+    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d,wxorderid:%@", response.errCode, response.wxOrderId];
+    [UIAlertView showWithTitle:strTitle message:strMsg sure:nil];
+}
+
+- (void)managerDidRecvNonTaxpayResponse:(WXNontaxPayResp *)response
+{
+    NSString *strTitle = [NSString stringWithFormat:@"非税支付结果"];
+    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d,wxorderid:%@", response.errCode, response.wxOrderId];
+    [UIAlertView showWithTitle:strTitle message:strMsg sure:nil];
+}
+
+- (void)managerDidRecvPayInsuranceResponse:(WXPayInsuranceResp *)response
+{
+    NSString *strTitle = [NSString stringWithFormat:@"医保支付结果"];
+    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d, wxorderid:%@", response.errCode, response.wxOrderId];
+    [UIAlertView showWithTitle:strTitle message:strMsg sure:nil];
+}
+
+- (void)managerDidRecvOfflineResp:(WXOfflinePayResp *)response
+{
+    NSString *strTitle = [NSString stringWithFormat:@"离线支付结果"];
+    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d,errMsg:%@", response.errCode,response.errStr];
+    [UIAlertView showWithTitle:strTitle message:strMsg sure:nil];
+}
+
+- (void)managerDidRecvPay:(PayResp *)resp
+{
+    NSString *strTitle = [NSString stringWithFormat:@"支付成功 wehcatPay结果"];
+    if (resp.errCode == WXSuccess)
+    {
+        NSString *strMsg = [NSString stringWithFormat:@"returnKey:%@,errcode:%d", resp.returnKey, resp.errCode];
+        [UIAlertView showWithTitle:strTitle message:strMsg sure:nil];
+    }
+    else
+    {
+        [UIAlertView showWithTitle:@"支付失败" message:nil sure:nil];
+    }
+}
+
+- (void)managerDidRecvSubscribeMiniProgramMsg:(WXSubscribeMiniProgramMsgResp *)response
+{
+    NSString *strTitle = [NSString stringWithFormat:@"订阅小程序消息结果"];
+    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d openid:%@ nickName:%@", response.errCode,response.openId, response.nickName];
+    [UIAlertView showWithTitle:strTitle message:strMsg sure:nil];
+}
+
+*/
 @end
