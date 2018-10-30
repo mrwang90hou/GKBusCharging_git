@@ -124,7 +124,8 @@
                     //                success(responseObject);
                     //                break;
                 case -4:
-                    errorStr = @"网络错误";
+//                    errorStr = @"网络错误";
+                    errorStr = @"租借失败：充电柜离线！";
                     break;
                 case -5:
                     errorStr = @"保存数据出错";

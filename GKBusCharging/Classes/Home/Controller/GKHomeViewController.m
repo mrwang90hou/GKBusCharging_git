@@ -25,6 +25,7 @@
 
 #import "GKUseGuideViewController.h"
 #import "GKReturnGuideViewController.h"
+#import "GKEvaluateViewController.h"
 //#import "DCTabBarController.h"
 //#import "DCRegisteredViewController.h"
 // Models
@@ -104,14 +105,26 @@
 @property (nonatomic,strong) UIButton *loginBtn;
 
 
+/*缓存*/
+@property (nonatomic,assign) NSString *devid;
+@property (nonatomic,assign) NSString *cabid;
+
+@property (nonatomic,strong) NSMutableDictionary *totalData;
+
 @end
 
 @implementation GKHomeViewController
 
+-(NSMutableDictionary *)totalData{
+    if(!_totalData){
+        _totalData = [[NSMutableDictionary alloc]init];
+    }
+    return _totalData;
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self updataUI];
+//    [self updataUI];
 //    [self addObserver];
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
@@ -538,7 +551,8 @@
 //    if ([[DCObjManager dc_readUserDataForKey:@"isWorking"] intValue] == 1) {
 //        self.infoView.hidden = false;
 //    }else{
-//        self.infoView.hidden = true;
+    [self.infoView setHidden:true];
+    [self.plusButton setSelected:false];
 //    }
     if (![[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
 //        self.plusButton.selected = false;
@@ -548,6 +562,8 @@
         [self.plusButton setImage:SETIMAGE(@"nav_btn_scavenging_charging_normal") forState:UIControlStateNormal];
     }
 }
+
+
 
 -(void)getDatasViewDidLoading{
     //登录成功
@@ -590,9 +606,14 @@
                     
                     [self.infoView setHidden:false];
                     [self.plusButton setSelected:true];
-                    
+                    self.devid = responseObject[@"devid"];
+                    self.cabid = responseObject[@"cabid"];
+                    if (![[self.totalData allKeys] containsObject:@"devid"] || ![[self.totalData allKeys] containsObject:@"devid"]) {
+                        [self.totalData setValue:responseObject[@"devid"] forKey:@"devid"];
+                        [self.totalData setValue:responseObject[@"cabid"] forKey:@"cabid"];
+                    }
                     //获取当前加载时间
-                    int totalTimeBySeconds = [responseObject[@"time"] intValue];
+                    int totalTimeBySeconds = [responseObject[@"time"] intValue]/1000;
 //                    totalTimeBySeconds = [htmlString intValue]/100;
                     self.hours =  totalTimeBySeconds/3600;
                     //format of minute
@@ -806,8 +827,6 @@
     [self.navigationController pushViewController:[GKOrderManagementViewController new] animated:YES];
 }
 
-
-
 -(void)clickContactPhone{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:TelePhoneNumber message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -868,7 +887,6 @@
                           handler:^(SIAlertView *alertView) {
                               [alertView dismissAnimated:NO];
                               [self endOfTheChargingSure];
-                              
                           }];
     
     [alertView addButtonWithTitle:@"继续充电"
@@ -883,42 +901,85 @@
 }
 
 
-
 -(void)endOfTheChargingSure{
     
     [SVProgressHUD showWithStatus:@"正在结束充电中，请稍后...\n请勿退出或关闭"];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [SVProgressHUD dismiss];
-        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"     " andMessage:@"网络出问题\n结束充电失败"];
-        [alertView addButtonWithTitle:@"返回"
-                                 type:SIAlertViewButtonTypeDefault
-                              handler:^(SIAlertView *alertView) {
-                                  [alertView dismissAnimated:NO];
-                                  
-                              }];
-        
-        [alertView addButtonWithTitle:@"再次停止"
-                                 type:SIAlertViewButtonTypeDestructive
-                              handler:^(SIAlertView *alertView) {
-                                  [alertView dismissAnimated:NO];
-                                  [self againAndOfTheCharging];
-                              }];
-        [alertView show];
-    });
-    
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+    if (cookid) {
+        NSDictionary *dict=@{
+                             @"devid":self.totalData[@"devid"],
+                             @"cabid":self.totalData[@"cabid"],
+                             };
+        [GCHttpDataTool returnChargingLineWithDict:dict success:^(id responseObject) {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:@"结束成功！"];
+            [self updataUI];
+            [self setUpContentView];
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+            [self againAndOfTheCharging];
+        }];
+        NSLog(@"《冲哈哈》获取用户cookid成功");
+    }else{
+        //        [SVProgressHUD showErrorWithStatus:@"cookid is null"];
+        NSLog(@"❌❌获取用户cookid失败❌❌");
+        return;
+    }
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [SVProgressHUD dismiss];
+//        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"     " andMessage:@"网络出问题\n结束充电失败"];
+//        [alertView addButtonWithTitle:@"返回"
+//                                 type:SIAlertViewButtonTypeDefault
+//                              handler:^(SIAlertView *alertView) {
+//                                  [alertView dismissAnimated:NO];
+//
+//                              }];
+//
+//        [alertView addButtonWithTitle:@"再次停止"
+//                                 type:SIAlertViewButtonTypeDestructive
+//                              handler:^(SIAlertView *alertView) {
+//                                  [alertView dismissAnimated:NO];
+//                                  [self againAndOfTheCharging];
+//                              }];
+//        [alertView show];
+//    });
 }
 
 -(void)againAndOfTheCharging{
     [SVProgressHUD showWithStatus:@"正在结束充电中，请稍后...\n请勿退出或关闭"];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [SVProgressHUD dismiss];
-//        [DCObjManager dc_saveUserData:@"0" forKey:@"isWorking"];
-        [self updataUI];
-        [SVProgressHUD showSuccessWithStatus:@"结束成功！"];
-        //弹窗评价窗口
-        [self setUpContentView];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [SVProgressHUD dismiss];
+////        [DCObjManager dc_saveUserData:@"0" forKey:@"isWorking"];
+//        [self updataUI];
+//        [SVProgressHUD showSuccessWithStatus:@"结束成功！"];
+//        //弹窗评价窗口
+//        [self setUpContentView];
+//    });
     
+    NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
+    if (cookid) {
+        NSDictionary *dict=@{
+                             @"devid":self.devid,
+                             @"cabid":self.cabid,
+                             };
+        [GCHttpDataTool returnChargingLineWithDict:dict success:^(id responseObject) {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:@"结束成功！"];
+            [self updataUI];
+            [self setUpContentView];
+        } failure:^(MQError *error) {
+            [SVProgressHUD showErrorWithStatus:error.msg];
+            [self againAndOfTheCharging];
+        }];
+        NSLog(@"《冲哈哈》获取用户cookid成功");
+    }else{
+        //        [SVProgressHUD showErrorWithStatus:@"cookid is null"];
+        NSLog(@"❌❌获取用户cookid失败❌❌");
+        return;
+    }
+    
+    
+    /*
     NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
     if (cookid) {
 //        ordernum： 必填  订单号
@@ -941,10 +1002,16 @@
         NSLog(@"❌❌获取用户cookid失败❌❌");
         return;
     }
+    */
 }
 
 #pragma mark - 内容
-- (void)setUpContentView
+- (void)setUpContentView{
+    //跳转至评价页面
+    [self.navigationController pushViewController:[GKEvaluateViewController new] animated:YES];
+}
+
+- (void)setUpContentView2
 {
     // 大背景
     UIView *bgView = [[UIView alloc] init];
@@ -959,9 +1026,6 @@
 //    bgHeaderView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
     bgHeaderView.frame = CGRectMake(0,0, ScreenW, (ScreenH-K_HEIGHT_NAVBAR)/2+K_HEIGHT_NAVBAR);
     self.bgHeaderView = bgHeaderView;
-    
-    
-    
     
     [self setKeyBoardListener];
     //整体的布局view
@@ -997,11 +1061,12 @@
 - (void) addObserver
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(starIsChangedAction) name:@"starIsChanged" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(close) name:@"close" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(close) name:@"close" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cheackDetailsAction) name:@"cheackDetails" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(qrCodeSuccessAction:) name:@"QRCodeSuccess" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chargeSuccessAction:) name:@"租电成功" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccessAction:) name:LOGINSELECTCENTERINDEX object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updataUI) name:@"EndCharging" object:nil];
 }
 
 - (void)starIsChangedAction{
@@ -1082,6 +1147,7 @@
         return;
     }
     NSMutableDictionary *totalData = [noti userInfo];
+    self.totalData = totalData;
     [SVProgressHUD showWithStatus:@"正在跳转\n请稍后。。。"];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [SVProgressHUD dismiss];
@@ -1098,6 +1164,7 @@
     [self requestData];
     return;
 }
+
 -(void)loginSuccessAction:(NSNotification *)noti{
     //隐藏登录提示窗口
     [self.loginNotiView setHidden:true];
@@ -1192,6 +1259,7 @@
     }
     //让不断变量的时间数据进行显示到label上面。
     self.countDownTimeLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",_hours,_minutes,_seconds];
+    
 }
 
 @end

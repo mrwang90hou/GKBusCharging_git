@@ -63,21 +63,22 @@
     _chargingStatusBool = NO;
     [self getData];
     //rightBarButton
-    UIBarButtonItem *btn1 = [[UIBarButtonItem alloc]initWithTitle:@"获取信息" style:UIBarButtonItemStyleDone target:self action:@selector(requestDataOfChargingLineStatus)];
-    UIBarButtonItem *btn2 = [[UIBarButtonItem alloc]initWithTitle:@"结束充电" style:UIBarButtonItemStyleDone target:self action:@selector(requestData2)];
-    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: btn1,btn2,nil]];
+//    UIBarButtonItem *btn1 = [[UIBarButtonItem alloc]initWithTitle:@"获取信息" style:UIBarButtonItemStyleDone target:self action:@selector(requestDataOfChargingLineStatus)];
+//    UIBarButtonItem *btn2 = [[UIBarButtonItem alloc]initWithTitle:@"结束充电" style:UIBarButtonItemStyleDone target:self action:@selector(requestData2)];
+//    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: btn1,btn2,nil]];
     //如果为已充电状态
     if (self.hasBeenCharging) {
-        
         self.chargingStatusBool = self.hasBeenCharging;
         [self.startChargingBtn setHidden:true];
         [self.statusLabel setHidden:false];
         [self.chargingLoadingIamgeView setHidden:false];
         [self.bgImageView setHidden:false];
-        [self.chargingTimeLabel setHidden:false];
-        [self.chargingTimeStatusLabel setHidden:false];
+//        [self.chargingTimeLabel setHidden:false];
+//        [self.chargingTimeStatusLabel setHidden:false];
         [self.endBtn setTitle:@"结束充电" forState:UIControlStateNormal];
         [self requestDataOfChargingLineStatus];
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        [self addObserver];
     }
 }
 //查询充电线状态
@@ -85,20 +86,15 @@
      NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
      if (cookid) {
          [GCHttpDataTool cxChargingLineStatusWithDict:nil success:^(id responseObject) {
-             
 //             NSMutableDictionary *muTotalData = [NSMutableArray new];
-             
 //             [muTotalData setValue:responseObject[@"devid"] forKey:@"devid"];
 //             [muTotalData setValue:responseObject[@"cabid"] forKey:@"cabid"];
-             
-             
-             
              self.totalData = [NSMutableDictionary new];
              [self.totalData setValue:responseObject[@"devid"] forKey:@"devid"];
              [self.totalData setValue:responseObject[@"cabid"] forKey:@"cabid"];
              
              //获取当前加载时间
-             int totalTimeBySeconds = [responseObject[@"time"] intValue];
+             int totalTimeBySeconds = [responseObject[@"time"] intValue]/1000;
              //                    totalTimeBySeconds = [htmlString intValue]/100;
              self.hours =  totalTimeBySeconds/3600;
              //format of minute
@@ -149,6 +145,10 @@
     });
     NSLog(@"┗( ´・∧・｀)┛┗( ´・∧・｀)┛┗( ´・∧・｀)┛┗( ´・∧・｀)┛┗( ´・∧・｀)┛┗( ´・∧・｀)┛┗( ´・∧・｀)┛");
     //计时器开始
+    _hours = 0;
+    _minutes = 0;
+    _seconds = 0;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startRecordTime) userInfo:nil repeats:YES];
     //通知 HomeViewController
 //    NSTimer *tm;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"租电成功" object:nil userInfo:nil];
@@ -222,6 +222,7 @@
 
 - (IBAction)startChargingAction:(id)sender {
     //建立WebSocket连接
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self addObserver];
     //租借状态【动态】改变
     [self updataingUI];
@@ -286,7 +287,6 @@
 //    [[SocketRocketUtility instance] SRWebSocketClose];
     [self updataingFailUI];
     NSLog(@"断开WebSocket连接");
-    
     [_circle removeFromSuperview];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -314,6 +314,10 @@
 //            [self updataUI];
         } failure:^(MQError *error) {
             [SVProgressHUD showErrorWithStatus:error.msg];
+            [self.statusLabel setText:@"开始充电"];
+            [self.socket SRWebSocketClose];
+            //断开WebSocket连接
+            [[SocketRocketUtility instance] SRWebSocketClose];
         }];
     }else{
         return;
@@ -354,11 +358,14 @@
     }
     //让不断变量的时间数据进行显示到label上面。
     self.chargingTimeLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",_hours,_minutes,_seconds];
+    [self.chargingTimeLabel setHidden:false];
+    [self.chargingTimeStatusLabel setHidden:false];
 }
 
 //返回初始 View 加载完成的状态
 - (void)getBackDidLoadView{
-    //
+    //需要让定时器暂停
+    [self.timer setFireDate:[NSDate distantFuture]];
     self.chargingStatusBool = false;
     [self.startChargingBtn setHidden:false];
     [self.statusLabel setHidden:false];
@@ -366,10 +373,19 @@
     [self.bgImageView setHidden:true];
     [self.chargingTimeLabel setHidden:true];
     [self.chargingTimeStatusLabel setHidden:true];
-    [self.endBtn setTitle:@"返回主页" forState:UIControlStateNormal];
+    [self.endBtn setTitle:@"使用指南" forState:UIControlStateNormal];
     [self.statusLabel setText:@"开始充电"];
     [self.startChargingBtn setHidden:false];
-    
+    //反馈给 homeViewController
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"EndCharging" object:nil];
+    //关闭 webSocket
+    [self.socket SRWebSocketClose];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self selfAlterViewback];
 }
-
+#pragma 退出界面
+- (void)selfAlterViewback
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

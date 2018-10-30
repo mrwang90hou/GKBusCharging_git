@@ -107,8 +107,8 @@ static NSString *const DCNewFeatureCellID2 = @"DCNewFeatureCell2";
     self.title = @"评价";
     [self setUI];
     [self addObserver];
-    UIBarButtonItem *btn = [[UIBarButtonItem alloc]initWithTitle:@"TEST" style:UIBarButtonItemStyleDone target:self action:@selector(show)];
-    [self.navigationItem setRightBarButtonItem:btn];
+//    UIBarButtonItem *btn = [[UIBarButtonItem alloc]initWithTitle:@"TEST" style:UIBarButtonItemStyleDone target:self action:@selector(show)];
+//    [self.navigationItem setRightBarButtonItem:btn];
     
 }
 
