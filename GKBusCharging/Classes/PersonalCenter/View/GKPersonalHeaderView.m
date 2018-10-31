@@ -45,7 +45,7 @@
 //        if ([DCObjManager dc_readUserDataForKey:@"UserName"] != nil) {
 //            [headTitleLabel setText:[DCObjManager dc_readUserDataForKey:@"UserName"]];
 //        }else{
-//            [headTitleLabel setText:@"昵称"];
+            [headTitleLabel setText:@"昵称"];
 //        }
 //        [SVProgressHUD showInfoWithStatus:[DCObjManager dc_readUserDataForKey:@"UserName"]];
         headTitleLabel.font = GKBlodFont(24);
@@ -72,8 +72,7 @@
         phoneBtn.titleLabel.font = GKBlodFont(16);
         self.phoneBtn = phoneBtn;
 
-        
-        
+    
         UIView * iconImageViewBGView = [[UIView alloc]init];
         [self addSubview:iconImageViewBGView];
         [iconImageViewBGView mas_makeConstraints:^(MASConstraintMaker *make) {

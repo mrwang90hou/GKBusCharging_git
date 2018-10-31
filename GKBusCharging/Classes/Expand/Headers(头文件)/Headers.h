@@ -22,4 +22,5 @@
 #import <UIKit/UIKit.h>
 #import "SVProgressHUD.h"
 #import "HMSegmentedControl.h"
+#import "UIColor+FlatUI.h"
 #endif /* Headers_h */

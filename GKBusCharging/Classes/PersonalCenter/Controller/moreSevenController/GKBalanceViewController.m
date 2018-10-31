@@ -12,6 +12,7 @@
 #import "GKRechargeCardViewController.h"
 #import "GKTransactionDetailsViewController.h"
 #import "GKWithdrawalViewController.h"
+#import "OrderViewController.h"
 @interface GKBalanceViewController ()
 @property (nonatomic,strong) UIButton *transactionDetailsBtn;
 
@@ -62,6 +63,7 @@
         return;
     }
 }
+
 -(void)setUI{
 //    UIImageView *favourableActivityBGView = [[UIImageView alloc]initWithFrame:CGRectMake(5, K_HEIGHT_NAVBAR+5, ScreenW-10, 56)];
     UIImageView *favourableActivityBGView = [[UIImageView alloc]init];
@@ -343,7 +345,8 @@
 //查看交易明细
 -(void)transactionDetailsBtnAction{
 //    [SVProgressHUD  showInfoWithStatus:@"查看交易明细"];
-    [self.navigationController pushViewController:[GKTransactionDetailsViewController new] animated:YES];
+//    [self.navigationController pushViewController:[GKTransactionDetailsViewController new] animated:YES];
+    [self.navigationController pushViewController:[OrderViewController new] animated:YES];
 }
 /* 提现 */
 - (void)getCashBtnClick{
@@ -354,4 +357,5 @@
         [self.navigationController pushViewController:[GKWhithdrawalViewController new] animated:YES];
     });
 }
+
 @end

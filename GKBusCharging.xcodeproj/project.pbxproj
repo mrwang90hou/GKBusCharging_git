@@ -94,6 +94,19 @@
 		0B8E5F18217DC1F70011B600 /* GKTransactionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E5F17217DC1F70011B600 /* GKTransactionCell.m */; };
 		0B8E5F19217DC2EB0011B600 /* GKTransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B8E5F15217DC1F60011B600 /* GKTransactionCell.xib */; };
 		0B8E5F1C217DC38A0011B600 /* GKTransactionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E5F1A217DC38A0011B600 /* GKTransactionDetailsViewController.m */; };
+		0B96A1E82189413E009FA185 /* WillEvaluateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B96A1DC2189413E009FA185 /* WillEvaluateViewController.m */; };
+		0B96A1E92189413E009FA185 /* UnwalkedOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B96A1DD2189413E009FA185 /* UnwalkedOrderViewController.m */; };
+		0B96A1EA2189413E009FA185 /* ExpiredOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B96A1DE2189413E009FA185 /* ExpiredOrderViewController.m */; };
+		0B96A1EB2189413E009FA185 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B96A1E32189413E009FA185 /* OrderViewController.m */; };
+		0B96A1EC2189413E009FA185 /* UnpayedOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B96A1E42189413E009FA185 /* UnpayedOrderViewController.m */; };
+		0B96A1ED2189413E009FA185 /* OrderResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B96A1E62189413E009FA185 /* OrderResultViewController.m */; };
+		0B96A1F52189414A009FA185 /* OrderInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B96A1EE2189414A009FA185 /* OrderInfoCell.m */; };
+		0B96A1F62189414A009FA185 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B96A1EF2189414A009FA185 /* OrderCell.m */; };
+		0B96A1F72189414A009FA185 /* OrderCompletedFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B96A1F12189414A009FA185 /* OrderCompletedFirstCell.m */; };
+		0B96A1F82189414A009FA185 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B96A1F32189414A009FA185 /* OrderCell.xib */; };
+		0B96A1FC218941E7009FA185 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B96A1FB218941E7009FA185 /* OrderModel.m */; };
+		0B96A20021894437009FA185 /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B96A1FF21894437009FA185 /* UIColor+FlatUI.m */; };
+		0B96A203218945ED009FA185 /* LBPScrollSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B96A202218945EC009FA185 /* LBPScrollSegmentView.m */; };
 		0B9CF2C2215B7BFC00F76671 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF2C1215B7BFC00F76671 /* AppDelegate.m */; };
 		0B9CF2C5215B7BFC00F76671 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CF2C4215B7BFC00F76671 /* ViewController.m */; };
 		0B9CF2CA215B7BFD00F76671 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B9CF2C9215B7BFD00F76671 /* Assets.xcassets */; };
@@ -415,6 +428,32 @@
 		0B8E5F17217DC1F70011B600 /* GKTransactionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKTransactionCell.m; sourceTree = "<group>"; };
 		0B8E5F1A217DC38A0011B600 /* GKTransactionDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKTransactionDetailsViewController.m; sourceTree = "<group>"; };
 		0B8E5F1B217DC38A0011B600 /* GKTransactionDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKTransactionDetailsViewController.h; sourceTree = "<group>"; };
+		0B96A1DC2189413E009FA185 /* WillEvaluateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WillEvaluateViewController.m; sourceTree = "<group>"; };
+		0B96A1DD2189413E009FA185 /* UnwalkedOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnwalkedOrderViewController.m; sourceTree = "<group>"; };
+		0B96A1DE2189413E009FA185 /* ExpiredOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpiredOrderViewController.m; sourceTree = "<group>"; };
+		0B96A1DF2189413E009FA185 /* ExpiredOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpiredOrderViewController.h; sourceTree = "<group>"; };
+		0B96A1E02189413E009FA185 /* UnpayedOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnpayedOrderViewController.h; sourceTree = "<group>"; };
+		0B96A1E12189413E009FA185 /* UnwalkedOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnwalkedOrderViewController.h; sourceTree = "<group>"; };
+		0B96A1E22189413E009FA185 /* OrderResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderResultViewController.h; sourceTree = "<group>"; };
+		0B96A1E32189413E009FA185 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
+		0B96A1E42189413E009FA185 /* UnpayedOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnpayedOrderViewController.m; sourceTree = "<group>"; };
+		0B96A1E52189413E009FA185 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
+		0B96A1E62189413E009FA185 /* OrderResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderResultViewController.m; sourceTree = "<group>"; };
+		0B96A1E72189413E009FA185 /* WillEvaluateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WillEvaluateViewController.h; sourceTree = "<group>"; };
+		0B96A1EE2189414A009FA185 /* OrderInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInfoCell.m; sourceTree = "<group>"; };
+		0B96A1EF2189414A009FA185 /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
+		0B96A1F02189414A009FA185 /* OrderInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderInfoCell.h; sourceTree = "<group>"; };
+		0B96A1F12189414A009FA185 /* OrderCompletedFirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCompletedFirstCell.m; sourceTree = "<group>"; };
+		0B96A1F22189414A009FA185 /* OrderCompletedFirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCompletedFirstCell.h; sourceTree = "<group>"; };
+		0B96A1F32189414A009FA185 /* OrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
+		0B96A1F42189414A009FA185 /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
+		0B96A1FA218941E7009FA185 /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
+		0B96A1FB218941E7009FA185 /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
+		0B96A1FD218942F2009FA185 /* LocalConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalConfig.h; sourceTree = "<group>"; };
+		0B96A1FE21894437009FA185 /* UIColor+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatUI.h"; sourceTree = "<group>"; };
+		0B96A1FF21894437009FA185 /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
+		0B96A201218945EC009FA185 /* LBPScrollSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPScrollSegmentView.h; sourceTree = "<group>"; };
+		0B96A202218945EC009FA185 /* LBPScrollSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPScrollSegmentView.m; sourceTree = "<group>"; };
 		0B9CF2BD215B7BFC00F76671 /* GKBusCharging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GKBusCharging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9CF2C0215B7BFC00F76671 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0B9CF2C1215B7BFC00F76671 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -793,6 +832,7 @@
 		0B2BF7D7216B60A500A8FE20 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0B96A1F9218941E7009FA185 /* 交易明细 */,
 				0B2BF7DF216B60AC00A8FE20 /* UIColor+Extension.h */,
 				0B2BF7DE216B60AC00A8FE20 /* UIColor+Extension.m */,
 				0B2BF7D8216B60A500A8FE20 /* DDCellModel.h */,
@@ -1127,6 +1167,49 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		0B96A1DA21893F2B009FA185 /* 交易明细 */ = {
+			isa = PBXGroup;
+			children = (
+				0B96A1E52189413E009FA185 /* OrderViewController.h */,
+				0B96A1E32189413E009FA185 /* OrderViewController.m */,
+				0B96A1E02189413E009FA185 /* UnpayedOrderViewController.h */,
+				0B96A1E42189413E009FA185 /* UnpayedOrderViewController.m */,
+				0B96A1E22189413E009FA185 /* OrderResultViewController.h */,
+				0B96A1E62189413E009FA185 /* OrderResultViewController.m */,
+				0B96A1E12189413E009FA185 /* UnwalkedOrderViewController.h */,
+				0B96A1DD2189413E009FA185 /* UnwalkedOrderViewController.m */,
+				0B96A1E72189413E009FA185 /* WillEvaluateViewController.h */,
+				0B96A1DC2189413E009FA185 /* WillEvaluateViewController.m */,
+				0B96A1DF2189413E009FA185 /* ExpiredOrderViewController.h */,
+				0B96A1DE2189413E009FA185 /* ExpiredOrderViewController.m */,
+			);
+			path = "交易明细";
+			sourceTree = "<group>";
+		};
+		0B96A1DB2189402C009FA185 /* 交易明细 */ = {
+			isa = PBXGroup;
+			children = (
+				0B96A1F42189414A009FA185 /* OrderCell.h */,
+				0B96A1EF2189414A009FA185 /* OrderCell.m */,
+				0B96A1F32189414A009FA185 /* OrderCell.xib */,
+				0B96A1F22189414A009FA185 /* OrderCompletedFirstCell.h */,
+				0B96A1F12189414A009FA185 /* OrderCompletedFirstCell.m */,
+				0B96A1F02189414A009FA185 /* OrderInfoCell.h */,
+				0B96A1EE2189414A009FA185 /* OrderInfoCell.m */,
+			);
+			path = "交易明细";
+			sourceTree = "<group>";
+		};
+		0B96A1F9218941E7009FA185 /* 交易明细 */ = {
+			isa = PBXGroup;
+			children = (
+				0B96A1FD218942F2009FA185 /* LocalConfig.h */,
+				0B96A1FA218941E7009FA185 /* OrderModel.h */,
+				0B96A1FB218941E7009FA185 /* OrderModel.m */,
+			);
+			path = "交易明细";
+			sourceTree = "<group>";
+		};
 		0B9CF2B4215B7BFC00F76671 = {
 			isa = PBXGroup;
 			children = (
@@ -1248,6 +1331,8 @@
 		0B9CF33B215B8A6C00F76671 /* Category(分类) */ = {
 			isa = PBXGroup;
 			children = (
+				0B96A1FE21894437009FA185 /* UIColor+FlatUI.h */,
+				0B96A1FF21894437009FA185 /* UIColor+FlatUI.m */,
 				0B9CF33C215B8A6C00F76671 /* NSObject+DCNull.h */,
 				0B9CF33D215B8A6C00F76671 /* NSObject+DCNull.m */,
 				0B9CF33E215B8A6C00F76671 /* NSURL+DCHook.h */,
@@ -1298,6 +1383,8 @@
 		0B9CF361215B8C4B00F76671 /* Tools(工具) */ = {
 			isa = PBXGroup;
 			children = (
+				0B96A201218945EC009FA185 /* LBPScrollSegmentView.h */,
+				0B96A202218945EC009FA185 /* LBPScrollSegmentView.m */,
 				0BD8C7B32175D758006BDDA1 /* XLCircleProgress */,
 				0B9CF362215B8C4B00F76671 /* DCCheckRegular.h */,
 				0B9CF363215B8C4B00F76671 /* DCCheckRegular.m */,
@@ -1876,6 +1963,7 @@
 				0BE6583721789594004F6DB3 /* GKRechargeCardViewController.m */,
 				0BC4047E216DF61700EFC9AC /* GKTopUpTermsViewController.h */,
 				0BC4047F216DF61800EFC9AC /* GKTopUpTermsViewController.m */,
+				0B96A1DA21893F2B009FA185 /* 交易明细 */,
 				0B8E5F1B217DC38A0011B600 /* GKTransactionDetailsViewController.h */,
 				0B8E5F1A217DC38A0011B600 /* GKTransactionDetailsViewController.m */,
 				0B7246A12186D60500DAB8F9 /* GKWithdrawalViewController.h */,
@@ -1918,6 +2006,7 @@
 				0B0ADA6721831A060005462D /* GKOrderEvaluationView.h */,
 				0B0ADA6521831A060005462D /* GKOrderEvaluationView.m */,
 				0B0ADA6621831A060005462D /* GKOrderEvaluationView.xib */,
+				0B96A1DB2189402C009FA185 /* 交易明细 */,
 				0B8E5F16217DC1F70011B600 /* GKTransactionCell.h */,
 				0B8E5F17217DC1F70011B600 /* GKTransactionCell.m */,
 				0B8E5F15217DC1F60011B600 /* GKTransactionCell.xib */,
@@ -2037,6 +2126,7 @@
 				0B9CF31A215B863600F76671 /* Main.storyboard in Resources */,
 				92FB06C6216682710001D38B /* GKBalanceViewController.storyboard in Resources */,
 				0B879F4A217F1B30007169B4 /* AlipaySDK.bundle in Resources */,
+				0B96A1F82189414A009FA185 /* OrderCell.xib in Resources */,
 				0B70D2A421607CDA00C77DFE /* SIAlertView.bundle in Resources */,
 				0B9CF436215B8D7F00F76671 /* AddressTableViewCell.xib in Resources */,
 				0B9CF434215B8D7F00F76671 /* Cities.json in Resources */,
@@ -2133,6 +2223,7 @@
 				0B462E38215F8AC100AE451F /* GKBusInfoListViewController.m in Sources */,
 				0B9CF371215B8C4C00F76671 /* DCObjManager.m in Sources */,
 				0B9CF438215B8D7F00F76671 /* ChooseLocationView.m in Sources */,
+				0B96A1EC2189413E009FA185 /* UnpayedOrderViewController.m in Sources */,
 				0B2BF7D1216B5FF900A8FE20 /* UITextView+STAutoHeight.m in Sources */,
 				0B70D2A521607CDA00C77DFE /* SIAlertView.m in Sources */,
 				0B9CF455215B8D7F00F76671 /* XWCoolAnimator+XWFold.m in Sources */,
@@ -2173,6 +2264,7 @@
 				0B9CF432215B8D7F00F76671 /* UIView+Frame.m in Sources */,
 				0BABC03D215DFDA10085CAC3 /* GKPersonalCenterViewController.m in Sources */,
 				923AC63A215E8EA40016CD1C /* GKFeedBackViewController.m in Sources */,
+				0B96A1F72189414A009FA185 /* OrderCompletedFirstCell.m in Sources */,
 				0B9CF424215B8D7F00F76671 /* AddressPickerView.m in Sources */,
 				0B0ADA6821831A060005462D /* GKOrderEvaluationView.m in Sources */,
 				0BC2F8642181B52D00A88E1C /* GKEvaluateViewController.m in Sources */,
@@ -2181,7 +2273,9 @@
 				0B4BE5AD2160C99E0043CB30 /* GKMeCell.m in Sources */,
 				0B9CF352215B8A6D00F76671 /* UILabel+DCLabel.m in Sources */,
 				0BD8C7B82175D758006BDDA1 /* XLCircle.m in Sources */,
+				0B96A20021894437009FA185 /* UIColor+FlatUI.m in Sources */,
 				0B9CF451215B8D7F00F76671 /* SDPhotoBrowser.m in Sources */,
+				0B96A1E82189413E009FA185 /* WillEvaluateViewController.m in Sources */,
 				0BA6804B2182E15B002B9113 /* GKReturnGuideView02.m in Sources */,
 				0B9CF454215B8D7F00F76671 /* XWCoolAnimator+XWExplode.m in Sources */,
 				0B879F16217F178F007169B4 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */,
@@ -2203,10 +2297,12 @@
 				0B9CF463215B8D7F00F76671 /* XWFilterAnimator+XWPageCurl.m in Sources */,
 				0B9CF458215B8D7F00F76671 /* XWCoolAnimator+XWPageFlip.m in Sources */,
 				0BD8C7B92175D758006BDDA1 /* XLCircleProgress.m in Sources */,
+				0B96A1F62189414A009FA185 /* OrderCell.m in Sources */,
 				0B9CF452215B8D7F00F76671 /* SDWaitingView.m in Sources */,
 				0B9CF450215B8D7F00F76671 /* SDBrowserImageView.m in Sources */,
 				0B9CF444215B8D7F00F76671 /* PYSearchViewController.m in Sources */,
 				0B9CF34D215B8A6D00F76671 /* NSURL+DCHook.m in Sources */,
+				0B96A1ED2189413E009FA185 /* OrderResultViewController.m in Sources */,
 				0B9CF446215B8D7F00F76671 /* UIView+PYSearchExtension.m in Sources */,
 				0BFCB300216B309500B0EFD3 /* GKStarAndLabellingEvaluationView.m in Sources */,
 				0B9CF431215B8D7F00F76671 /* CDDTopTip.m in Sources */,
@@ -2214,6 +2310,7 @@
 				0B9CF43A215B8D7F00F76671 /* JKDBHelper.m in Sources */,
 				0B9CF440215B8D7F00F76671 /* NSBundle+PYSearchExtension.m in Sources */,
 				0B462E0E215F18B700AE451F /* GKLoginViewController.m in Sources */,
+				0B96A1F52189414A009FA185 /* OrderInfoCell.m in Sources */,
 				0BC40480216DF61800EFC9AC /* GKTopUpTermsViewController.m in Sources */,
 				0B9CF42A215B8D7F00F76671 /* DCScanTool.m in Sources */,
 				0B9CF425215B8D7F00F76671 /* UIPlaceHolderTextView.m in Sources */,
@@ -2229,6 +2326,7 @@
 				0BE6583921789594004F6DB3 /* GKRechargeCardViewController.m in Sources */,
 				9239A748216A91F20060A389 /* GKFeedBackRecordViewController.m in Sources */,
 				0BC4047C216DA1D200EFC9AC /* GKStartChargingViewController.m in Sources */,
+				0B96A1EA2189413E009FA185 /* ExpiredOrderViewController.m in Sources */,
 				0B9CF462215B8D7F00F76671 /* XWFilterAnimator+XWMod.m in Sources */,
 				0B9CF430215B8D7F00F76671 /* UIView+DCRolling.m in Sources */,
 				0B879F42217F1AED007169B4 /* APAuthInfo.m in Sources */,
@@ -2254,6 +2352,7 @@
 				0B8E5F0D217D75970011B600 /* GKUseGuideViewController.m in Sources */,
 				0B9CF350215B8A6D00F76671 /* UIImage+DCCircle.m in Sources */,
 				0B2BF7D0216B5FF900A8FE20 /* UIScrollView+STAutoHeight.m in Sources */,
+				0B96A1E92189413E009FA185 /* UnwalkedOrderViewController.m in Sources */,
 				0B9CF453215B8D7F00F76671 /* XWCircleSpreadAnimator.m in Sources */,
 				0B8E5F1C217DC38A0011B600 /* GKTransactionDetailsViewController.m in Sources */,
 				0B879F17217F178F007169B4 /* UIAlertView+WX.m in Sources */,
@@ -2291,11 +2390,14 @@
 				0B7C81EE215CDB3800A06345 /* UIButton+GKUpDownButton.m in Sources */,
 				0BAB872D218170DC005DCD84 /* GKFeedbackCell.m in Sources */,
 				0B9CF443215B8D7F00F76671 /* PYSearchSuggestionViewController.m in Sources */,
+				0B96A1EB2189413E009FA185 /* OrderViewController.m in Sources */,
 				0B7246A62186FD7D00DAB8F9 /* CALayer+LayerColor.m in Sources */,
 				0B879F19217F178F007169B4 /* RespForWeChatViewController.mm in Sources */,
 				0B9CF45C215B8D7F00F76671 /* XWDrawerAnimator.m in Sources */,
 				9211939B2168C25B001DEC72 /* GKServiceTermsViewController.m in Sources */,
+				0B96A1FC218941E7009FA185 /* OrderModel.m in Sources */,
 				0B8E5F13217DB88D0011B600 /* GKReturnGuideViewController.m in Sources */,
+				0B96A203218945ED009FA185 /* LBPScrollSegmentView.m in Sources */,
 				0B7C81E3215CCEE800A06345 /* DCZuoWenRightButton.m in Sources */,
 				0B9CF45F215B8D7F00F76671 /* XWFilterAnimator+XWCopyMachine.m in Sources */,
 				0B9CF49E215B91C600F76671 /* DCConsts.m in Sources */,
