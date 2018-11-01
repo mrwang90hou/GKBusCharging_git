@@ -25,7 +25,7 @@ OrderCellDelegte>
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
-    self.page  = 1;
+    self.page = 1;
     [self reloadData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearData) name:LogoutNotification object:nil];
 }
@@ -128,7 +128,7 @@ OrderCellDelegte>
 
 #pragma mark -- UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return  self.orders.count;
+    return self.orders.count;
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
