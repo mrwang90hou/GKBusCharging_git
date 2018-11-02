@@ -18,6 +18,7 @@
 
 // Views
 #import "XLCircleProgress.h"
+#import <FLAnimatedImage/FLAnimatedImage.h>
 // Vendors
 
 // Categories
@@ -51,6 +52,9 @@
 @property (nonatomic,strong )NSTimer *timer;
 
 @property (nonatomic,strong) SocketRocketUtility *socket;
+@property (nonatomic, strong) FLAnimatedImageView *imgView;
+@property (nonatomic, strong) FLAnimatedImageView *imgView2;
+
 @end
 
 @implementation GKStartChargingViewController
@@ -126,6 +130,82 @@
 //    NSString *devid = self.totalData[@"devid"];
 //    NSString *cabid = self.totalData[@"cabid"];
 //    NSString *deviceID = [DCObjManager dc_readUserDataForKey:@"deviceID"];
+    
+    
+    //读取gif数据
+//    NSData *gifData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"chraging_btn_normal" ofType:@"gif"]];
+//    UIWebView *webView = [[UIWebView alloc] init]; // 自己设置尺寸大小
+//    // 最后添加到需要添加的视图位置就行了，例如：
+//    [self.view addSubview:webView];
+//    [webView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.center.equalTo(self.chargingLoadingIamgeView);
+//        make.size.equalTo(self.chargingLoadingIamgeView);
+//    }];
+//    //取消回弹效果
+//    webView.scrollView.bounces = NO;
+//    webView.backgroundColor = [UIColor clearColor];
+//    //设置缩放模式
+//    webView.scalesPageToFit = YES;
+//    //用webView加载数据
+//    [webView loadData:gifData MIMEType:@"image/gif" textEncodingName:nil baseURL:nil];
+    /*********/
+    
+    
+//    self.startChargingBtn.layer.masksToBounds = YES;
+//    self.startChargingBtn.layer.cornerRadius = 110;
+//    self.startChargingBtn.layer.cornerRadius = 90;
+    
+    
+    FLAnimatedImageView *imgView = [FLAnimatedImageView new];
+    imgView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.startChargingBtn addSubview:imgView];
+    [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.startChargingBtn);
+//        make.size.equalTo(self.startChargingBtn);
+        make.edges.mas_equalTo(UIEdgeInsetsMake(-15, -15, -15, -15));
+        make.size.mas_equalTo(CGSizeMake(220, 220));
+    }];
+    NSString  *filePath = [[NSBundle bundleWithPath:[[NSBundle mainBundle] bundlePath]]pathForResource:@"chraging_btn_normal" ofType:@"gif"];
+    NSData *imageData = [NSData dataWithContentsOfFile:filePath];
+    imgView.backgroundColor = [UIColor clearColor];
+    imgView.animatedImage = [FLAnimatedImage animatedImageWithGIFData:imageData];
+    
+    FLAnimatedImageView *imgView2 = [FLAnimatedImageView new];
+    imgView2.contentMode = UIViewContentModeScaleAspectFit;
+    [self.startChargingBtn addSubview:imgView2];
+    [imgView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.startChargingBtn);
+        make.size.equalTo(imgView);
+//        make.edges.mas_equalTo(UIEdgeInsetsMake(-15, -15, -15, -15));
+    }];
+    NSString  *filePath2 = [[NSBundle bundleWithPath:[[NSBundle mainBundle] bundlePath]]pathForResource:@"chraging_btn_loading" ofType:@"gif"];
+    NSData  *imageData2 = [NSData dataWithContentsOfFile:filePath2];
+    imgView2.backgroundColor = [UIColor clearColor];
+    imgView2.animatedImage = [FLAnimatedImage animatedImageWithGIFData:imageData2];
+    
+//    [self.startChargingBtn setImage:imgView forState:UIControlStateNormal];
+//    [self.startChargingBtn setImage:imgView2 forState:UIControlStateSelected];
+    
+    [imgView setHidden:false];
+    [imgView2 setHidden:true];
+    self.imgView = imgView;
+    self.imgView2 = imgView2;
+//
+//
+//    if (!self.imageView1) {
+//        self.imageView1 = [[FLAnimatedImageView alloc] init];
+//        self.imageView1.contentMode = UIViewContentModeScaleAspectFill;
+//        self.imageView1.clipsToBounds = YES;
+//    }
+//    [self.view addSubview:self.imageView1];
+//    self.imageView1.frame = CGRectMake(0.0, 120.0, self.view.bounds.size.width, 447.0);
+//
+//    NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"rock" withExtension:@"gif"];
+//    NSData *data1 = [NSData dataWithContentsOfURL:url1];
+//    FLAnimatedImage *animatedImage1 = [FLAnimatedImage animatedImageWithGIFData:data1];
+//    self.imageView1.animatedImage = animatedImage1;
+
+    
 }
 
 -(void)updataUI{
@@ -152,12 +232,13 @@
     //通知 HomeViewController
 //    NSTimer *tm;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"租电成功" object:nil userInfo:nil];
+    
 }
 //动态启动动画加载
 -(void)updataingUI{
 //    [self addCircle];
     [self.statusLabel setText:@"正在启动..."];
-    [SVProgressHUD showWithStatus:@"正在启动，请稍后..."];
+//    [SVProgressHUD showWithStatus:@"正在启动，请稍后..."];
 }
 //动态启动动画加载失败
 -(void)updataingFailUI{
@@ -227,6 +308,9 @@
     //租借状态【动态】改变
     [self updataingUI];
 //    [self updataUI];
+    
+    [self.imgView setHidden:true];
+    [self.imgView2 setHidden:false];
 }
 
 - (void)SRWebSocketDidOpen {
@@ -234,7 +318,7 @@
     //开启成功后的执行
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         //向服务器发生租借充电线请求
-        [self requestData];
+//        [self requestData];
     });
     
 }

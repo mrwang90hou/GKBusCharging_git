@@ -225,6 +225,18 @@
 		0BABC045215E01010085CAC3 /* GKPersonalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC044215E01010085CAC3 /* GKPersonalHeaderView.m */; };
 		0BABC048215E14FE0085CAC3 /* GKCustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABC047215E14FE0085CAC3 /* GKCustomFlowLayout.m */; };
 		0BB1B3E321796E9300B8A899 /* RechargeCardPriceMenu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BB1B3E221796DEE00B8A899 /* RechargeCardPriceMenu.plist */; };
+		0BB5BFCE218BE34200D0802F /* chraging_btn_loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0BB5BFCB218BE34100D0802F /* chraging_btn_loading.gif */; };
+		0BB5BFCF218BE34200D0802F /* chraging_btn_pressed.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0BB5BFCC218BE34200D0802F /* chraging_btn_pressed.gif */; };
+		0BB5BFD0218BE34200D0802F /* chraging_btn_normal.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0BB5BFCD218BE34200D0802F /* chraging_btn_normal.gif */; };
+		0BB5BFD3218BE9D800D0802F /* rock.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0BB5BFD2218BE9D800D0802F /* rock.gif */; };
+		0BB5BFD7218C1B0C00D0802F /* GKBusListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB5BFD6218C020E00D0802F /* GKBusListModel.m */; };
+		0BB5BFDA218C3EE000D0802F /* GKCityInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB5BFD8218C3EE000D0802F /* GKCityInfoListViewController.m */; };
+		0BB5BFDD218C441000D0802F /* GKCityListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB5BFDB218C440F00D0802F /* GKCityListModel.m */; };
+		0BB5BFE1218C447D00D0802F /* GKCityInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB5BFDF218C447C00D0802F /* GKCityInfoCell.m */; };
+		0BB5BFE2218C498500D0802F /* GKStartChargingViewControllerOld.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BB5BFCA218BDD1C00D0802F /* GKStartChargingViewControllerOld.xib */; };
+		0BB5BFE3218C498500D0802F /* GKCityInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BB5BFE0218C447D00D0802F /* GKCityInfoCell.xib */; };
+		0BB5BFE4218C4DC700D0802F /* endPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD8C7BA2175DA3C006BDDA1 /* endPoint.png */; };
+		0BB5BFE7218C589F00D0802F /* time_bg.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0BB5BFE6218C589F00D0802F /* time_bg.gif */; };
 		0BBD83F8216EF19400B47EC3 /* GKFeedBackInfo2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD83F7216EF19400B47EC3 /* GKFeedBackInfo2ViewController.m */; };
 		0BBD83FB216EFAB900B47EC3 /* AFNetPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD83F9216EFAB800B47EC3 /* AFNetPackage.m */; };
 		0BBD8404216EFB2100B47EC3 /* GCHttpDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD83FE216EFB2100B47EC3 /* GCHttpDataTool.m */; };
@@ -680,6 +692,21 @@
 		0BABC046215E14FE0085CAC3 /* GKCustomFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCustomFlowLayout.h; sourceTree = "<group>"; };
 		0BABC047215E14FE0085CAC3 /* GKCustomFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCustomFlowLayout.m; sourceTree = "<group>"; };
 		0BB1B3E221796DEE00B8A899 /* RechargeCardPriceMenu.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RechargeCardPriceMenu.plist; sourceTree = "<group>"; };
+		0BB5BFCA218BDD1C00D0802F /* GKStartChargingViewControllerOld.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GKStartChargingViewControllerOld.xib; sourceTree = "<group>"; };
+		0BB5BFCB218BE34100D0802F /* chraging_btn_loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = chraging_btn_loading.gif; path = "../../../../../切图汇总/充哈哈gif充电页面/智造车载gif/02切图/完整gif/chraging_btn_loading.gif"; sourceTree = "<group>"; };
+		0BB5BFCC218BE34200D0802F /* chraging_btn_pressed.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = chraging_btn_pressed.gif; path = "../../../../../切图汇总/充哈哈gif充电页面/智造车载gif/02切图/完整gif/chraging_btn_pressed.gif"; sourceTree = "<group>"; };
+		0BB5BFCD218BE34200D0802F /* chraging_btn_normal.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = chraging_btn_normal.gif; path = "../../../../../切图汇总/充哈哈gif充电页面/智造车载gif/02切图/完整gif/chraging_btn_normal.gif"; sourceTree = "<group>"; };
+		0BB5BFD2218BE9D800D0802F /* rock.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = rock.gif; path = "../../../../../SDK/gif图片加载/FLAnimatedImage/FLAnimatedImageDemo/test-gifs/rock.gif"; sourceTree = "<group>"; };
+		0BB5BFD5218C020D00D0802F /* GKBusListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKBusListModel.h; sourceTree = "<group>"; };
+		0BB5BFD6218C020E00D0802F /* GKBusListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKBusListModel.m; sourceTree = "<group>"; };
+		0BB5BFD8218C3EE000D0802F /* GKCityInfoListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKCityInfoListViewController.m; sourceTree = "<group>"; };
+		0BB5BFD9218C3EE000D0802F /* GKCityInfoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKCityInfoListViewController.h; sourceTree = "<group>"; };
+		0BB5BFDB218C440F00D0802F /* GKCityListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKCityListModel.m; sourceTree = "<group>"; };
+		0BB5BFDC218C441000D0802F /* GKCityListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKCityListModel.h; sourceTree = "<group>"; };
+		0BB5BFDF218C447C00D0802F /* GKCityInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKCityInfoCell.m; sourceTree = "<group>"; };
+		0BB5BFE0218C447D00D0802F /* GKCityInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GKCityInfoCell.xib; sourceTree = "<group>"; };
+		0BB5BFE5218C4F0600D0802F /* GKCityInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKCityInfoCell.h; sourceTree = "<group>"; };
+		0BB5BFE6218C589F00D0802F /* time_bg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = time_bg.gif; path = "../../../../../切图汇总/智造车载充电中页面_切图（1102）/time_bg.gif"; sourceTree = "<group>"; };
 		0BBD83F6216EF19300B47EC3 /* GKFeedBackInfo2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKFeedBackInfo2ViewController.h; sourceTree = "<group>"; };
 		0BBD83F7216EF19400B47EC3 /* GKFeedBackInfo2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKFeedBackInfo2ViewController.m; sourceTree = "<group>"; };
 		0BBD83F9216EFAB800B47EC3 /* AFNetPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetPackage.m; sourceTree = "<group>"; };
@@ -871,6 +898,9 @@
 				0B70D29021605F8B00C77DFE /* GKBusInfoCell.h */,
 				0B70D29121605F8B00C77DFE /* GKBusInfoCell.m */,
 				0B70D29221605F8C00C77DFE /* GKBusInfoCell.xib */,
+				0BB5BFE5218C4F0600D0802F /* GKCityInfoCell.h */,
+				0BB5BFDF218C447C00D0802F /* GKCityInfoCell.m */,
+				0BB5BFE0218C447D00D0802F /* GKCityInfoCell.xib */,
 				0BFCB2FA216B251400B0EFD3 /* GKPriceEvaluationView.h */,
 				0BFCB2F9216B251300B0EFD3 /* GKPriceEvaluationView.m */,
 				0BFCB2F8216B251300B0EFD3 /* GKPriceEvaluationView.xib */,
@@ -897,14 +927,22 @@
 				0B4B1120215B974500056DD6 /* GKHomeViewController.m */,
 				0B462E36215F8AC100AE451F /* GKBusInfoListViewController.h */,
 				0B462E37215F8AC100AE451F /* GKBusInfoListViewController.m */,
+				0BB5BFD9218C3EE000D0802F /* GKCityInfoListViewController.h */,
+				0BB5BFD8218C3EE000D0802F /* GKCityInfoListViewController.m */,
 				0B4BE58D2160C1290043CB30 /* GKBusMoreInfoViewController.h */,
 				0B4BE58C2160C1280043CB30 /* GKBusMoreInfoViewController.m */,
 				0BC4047A216DA1D200EFC9AC /* GKStartChargingViewController.h */,
 				0BC4047B216DA1D200EFC9AC /* GKStartChargingViewController.m */,
 				0BC40479216DA1D200EFC9AC /* GKStartChargingViewController.xib */,
+				0BB5BFCA218BDD1C00D0802F /* GKStartChargingViewControllerOld.xib */,
 				0B8E5F0C217D75970011B600 /* GKUseGuideViewController.h */,
 				0B8E5F0B217D75970011B600 /* GKUseGuideViewController.m */,
 				0B8E5F0E217D7B920011B600 /* GKUseGuideViewController.xib */,
+				0BB5BFCD218BE34200D0802F /* chraging_btn_normal.gif */,
+				0BB5BFCC218BE34200D0802F /* chraging_btn_pressed.gif */,
+				0BB5BFCB218BE34100D0802F /* chraging_btn_loading.gif */,
+				0BB5BFD2218BE9D800D0802F /* rock.gif */,
+				0BB5BFE6218C589F00D0802F /* time_bg.gif */,
 				0B7C81EF215CE27200A06345 /* QRCodeScan */,
 				0BC2F8622181B52200A88E1C /* GKEvaluateViewController.h */,
 				0BC2F8632181B52D00A88E1C /* GKEvaluateViewController.m */,
@@ -1122,6 +1160,8 @@
 			children = (
 				0B8D0DDD215DB97E00030966 /* AreaDataManager */,
 				0B8D0DE0215DB97E00030966 /* AreaDB */,
+				0B8D0DEC215DB97E00030966 /* JFCityViewController.h */,
+				0B8D0DED215DB97E00030966 /* JFCityViewController.m */,
 				0B8D0DE2215DB97E00030966 /* JFButton.h */,
 				0B8D0DE3215DB97E00030966 /* JFButton.m */,
 				0B8D0DE4215DB97E00030966 /* JFCityCollectionFlowLayout.h */,
@@ -1132,8 +1172,6 @@
 				0B8D0DE9215DB97E00030966 /* JFCityHeaderView.m */,
 				0B8D0DEA215DB97E00030966 /* JFCityTableViewCell.h */,
 				0B8D0DEB215DB97E00030966 /* JFCityTableViewCell.m */,
-				0B8D0DEC215DB97E00030966 /* JFCityViewController.h */,
-				0B8D0DED215DB97E00030966 /* JFCityViewController.m */,
 				0B8D0DEE215DB97E00030966 /* JFSearchView.h */,
 				0B8D0DEF215DB97E00030966 /* JFSearchView.m */,
 				0B8D0DF0215DB97E00030966 /* Location */,
@@ -1286,6 +1324,7 @@
 		0B9CF2F4215B81B400F76671 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				0BB5BFD4218C01FE00D0802F /* Model */,
 				0B4B111E215B971500056DD6 /* Controller */,
 				0B4B111D215B971500056DD6 /* View */,
 			);
@@ -1899,6 +1938,17 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		0BB5BFD4218C01FE00D0802F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0BB5BFD5218C020D00D0802F /* GKBusListModel.h */,
+				0BB5BFD6218C020E00D0802F /* GKBusListModel.m */,
+				0BB5BFDC218C441000D0802F /* GKCityListModel.h */,
+				0BB5BFDB218C440F00D0802F /* GKCityListModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0BBD83FC216EFB2100B47EC3 /* Http */ = {
 			isa = PBXGroup;
 			children = (
@@ -2100,15 +2150,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BB5BFE4218C4DC700D0802F /* endPoint.png in Resources */,
+				0BB5BFE2218C498500D0802F /* GKStartChargingViewControllerOld.xib in Resources */,
+				0BB5BFE3218C498500D0802F /* GKCityInfoCell.xib in Resources */,
 				0B0ADA6921831CBA0005462D /* GKOrderEvaluationView.xib in Resources */,
 				0BA6804F2182E3AD002B9113 /* GKReturnGuideView02.xib in Resources */,
 				0BC2F8692181BE0B00A88E1C /* GKStarAndLabellingEvaluationView2.xib in Resources */,
+				0BB5BFE7218C589F00D0802F /* time_bg.gif in Resources */,
+				0BB5BFD3218BE9D800D0802F /* rock.gif in Resources */,
 				0B8E5F19217DC2EB0011B600 /* GKTransactionCell.xib in Resources */,
 				0B8E5F14217DBAC90011B600 /* GKReturnGuideViewController.xib in Resources */,
 				0B8E5F0F217D7C450011B600 /* GKUseGuideViewController.xib in Resources */,
 				0BB1B3E321796E9300B8A899 /* RechargeCardPriceMenu.plist in Resources */,
 				0BC4047D216DCB6900EFC9AC /* GKStartChargingViewController.xib in Resources */,
 				0BFE23E8216C9F4F00C9F915 /* GKFeedBackInfoCell.xib in Resources */,
+				0BB5BFD0218BE34200D0802F /* chraging_btn_normal.gif in Resources */,
 				0BFE23E0216C8EE300C9F915 /* GKFeedBackInfoViewController.xib in Resources */,
 				0B2BF7E8216B62E500A8FE20 /* GKUseingHelpViewController.xib in Resources */,
 				0BFCB301216B3CC700B0EFD3 /* GKStarAndLabellingEvaluationView.xib in Resources */,
@@ -2118,6 +2174,7 @@
 				9275D24D2169DB960004DBFE /* GKOrderCell.xib in Resources */,
 				9211AA182168F28F00502624 /* GKAboutUsViewController.xib in Resources */,
 				926664722168B16900CEC548 /* RechargeStyle.plist in Resources */,
+				0BB5BFCE218BE34200D0802F /* chraging_btn_loading.gif in Resources */,
 				0B462E10215F280700AE451F /* GKLoginViewController.xib in Resources */,
 				923AC63C215E93680016CD1C /* FeedBackMenu.plist in Resources */,
 				0B70D29421605F8C00C77DFE /* GKBusInfoCell.xib in Resources */,
@@ -2145,6 +2202,7 @@
 				9239A74A216A93810060A389 /* GKFeedBackRecordViewController.xib in Resources */,
 				0B809B18215E3BBC001186CA /* PersonalCenterMenu.plist in Resources */,
 				0B9CF42C215B8D7F00F76671 /* flsah_normal@2x.png in Resources */,
+				0BB5BFCF218BE34200D0802F /* chraging_btn_pressed.gif in Resources */,
 				0B9CF441215B8D7F00F76671 /* PYSearch.bundle in Resources */,
 				0B9CF42B215B8D7F00F76671 /* flash_select@2x.png in Resources */,
 				92DE867E216A4019003B23F4 /* star_gray.png in Resources */,
@@ -2203,6 +2261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BB5BFD7218C1B0C00D0802F /* GKBusListModel.m in Sources */,
 				0BD8C7B22175C3D5006BDDA1 /* SocketRocketUtility.m in Sources */,
 				92FB06CB21669DD20001D38B /* GKBalanceView.m in Sources */,
 				0BC2F8612181A69A00A88E1C /* UITextView+ZWPlaceHolder.m in Sources */,
@@ -2237,6 +2296,7 @@
 				0B9CF46B215B8D7F00F76671 /* YBRectConst.m in Sources */,
 				0BFCB2F6216B24F400B0EFD3 /* GKRechargeStyleCell.m in Sources */,
 				0B9CF449215B8D7F00F76671 /* UIView+Snapshot.m in Sources */,
+				0BB5BFE1218C447D00D0802F /* GKCityInfoCell.m in Sources */,
 				0B8D0DFC215DB97F00030966 /* JFLocation.m in Sources */,
 				92FB06C4216681910001D38B /* GKRechargeViewController.m in Sources */,
 				0B7246A32186D60E00DAB8F9 /* GKWithdrawalViewController.m in Sources */,
@@ -2264,6 +2324,7 @@
 				0B9CF432215B8D7F00F76671 /* UIView+Frame.m in Sources */,
 				0BABC03D215DFDA10085CAC3 /* GKPersonalCenterViewController.m in Sources */,
 				923AC63A215E8EA40016CD1C /* GKFeedBackViewController.m in Sources */,
+				0BB5BFDD218C441000D0802F /* GKCityListModel.m in Sources */,
 				0B96A1F72189414A009FA185 /* OrderCompletedFirstCell.m in Sources */,
 				0B9CF424215B8D7F00F76671 /* AddressPickerView.m in Sources */,
 				0B0ADA6821831A060005462D /* GKOrderEvaluationView.m in Sources */,
@@ -2288,6 +2349,7 @@
 				0B9CF465215B8D7F00F76671 /* XWFilterAnimator+XWSwipe.m in Sources */,
 				0B879F1A217F178F007169B4 /* SendMsgToWeChatViewController.m in Sources */,
 				0BBD83FB216EFAB900B47EC3 /* AFNetPackage.m in Sources */,
+				0BB5BFDA218C3EE000D0802F /* GKCityInfoListViewController.m in Sources */,
 				0B879F43217F1AED007169B4 /* APOrderInfo.m in Sources */,
 				0B9CF34F215B8A6D00F76671 /* UIColor+DCColorChange.m in Sources */,
 				0B879F14217F178F007169B4 /* WXApiResponseHandler.m in Sources */,
