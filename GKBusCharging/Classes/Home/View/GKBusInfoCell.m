@@ -19,16 +19,20 @@
 //    self.userImageV.layer.cornerRadius=self.userImageV.image.size.width/2;
 //    self.userImageV.image=[UIImage imageNamed:@"consult_doctor_icon"];
     
-    UIColor *bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bus_information_bg"]];
-    [self.myView setBackgroundColor:bgColor];
-    
+//    UIColor *bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bus_information_bg"]];
+//    [self.myView setBackgroundColor:bgColor];
+    self.myView.layer.masksToBounds = YES;
+    self.myView.layer.cornerRadius = 8;
 }
--(void)setHidden:(BOOL)hidden{
-//    _hidden = hidden;
-//    self.noCommentLabel.hidden = hidden;
-}
-//- (IBAction)btnAction:(id)sender {
-//    [SVProgressHUD showInfoWithStatus:@"点击button！"];
-//}
 
+
+-(void)setModel:(GKBusListModel *)model{
+    _model  = model;
+    if (model) {
+        self.busCardNumberLabel.text = model.busNumber;
+        self.busLinesNumberLabel.text = model.busName;
+        self.scoreLabel.text = model.score;
+        [self.offerBatteryLabel setHidden:[model.allowLend intValue]-1];
+    }
+}
 @end

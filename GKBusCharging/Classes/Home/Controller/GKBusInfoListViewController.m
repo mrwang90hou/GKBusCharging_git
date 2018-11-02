@@ -19,7 +19,7 @@
 //#import "DCTabBarController.h"
 ////#import "DCRegisteredViewController.h"
 // Models
-
+#import "GKBusListModel.h"
 // Views
 #import "GKPersonalHeaderView.h"
 #import "GKCustomFlowLayout.h"
@@ -50,52 +50,87 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
 
 @property (nonatomic,strong) UIButton *cityNameBtn;
 
+@property (nonatomic,strong) NSArray *busListModelData;
 @end
 
 @implementation GKBusInfoListViewController
 #pragma mark - LazyLoad
 
+//-(NSMutableArray *)busListModelData{
+//    if (!_busListModelData) {
+//        _busListModelData = [NSMutableArray array];
+//    }
+//    return _busListModelData;
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"车辆信息";
     self.cityName = @"佛山市";
+    [self getData];
     [self setupUI];
     [self setUpNavBarView];
-    [self getData];
 }
 
 -(void)getData{
-    [self requestData];
+    [self requestData:nil];
 }
 //获取公交车列表
--(void)requestData{
+-(void)requestData:(NSDictionary *)dict{
     NSString *cookid = [DCObjManager dc_readUserDataForKey:@"key"];
     if (cookid) {
-        
-        NSDictionary *dict=@{
-                             @"condition":@"B12",
-                             @"citycode":@"11"
-                             };
-        dict = nil;
-        if (dict != nil) {
+//        NSDictionary *dict=@{
+//                             @"condition":@"B12",
+//                             @"citycode":@"11"
+//                             };
+//        dict = nil;
+//        if (dict != nil) {
             [GCHttpDataTool getBusListWithDict:dict success:^(id responseObject) {
-                [SVProgressHUD dismiss];
+//                [SVProgressHUD dismiss];
+                NSMutableArray *busListData = responseObject[@"list"];
+                NSMutableArray *busListModelData = [NSMutableArray array];
+                for (NSDictionary *dic in busListData) {
+                    GKBusListModel *model = [GKBusListModel new];
+                    model.iid = dic[@"id"];
+                    model.busAscriptionId = dic[@"busAscriptionId"];
+                    model.busNumber = dic[@"busNumber"];
+                    model.createtime = dic[@"createtime"];
+                    model.busAscriptionName = dic[@"busAscriptionName"];
+                    model.province = dic[@"province"];
+                    model.isNewRecord = dic[@"isNewRecord"];
+                    model.busType = dic[@"busType"];
+                    model.city = dic[@"city"];
+                    model.bz = dic[@"bz"];
+                    model.lxr = dic[@"lxr"];
+                    model.photos = dic[@"photos"];
+                    model.busName = dic[@"busName"];
+                    model.score = dic[@"score"];
+                    model.lxdh = dic[@"lxdh"];
+                    model.allowLend = dic[@"allowLend"];
+                    [busListModelData addObject:model];
+                }
+//                self.busListModelData = [busListModelData mutableCopy];
+                //回到主线程更新UI -> 撤销遮罩
+//                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.busListModelData = [busListModelData mutableCopy];
+                    [self.tableView reloadData];
+//                });
 //                [SVProgressHUD showSuccessWithStatus:@"获取公交车列表成功！"];
             } failure:^(MQError *error) {
                 [SVProgressHUD showErrorWithStatus:error.msg];
             }];
-        }else{
-            [GCHttpDataTool getBusListWithDict:nil success:^(id responseObject) {
-                [SVProgressHUD dismiss];
-//                [SVProgressHUD showSuccessWithStatus:@"获取公交车列表成功！"];
-            } failure:^(MQError *error) {
-                [SVProgressHUD showErrorWithStatus:error.msg];
-            }];
-        }
+//        }else{
+//            [GCHttpDataTool getBusListWithDict:nil success:^(id responseObject) {
+//                [SVProgressHUD dismiss];
+////                [SVProgressHUD showSuccessWithStatus:@"获取公交车列表成功！"];
+//            } failure:^(MQError *error) {
+//                [SVProgressHUD showErrorWithStatus:error.msg];
+//            }];
+//        }
     }else{
         return;
     }
 }
+
 -(void)setupUI{
     [self.view addSubview:self.tableView];
 //    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -188,7 +223,9 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.evaluations.count + 9;
+//    return self.evaluations.count + 9;
+//    NSLog(@"self.busListModelData.count = %lu",(unsigned long)self.busListModelData.count);
+    return self.busListModelData.count;
 }
 
 #pragma mark - UITableViewDelegate
@@ -198,7 +235,8 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     GKBusInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:GKBusInfoCellID forIndexPath:indexPath];
-    cell.hidden = YES;
+//    cell.model = [self.busListModelData objectAtIndex:indexPath.row];
+    cell.model = self.busListModelData[indexPath.row];
     return cell;
 }
 
@@ -270,9 +308,15 @@ static NSString *GKBusInfoCellID = @"GKBusInfoCell";
     if (![searchString isEqualToString:@""]) {
 //        _datas = [GFRangeStyleResultDao searchDataByName:searchString];
         //执行搜索操作
+        NSDictionary *dict=@{
+                             @"condition":searchString,
+//                             @"citycode":@"11"
+                             };
+        [self requestData:dict];
     }else
     {
-        [SVProgressHUD showSuccessWithStatus:@"请先输入您所要查找的内容！"];
+//        [SVProgressHUD showSuccessWithStatus:@"请先输入您所要查找的内容！"];
+        [self requestData:nil];
     }
 }
 

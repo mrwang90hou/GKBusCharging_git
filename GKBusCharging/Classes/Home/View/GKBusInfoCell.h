@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GKBusListModel.h"
 @interface GKBusInfoCell : UITableViewCell
 //-(void)createCellWithDictionary:(NSDictionary *)dict withNoCommentFlag:(BOOL)flag;
 //@property (nonatomic, assign) BOOL hidden;
@@ -26,6 +26,6 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *star;
 
-
+@property (nonatomic,strong)  GKBusListModel *model;
 
 @end

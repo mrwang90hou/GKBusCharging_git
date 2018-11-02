@@ -26,6 +26,7 @@
 #import "GKUseGuideViewController.h"
 #import "GKReturnGuideViewController.h"
 #import "GKEvaluateViewController.h"
+#import "GKCityInfoListViewController.h"
 //#import "DCTabBarController.h"
 //#import "DCRegisteredViewController.h"
 // Models
@@ -770,9 +771,17 @@
     if ([self checkLoginStatus]) {
         return;
     }
-    JFCityViewController *cityViewController = [[JFCityViewController alloc] init];
-    cityViewController.title = @"城市";
+    GKCityInfoListViewController *cityViewController = [[GKCityInfoListViewController alloc] init];
+    [cityViewController choseCityBlock:^(NSString *cityName) {
+        self.cityName = cityName;
+        //        [ProjectUtil saveCityName:cityName];
+        //        [weakSelf updateLeftBarButtonItem];
+        //        [self preData];//获取数据
+        [self.cityNameBtn setTitle:self.cityName forState:UIControlStateNormal];
+    }];
     [self.navigationController pushViewController:cityViewController animated:YES];
+    
+    
     /*
      WEAKSELF
     //获取城市列表
